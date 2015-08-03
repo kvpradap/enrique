@@ -1,26 +1,15 @@
+import cPickle
 import pandas as pd
 import logging
+
+import magellan as mg
+
+from magellan.core.pickletable import PickleTable
 
 # get the logger from logging module and set the name to current module name
 logger = logging.getLogger(__name__)
 
 class MTable(pd.DataFrame):
-    """ This is a dictionary that can have all kinds of keys that store meta data.
-        + key: the name of the key attribute of the table
-        + ltable: the name of the left table
-        + rtable: the name of the right table
-        and any other things that commands may want.
-
-        We assume that the key of a table is just a single attribute (i.e. composite keys are not allowed). This
-        is a limitation of current MTable design, made to make key management easier. It may cause some issues
-        later. So we need to watch for this and remove this limitation when it becomes too much.
-    """
-    # set the properties in _metadata
-    # Reasons to use _metadata in pandas data frame
-    # 1. It is preserved across table manipulations
-    # 2. Preserved when the table is pickled
-    # 3. Natively supported in pandas
-
     _metadata = ['properties']
     # ----------------------------------------------------------------------------
     # initialization methods
@@ -28,22 +17,62 @@ class MTable(pd.DataFrame):
         key = kwargs.pop('key', None)
         super(MTable, self).__init__(*args, **kwargs)
         self.properties = dict()
+        # if the key is given as input, then set it
         if key is not None:
             self.set_key(key)
+        # if the attribute is set in __prop__ field then set it
+        elif mg.__prop__ is not None and mg.__prop__ in self.columns:
+            self.set_key(mg.__prop__)
+            mg.__prop__ = None
+        # add key column to table
         else:
-            self.add_key('_m_id')
+            key_name = self._get_name_for_key(self.columns)
+            self.add_key(key_name)
+
+    # get the name for key attribute.
+    def _get_name_for_key(self, columns):
+        k = '_id'
+        i = 0
+        # try attribute name of the form "_id", "_id0", "_id1", ... and
+        # return the first available name
+        while True:
+            if k not in columns:
+                break
+            else:
+               k = '_id' + str(i)
+            i += 1
+        return k
 
     # based on the documentation at http://pandas.pydata.org/pandas-docs/stable/internals.html
     @property
     def _constructor(self):
+        mg.__prop__ = None
+        if self.get_key() is not None:
+            # store the current key in prop attribute and it is used to set it as key
+            # attribute when init is called.
+            mg.__prop__ = self.get_key()
+            # Note: When a subset of rows/columns selected from an MTable, underlying dataframe
+            # code does the following sequence of steps
+            # _constructor : to create new table
+            # __init__ : initialize new table
+            # finalize : finalize old table
+            # Since MTable is inherited from dataframe, the same three steps mentioned are executed.
+            # Now, to preserve the key from old table to new table we store the key from old table in
+            # mg.__prop__ field and use it __init__ method.
+
         return MTable
 
     def __finalize__(self, other, method=None, **kwargs):
+        # get the current key set in __init__
+        key_name = self.get_key()
+        # copy the attributes from older mtable to new mtable
         if isinstance(other, MTable):
             for name in self._metadata:
                 object.__setattr__(self, name, getattr(other, name, None))
-        if self.get_key() not in self.columns:
-            self.add_key('_m_id')
+        # if the key name is set in __init__ then use it
+        if key_name is not None:
+            self.set_key(key_name)
+        # the following statement is redundant, but retaining it for completeness
         else:
             self.set_key(self.get_key())
         return self
@@ -52,58 +81,150 @@ class MTable(pd.DataFrame):
     # getters/setters
 
     def get_key(self):
+        """
+        Return name of key attribute
+        """
         return self.get_property('key')
 
     def set_key(self, key):
+        """
+        Set the key attribute
+
+        Parameters
+        ----------
+        key : string, name of the key attribute
+
+        Returns
+        -------
+        status : boolean
+            Whether the function successfully set the key
+
+        Notes
+        -----
+        Key attribute is expected to satisfy the following properties
+        * do not contain duplicate values
+        * do not contain null values
+        """
         if not isinstance(key, basestring):
             raise TypeError('Input key is expected to be of type string')
-        # set the key as index
-        #    - It will automatically check for duplicates and null values
-        self.set_index(key, inplace=True, drop=False, verify_integrity=True)
-        self.set_property('key', key)
+        if self.is_key_attr(key) is False:
+            raise KeyError('Input attribute does not satisfy requirements for a key')
+        else:
+            self.set_property('key', key)
 
-    def get_property(self, key):
-        return self.properties.get(key, None)
+    def get_property(self, prop_name):
+        """
+        Get the value for a property
 
-    def set_property(self, key, value):
-        if not isinstance(key, basestring):
+        Parameters
+        ----------
+        prop_name : string, name of the property that is queried for
+
+        Returns
+        -------
+        property : object
+            Value set for the property
+        """
+        return self.properties.get(prop_name, None)
+
+    def set_property(self, prop_name, value):
+        """
+        Set the value for a property
+
+        Parameters
+        ----------
+        prop_name : string, name of the property for which value to be set
+        value : object, value for the property
+
+        Returns
+        -------
+        status : boolean
+         Whether the function successfully set the attribute
+        """
+
+        if not isinstance(prop_name, basestring):
             raise TypeError('Input key is expected to be of type string')
-        self.properties[key] = value
+        self.properties[prop_name] = value
 
     # ----------------------------------------------------------------------------
     # add key
     def add_key(self, key):
+        """
+        Add a key attribute to MTable
+
+        Parameters
+        ----------
+        key : string, name of the attribute to be added as key to MTable
+
+        Returns
+        -------
+        status : boolean
+            Whether the function successfully added the key to MTable
+
+        """
         if key is None:
             raise AttributeError('Input key is None')
         if key in self.columns:
-            # todo: modify the behavior in the following manner
-            # - if the key is _m_id and if there is already an _m_id then create a new column with _m_id0
-            # - else dont do anything
             logger.warning('Table already contains column with name %s; key not added' %key)
-            self.set_key(key)
         else:
-            # insert key with numeric values in the first position
             self.insert(0, key, range(0, len(self)))
             self.set_key(key)
 
-    # ----------------------------------------------------------------------------
-    # I/O methods
-    def to_csv(self, *args, **kwargs):
-        kwargs['index'] = False
-        super(MTable, self).to_csv(*args, **kwargs)
 
     # ----------------------------------------------------------------------------
     # helper functions
     def to_dataframe(self):
+        """
+        Convert MTable to pandas Dataframe
+
+        Returns
+        -------
+        df : pandas.Dataframe
+
+        Notes
+        -----
+        MTable's metadata is not copied to returned dataframe
+        """
         df = pd.DataFrame(self.values, columns=self.columns)
-        if self.get_key() is not None:
-            df.set_index(self.get_key(), drop=False, inplace=True)
-        df._metadata = ['properties']
-        df.properties = self.properties
         return df
 
     def get_attr_names(self):
+        """
+        Get the attribute names in a MTable
+
+        Returns
+        -------
+        attr_names : list
+            List of attribute names in MTable
+        """
         return list(self.columns)
+
+    def save_table(self, path):
+        """
+        Pickle object to input file path
+
+        Parameters
+        ----------
+        path : string
+            File path
+
+        Returns
+        -------
+        status : boolean
+            Whether the function successfully saved the table
+
+        """
+        filename = file(path, 'w')
+        obj = PickleTable(self, self.properties)
+        cPickle.dump(obj, filename)
+        return True
+
+
+    # check whether an attribute can be set as key
+    def is_key_attr(self, attr_name):
+        uniq_flag = len(self[attr_name]) == len(self)
+        nan_flag = sum(self[attr_name].isnull()) == 0
+        return uniq_flag and nan_flag
 
 
 
