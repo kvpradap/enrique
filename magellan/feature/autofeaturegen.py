@@ -1,8 +1,41 @@
 import pandas as pd
+import magellan as mg
 import logging
 
 # get features where all inputs required for the function is given
-def get_features_all_input(ltable, rtable, l_attr_types, r_attr_types, attr_corres, tok, sim_funcs):
+def get_features(ltable, rtable, l_attr_types, r_attr_types, attr_corres, tok, sim_funcs):
+    """
+    Generate features from input tables
+
+    Parameters
+    ----------
+    ltable, rtable : MTable,
+        Input tables for which features have to be generated
+    l_attr_types, r_attr_types : dict
+        Dictionary containing attribute types (also see: mg.get_attr_types)
+    attr_corres : dict
+        Contains attribute correspondence between two tables (also see: mg.get_attr_corres)
+    tok : dict
+        Contains tokenizers, where key is tokenizer name and value is function object
+        (also see: mg.get_single_argument_tokenizers)
+    sim_funcs : dict
+        Contains similarity functions, where key is similarity function name and value is function object
+
+    Returns
+    -------
+    feature_table : pandas DataFrame
+        Consists of following columns
+        * feature_name  - string, feature name
+        * left_attribute - string, attribute name
+        * right_attribute - string, attribute name
+        * left_attr_tokenizer - string, tokenizer name
+        * right_attr_tokenizer - string, tokenizer name
+        * simfunction - string, sumilarity function name
+        * function - function object
+        * function_source - string, containing source code
+
+
+    """
 
     # check whether the order of input table matches with table mentioned in l_attr_types, r_attr_type and attr_corres
     if check_table_order(ltable, rtable, l_attr_types, r_attr_types, attr_corres) is False:
@@ -22,9 +55,11 @@ def get_features_all_input(ltable, rtable, l_attr_types, r_attr_types, attr_corr
         # convert features to function objects
         fn_objs = conv_func_objs(feats, attrs, tok, sim_funcs)
         feat_dict_list.append(fn_objs)
+
+    # convert the list of (feature) dictionaries to dataframe
     df = pd.DataFrame(flatten_list(feat_dict_list))
 
-    df = df[['feature_name', 'left_attribute', 'right_attribute', 'left_attr_tokenizer', 'right_attr_tokenizer', 'simfunction', 'function']]
+    df = df[['feature_name', 'left_attribute', 'right_attribute', 'left_attr_tokenizer', 'right_attr_tokenizer', 'simfunction', 'function', 'function_source']]
     return df
 
 # check whether the order of tables matches with what is mentioned in  l_attr_types, r_attr_type and attr_corres
@@ -210,8 +245,42 @@ def conv_fn_str_to_obj(fn_tup):
         d_ret['left_attr_tokenizer'] = tok_1
         d_ret['right_attr_tokenizer'] = tok_2
         d_ret['simfunction'] = simfunction
+        d_ret['function_source'] = f[6]
+
+
         d_ret_list.append(d_ret)
     return d_ret_list
 
 def flatten_list(inp_list):
     return [item for sublist in inp_list for item in sublist]
+
+# get features for a lay user
+def get_features_for_blocking(A, B):
+    """
+    Get features with minimal input
+
+    Parameters
+    ----------
+    A, B : MTable,
+        Input tables
+
+    Returns
+    -------
+    feature_table : pandas DataFrame
+        Consists of following columns
+        * feature_name  - string, feature name
+        * left_attribute - string, attribute name
+        * right_attribute - string, attribute name
+        * left_attr_tokenizer - string, tokenizer name
+        * right_attr_tokenizer - string, tokenizer name
+        * simfunction - string, sumilarity function name
+        * function - function object
+        * function_source - string, containing source code
+    """
+    sim = mg.get_sim_funs()
+    tok = mg.get_single_arg_tokenizers()
+    t_A = mg.get_attr_types(A)
+    t_B = mg.get_attr_types(B)
+    attr_corres = mg.get_attr_corres(A, B)
+    feat_table = get_features(A, B, t_A, t_B, attr_corres, tok, sim)
+    return feat_table
