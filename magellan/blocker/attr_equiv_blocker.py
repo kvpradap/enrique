@@ -53,12 +53,14 @@ class AttrEquivalenceBlocker(Blocker):
         r_df = m_rtable.to_dataframe()
 
         candset = pd.merge(l_df, r_df, left_on=l_block_attr, right_on=r_block_attr,
-                           suffixes=('_left', '_right'))
+                           suffixes=('_ltable', '_rtable'))
 
         # get output columns
-        retain_cols, final_cols = self.ouput_columns(ltable.get_key(), rtable.get_key(), list(candset.columns),
+        retain_cols, final_cols = self.output_columns(ltable.get_key(), rtable.get_key(), list(candset.columns),
                                                    l_output_attrs, r_output_attrs)
 
+        print candset.columns
+        print retain_cols
         candset = candset[retain_cols]
         candset.columns = final_cols
         candset = MTable(candset)
@@ -106,27 +108,29 @@ class AttrEquivalenceBlocker(Blocker):
         rtable = vtable.get_property('rtable')
 
         self.check_attrs(ltable, rtable, l_block_attr, r_block_attr, None, None)
-        l_key = 'left.' + ltable.get_key()
-        r_key = 'right.' + rtable.get_key()
+        l_key = 'ltable.' + ltable.get_key()
+        r_key = 'rtable.' + rtable.get_key()
 
         # convert to dataframes
         l_df = ltable.to_dataframe()
         r_df = rtable.to_dataframe()
 
         # set index for convenience
-        l_df.set_index(l_key, inplace=True)
-        r_df.set_index(r_key, inplace=True)
+        l_df.set_index(ltable.get_key(), inplace=True)
+        r_df.set_index(rtable.get_key(), inplace=True)
 
         # keep track of valid ids
         valid = []
         # iterate candidate set and process each row
         for idx, row in vtable.iterrows():
-            l_val = row[l_key]
-            r_val = row[r_key]
-            l_tuple = tuple(l_df.ix[l_val, l_block_attr])
-            r_tuple = tuple(r_df.ix[r_val, r_block_attr])
-            if np.NaN not in l_tuple and np.NaN not in r_tuple:
-                valid.append(True)
+            # get the value of block attribute from ltuple
+            l_val = l_df.ix[row[l_key], l_block_attr]
+            r_val = r_df.ix[row[r_key], r_block_attr]
+            if l_val != np.NaN and r_val != np.NaN:
+                if l_val == r_val:
+                    valid.append(True)
+                else:
+                    valid.append(False)
             else:
                 valid.append(False)
         out_table = vtable[valid]
@@ -159,24 +163,24 @@ class AttrEquivalenceBlocker(Blocker):
         assert rtable.get_key() is not None, 'Key is not set for right table'
 
         # check block attributes form a subset of left and right tables
-        if l_block_attr is not list:
+        if not isinstance(l_block_attr, list):
             l_block_attr = [l_block_attr]
         assert set(l_block_attr).issubset(ltable.columns) is True, 'Left block attribute is not in left table'
 
-        if r_block_attr is not list:
+        if not isinstance(r_block_attr, list):
             r_block_attr = [r_block_attr]
         assert set(r_block_attr).issubset(rtable.columns) is True, 'Right block attribute is not in right table'
 
         # check output columns form a part of left, right tables
         if l_output_attrs:
-            if l_output_attrs is not list:
+            if not isinstance(l_output_attrs, list):
                 l_output_attrs = [l_output_attrs]
             assert set(l_output_attrs).issubset(ltable.columns) is True, 'Left output attributes ' \
                                                                          'are not in left table'
             l_output_attrs = [x for x in l_output_attrs if x not in [ltable.get_key()]]
 
         if r_output_attrs:
-            if r_output_attrs is not list:
+            if not isinstance(r_output_attrs, list):
                 r_output_attrs = [r_output_attrs]
             assert set(r_output_attrs).issubset(rtable.columns) is True, 'Right output attributes ' \
                                                                          'are not in right table'
@@ -198,7 +202,7 @@ class AttrEquivalenceBlocker(Blocker):
 
         # retain id columns from merge
         ret_l_id = [self.retain_names(x, col_names, '_ltable') for x in [l_key]]
-        ret_r_id = [self.retain_names(x, col_names, '_ltable') for x in [r_key]]
+        ret_r_id = [self.retain_names(x, col_names, '_rtable') for x in [r_key]]
         ret_cols.extend(ret_l_id)
         ret_cols.extend(ret_r_id)
 
@@ -211,17 +215,17 @@ class AttrEquivalenceBlocker(Blocker):
             ret_cols.extend(ret_r_col)
 
         # final columns in the output
-        fin_l_id = [self.final_names(x, col_names, 'ltable.') for x in [l_key]]
-        fin_r_id = [self.final_names(x, col_names, 'ltable.') for x in [r_key]]
+        fin_l_id = [self.final_names(x, 'ltable.') for x in [l_key]]
+        fin_r_id = [self.final_names(x, 'rtable.') for x in [r_key]]
         fin_cols.extend(fin_l_id)
         fin_cols.extend(fin_r_id)
 
         # final output attrs from merge
         if l_output_attrs:
-            fin_l_col = [self.final_names(x, col_names, '_ltable') for x in l_output_attrs]
+            fin_l_col = [self.final_names(x, 'ltable.') for x in l_output_attrs]
             fin_cols.extend(fin_l_col)
         if r_output_attrs:
-            fin_r_col = [self.final_names(x, col_names, '_rtable') for x in r_output_attrs]
+            fin_r_col = [self.final_names(x, 'rtable.') for x in r_output_attrs]
             fin_cols.extend(fin_r_col)
 
         return ret_cols, fin_cols
@@ -232,3 +236,6 @@ class AttrEquivalenceBlocker(Blocker):
             return x
         else:
             return str(x) + suffix
+
+    def final_names(self, x, prefix):
+        return prefix + str(x)

@@ -10,4 +10,6 @@ from magellan.feature.tokenizers import _m_global_tokenizers, get_single_arg_tok
 from magellan.feature.attributeutils import get_attr_corres,get_attr_types
 from magellan.feature.autofeaturegen import get_features, get_features_for_blocking
 from magellan.feature.addfeatures import get_feature_fn, add_feature
+from magellan.core.mtable import MTable
+from magellan.blocker.attr_equiv_blocker import AttrEquivalenceBlocker
 
