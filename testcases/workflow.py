@@ -7,12 +7,35 @@ B = mg.read_csv('../magellan/datasets/table_B.csv', key = 'ID')
 mg.init_jvm('C:\\Program Files\\Java\\jre7\\bin\\server\\jvm.dll')
 
 ab = mg.AttrEquivalenceBlocker()
-C = ab.block_tables(A, B, 'zipcode', 'zipcode', l_output_attrs=['name', 'address', 'birth_year'],
-                    r_output_attrs=['name', 'address', 'birth_year'])
-print C
+C = ab.block_tables(A, B, 'zipcode', 'zipcode', l_output_attrs=['name', 'hourly_wage'],
+                    r_output_attrs=['name', 'hourly_wage'])
+# print C
+# print C.properties
+# print "----------------"
+
+E = ab.block_tables(A, B, 'hourly_wage', 'hourly_wage', l_output_attrs=['birth_year']
+                   )
+# print E
+# print "----------------"
 D = ab.block_candset(C, 'birth_year', 'birth_year')
-print D
-# print A.properties
+# print D
+# print D.properties
+# print "----------------"
+
+F = mg.combine_block_outputs_via_union([D, E])
+#print F.properties
+#print F
+#print "----------------"
+
+S = mg.sample_one_table(C, 10)
+#print S.get_key()
+#print S.get_property('foreign_key_ltable')
+#print S
+
+L = mg.label(S, 'gold_label')
+#print L
+#print L.properties
+
 #
 # A.to_csv('./table_a_test.csv', index=False)
 # A.save_table('./table_a.pkl')
@@ -30,12 +53,12 @@ print D
 # print B1
 
 
-# s = mg.get_sim_funs()
-# t = mg.get_single_arg_tokenizers()
-# t_A = mg.get_attr_types(A)
-# t_B = mg.get_attr_types(B)
-# c = mg.get_attr_corres(A, B)
-# f = mg.get_features(A, B, t_A, t_B, c, t, s)
+s = mg.get_sim_funs()
+t = mg.get_single_arg_tokenizers()
+t_A = mg.get_attr_types(A)
+t_B = mg.get_attr_types(B)
+c = mg.get_attr_corres(A, B)
+f = mg.get_features(A, B, t_A, t_B, c, t, s)
 # # print f.columns
 # st = 'jaccard(qgm_2(ltuple["address"]), qgm_2(rtuple["address"]))'
 # d = mg.get_feature_fn(st, s, t)
@@ -44,4 +67,14 @@ print D
 # print status
 # feat_table = mg.get_features_for_blocking(A, B)
 # print feat_table
+print L.columns
+s_prime = mg.extract_feat_vecs(L, attrs_before=None, feat_table=f, attrs_after=['gold_label'])
+print s_prime
+nb = mg.NBMatcher()
+nb.fit(table=s_prime, exclude_attrs=['_id', 'ltable.ID', 'rtable.ID', 'gold_label'], target_attr='gold_label')
+c_prime = mg.extract_feat_vecs(F, feat_table=f)
+y = nb.predict(table=c_prime, exclude_attrs=['_id', 'ltable.ID', 'rtable.ID', 'ltable.birth_year'],
+               target_attr='predicted_label', append=True)
+print y
 
+#

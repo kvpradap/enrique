@@ -60,3 +60,11 @@ def remove_non_ascii(s):
     s = str(s)
     return str.strip(s)
 
+# find the list difference
+def diff(a, b):
+  b = set(b)
+  return [aa for aa in a if aa not in b]
+
+# helper function to check whether JVM was started
+def isJVMStarted():
+    return jpype.isJVMStarted()

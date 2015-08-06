@@ -140,7 +140,7 @@ def conv_func_objs(feats, attrs, tok, sim_funcs):
     valid_list = [check_valid_tok_sim(i, tok_list, sim_list) for i in feats]
     # get function as a string and other meta data; finally we will get a list of tuples
     func_tuples = [get_fn_str(inp, attrs) for inp in valid_list]
-    func_objs = conv_fn_str_to_obj(func_tuples)
+    func_objs = conv_fn_str_to_obj(func_tuples, tok, sim_funcs)
     return func_objs
 
 
@@ -226,8 +226,10 @@ def get_fn_name(attr1, attr2, sim_func, tok_func_1=None, tok_func_2=None):
     return '_'.join([fp, sp])
 
 # conv function string to function object and return with meta data
-def conv_fn_str_to_obj(fn_tup):
+def conv_fn_str_to_obj(fn_tup, tok, sim_funcs):
     d_orig = {}
+    d_orig.update(tok)
+    d_orig.update(sim_funcs)
     d_ret_list = []
     for f in fn_tup:
         d_ret = {}

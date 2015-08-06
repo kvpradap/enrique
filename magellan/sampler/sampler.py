@@ -114,7 +114,7 @@ def _probe_index(b_table, y, s_tbl_sz, s_inv_index):
             h_table.update(s_pos_set, s_neg_set)
     return h_table
 
-
+# down sample two tables : based on sanjib's index based solution
 def sample_two_tables(ltable, rtable, size, y):
     s_table, b_table, is_swapped = _order_tables(ltable, rtable)
     s_inv_index = _inv_index(s_table)
@@ -128,6 +128,11 @@ def sample_two_tables(ltable, rtable, size, y):
     r_sampled = rtable.iloc[list(b_tbl_indices)]
     return l_sampled, r_sampled
 
+# sample one table using random sampling
 def sample_one_table(table, size, replace=False):
     s_indices = np.random.choice(len(table), size, replace=replace)
-    return table.iloc[list(s_indices)]
+    # sort the indices - just to have an order
+    s_indices = sorted(s_indices)
+    sampled_table =  table.iloc[list(s_indices)]
+    #print sampled_table.properties
+    return sampled_table
