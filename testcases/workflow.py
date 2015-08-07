@@ -4,7 +4,8 @@ import magellan as mg
 A = mg.read_csv('../magellan/datasets/table_A.csv', key = 'ID')
 B = mg.read_csv('../magellan/datasets/table_B.csv', key = 'ID')
 
-mg.init_jvm('C:\\Program Files\\Java\\jre7\\bin\\server\\jvm.dll')
+#mg.init_jvm('C:\\Program Files\\Java\\jre7\\bin\\server\\jvm.dll')
+mg.init_jvm()
 
 ab = mg.AttrEquivalenceBlocker()
 C = ab.block_tables(A, B, 'zipcode', 'zipcode', l_output_attrs=['name', 'hourly_wage'],
@@ -72,9 +73,13 @@ s_prime = mg.extract_feat_vecs(L, attrs_before=None, feat_table=f, attrs_after=[
 print s_prime
 nb = mg.NBMatcher()
 nb.fit(table=s_prime, exclude_attrs=['_id', 'ltable.ID', 'rtable.ID', 'gold_label'], target_attr='gold_label')
+nb.fit(x=s_prime[list(f['feature_name'])], y=s_prime['gold_label'])
 c_prime = mg.extract_feat_vecs(F, feat_table=f)
 y = nb.predict(table=c_prime, exclude_attrs=['_id', 'ltable.ID', 'rtable.ID', 'ltable.birth_year'],
                target_attr='predicted_label', append=True)
+
+y = nb.predict(x = c_prime[list(f['feature_name'])])
 print y
 
-#
+
+

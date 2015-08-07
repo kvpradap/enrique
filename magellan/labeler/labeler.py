@@ -9,5 +9,6 @@ def label(tbl, col_name):
     else:
         table[col_name] = 0
     mg.edit(table)
+    table[col_name] = table[col_name].astype(int)
     table.properties = tbl.properties
     return table

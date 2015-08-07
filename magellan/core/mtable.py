@@ -185,7 +185,13 @@ class MTable(pd.DataFrame):
         -----
         MTable's metadata is not copied to returned dataframe
         """
+        copy_dtype = dict(zip(self.columns, self.dtypes))
+
         df = pd.DataFrame(self.values, columns=self.columns)
+        # set the dtypes in dataframe as the same dtype in MTable
+        for c in df.columns:
+            df[c] = df[c].astype(copy_dtype[c])
+
         return df
 
     def get_attr_names(self):
