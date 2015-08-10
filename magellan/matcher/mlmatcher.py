@@ -134,6 +134,13 @@ class MLMatcher(Matcher):
             raise SyntaxError('The arguments supplied does not match the signatures supported !!!')
         return y
 
+    # get and set name of matcher
+    def get_name(self):
+        return self.name
+
+    def set_name(self, name):
+        self.name = name
+
     # -----------------------------------------------------------
     # common routines
 

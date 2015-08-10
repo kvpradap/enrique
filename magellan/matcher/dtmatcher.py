@@ -9,3 +9,4 @@ class DTMatcher(MLMatcher):
     def __init__(self, *args, **kwargs):
         super(DTMatcher, self).__init__(*args, **kwargs)
         self.clf = DecisionTreeClassifier(*args, **kwargs)
+        self.name = 'DecisionTree'

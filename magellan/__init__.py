@@ -17,4 +17,7 @@ from magellan.gui.mtable_gui import view, edit
 from magellan.labeler.labeler import label
 from magellan.feature.extractfeatures import extract_feat_vecs
 from magellan.matcher.nbmatcher import NBMatcher
-
+from magellan.matcher.dtmatcher import DTMatcher
+from magellan.matcher.rfmatcher import RFMatcher
+from magellan.matcherselection.mlmatcherselection import select_matcher
+from magellan.matcherselection.mlmatchercombinerselection import selector_matcher_combiner

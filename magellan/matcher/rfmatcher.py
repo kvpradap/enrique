@@ -9,3 +9,4 @@ class RFMatcher(MLMatcher):
     def __init__(self, *args, **kwargs):
         super(RFMatcher, self).__init__(*args, **kwargs)
         self.clf = RandomForestClassifier(*args, **kwargs)
+        self.name = 'RandomForest'

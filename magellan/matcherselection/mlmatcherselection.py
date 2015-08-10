@@ -6,10 +6,17 @@ from sklearn.cross_validation import KFold, cross_val_score
 
 def select_matcher(matchers, x=None, y=None, table=None, exclude_attrs=None, target_attr=None, k=5):
     x,y = get_xy_data(x, y, table, exclude_attrs, target_attr)
-
-
-    pass
-
+    dict_list = []
+    max_score = 0
+    sel_matcher = matchers[0]
+    for m in matchers:
+        matcher, scores = cross_validation(m, x, y, k)
+        dict_list.append(dict(zip(['name', 'matcher', 'mean score'], [matcher.get_name(), matcher, np.mean(scores)])))
+        if np.mean(scores) > max_score:
+            sel_matcher = m
+            max_score = np.mean(scores)
+    stats = pd.DataFrame(dict_list)
+    return sel_matcher, stats
 
 def cross_validation(matcher, x, y, k):
     cv = KFold(len(y), k, shuffle=True, random_state=0)

@@ -9,4 +9,5 @@ class NBMatcher(MLMatcher):
     def __init__(self, *args, **kwargs):
         super(NBMatcher, self).__init__(*args, **kwargs)
         self.clf = GaussianNB(*args, **kwargs)
+        self.name = 'NaiveBayes'
 
