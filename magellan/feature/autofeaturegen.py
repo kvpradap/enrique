@@ -278,6 +278,11 @@ def get_features_for_blocking(A, B):
         * simfunction - string, sumilarity function name
         * function - function object
         * function_source - string, containing source code
+
+    Notes
+    -----
+    The function also exports the important variables to global name space so if a user want to examine they can do
+    so.
     """
     sim = mg.get_sim_funs()
     tok = mg.get_single_arg_tokenizers()
@@ -285,4 +290,12 @@ def get_features_for_blocking(A, B):
     t_B = mg.get_attr_types(B)
     attr_corres = mg.get_attr_corres(A, B)
     feat_table = get_features(A, B, t_A, t_B, attr_corres, tok, sim)
+
+    # export important variables to global name space
+    #_m_current_tokenizers, _m_current_sim_funs, _m_current_attr_types_ltable, _m_current_attr_types_rtable_m_current_corres
+    mg._m_current_tokenizers = tok
+    mg._m_current_sim_funs = sim
+    mg._m_current_attr_types_ltable = t_A
+    mg._m_current_attr_types_rtable = t_B
+    mg._m_current_corres = attr_corres
     return feat_table

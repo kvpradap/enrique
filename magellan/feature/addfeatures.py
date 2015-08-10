@@ -81,7 +81,7 @@ def parse_feat_str(str, tok, sim):
 
     # parse string
     # define structures for each type
-    attr_name = Word(alphanums +"_" + "." + "[" +"]" +'"')
+    attr_name = Word(alphanums +"_" + "." + "[" +"]" +'"' +"'")
     tok_fn = Word(alphanums+"_") + "(" + attr_name + ")"
     wo_tok = Word(alphanums) + "(" + attr_name + "," + attr_name + ")"
     wi_tok = Word(alphanums) + "(" + tok_fn + "," + tok_fn + ")"
@@ -103,12 +103,12 @@ def parse_feat_str(str, tok, sim):
         lt = [val for val in f if val.startswith('ltuple[')]
         if len(lt) is 1:
             lt = lt[0]
-            left_attribute = lt[7:len(lt)-1].strip('"')
+            left_attribute = lt[7:len(lt)-1].strip('"').strip("'")
         # get right_attribute
         rt = [val for val in f if val.startswith('rtuple[')]
         if len(rt) is 1:
             rt = rt[0]
-            right_attribute = rt[7:len(rt)-1].strip('"')
+            right_attribute = rt[7:len(rt)-1].strip('"').strip("'")
     else:
         pass
 

@@ -68,3 +68,6 @@ def diff(a, b):
 # helper function to check whether JVM was started
 def isJVMStarted():
     return jpype.isJVMStarted()
+
+
+
