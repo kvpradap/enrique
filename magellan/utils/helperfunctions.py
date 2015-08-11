@@ -4,8 +4,9 @@ import jpype
 import logging
 import os
 
-from magellan.utils import installpath
 
+from magellan.utils import installpath
+from magellan import read_csv
 # get installation path
 def get_install_path():
     plist = installpath.split(os.sep)
@@ -68,6 +69,16 @@ def diff(a, b):
 # helper function to check whether JVM was started
 def isJVMStarted():
     return jpype.isJVMStarted()
+
+# load dataset from datasets directory
+def load_dataset(filename, key=None):
+    p = get_install_path()
+    p = os.sep.join([p, 'datasets', filename + '.csv'])
+    if filename is 'table_A' or 'table_B':
+        key = 'ID'
+    df = read_csv(p, key=key)
+    return df
+
 
 
 

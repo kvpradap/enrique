@@ -1,3 +1,0 @@
-include README.rst
-include datasets/*.csv
-include inst/java/*.jar
