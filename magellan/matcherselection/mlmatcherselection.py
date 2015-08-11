@@ -5,6 +5,29 @@ import pandas as pd
 from sklearn.cross_validation import KFold, cross_val_score
 
 def select_matcher(matchers, x=None, y=None, table=None, exclude_attrs=None, target_attr=None, k=5):
+    """
+    Select matcher using cross validation
+
+    Parameters
+    ----------
+    matchers : list, of matcher objects
+
+
+
+    x : MTable, defaults to None
+        of feature vectors
+    y : MTable, defaults to None
+        of labels
+    table : MTable, defaults to None
+            of feature vectors and user included attributes
+    exclude_attrs: list,
+            list of attributes to be excluded in 'table'
+    target_attr : string,
+            target attribute name containing labels
+    k : integer,
+        number of folds to be used for crossvalidation
+
+    """
     x,y = get_xy_data(x, y, table, exclude_attrs, target_attr)
     dict_list = []
     max_score = 0

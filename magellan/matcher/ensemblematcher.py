@@ -9,14 +9,14 @@ from sklearn.externals import six
 from sklearn.pipeline import _name_estimators
 
 from magellan.matcher.mlmatcher import MLMatcher
-from magellan.matcherselection.matchercombiner import MajorityVote
+from magellan.matcherselection.matchercombiner import MajorityVote, WeightedVote
 class EnsembleSKLearn(BaseEstimator, ClassifierMixin, TransformerMixin):
-    def __init__(self, clfs, voting):
+    def __init__(self, clfs, voting, weights=None, threshold=None):
         self.clfs = clfs
         self.named_clfs = {key:value for key,value in _name_estimators(clfs)}
         self.voting=voting
-        if voting is 'majority':
-            self.combiner=MajorityVote()
+        if voting is 'weighted':
+            self.combiner=WeightedVote(weights=weights, threshold=threshold)
         else:
             raise AttributeError('Unrecognized voting method')
 
@@ -50,9 +50,9 @@ class EnsembleSKLearn(BaseEstimator, ClassifierMixin, TransformerMixin):
 
 
 class EnsembleMatcher(MLMatcher):
-    def __init__(self, matchers, name=None, voting='majority'):
+    def __init__(self, matchers, name=None, voting='weighted', weights=None, threshold=None):
         clfs = [m.clf for m in matchers]
-        self.clf = EnsembleSKLearn(clfs, voting)
+        self.clf = EnsembleSKLearn(clfs, voting, weights, threshold)
         if name is None:
             names = [matcher.get_name() for matcher in matchers ]
             self.name = ','.join(names)
