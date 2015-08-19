@@ -107,7 +107,8 @@ def get_feat_lkp_tbl():
     lkp_tbl['STR_GT_10W'] = [('jaccard', 'qgm_3', 'qgm_3')]
 
     # features for NUMERIC type
-    lkp_tbl['NUM'] = [('rel_diff')]
+    #lkp_tbl['NUM'] = [('rel_diff')]
+    lkp_tbl['NUM'] = [('exact_match')]
 
     # features for BOOLEAN type
     lkp_tbl['BOOL'] = [('exact_match')]
@@ -293,9 +294,9 @@ def get_features_for_blocking(A, B):
 
     # export important variables to global name space
     #_m_current_tokenizers, _m_current_sim_funs, _m_current_attr_types_ltable, _m_current_attr_types_rtable_m_current_corres
-    mg._m_current_tokenizers = tok
-    mg._m_current_sim_funs = sim
-    mg._m_current_attr_types_ltable = t_A
-    mg._m_current_attr_types_rtable = t_B
-    mg._m_current_corres = attr_corres
+    mg._current_tokenizers = tok
+    mg._current_sim_funs = sim
+    mg._current_attr_types_ltable = t_A
+    mg._current_attr_types_rtable = t_B
+    mg._current_corres = attr_corres
     return feat_table

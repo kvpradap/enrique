@@ -7,6 +7,34 @@ from magellan.matcher.ensemblematcher import EnsembleMatcher
 
 def selector_matcher_combiner(matchers, combiners, x=None, y=None, table=None, exclude_attrs=None, target_attr=None,
                               weights=None, threshold=None, k=5):
+    """
+    Select best ensemble of matchers using cross validation
+
+    Parameters
+    ----------
+    matchers : list of matcher objects
+    combiners : list
+        list of combiners to be used for ensemble,
+        currently the following combiners are supported: "weighted", "majority"
+    x : MTable, defaults to None
+        of feature vectors
+    y : MTable, defaults to None
+        of labels
+    table : MTable, defaults to None
+            of feature vectors and user included attributes
+    exclude_attrs: list,
+            list of attributes to be excluded in 'table'
+    target_attr : string,
+            target attribute name containing labels
+    weights : list of floats
+        applies only when combiners contain "weighted".
+        Weights to be applied to the perdicted results to combine
+    threshold : float
+        applies only when combiners contain "weighted".
+        threshold value to be compared to get final prediction.
+    k : integer,
+        number of folds to be used for crossvalidation
+    """
     if not isinstance(matchers, list):
         matchers = [matchers]
     if not isinstance(combiners, list):

@@ -19,6 +19,16 @@ import magellan as mg
 A = mg.read_csv('../magellan/datasets/table_A.csv', key = 'ID')
 B = mg.read_csv('../magellan/datasets/table_B.csv', key = 'ID')
 feat_table = mg.get_features_for_blocking(A, B)
-r = mg.get_feature_fn("jaccard(qgm_3(ltuple['address']), qgm_3(rtuple['address']))", mg._m_current_sim_funs,
-                      mg._m_current_tokenizers)
-print r
+
+# r = mg.get_feature_fn("jaccard(qgm_3(ltuple['address']), qgm_3(rtuple['address']))", mg._current_sim_funs,
+#                       mg._current_tokenizers)
+# print r
+mg.init_jvm()
+print feat_table['feature_name']
+rb = mg.RuleBasedBlocker()
+rb.add_rule(['birth_year_birth_year_exm(ltuple, rtuple) == 1'],
+            feat_table
+            )
+#rb.add_rule('birth_year_birth_year_rdf(ltuple, rtuple) > 0.95', feat_table)
+C = rb.block_tuples(A.ix[1], B.ix[2])
+print C

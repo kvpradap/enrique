@@ -17,6 +17,8 @@ class EnsembleSKLearn(BaseEstimator, ClassifierMixin, TransformerMixin):
         self.voting=voting
         if voting is 'weighted':
             self.combiner=WeightedVote(weights=weights, threshold=threshold)
+        elif voting is 'majority':
+            self.combiner=MajorityVote()
         else:
             raise AttributeError('Unrecognized voting method')
 
@@ -55,6 +57,8 @@ class EnsembleMatcher(MLMatcher):
         self.clf = EnsembleSKLearn(clfs, voting, weights, threshold)
         if name is None:
             names = [matcher.get_name() for matcher in matchers ]
+            self.name = voting+':'
             self.name = ','.join(names)
+
         else:
             self.name = name

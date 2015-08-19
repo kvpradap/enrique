@@ -11,9 +11,6 @@ def select_matcher(matchers, x=None, y=None, table=None, exclude_attrs=None, tar
     Parameters
     ----------
     matchers : list, of matcher objects
-
-
-
     x : MTable, defaults to None
         of feature vectors
     y : MTable, defaults to None

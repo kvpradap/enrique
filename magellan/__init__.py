@@ -12,6 +12,7 @@ from magellan.feature.autofeaturegen import get_features, get_features_for_block
 from magellan.feature.addfeatures import get_feature_fn, add_feature
 from magellan.core.mtable import MTable
 from magellan.blocker.attr_equiv_blocker import AttrEquivalenceBlocker
+from magellan.blocker.rule_based_blocker import RuleBasedBlocker
 from magellan.blockercombiner.blockercombiner import combine_block_outputs_via_union
 from magellan.gui.mtable_gui import view, edit
 from magellan.labeler.labeler import label
@@ -24,8 +25,8 @@ from magellan.matcherselection.mlmatchercombinerselection import selector_matche
 
 
 
-_m_current_tokenizers = None
-_m_current_sim_funs = None
-_m_current_attr_types_ltable = None
-_m_current_attr_types_rtable = None
-_m_current_corres = None
+_current_tokenizers = None
+_current_sim_funs = None
+_current_attr_types_ltable = None
+_current_attr_types_rtable = None
+_current_corres = None

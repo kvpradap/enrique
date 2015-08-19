@@ -28,6 +28,7 @@ setup(
     install_requires=['JPype1>=0.5.7',
                       'pandas >= 0.16.0',
                       'numpy >= 1.7.0',
+                      'six'
                       ],
     include_package_data=True,
     zip_safe=False

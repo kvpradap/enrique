@@ -142,11 +142,17 @@ def add_feature(feat_table, feat_name, feat_dict):
     status : boolean,
         Whether the feature was successfully added to to feature table
     """
-    feat_names = feat_table['feature_name']
+    feat_names = list(feat_table['feature_name'])
     if feat_name in feat_names:
         logging.getLogger(__name__).warning('Input feature name is already present in feature table')
         return False
 
     feat_dict['feature_name'] = feat_name
+    # rename function
+    f = feat_dict['function']
+    f_name=feat_name
+    #f_name.func_name = feat_name
+    exec 'f_name = f'
+    feat_dict['function'] = f_name
     feat_table.loc[len(feat_table)] = feat_dict
     return True
