@@ -17,17 +17,9 @@ class MTable(pd.DataFrame):
         key = kwargs.pop('key', None)
         super(MTable, self).__init__(*args, **kwargs)
         self.properties = dict()
-        # if the key is given as input, then set it
+
         if key is not None:
             self.set_key(key)
-        # if the attribute is set in __prop__ field then set it
-        elif mg.__prop__ is not None and mg.__prop__ in self.columns:
-            self.set_key(mg.__prop__)
-            mg.__prop__ = None
-        # add key column to table
-        else:
-            key_name = self._get_name_for_key(self.columns)
-            self.add_key(key_name)
 
     # get the name for key attribute.
     def _get_name_for_key(self, columns):
@@ -46,35 +38,14 @@ class MTable(pd.DataFrame):
     # based on the documentation at http://pandas.pydata.org/pandas-docs/stable/internals.html
     @property
     def _constructor(self):
-        mg.__prop__ = None
-        if self.get_key() is not None:
-            # store the current key in prop attribute and it is used to set it as key
-            # attribute when init is called.
-            mg.__prop__ = self.get_key()
-            # Note: When a subset of rows/columns selected from an MTable, underlying dataframe
-            # code does the following sequence of steps
-            # _constructor : to create new table
-            # __init__ : initialize new table
-            # finalize : finalize old table
-            # Since MTable is inherited from dataframe, the same three steps mentioned are executed.
-            # Now, to preserve the key from old table to new table we store the key from old table in
-            # mg.__prop__ field and use it __init__ method.
-
-        return MTable
+         return MTable
 
     def __finalize__(self, other, method=None, **kwargs):
-        # get the current key set in __init__
-        key_name = self.get_key()
+        #print 'calling finalize'
         # copy the attributes from older mtable to new mtable
         if isinstance(other, MTable):
             for name in self._metadata:
                 object.__setattr__(self, name, getattr(other, name, None))
-        # if the key name is set in __init__ then use it
-        if key_name is not None:
-            self.set_key(key_name)
-        # the following statement is redundant, but retaining it for completeness
-        else:
-            self.set_key(self.get_key())
         return self
 
     # ----------------------------------------------------------------------------
@@ -228,6 +199,7 @@ class MTable(pd.DataFrame):
 
     # check whether an attribute can be set as key
     def is_key_attr(self, attr_name):
+        #print attr_name
         uniq_flag = len(self[attr_name]) == len(self)
         nan_flag = sum(self[attr_name].isnull()) == 0
         return uniq_flag and nan_flag

@@ -64,6 +64,9 @@ class AttrEquivalenceBlocker(Blocker):
         candset = candset[retain_cols]
         candset.columns = final_cols
         candset = MTable(candset)
+        key_name = candset._get_name_for_key(candset.columns)
+        candset.add_key(key_name)
+
         # set metadata
         candset.set_property('ltable', ltable)
         candset.set_property('rtable', rtable)

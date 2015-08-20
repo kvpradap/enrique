@@ -95,25 +95,33 @@ class RuleBasedBlocker(Blocker):
                     d = OrderedDict()
                     # add left id first
                     ltable_id = 'ltable.' + ltable.get_key()
-                    d[ltable_id] = l_out[ltable.get_key()]
+                    d[ltable_id] = l[ltable.get_key()]
 
                     # add right id
                     rtable_id = 'rtable.' + rtable.get_key()
-                    d[rtable_id] = r_out[rtable.get_key()]
+                    d[rtable_id] = r[rtable.get_key()]
 
                     # add left attributes
                     if l_output_attrs:
                         l_out = l[l_output_attrs]
                         l_out.index = 'ltable.'+l_out.index
-                        d.update(l_out.to_dict())
+                        d.update(l_out)
 
                     # add right attributes
                     if r_output_attrs:
                         r_out = r[r_output_attrs]
                         r_out.index = 'rtable.'+r_out.index
-                        d.update(r_out.to_dict())
+                        d.update(r_out)
                     block_list.append(d)
+
+
         candset = MTable(block_list)
+        ret_cols = self.get_attrs_to_retain(ltable.get_key(), rtable.get_key(), l_output_attrs, r_output_attrs)
+        candset = candset[ret_cols]
+        # add key
+        key_name = candset._get_name_for_key(candset.columns)
+        candset.add_key(key_name)
+
         # set metadata
         candset.set_property('ltable', ltable)
         candset.set_property('rtable', rtable)
@@ -183,5 +191,14 @@ class RuleBasedBlocker(Blocker):
             if res is True:
                 return True
         return False
+
+    def get_attrs_to_retain(self, l_id, r_id, l_col, r_col):
+        ret_cols = ['_id']
+        ret_cols.append('ltable.' + l_id)
+        ret_cols.append('rtable.' + r_id)
+        ret_cols.extend(['ltable.'+c for c in l_col])
+        ret_cols.extend(['rtable.'+c for c in r_col])
+        return ret_cols
+
 
 

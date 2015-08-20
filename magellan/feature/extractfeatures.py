@@ -80,6 +80,8 @@ def extract_feat_vecs(s, attrs_before=None, feat_table=None, attrs_after=None):
     table.reset_index(inplace=True, drop=True)
 
     feature_table = MTable(table)
+    if s.get_key() not in feature_table.columns:
+        feature_table.add_key(s.get_key())
     # metadata
     feature_table._metadata = s._metadata
     feature_table.properties = s.properties
