@@ -53,8 +53,8 @@ def combine_block_outputs_via_union(blocker_output_list):
 
     # project df and convert to MTable
     table = MTable(table[f_cols])
-    key_name = table._get_name_for_key(table.columns)
-    table.add_key(key_name)
+    #key_name = table._get_name_for_key(table.columns)
+    #table.add_key(key_name)
 
     # set metadata
     table.set_property('ltable', ltable)

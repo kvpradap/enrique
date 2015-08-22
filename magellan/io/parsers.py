@@ -28,8 +28,8 @@ def read_csv(*args, **kwargs):
         return MTable(df, key=key)
     else:
         df = MTable(df)
-        key_name=df._get_name_for_key(df.columns)
-        df.add_key(key_name)
+        #key_name=df._get_name_for_key(df.columns)
+        #df.add_key(key_name)
         return df
 
 def load_table(path):

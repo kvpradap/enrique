@@ -1,6 +1,7 @@
 import math
 import numpy as np
 import sys
+from magellan.core.mtable import MTable
 
 def _get_stop_words():
     stop_words = [
@@ -124,8 +125,10 @@ def sample_two_tables(ltable, rtable, size, y):
                                  len(s_table), s_inv_index)
     if is_swapped:
         s_tbl_indices, b_tbl_indices = b_tbl_indices, s_tbl_indices
-    l_sampled = ltable.iloc[list(s_tbl_indices)]
-    r_sampled = rtable.iloc[list(b_tbl_indices)]
+    l_sampled = MTable(ltable.iloc[list(s_tbl_indices)], ltable.get_key())
+    l_sampled.properties = ltable.properties
+    r_sampled = MTable(rtable.iloc[list(b_tbl_indices)], rtable.get_key())
+    r_sampled.properties = rtable.properties
     return l_sampled, r_sampled
 
 # sample one table using random sampling
@@ -135,4 +138,6 @@ def sample_one_table(table, size, replace=False):
     s_indices = sorted(s_indices)
     sampled_table =  table.iloc[list(s_indices)]
     #print sampled_table.properties
+    sampled_table = MTable(sampled_table, key=table.get_key() )
+    sampled_table.properties = table.properties
     return sampled_table

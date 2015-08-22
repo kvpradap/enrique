@@ -1,5 +1,7 @@
 import logging
 
+import pandas as pd
+
 from collections import OrderedDict
 from magellan.blocker.blocker import Blocker
 from magellan import MTable
@@ -115,12 +117,12 @@ class RuleBasedBlocker(Blocker):
                     block_list.append(d)
 
 
-        candset = MTable(block_list)
+        candset = pd.DataFrame(block_list)
         ret_cols = self.get_attrs_to_retain(ltable.get_key(), rtable.get_key(), l_output_attrs, r_output_attrs)
-        candset = candset[ret_cols]
+        candset = MTable(candset[ret_cols])
         # add key
-        key_name = candset._get_name_for_key(candset.columns)
-        candset.add_key(key_name)
+        #key_name = candset._get_name_for_key(candset.columns)
+        #candset.add_key(key_name)
 
         # set metadata
         candset.set_property('ltable', ltable)
@@ -153,7 +155,8 @@ class RuleBasedBlocker(Blocker):
                 valid.append(True)
             else:
                 valid.append(False)
-        out_table = vtable[valid]
+        out_table = MTable(vtable[valid], key='_id')
+        out_table.properties = vtable.properties
         return out_table
 
     def block_tuples(self, ltuple, rtuple):

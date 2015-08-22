@@ -4,6 +4,7 @@ import numpy as np
 
 from magellan.blocker.blocker import Blocker
 from magellan.core.mtable import MTable
+import magellan as mg
 
 class AttrEquivalenceBlocker(Blocker):
 
@@ -45,12 +46,8 @@ class AttrEquivalenceBlocker(Blocker):
         l_output_attrs, r_output_attrs = self.check_attrs(ltable, rtable, l_block_attr, r_block_attr,
                                                      l_output_attrs, r_output_attrs)
         # remove nans
-        m_ltable = self.rem_nan(ltable, l_block_attr)
-        m_rtable = self.rem_nan(rtable, r_block_attr)
-
-        # convert to dataframes
-        l_df = m_ltable.to_dataframe()
-        r_df = m_rtable.to_dataframe()
+        l_df = self.rem_nan(ltable, l_block_attr)
+        r_df = self.rem_nan(rtable, r_block_attr)
 
         candset = pd.merge(l_df, r_df, left_on=l_block_attr, right_on=r_block_attr,
                            suffixes=('_ltable', '_rtable'))
@@ -64,8 +61,8 @@ class AttrEquivalenceBlocker(Blocker):
         candset = candset[retain_cols]
         candset.columns = final_cols
         candset = MTable(candset)
-        key_name = candset._get_name_for_key(candset.columns)
-        candset.add_key(key_name)
+        #key_name = candset._get_name_for_key(candset.columns)
+        #candset.add_key(key_name)
 
         # set metadata
         candset.set_property('ltable', ltable)
@@ -136,7 +133,10 @@ class AttrEquivalenceBlocker(Blocker):
                     valid.append(False)
             else:
                 valid.append(False)
-        out_table = vtable[valid]
+        
+        # should be modified
+        out_table = MTable(vtable[valid], key='_id')
+        out_table.properties = vtable.properties
         return out_table
 
     # blocking over tuples

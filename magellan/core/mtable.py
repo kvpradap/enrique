@@ -17,9 +17,11 @@ class MTable(pd.DataFrame):
         key = kwargs.pop('key', None)
         super(MTable, self).__init__(*args, **kwargs)
         self.properties = dict()
-
         if key is not None:
             self.set_key(key)
+        else:
+            key_name = self._get_name_for_key(self.columns)
+            self.add_key(key_name)
 
     # get the name for key attribute.
     def _get_name_for_key(self, columns):
@@ -36,17 +38,17 @@ class MTable(pd.DataFrame):
         return k
 
     # based on the documentation at http://pandas.pydata.org/pandas-docs/stable/internals.html
-    @property
-    def _constructor(self):
-         return MTable
+    # @property
+    # def _constructor(self):
+    #      return MTable
 
-    def __finalize__(self, other, method=None, **kwargs):
-        #print 'calling finalize'
-        # copy the attributes from older mtable to new mtable
-        if isinstance(other, MTable):
-            for name in self._metadata:
-                object.__setattr__(self, name, getattr(other, name, None))
-        return self
+    # def __finalize__(self, other, method=None, **kwargs):
+    #     #print 'calling finalize'
+    #     # copy the attributes from older mtable to new mtable
+    #     if isinstance(other, MTable):
+    #         for name in self._metadata:
+    #             object.__setattr__(self, name, getattr(other, name, None))
+    #     return self
 
     # ----------------------------------------------------------------------------
     # getters/setters
