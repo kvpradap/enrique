@@ -1,6 +1,8 @@
 import logging
 from PyQt4 import QtGui
 
+from magellan.utils.helperfunctions import remove_non_ascii
+
 logger = logging.getLogger(__name__)
 
 # contain basic routines to view and edit table -- should be updated with leon's code
@@ -65,6 +67,7 @@ def cast_val(v, i):
     elif isinstance(i, int):
         return int(v)
     elif isinstance(i, basestring):
+        v = remove_non_ascii(unicode(v))
         return str(v)
     elif isinstance(i, object):
         return v

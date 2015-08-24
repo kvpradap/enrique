@@ -24,8 +24,15 @@ def get_sim_funs():
 def jaccard(arr1, arr2):
     if arr1 is None or arr2 is None:
         return np.NaN
-    if any(pd.isnull(arr1)) or any(pd.isnull(arr2)):
+    if not isinstance(arr1, list):
+        arr1 = [arr1]
+    if any(pd.isnull(arr1)):
         return np.NaN
+    if not isinstance(arr2, list):
+        arr2 = [arr2]
+    if any(pd.isnull(arr2)):
+        return np.NaN
+
     sim = jpype.JClass('build.SimilarityFunction')()
     return sim.jaccard(arr1, arr2)
 
