@@ -3,6 +3,7 @@ import numpy as np
 import pandas as pd
 
 from sklearn.cross_validation import KFold, cross_val_score
+from sklearn.preprocessing import Imputer
 
 def select_matcher(matchers, x=None, y=None, table=None, exclude_attrs=None, target_attr=None, k=5):
     """
@@ -26,6 +27,13 @@ def select_matcher(matchers, x=None, y=None, table=None, exclude_attrs=None, tar
 
     """
     x,y = get_xy_data(x, y, table, exclude_attrs, target_attr)
+    # do imputation
+    imp = Imputer(missing_values='NaN', strategy='median', axis=0)
+    imp.fit(x)
+    # replace nan in imputer to 0
+    imp.statistics_[np.isnan(imp.statistics_)] = 0.0
+    x = imp.transform(x)
+
     dict_list = []
     max_score = 0
     sel_matcher = matchers[0]
