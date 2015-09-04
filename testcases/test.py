@@ -39,6 +39,9 @@ import magellan as mg
 # D = rb.block_candset(C)
 
 #print D
-A = mg.read_csv('../magellan/datasets/books/walmart.csv', key='id')
+A = mg.load_dataset('table_A')
+B = mg.load_dataset('table_B')
+feat_table = mg.get_features_for_blocking(A, B)
+
 print A.head()
 

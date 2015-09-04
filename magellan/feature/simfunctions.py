@@ -12,14 +12,16 @@ sim_fn_names = ['jaccard', 'lev', 'cosine', 'monge_elkan', 'needleman_wunsch', '
 # abbreviations of sim functions
 abb = ['jac', 'lev', 'cos', 'mel', 'nmw', 'sw',
        'swg', 'jar', 'jwn', 'sdx',
-       'exm', 'rdf', 'adf']
+       'exm', 'rdf', 'anm']
 
 # global function names
 _m_global_sim_fns = pd.DataFrame({'function_name':sim_fn_names, 'short_name':abb})
 
 # get similarity functions
 def get_sim_funs():
-    fns = [jaccard, lev, exact_match, rel_diff]
+    fns = [jaccard,  lev, cosine, monge_elkan, needleman_wunsch, smith_waterman, smith_waterman_gotoh,
+           jaro, jaro_winkler, soundex,
+           exact_match, rel_diff, abs_norm]
     return dict(zip(sim_fn_names, fns))
 
 # similarity measures
@@ -195,6 +197,6 @@ def abs_norm(d1, d2):
     if d1 is 0 and d2 is 0:
         return 0
     else:
-        return abs(d1-d2)/max(d1, d2)
+        return 1 - (abs(d1-d2)/max(d1, d2))
 
 #

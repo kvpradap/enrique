@@ -94,21 +94,28 @@ def get_feat_lkp_tbl():
 
     # THE FOLLOWING MUST BE MODIFIED
     # features for type str_eq_1w
-    lkp_tbl['STR_EQ_1W'] = [('lev')]
+    lkp_tbl['STR_EQ_1W'] = [('lev'), ('jaro'), ('jaro_winkler'), ('soundex'), ('exact_match'),
+                            ('jaccard', 'qgm_3', 'qgm_3')]
 
     # features for type str_bt_1w_5w
     lkp_tbl['STR_BT_1W_5W'] = [('jaccard', 'qgm_3', 'qgm_3'),
-                               ('jaccard', 'qgm_2', 'qgm_3')]
+                               ('cosine', 'dlm_dc0', 'dlm_dc0'),
+                               ('jaccard', 'dlm_dc0', 'dlm_dc0'),
+                               ('monge_elkan'), ('needleman_wunsch'), ('smith_waterman'), ('smith_waterman_gotoh')
+                               ] # dlm_dc0 is the concrete space tokenizer
 
     # features for type str_bt_5w_10w
-    lkp_tbl['STR_BT_5W_10W'] = [('jaccard', 'qgm_3', 'qgm_3')]
+    lkp_tbl['STR_BT_5W_10W'] = [('jaccard', 'qgm_3', 'qgm_3'),
+                                ('cosine', 'dlm_dc0', 'dlm_dc0'),
+                                ('monge_elkan')]
 
     # features for type str_gt_10w
-    lkp_tbl['STR_GT_10W'] = [('jaccard', 'qgm_3', 'qgm_3')]
+    lkp_tbl['STR_GT_10W'] = [('jaccard', 'qgm_3', 'qgm_3'),
+                             ('cosine', 'dlm_dc0', 'dlm_dc0')]
 
     # features for NUMERIC type
     #lkp_tbl['NUM'] = [('rel_diff')]
-    lkp_tbl['NUM'] = [('exact_match')]
+    lkp_tbl['NUM'] = [('exact_match'), ('abs_norm'), ('lev')]
 
     # features for BOOLEAN type
     lkp_tbl['BOOL'] = [('exact_match')]
@@ -141,6 +148,7 @@ def conv_func_objs(feats, attrs, tok, sim_funcs):
     valid_list = [check_valid_tok_sim(i, tok_list, sim_list) for i in feats]
     # get function as a string and other meta data; finally we will get a list of tuples
     func_tuples = [get_fn_str(inp, attrs) for inp in valid_list]
+    #print func_tuples
     func_objs = conv_fn_str_to_obj(func_tuples, tok, sim_funcs)
     return func_objs
 
@@ -215,7 +223,7 @@ def get_fn_name(attr1, attr2, sim_func, tok_func_1=None, tok_func_2=None):
     name_lkp["jaro_winkler"] = "jwn"
     name_lkp["soundex"] = "sdx"
     name_lkp["exact_match"] = "exm"
-    name_lkp["abs_diff"] = "adf"
+    name_lkp["abs_norm"] = "anm"
     name_lkp["rel_diff"] = "rdf"
     name_lkp["1"] = "1"
     name_lkp["2"] = "2"
