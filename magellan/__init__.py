@@ -5,7 +5,7 @@ __prop__ = True
 from magellan.io.parsers import read_csv, load_table
 from magellan.sampler.sampler import sample_one_table, sample_two_tables
 from magellan.utils.helperfunctions import get_install_path, init_jvm, diff, load_dataset, helper_function
-from magellan.utils.ast_test import get_workflow
+from magellan.utils.ast_test import get_workflow, draw_workflow
 from magellan.feature.simfunctions import _m_global_sim_fns, get_sim_funs
 from magellan.feature.tokenizers import _m_global_tokenizers, get_single_arg_tokenizers
 from magellan.feature.attributeutils import get_attr_corres,get_attr_types
