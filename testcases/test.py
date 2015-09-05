@@ -120,7 +120,7 @@ val_map = {'A': 1.0,
                               'H': 0.0}
 
 values = [val_map.get(node, 0.45) for node in G.nodes()]
-edge_labels=dict([((u,v,),d['weight'])
+edge_labels = dict([((u,v,),d['weight'])
                  for u,v,d in G.edges(data=True)])
 red_edges = [('C','D'),('D','A')]
 edge_colors = ['black' if not edge in red_edges else 'red' for edge in G.edges()]
