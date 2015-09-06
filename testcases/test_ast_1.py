@@ -85,6 +85,32 @@ def check_dag_edg(edge_list):
     assert len(e) == 0, "The workflow cotains a cycle"
     return True
 
+def get_assign_nodes_v(assign_dict, var):
+    keys = assign_dict.keys()
+    var_keys = [x for x in keys if x[1] == var]
+    assert len(var_keys) != 0, "Given variable is not part of assign nodes"
+    var_keys.sort(key=lambda tup:tup[0], reverse=True)
+    var_index = keys.index(var_keys[0])
+    d = dict()
+    for idx in range(0, var_index + 1):
+        k = keys[idx]
+        pass
+
+
+    pass
+
+def get_workflow(h, v):
+    command_node_dict = dict()
+    var_node_dict = dict()
+    parsed = ast.parse(h)
+    hist_lines = h.splitlines()
+
+    assign_node_dict = get_assign_nodes(parsed)
+    assign_node_v_dict = get_assign_nodes_v(assign_node_dict, v)
+
+
+    pass
+
 histo="""
 A = mg.load_dataset('table_A')
 B = mg.load_dataset('table_B')
@@ -98,6 +124,8 @@ parsed = ast.parse(histo)
 assign_node_dict = get_assign_nodes(parsed)
 
 t = check_dag(assign_node_dict, 'S')
+
+
 print t
 
 
