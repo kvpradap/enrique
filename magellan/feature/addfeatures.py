@@ -81,10 +81,10 @@ def parse_feat_str(str, tok, sim):
 
     # parse string
     # define structures for each type
-    attr_name = Word(alphanums +"_" + "." + "[" +"]" +'"' +"'")
+    attr_name = Word(alphanums + "_" + "." + "[" +"]" +'"' +"'")
     tok_fn = Word(alphanums+"_") + "(" + attr_name + ")"
-    wo_tok = Word(alphanums) + "(" + attr_name + "," + attr_name + ")"
-    wi_tok = Word(alphanums) + "(" + tok_fn + "," + tok_fn + ")"
+    wo_tok = Word(alphanums+"_") + "(" + attr_name + "," + attr_name + ")"
+    wi_tok = Word(alphanums+"_") + "(" + tok_fn + "," + tok_fn + ")"
     feat = wi_tok | wo_tok
     try:
         f = feat.parseString(str)
@@ -142,10 +142,11 @@ def add_feature(feat_table, feat_name, feat_dict):
     status : boolean,
         Whether the feature was successfully added to to feature table
     """
-    feat_names = list(feat_table['feature_name'])
-    if feat_name in feat_names:
-        logging.getLogger(__name__).warning('Input feature name is already present in feature table')
-        return False
+    if len(feat_table) > 0:
+        feat_names = list(feat_table['feature_name'])
+        if feat_name in feat_names:
+            logging.getLogger(__name__).warning('Input feature name is already present in feature table')
+            return False
 
     feat_dict['feature_name'] = feat_name
     # rename function
@@ -154,5 +155,10 @@ def add_feature(feat_table, feat_name, feat_dict):
     #f_name.func_name = feat_name
     exec 'f_name = f'
     feat_dict['function'] = f_name
-    feat_table.loc[len(feat_table)] = feat_dict
+    if len(feat_table) > 0:
+        feat_table.loc[len(feat_table)] = feat_dict
+    else:
+        feat_table.columns = ['feature_name', 'left_attribute', 'right_attribute', 'left_attr_tokenizer',
+                              'right_attr_tokenizer', 'simfunction', 'function', 'function_source']
+        feat_table.loc[len(feat_table)] = feat_dict
     return True
