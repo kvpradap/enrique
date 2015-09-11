@@ -1,0 +1,7 @@
+digraph Tree {
+0 [label="hourly_wage_hourly_wage_exm <= 0.5000\ngini = 0.32\nsamples = 15", shape="box"] ;
+1 [label="gini = 0.0000\nsamples = 12\nvalue = [ 12.   0.]", shape="box"] ;
+0 -> 1 ;
+2 [label="gini = 0.0000\nsamples = 3\nvalue = [ 0.  3.]", shape="box"] ;
+0 -> 2 ;
+}
