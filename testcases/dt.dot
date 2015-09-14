@@ -1,0 +1,35 @@
+digraph Tree {
+0 [label="publisher_publisher_swg <= 0.1717\ngini = 0.231111111111\nsamples = 30", shape="box"] ;
+1 [label="gini = 0.0000\nsamples = 1\nvalue = [ 0.  1.]", shape="box"] ;
+0 -> 1 ;
+2 [label="pubMonth_pubMonth_anm <= 0.1080\ngini = 0.185493460166\nsamples = 29", shape="box"] ;
+0 -> 2 ;
+3 [label="id_id_anm <= 0.0000\ngini = 0.5\nsamples = 2", shape="box"] ;
+2 -> 3 ;
+4 [label="gini = 0.0000\nsamples = 1\nvalue = [ 1.  0.]", shape="box"] ;
+3 -> 4 ;
+5 [label="gini = 0.0000\nsamples = 1\nvalue = [ 0.  1.]", shape="box"] ;
+3 -> 5 ;
+6 [label="id_id_anm <= 0.0000\ngini = 0.137174211248\nsamples = 27", shape="box"] ;
+2 -> 6 ;
+7 [label="title_title_cos_dlm_dc0_dlm_dc0 <= 0.9447\ngini = 0.0768\nsamples = 25", shape="box"] ;
+6 -> 7 ;
+8 [label="gini = 0.0000\nsamples = 18\nvalue = [ 18.   0.]", shape="box"] ;
+7 -> 8 ;
+9 [label="pubYear_pubYear_lev <= 0.8333\ngini = 0.244897959184\nsamples = 7", shape="box"] ;
+7 -> 9 ;
+10 [label="id_id_lev <= 0.1923\ngini = 0.375\nsamples = 4", shape="box"] ;
+9 -> 10 ;
+11 [label="gini = 0.0000\nsamples = 1\nvalue = [ 1.  0.]", shape="box"] ;
+10 -> 11 ;
+12 [label="gini = 0.4444\nsamples = 3\nvalue = [ 2.  1.]", shape="box"] ;
+10 -> 12 ;
+13 [label="gini = 0.0000\nsamples = 3\nvalue = [ 3.  0.]", shape="box"] ;
+9 -> 13 ;
+14 [label="publisher_publisher_jac_dlm_dc0_dlm_dc0 <= 0.5000\ngini = 0.5\nsamples = 2", shape="box"] ;
+6 -> 14 ;
+15 [label="gini = 0.0000\nsamples = 1\nvalue = [ 1.  0.]", shape="box"] ;
+14 -> 15 ;
+16 [label="gini = 0.0000\nsamples = 1\nvalue = [ 0.  1.]", shape="box"] ;
+14 -> 16 ;
+}

@@ -23,6 +23,7 @@ class MLMatcher(Matcher):
         attrs_to_project = mg.diff(table.columns, exclude_attrs)
         table = table.to_dataframe()
         x = table[attrs_to_project]
+        print attrs_to_project
         y = table[target_attr]
         self.fit_sklearn(x, y, check_rem=False)
 

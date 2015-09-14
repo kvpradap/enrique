@@ -7,6 +7,6 @@ class DTMatcher(MLMatcher):
     Decision tree matcher
     """
     def __init__(self, *args, **kwargs):
-        super(DTMatcher, self).__init__(*args, **kwargs)
+        super(DTMatcher, self).__init__()
         self.clf = DecisionTreeClassifier(*args, **kwargs)
         self.name = 'DecisionTree'
