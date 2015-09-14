@@ -24,6 +24,7 @@ from magellan.matcher.rfmatcher import RFMatcher
 from magellan.matcher.booleanrulematcher import BooleanRuleMatcher
 from magellan.matcherselection.mlmatcherselection import select_matcher
 from magellan.matcherselection.mlmatchercombinerselection import selector_matcher_combiner
+from magellan.debug.decisiontree import debug_dt, visualize_tree
 
 
 

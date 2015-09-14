@@ -1,0 +1,132 @@
+import numpy as np
+import subprocess
+from sklearn.tree import export_graphviz
+from magellan.feature.extractfeatures import apply_feat_fns
+
+def visualize_tree(dt, fv_columns, exclude_attrs):
+    """Create tree png using graphviz.
+
+    """
+    tree = dt.clf
+    if exclude_attrs is None:
+        feature_names = fv_columns
+    else:
+        cols = [c not in ['_id', 'ltable.id', 'rtable.id', 'gold_label'] for c in fv_columns]
+        feature_names = fv_columns[cols]
+
+    with open("dt_.dot", 'w') as f:
+        export_graphviz(tree, out_file=f,
+                        feature_names=feature_names)
+
+    command = ["dot", "-Tpng", "dt_.dot", "-o", "dt_.png"]
+    try:
+        subprocess.check_call(command)
+    except:
+        exit("Could not run dot, ie graphviz, to "
+             "produce visualization")
+    print "Execute the following command in IPython command prompt:"
+    print ""
+    print "from IPython.display import Image"
+    print "Image(filename='dt_.png') "
+
+def get_code(tree, feature_names, target_names,
+             spacer_base="    "):
+    """Produce psuedo-code for decision tree.
+
+    Args
+    ----
+    tree -- scikit-leant DescisionTree.
+    feature_names -- list of feature names.
+    target_names -- list of target (class) names.
+    spacer_base -- used for spacing code (default: "    ").
+
+    Notes
+    -----
+    based on http://stackoverflow.com/a/30104792.
+    """
+    left = tree.tree_.children_left
+    right = tree.tree_.children_right
+    threshold = tree.tree_.threshold
+    features = [feature_names[i] for i in tree.tree_.feature]
+    value = tree.tree_.value
+
+    code_list = []
+
+    def recurse(left, right, threshold, features, node, depth):
+        spacer = spacer_base * depth
+        if (threshold[node] != -2):
+            code_str = spacer + "if ( " + features[node] + " <= " + \
+                       str(threshold[node]) + " ):"
+            code_list.append(code_str)
+            # print(spacer + "if ( " + features[node] + " <= " + \
+            #       str(threshold[node]) + " ):")
+
+            code_str = spacer + spacer_base + "print \'" + spacer + "Condition " + features[node] + " <= " + str(
+                threshold[node]) + \
+                       " PASSED " + "(  value : \'  + str(" + str(features[node]) + ") + \')\'"
+            code_list.append(code_str)
+
+            # print(spacer + spacer_base + "print \'" + features[node] + " <= " + str(threshold[node]) +
+            #       " PASSED " + "(  value : \'  + str(" +  str(features[node])  + ") + \')\'")
+            if left[node] != -1:
+                recurse(left, right, threshold, features,
+                        left[node], depth + 1)
+            # print(spacer + "}\n" + spacer +"else:")
+            code_str = spacer + "else:"
+            code_list.append(code_str)
+            # print(spacer + "else:")
+            code_str = spacer + spacer_base + "print \'" + spacer + "Condition " + features[node] + " <= " + str(
+                threshold[node]) + \
+                       " FAILED " + "(  value : \'  + str(" + str(features[node]) + ") + \')\'"
+            code_list.append(code_str)
+            # print(spacer + spacer_base + "print \'" + features[node] + " <= " + str(threshold[node]) +
+            #       " FAILED " + "(  value : \'  + str(" +  str(features[node])  + ") + \')\'")
+            if right[node] != -1:
+                recurse(left, right, threshold, features,
+                        right[node], depth + 1)
+                # print(spacer + "}")
+        else:
+            target = value[node]
+            for i, v in zip(np.nonzero(target)[1],
+                            target[np.nonzero(target)]):
+                target_name = target_names[i]
+                target_count = int(v)
+                # print(spacer + "return " + str(target_name) + \
+                #       " ( " + str(target_count) + " examples )")
+                code_str = spacer + "return " + str(target_name) + \
+                           " #( " + str(target_count) + " examples )"
+                code_list.append(code_str)
+                # print(spacer + "return " + str(target_name) + \
+                #       " #( " + str(target_count) + " examples )")
+
+    recurse(left, right, threshold, features, 0, 0)
+    return code_list
+
+
+def debug_dt(dt, t1, t2, feat_table, fv_columns, exclude_attrs):
+    clf = dt.clf
+
+    if exclude_attrs is None:
+        feature_names = fv_columns
+    else:
+        cols = [c not in ['_id', 'ltable.id', 'rtable.id', 'gold_label'] for c in fv_columns]
+        feature_names = fv_columns[cols]
+
+    code = get_code(clf, feature_names, ['False', 'True'])
+    feat_vals = apply_feat_fns(t1, t2, feat_table)
+    code = get_dbg_fn(code)
+    # print code
+    d = {}
+    d.update(feat_vals)
+    exec code in d
+    ret_val = d['debug_fn']()
+    print "Tuples match status : " + str(ret_val)
+
+
+def get_dbg_fn(code):
+    spacer_basic = '    '
+    c = "def debug_fn(): \n"
+    upd_code = [spacer_basic + e + "\n" for e in code]
+    c = c + ''.join(upd_code)
+    return c
+

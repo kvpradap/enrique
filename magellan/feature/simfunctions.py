@@ -184,7 +184,10 @@ def rel_diff(d1, d2):
         return np.NaN
     if pd.isnull(d1) or pd.isnull(d2):
         return np.NaN
-    return abs(d1-d2)/(d1+d2)
+    x =  abs(d1-d2)/(d1+d2)
+    if x <= 10e-5:
+        x = 0
+    return x
 
 # compute absolute norm similarity
 def abs_norm(d1, d2):
@@ -197,6 +200,11 @@ def abs_norm(d1, d2):
     if d1 is 0 and d2 is 0:
         return 0
     else:
-        return 1 - (abs(d1-d2)/max(d1, d2))
+        x =  1 - (abs(d1-d2)/max(d1, d2))
+
+        if x <= 10e-5:
+            x = 0
+        #print 'returning 0'
+        return x
 
 #
