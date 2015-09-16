@@ -1,5 +1,5 @@
 digraph Tree {
-0 [label="name_name_mel <= 0.5175\ngini = 0.32\nsamples = 10", shape="box"] ;
+0 [label="hourly_wage_hourly_wage_anm <= 0.9917\ngini = 0.32\nsamples = 10", shape="box"] ;
 1 [label="gini = 0.0000\nsamples = 8\nvalue = [ 8.  0.]", shape="box"] ;
 0 -> 1 ;
 2 [label="gini = 0.0000\nsamples = 2\nvalue = [ 0.  2.]", shape="box"] ;

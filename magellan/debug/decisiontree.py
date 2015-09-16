@@ -11,7 +11,7 @@ def visualize_tree(dt, fv_columns, exclude_attrs):
     if exclude_attrs is None:
         feature_names = fv_columns
     else:
-        cols = [c not in ['_id', 'ltable.id', 'rtable.id', 'gold_label'] for c in fv_columns]
+        cols = [c not in exclude_attrs for c in fv_columns]
         feature_names = fv_columns[cols]
 
     with open("dt_.dot", 'w') as f:
@@ -109,7 +109,7 @@ def debug_dt(dt, t1, t2, feat_table, fv_columns, exclude_attrs):
     if exclude_attrs is None:
         feature_names = fv_columns
     else:
-        cols = [c not in ['_id', 'ltable.id', 'rtable.id', 'gold_label'] for c in fv_columns]
+        cols = [c not in exclude_attrs for c in fv_columns]
         feature_names = fv_columns[cols]
 
     code = get_code(clf, feature_names, ['False', 'True'])
