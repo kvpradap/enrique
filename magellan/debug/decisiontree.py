@@ -128,12 +128,14 @@ def debug_dt(dt, t1, t2, feat_table, fv_columns, exclude_attrs, ensemble_flag=Fa
         spacer = "    "
     else:
         spacer = ""
-    print spacer + "Match status : " + str(ret_val)
+
     if ensemble_flag is True:
         p = get_prob(clf, t1, t2, feat_table, feature_names)
         print spacer + "Prob. for non-match : " + str(p[0])
         print spacer + "Prob for match : " + str(p[1])
         return p
+    else:
+        print spacer + "Match status : " + str(ret_val)
 
 def get_prob(clf, t1, t2, feat_table, feature_names):
     feat_values = apply_feat_fns(t1, t2, feat_table)
