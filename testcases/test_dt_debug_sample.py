@@ -4,7 +4,7 @@ import pandas as pd
 from magellan.debug.decisiontree import visualize_tree, debug_dt
 from magellan.feature.extractfeatures import apply_feat_fns
 
-mg.init_jvm()
+mg.init_jvm('C:\\Program Files\\Java\\jre7\\bin\\server\\jvm.dll')
 
 A = mg.load_dataset('table_A')
 B = mg.load_dataset('table_B')
@@ -24,11 +24,15 @@ feat_table = feat_table.ix[x]
 
 S_prime = mg.extract_feat_vecs(L, attrs_after='label', feat_table=feat_table)
 dt = mg.DTMatcher(random_state=80)
-dt.fit(table=S_prime, exclude_attrs=['_id', 'ltable.ID', 'rtable.ID', 'label'], target_attr='label')
+exclude_attrs=['_id', 'ltable.ID', 'rtable.ID', 'label']
+dt.fit(table=S_prime, exclude_attrs=exclude_attrs, target_attr='label')
+
+rf = mg.RFMatcher(random_state=80)
+rf.fit(table=S_prime, exclude_attrs=exclude_attrs, target_attr='label')
 
 cols = [c not in ['_id', 'ltable.ID', 'rtable.ID', 'label'] for c in S_prime.columns]
 feature_names = S_prime.columns[cols]
-visualize_tree(dt, S_prime.columns, ['_id', 'ltable.ID', 'rtable.ID', 'label'])
+#visualize_tree(dt, S_prime.columns, ['_id', 'ltable.ID', 'rtable.ID', 'label'])
 
 t1 = A.ix[1]
 t2 = B.ix[5]

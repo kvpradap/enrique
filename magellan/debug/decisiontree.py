@@ -1,7 +1,9 @@
 import numpy as np
+import pandas as pd
 import subprocess
 from sklearn.tree import export_graphviz
 from magellan.feature.extractfeatures import apply_feat_fns
+from magellan.matcher.dtmatcher import DTMatcher
 
 def visualize_tree(dt, fv_columns, exclude_attrs):
     """Create tree png using graphviz.
@@ -61,9 +63,9 @@ def get_code(tree, feature_names, target_names,
             # print(spacer + "if ( " + features[node] + " <= " + \
             #       str(threshold[node]) + " ):")
 
-            code_str = spacer + spacer_base + "print \'" + spacer + "Condition " + features[node] + " <= " + str(
+            code_str = spacer + spacer_base + "print \'" + spacer_base + "" + features[node] + " <= " + str(
                 threshold[node]) + \
-                       " PASSED " + "(  value : \'  + str(" + str(features[node]) + ") + \')\'"
+                       " is True " + "(  value : \'  + str(" + str(features[node]) + ") + \')\'"
             code_list.append(code_str)
 
             # print(spacer + spacer_base + "print \'" + features[node] + " <= " + str(threshold[node]) +
@@ -75,9 +77,9 @@ def get_code(tree, feature_names, target_names,
             code_str = spacer + "else:"
             code_list.append(code_str)
             # print(spacer + "else:")
-            code_str = spacer + spacer_base + "print \'" + spacer + "Condition " + features[node] + " <= " + str(
+            code_str = spacer + spacer_base + "print \'" + spacer_base + "" + features[node] + " <= " + str(
                 threshold[node]) + \
-                       " FAILED " + "(  value : \'  + str(" + str(features[node]) + ") + \')\'"
+                       " is False " + "(  value : \'  + str(" + str(features[node]) + ") + \')\'"
             code_list.append(code_str)
             # print(spacer + spacer_base + "print \'" + features[node] + " <= " + str(threshold[node]) +
             #       " FAILED " + "(  value : \'  + str(" +  str(features[node])  + ") + \')\'")
@@ -103,8 +105,11 @@ def get_code(tree, feature_names, target_names,
     return code_list
 
 
-def debug_dt(dt, t1, t2, feat_table, fv_columns, exclude_attrs):
-    clf = dt.clf
+def debug_dt(dt, t1, t2, feat_table, fv_columns, exclude_attrs, ensemble_flag=False):
+    if isinstance(dt, DTMatcher):
+        clf = dt.clf
+    else:
+        clf = dt
 
     if exclude_attrs is None:
         feature_names = fv_columns
@@ -115,12 +120,29 @@ def debug_dt(dt, t1, t2, feat_table, fv_columns, exclude_attrs):
     code = get_code(clf, feature_names, ['False', 'True'])
     feat_vals = apply_feat_fns(t1, t2, feat_table)
     code = get_dbg_fn(code)
-    # print code
     d = {}
     d.update(feat_vals)
     exec code in d
     ret_val = d['debug_fn']()
-    print "Tuples match status : " + str(ret_val)
+    if ensemble_flag is True:
+        spacer = "    "
+    else:
+        spacer = ""
+    print spacer + "Match status : " + str(ret_val)
+    if ensemble_flag is True:
+        p = get_prob(clf, t1, t2, feat_table, feature_names)
+        print spacer + "Prob. for non-match : " + str(p[0])
+        print spacer + "Prob for match : " + str(p[1])
+        return p
+
+def get_prob(clf, t1, t2, feat_table, feature_names):
+    feat_values = apply_feat_fns(t1, t2, feat_table)
+    feat_values = pd.Series(feat_values)
+    feat_values =  feat_values[feature_names]
+    v = feat_values.values
+    p = clf.predict_proba(v)
+    return p[0]
+
 
 
 def get_dbg_fn(code):
