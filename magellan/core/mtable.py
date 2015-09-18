@@ -196,7 +196,7 @@ class MTable(pd.DataFrame):
         filename = file(path, 'w')
         obj = PickleTable(self, self.properties)
         cPickle.dump(obj, filename)
-        return True
+
 
 
     # check whether an attribute can be set as key

@@ -54,6 +54,14 @@ def load_table(path):
     table = obj.table
     properties = obj.properties
     table.properties = properties
+    if obj.ltable_properties is not None:
+        ltable = table.get_property('ltable')
+        ltable.properties = obj.ltable_properties
+        table.set_property('ltable', ltable)
+    if obj.rtable_properties is not None:
+        rtable = table.get_property('rtable')
+        rtable.properties = obj.rtable_properties
+        table.set_property('rtable', rtable)
     return table
 
 

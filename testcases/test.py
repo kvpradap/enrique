@@ -102,30 +102,83 @@ import magellan as mg
 # draw_graph(graph)
 
 
-import networkx as nx
-import numpy as np
-import matplotlib.pyplot as plt
-import pylab
+# import networkx as nx
+# import numpy as np
+# import matplotlib.pyplot as plt
+# import pylab
+#
+# G = nx.DiGraph()
+#
+# G.add_edges_from([('A', 'B'),('C','D'),('G','D')], weight=1)
+# G.add_edges_from([('D','A'),('D','E'),('B','D'),('D','E')], weight=2)
+# G.add_edges_from([('B','C'),('E','F')], weight=3)
+# G.add_edges_from([('C','F')], weight=4)
+#
+#
+# val_map = {'A': 1.0,
+#                    'D': 0.5714285714285714,
+#                               'H': 0.0}
+#
+# values = [val_map.get(node, 0.45) for node in G.nodes()]
+# edge_labels     = dict([((u,v,),d['weight'])
+#                  for u,v,d in G.edges(data=True)])
+# red_edges = [('C','D'),('D','A')]
+# edge_colors = ['black' if not edge in red_edges else 'red' for edge in G.edges()]
+#
+# pos=nx.spring_layout(G)
+# nx.draw_networkx_edge_labels(G,pos,edge_labels=edge_labels)
+# nx.draw(G,pos, node_color = values, node_size=1500,edge_color=edge_colors,edge_cmap=plt.cm.Reds)
+# pylab.show()
 
-G = nx.DiGraph()
+import cPickle
 
-G.add_edges_from([('A', 'B'),('C','D'),('G','D')], weight=1)
-G.add_edges_from([('D','A'),('D','E'),('B','D'),('D','E')], weight=2)
-G.add_edges_from([('B','C'),('E','F')], weight=3)
-G.add_edges_from([('C','F')], weight=4)
+class PickleTable_1(object):
+    def __init__(self, table, properties):
+        self.table = table
+        self.properties = properties
+        self.ltable_properties = None
+        self.rtable_properties = None
+        if properties.has_key('ltable'):
+            ltable = table.get_property('ltable')
+            self.ltable_properties = ltable.properties
+        if properties.has_key('rtable'):
+            rtable = table.get_property('rtable')
+            self.rtable_properties = rtable.properties
+
+def save_table_1(path, table, properties):
+    filename = file(path, 'w')
+    obj = PickleTable_1(table, properties)
+    cPickle.dump(obj, filename)
+    return True
+def load_table_1(path):
+    filename = open(path, 'r')
+    obj = cPickle.load(filename)
+    table = obj.table
+    properties = obj.properties
+    table.properties = properties
+    if obj.ltable_properties is not None:
+        ltable = table.get_property('ltable')
+        ltable.properties = obj.ltable_properties
+        table.set_property('ltable', ltable)
+    if obj.rtable_properties is not None:
+        rtable = table.get_property('rtable')
+        rtable.properties = obj.rtable_properties
+        table.set_property('rtable', rtable)
+    return table
 
 
-val_map = {'A': 1.0,
-                   'D': 0.5714285714285714,
-                              'H': 0.0}
+import magellan as mg
+A = mg.load_dataset('table_A')
+B = mg.load_dataset('table_B')
+ab = mg.AttrEquivalenceBlocker()
+C = ab.block_tables(A, B, 'zipcode', 'zipcode', l_output_attrs=['name', 'hourly_wage', 'zipcode'],
+                    r_output_attrs=['name', 'hourly_wage', 'zipcode'])
 
-values = [val_map.get(node, 0.45) for node in G.nodes()]
-edge_labels     = dict([((u,v,),d['weight'])
-                 for u,v,d in G.edges(data=True)])
-red_edges = [('C','D'),('D','A')]
-edge_colors = ['black' if not edge in red_edges else 'red' for edge in G.edges()]
-
-pos=nx.spring_layout(G)
-nx.draw_networkx_edge_labels(G,pos,edge_labels=edge_labels)
-nx.draw(G,pos, node_color = values, node_size=1500,edge_color=edge_colors,edge_cmap=plt.cm.Reds)
-pylab.show()
+save_table_1('mur2.pkl', C, C.properties)
+C1 = load_table_1('mur2.pkl')
+print C1.properties.keys()
+lt = C1.get_property('ltable')
+print lt.get_key()
+save_table_1('mur_3.pkl', A, A.properties)
+A1 = load_table_1('mur_3.pkl')
+print A1.get_key()
