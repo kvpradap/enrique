@@ -3,7 +3,7 @@ import pandas as pd
 
 from magellan.utils.helperfunctions import remove_non_ascii
 
-_m_global_tokenizers = pd.DataFrame({'function_name':['tok_qgram', 'tok_delim'], 'short_name' : ['qgm', 'dlm']})
+_global_tokenizers = pd.DataFrame({'function_name':['tok_qgram', 'tok_delim'], 'short_name' : ['qgm', 'dlm']})
 
 # Get a list of tokenizers that can be called with just input string as the argument
 def get_single_arg_tokenizers(q=[2, 3], dlm_char = [' ']):

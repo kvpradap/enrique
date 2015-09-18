@@ -15,7 +15,7 @@ abb = ['jac', 'lev', 'cos', 'mel', 'nmw', 'sw',
        'exm', 'rdf', 'anm']
 
 # global function names
-_m_global_sim_fns = pd.DataFrame({'function_name':sim_fn_names, 'short_name':abb})
+_global_sim_fns = pd.DataFrame({'function_name':sim_fn_names, 'short_name':abb})
 
 # get similarity functions
 def get_sim_funs():

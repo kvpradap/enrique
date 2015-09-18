@@ -2,8 +2,6 @@ import cPickle
 import pandas as pd
 import logging
 
-import magellan as mg
-
 from magellan.core.pickletable import PickleTable
 
 # get the logger from logging module and set the name to current module name

@@ -80,18 +80,6 @@ def load_dataset(filename, key=None):
     return df
 
 
-def helper_function(d):
-    A = d.get('A', None)
-    print A
-    print "-----------"
-    B = d.get('B', None)
-    print B
-    print "-----------"
-
-    C = d.get('C', None)
-    print C
-    print "-----------"
-
 
 
 
