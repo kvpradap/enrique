@@ -2,7 +2,7 @@ import logging
 logging.basicConfig()
 
 # get the feature function from a string (that is a short hand representation of feature).
-def get_feature_fn(feat_str, sim, tok):
+def get_feature_fn(feat_str, tok, sim):
     """
 
     Get the feature function from a declarative representation of feature.

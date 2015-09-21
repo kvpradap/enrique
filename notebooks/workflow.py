@@ -170,7 +170,7 @@ mg._current_sim_funs
 # In[28]:
 
 # create a new features that computes jaccard measure over address attribute
-r = mg.get_feature_fn("jaccard(qgm_3(ltuple['address']), qgm_3(rtuple['address']))", mg._current_sim_funs, mg._current_tokenizers)
+r = mg.get_feature_fn("jaccard(qgm_3(ltuple['address']), qgm_3(rtuple['address']))",  mg._current_tokenizers, mg._current_sim_funs)
 
 
 # In[29]:

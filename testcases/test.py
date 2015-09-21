@@ -174,11 +174,25 @@ ab = mg.AttrEquivalenceBlocker()
 C = ab.block_tables(A, B, 'zipcode', 'zipcode', l_output_attrs=['name', 'hourly_wage', 'zipcode'],
                     r_output_attrs=['name', 'hourly_wage', 'zipcode'])
 
-save_table_1('mur2.pkl', C, C.properties)
-C1 = load_table_1('mur2.pkl')
-print C1.properties.keys()
-lt = C1.get_property('ltable')
-print lt.get_key()
-save_table_1('mur_3.pkl', A, A.properties)
-A1 = load_table_1('mur_3.pkl')
-print A1.get_key()
+# save_table_1('mur2.pkl', C, C.properties)
+# C1 = load_table_1('mur2.pkl')
+# print C1.properties.keys()
+# lt = C1.get_property('ltable')
+# print lt.get_key()
+# save_table_1('mur_3.pkl', A, A.properties)
+# A1 = load_table_1('mur_3.pkl')
+# print A1.get_key()
+
+import numpy as np
+kk=[np.repeat(0, 5), np.repeat(1, 7), np.repeat(0, 3)]
+ll = []
+for l in kk:
+    ll.extend(list(l))
+M = C
+G = C
+M['predicted_label'] = ll
+G['actual_label'] = ll
+id_map = [('ltable.ID', 'ltable.ID'), ('rtable.ID', 'rtable.ID')]
+label_map = ('predicted_label', 'actual_label')
+eval_summary = mg.evaluate(M, G, label_map, id_map)
+print eval_summary

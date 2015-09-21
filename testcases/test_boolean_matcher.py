@@ -5,9 +5,9 @@ A = mg.load_dataset('table_A')
 B = mg.load_dataset('table_B')
 sim = mg.get_sim_funs()
 tok = mg.get_single_arg_tokenizers()
-address_feature = mg.get_feature_fn("jaccard(qgm_3(ltuple['address']), qgm_3(rtuple['address']))", sim, tok)
-name_feature = mg.get_feature_fn("lev(ltuple['name'], rtuple['name'])", sim , tok)
-hourly_feature = mg.get_feature_fn("abs_norm(ltuple['hourly_wage'], rtuple['hourly_wage'])", sim, tok)
+address_feature = mg.get_feature_fn("jaccard(qgm_3(ltuple['address']), qgm_3(rtuple['address']))", tok, sim)
+name_feature = mg.get_feature_fn("lev(ltuple['name'], rtuple['name'])", tok, sim)
+hourly_feature = mg.get_feature_fn("abs_norm(ltuple['hourly_wage'], rtuple['hourly_wage'])", tok, sim)
 # rules
 
 
