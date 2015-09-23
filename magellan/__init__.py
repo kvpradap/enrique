@@ -21,6 +21,9 @@ from magellan.feature.extractfeatures import extract_feat_vecs
 from magellan.matcher.nbmatcher import NBMatcher
 from magellan.matcher.dtmatcher import DTMatcher
 from magellan.matcher.rfmatcher import RFMatcher
+from magellan.matcher.linregmatcher import LinRegMatcher
+from magellan.matcher.logregmatcher import LogRegMatcher
+from magellan.matcher.svmmatcher import SVMMatcher
 from magellan.matcher.booleanrulematcher import BooleanRuleMatcher
 from magellan.matcherselection.mlmatcherselection import select_matcher
 from magellan.matcherselection.mlmatchercombinerselection import selector_matcher_combiner

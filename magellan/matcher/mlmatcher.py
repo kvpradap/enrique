@@ -68,14 +68,17 @@ class MLMatcher(Matcher):
     # predict routines
 
     # call predict method of sklearn classifier
+
     def predict_sklearn(self, x, check_rem=True):
 
         # Note: here check_rem is just passing what is coming in i.e it can be true or false based up on who is calling
         # it
         x = self.get_data_for_sklearn(x, check_rem=check_rem)
-        return self.clf.predict(x)
+        y =  self.clf.predict(x)
+        return y
 
     # variant of predict method, where data is derived based on exclude attributes
+
     def predict_ex_attrs(self, table, exclude_attrs):
         if not isinstance(exclude_attrs, list):
             exclude_attrs = [exclude_attrs]

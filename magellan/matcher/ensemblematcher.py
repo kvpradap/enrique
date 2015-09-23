@@ -58,7 +58,7 @@ class EnsembleMatcher(MLMatcher):
         if name is None:
             names = [matcher.get_name() for matcher in matchers ]
             self.name = voting+':'
-            self.name = ','.join(names)
+            self.name += ','.join(names)
 
         else:
             self.name = name

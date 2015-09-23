@@ -4,8 +4,8 @@ import magellan as mg
 A = mg.read_csv('../magellan/datasets/table_A.csv', key = 'ID')
 B = mg.read_csv('../magellan/datasets/table_B.csv', key = 'ID')
 
-mg.init_jvm('C:\\Program Files\\Java\\jre7\\bin\\server\\jvm.dll')
-#mg.init_jvm()
+#mg.init_jvm('C:\\Program Files\\Java\\jre7\\bin\\server\\jvm.dll')
+mg.init_jvm()
 
 ab = mg.AttrEquivalenceBlocker()
 C = ab.block_tables(A, B, 'zipcode', 'zipcode', l_output_attrs=['name', 'hourly_wage'],
@@ -82,10 +82,16 @@ c_prime = mg.extract_feat_vecs(F, feat_table=f)
 
 dt = mg.DTMatcher()
 rf = mg.RFMatcher()
+linreg = mg.LinRegMatcher()
 
-m = mg.select_matcher([nb, dt, rf], x=s_prime[list(f['feature_name'])], y=s_prime['gold_label'], k=5 )
-print m
-mc = mg.selector_matcher_combiner([nb, dt, rf], ['majority'], x=s_prime[list(f['feature_name'])], y=s_prime['gold_label'], k=5)
+m = mg.select_matcher([nb, dt, linreg], x=s_prime[list(f['feature_name'])], y=s_prime['gold_label'], k=5 )
+# print m
+mc = mg.selector_matcher_combiner([nb, dt, linreg], ['majority'], x=s_prime[list(f['feature_name'])], y=s_prime['gold_label'], k=5)
 print mc
+
+linreg.fit(x=s_prime[list(f['feature_name'])], y=s_prime['gold_label'])
+p = linreg.predict(x=s_prime[list(f['feature_name'])])
+print p
+print "Hi"
 
 
