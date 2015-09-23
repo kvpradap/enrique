@@ -1,6 +1,8 @@
 import cPickle
+from collections import OrderedDict
 import pandas as pd
 import logging
+
 
 from magellan.core.pickletable import PickleTable
 
@@ -14,7 +16,7 @@ class MTable(pd.DataFrame):
     def __init__(self, *args, **kwargs):
         key = kwargs.pop('key', None)
         super(MTable, self).__init__(*args, **kwargs)
-        self.properties = dict()
+        self.properties = OrderedDict()
         if key is not None:
             self.set_key(key)
         else:
@@ -203,6 +205,55 @@ class MTable(pd.DataFrame):
         uniq_flag = len(self[attr_name]) == len(self)
         nan_flag = sum(self[attr_name].isnull()) == 0
         return uniq_flag and nan_flag
+
+    def to_csv(self, file_path, **kwargs):
+        """
+        Write MTable along with its properties to a comma-separated file.
+
+        Parameters
+        ----------
+        file_path : String,
+            Path where the file must be stored.
+        kwargs : arguments to pandas DataFrame's to_csv command along with optional "suppress_properties" parameter.
+            if suppress_metadata is set to True (by default it is set to False), then metadata information (such as
+            key, ltable_foreign_key, rtable_foreign_key) will not be written to disk.
+
+        Returns
+        -------
+        status : boolean
+            Whether the function successfully wrote the table in csv format
+        """
+        suppress_properties_flag = kwargs.pop('suppress_properties', False)
+
+        index = kwargs.pop('index', None)
+        if index is None:
+            kwargs['index'] = False
+        mode = 'w'
+        # check if the suppress properties flag is set.
+        if suppress_properties_flag is False:
+            prop_dict = OrderedDict()
+            for k, v in self.properties.iteritems():
+                if isinstance(v, basestring) is False:
+                    prop_dict[k] = 'POINTER'
+                else:
+                    prop_dict[k] = v
+
+            with open(file_path, 'w') as f:
+                for k, v in prop_dict.iteritems():
+                    f.write('#%s:%s\n' %(k, v))
+            mode = 'a'
+        with open(file_path, mode) as f:
+            super(MTable, self).to_csv(f, **kwargs)
+
+        return True
+
+
+
+
+
+
+
+
 
 
 
