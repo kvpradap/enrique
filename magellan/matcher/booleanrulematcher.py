@@ -59,11 +59,8 @@ class BooleanRuleMatcher(RuleMatcher):
         # set the name
         name = '_rule_' + str(self.rule_cnt)
         self.rule_cnt += 1
-                # create function str
-        fn_str = "def " + name + "(ltuple, rtuple):\n"
-        # add 4 tabs
-        fn_str += '    '
-        fn_str += 'return ' + ' and '.join(conjunct_list)
+
+        fn_str = self.get_function_str(name, conjunct_list)
 
         if feature_table is not None:
             feat_dict = dict(zip(feature_table['feature_name'], feature_table['function']))
@@ -81,7 +78,7 @@ class BooleanRuleMatcher(RuleMatcher):
 
         self.rules[name] = fn
         self.rule_source[name] = fn_str
-        self.rule_string = conjunct_list
+        self.rule_string[name] = conjunct_list
 
         return True
 
@@ -115,3 +112,10 @@ class BooleanRuleMatcher(RuleMatcher):
             if res is True:
                 return True
         return False
+
+    def get_function_str(self, name, conjunct_list):
+        # create function str
+        fn_str = "def " + name + "(ltuple, rtuple):\n"
+        # add 4 tabs
+        fn_str += '    '
+        fn_str += 'return ' + ' and '.join(conjunct_list)

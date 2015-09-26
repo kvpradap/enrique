@@ -6,7 +6,7 @@ import os
 
 
 from magellan.utils import installpath
-from magellan import read_csv
+from magellan import read_csv_
 # get installation path
 def get_install_path():
     plist = installpath.split(os.sep)
@@ -76,7 +76,7 @@ def load_dataset(filename, key=None):
     p = os.sep.join([p, 'datasets', filename + '.csv'])
     if filename is 'table_A' or 'table_B':
         key = 'ID'
-    df = read_csv(p, key=key)
+    df = read_csv_(p, key=key)
     return df
 
 

@@ -176,7 +176,11 @@ ab = mg.AttrEquivalenceBlocker()
 C = ab.block_tables(A, B, 'zipcode', 'zipcode', l_output_attrs=['name', 'hourly_wage', 'zipcode'],
                     r_output_attrs=['name', 'hourly_wage', 'zipcode'])
 
-C.to_csv('c.csv', suppress_properties=True)
+C.to_csv('c.csv', suppress_properties=False)
+
+C1 = mg.read_csv_('c.csv', key='_id', foreign_key_ltable='ltable.ID', ltable=A, rtable=B)
+print C1.get_key()
+print C1.properties
 
 # save_table_1('mur2.pkl', C, C.properties)
 # C1 = load_table_1('mur2.pkl')

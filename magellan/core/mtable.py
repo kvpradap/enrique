@@ -240,7 +240,7 @@ class MTable(pd.DataFrame):
 
             with open(file_path, 'w') as f:
                 for k, v in prop_dict.iteritems():
-                    f.write('#%s:%s\n' %(k, v))
+                    f.write('#%s=%s\n' %(k, v))
             mode = 'a'
         with open(file_path, mode) as f:
             super(MTable, self).to_csv(f, **kwargs)
