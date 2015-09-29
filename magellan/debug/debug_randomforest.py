@@ -7,7 +7,7 @@
 #   --
 #   -- Probability for non-match : ; Prob. for match :
 from magellan.matcher.rfmatcher import RFMatcher
-from magellan.debug.decisiontree import debug_dt, get_prob
+from magellan.debug.debug_decisiontree import debug_dt, get_prob
 def debug_rf(rf, t1, t2, feat_table, fv_columns, exclude_attrs):
     i = 1
     if isinstance(rf, RFMatcher):

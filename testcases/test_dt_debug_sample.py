@@ -1,7 +1,7 @@
 import magellan as mg
 import pandas as pd
 
-from magellan.debug.decisiontree import visualize_tree, debug_dt
+from magellan.debug.debug_decisiontree import visualize_tree, debug_dt
 from magellan.feature.extractfeatures import apply_feat_fns
 
 #mg.init_jvm('C:\\Program Files\\Java\\jre7\\bin\\server\\jvm.dll')

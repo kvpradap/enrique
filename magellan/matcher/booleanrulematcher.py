@@ -9,7 +9,7 @@ class BooleanRuleMatcher(RuleMatcher):
         self.name = 'BooleanRuleMatcher'
         self.rules = OrderedDict()
         self.rule_source = OrderedDict()
-        self.rule_string = OrderedDict()
+        self.rule_conjunct_list = OrderedDict()
         self.rule_cnt = 0
 
     def fit(self):
@@ -52,13 +52,14 @@ class BooleanRuleMatcher(RuleMatcher):
 
 
 
-    def create_rule(self, conjunct_list, feature_table):
+    def create_rule(self, conjunct_list, feature_table, name=None):
         if feature_table is None:
             logging.getLogger(__name__).error('Feature table is not given')
             return False
         # set the name
-        name = '_rule_' + str(self.rule_cnt)
-        self.rule_cnt += 1
+        if name is None:
+            name = '_rule_' + str(self.rule_cnt)
+            self.rule_cnt += 1
 
         fn_str = self.get_function_str(name, conjunct_list)
 
@@ -78,7 +79,7 @@ class BooleanRuleMatcher(RuleMatcher):
 
         self.rules[name] = fn
         self.rule_source[name] = fn_str
-        self.rule_string[name] = conjunct_list
+        self.rule_conjunct_list[name] = conjunct_list
 
         return True
 
@@ -89,7 +90,7 @@ class BooleanRuleMatcher(RuleMatcher):
 
         del self.rules[rule_name]
         del self.rule_source[rule_name]
-        del self.rule_string[rule_name]
+        del self.rule_conjunct_list[rule_name]
 
         return True
 
@@ -119,3 +120,4 @@ class BooleanRuleMatcher(RuleMatcher):
         # add 4 tabs
         fn_str += '    '
         fn_str += 'return ' + ' and '.join(conjunct_list)
+        return fn_str
