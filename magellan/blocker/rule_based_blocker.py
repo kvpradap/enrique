@@ -190,7 +190,9 @@ class RuleBasedBlocker(Blocker):
 
     def apply_rules(self, ltuple, rtuple):
         for fn in self.rules.values():
-            res = fn(ltuple, rtuple)
+            # here if the function returns true, then the tuple pair must be dropped.
+            # At the implementation level, what we want are the tuple pairs that passes
+            res = not fn(ltuple, rtuple)
             if res is True:
                 return True
         return False
