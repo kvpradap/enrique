@@ -247,6 +247,14 @@ class MTable(pd.DataFrame):
 
         return True
 
+    # deep copy of MTable
+    def copy(self, deep=True):
+        d = MTable(self.to_dataframe(), key=self.get_key())
+        for k, v in self.properties.iteritems():
+            d.set_property(k, v)
+        return d
+
+
 
 
 

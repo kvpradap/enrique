@@ -170,7 +170,7 @@ def load_table_1(path):
 import magellan as mg
 A = mg.load_dataset('table_A')
 B = mg.load_dataset('table_B')
-mg.init_jvm()
+mg.init_jvm('/Library/Java/JavaVirtualMachines/jdk1.8.0_45.jdk/Contents/Home/jre/lib/server/libjvm.dylib')
 
 ab = mg.AttrEquivalenceBlocker()
 C = ab.block_tables(A, B, 'zipcode', 'zipcode', l_output_attrs=['name', 'hourly_wage', 'zipcode'],
@@ -178,12 +178,20 @@ C = ab.block_tables(A, B, 'zipcode', 'zipcode', l_output_attrs=['name', 'hourly_
 feature_table = mg.get_features_for_blocking(A, B)
 rm = mg.BooleanRuleMatcher()
 rm.add_rule(["birth_year_birth_year_exm(ltuple, rtuple) > 0.9", "hourly_wage_hourly_wage_exm(ltuple, rtuple) < 0"], feature_table)
-rm.add_rule(['name_name_swg(ltuple, rtuple) > 0.6'], feature_table)
+rm.add_rule(['name_name_swg(ltuple, rtuple) > 0.3'], feature_table)
 D = rm.predict(C, 'predicted_label', append=True)
 
 #print D
 
 mg.debug_rm(rm, A.ix[2], B.ix[1], feature_table)
+
+mt = mg.MatchTrigger()
+mt.add_cond_rule(['name_name_swg(ltuple, rtuple) > 0.6'], feature_table)
+mt.add_cond_status(True)
+mt.add_actdion(1)
+O = mt.execute(D, 'predicted_label')
+print "Hi"
+
 
 # C.to_csv('c.csv', suppress_properties=False)
 #

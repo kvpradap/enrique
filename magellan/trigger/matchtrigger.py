@@ -82,14 +82,15 @@ class MatchTrigger():
         self.value_to_set = value
         return True
     # --------------------- currently working on --------------------------
-    def execute(self, table, label_column):
-        ltable = table.get_property('ltable')
-        rtable = table.get_property('rtable')
+    def execute(self, input_table, label_column):
+        ltable = input_table.get_property('ltable')
+        rtable = input_table.get_property('rtable')
         assert ltable is not None, 'Left table is not set'
         assert rtable is not None, 'Right table is not set'
+        table = input_table.copy()
 
-        l_key = table.get_property('foreign_key_ltable')
-        r_key = table.get_property('foreign_key_rtable')
+        l_key = input_table.get_property('foreign_key_ltable')
+        r_key = input_table.get_property('foreign_key_rtable')
 
         # set the index and store it in l_tbl/r_tbl
         l_tbl = ltable.set_index(ltable.get_key(), drop=False)
@@ -98,14 +99,19 @@ class MatchTrigger():
         # keep track of valid ids
         y = []
         # iterate candidate set and process each row
-        for idx, row in table.iterrows():
-            # get the value of block attribute from ltuple
-            l_row = l_tbl.ix[row[l_key]]
-            r_row = r_tbl.ix[row[r_key]]
-            res = self.apply_rules(l_row, r_row)
+        for idx, row in input_table.iterrows():
+            if row[label_column] != self.value_to_set:
+                # get the value of block attribute from ltuple
+                l_row = l_tbl.ix[row[l_key]]
+                r_row = r_tbl.ix[row[r_key]]
+                res = self.apply_rules(l_row, r_row)
+                if res == self.cond_status:
+                    # switch labels.
+                    table[label_column] = self.value_to_set
+        return table
 
 
-        pass
+
 
     def create_rule(self, conjunct_list, feature_table, name=None):
         if feature_table is None:

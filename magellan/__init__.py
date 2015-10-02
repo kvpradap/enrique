@@ -30,6 +30,7 @@ from magellan.matcherselection.mlmatchercombinerselection import selector_matche
 from magellan.debug.debug_decisiontree import debug_dt, visualize_tree
 from magellan.debug.debug_randomforest import debug_rf
 from magellan.debug.debug_booleanrulematcher import debug_rm
+from magellan.trigger.matchtrigger import MatchTrigger
 from magellan.evaluation.evaluation import evaluate
 
 
