@@ -170,7 +170,8 @@ def load_table_1(path):
 import magellan as mg
 A = mg.load_dataset('table_A')
 B = mg.load_dataset('table_B')
-mg.init_jvm('/Library/Java/JavaVirtualMachines/jdk1.8.0_45.jdk/Contents/Home/jre/lib/server/libjvm.dylib')
+#mg.init_jvm('/Library/Java/JavaVirtualMachines/jdk1.8.0_45.jdk/Contents/Home/jre/lib/server/libjvm.dylib')
+mg.init_jvm()
 
 ab = mg.AttrEquivalenceBlocker()
 C = ab.block_tables(A, B, 'zipcode', 'zipcode', l_output_attrs=['name', 'hourly_wage', 'zipcode'],
@@ -188,7 +189,7 @@ mg.debug_rm(rm, A.ix[2], B.ix[1], feature_table)
 mt = mg.MatchTrigger()
 mt.add_cond_rule(['name_name_swg(ltuple, rtuple) > 0.6'], feature_table)
 mt.add_cond_status(True)
-mt.add_actdion(1)
+mt.add_action(1)
 O = mt.execute(D, 'predicted_label')
 print "Hi"
 

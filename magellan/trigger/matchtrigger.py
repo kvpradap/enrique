@@ -1,12 +1,12 @@
 from collections import OrderedDict
 import logging
-class MatchTrigger():
+class MatchTrigger(object):
     """
     Class to patch output from Matchers.
     Note:
     This class is similar to BooleanRuleMatcher except that this class switches predictions.
     """
-    def _init__(self):
+    def __init__(self):
         self.cond_status = False
         self.rules = OrderedDict()
         self.rule_source = OrderedDict()
