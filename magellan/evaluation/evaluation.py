@@ -76,3 +76,66 @@ def evaluate(M, G, label_map, id_map):
 
     return out_dict
 
+def eval_matches(X, gold_label_attr, predicted_label_attr):
+
+    Y = X.reset_index(drop=False, inplace=False)
+    g = Y[gold_label_attr]
+    p = Y[predicted_label_attr]
+
+
+    # get false label (0) indices
+    gf = g[g == 0].index.values
+    pf = p[p == 0].index.values
+
+    # get true label (1) indices
+    gt = g[g == 0].index.values
+    pt = p[p == 0].index.values
+
+    # get false positive indices
+    fp_indices = list(set(gf).intersection(pt))
+
+    # get true positive indices
+    tp_indices = list(set(gt).intersection(pt))
+
+    # get false negative indices
+    fn_indices = list(set(gt).intersection(pf))
+
+    # get true negative indices
+    tn_indices = list(set(gf).intersection(pf))
+
+    n_tp = float(len(tp_indices))
+    n_fp = float(len(fp_indices))
+    n_fn = float(len(fn_indices))
+    prec_num = n_tp
+    prec_den = n_tp + n_fp
+    rec_num = n_tp
+    rec_den = n_tp + n_fn
+    precision = prec_num/prec_den
+    recall = rec_num/rec_den
+    if precision == 0.0 and recall == 0.0:
+        f1 = 0.0
+    else:
+        f1 = (2.0*precision*recall)/(precision + recall)
+
+    # need to complete it
+    l_key = X.get_property('foreign_key_ltable')
+    r_key = X.get_property('foreign_key_rtable')
+    Y.set_index([l_key, r_key], drop=False, inplace=True)
+    false_pos_ls = list(Y.ix[fp_indices].index.values)
+    false_neg_ls = list(Y.ix[fn_indices].index.values)
+    ret_dict = OrderedDict()
+    ret_dict['prec_numerator'] = prec_num
+    ret_dict['prec_denominator'] = prec_den
+    ret_dict['precision'] = precision
+    ret_dict['recall_numerator'] = rec_num
+    ret_dict['recall_denominator'] = rec_den
+    ret_dict['recall'] = recall
+    ret_dict['f1'] = f1
+    ret_dict['false_pos_num'] = n_fp
+    ret_dict['false_pos_ls'] = false_pos_ls
+    ret_dict['false_neg_num'] = n_fn
+    ret_dict['false_neg_ls'] = false_neg_ls
+    return ret_dict
+
+
+

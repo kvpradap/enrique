@@ -111,8 +111,6 @@ class MatchTrigger(object):
         return table
 
 
-
-
     def create_rule(self, conjunct_list, feature_table, name=None):
         if feature_table is None:
             logging.getLogger(__name__).error('Feature table is not given')
