@@ -3,7 +3,8 @@
 import jpype
 import logging
 import os
-
+import cloud
+import pickle
 
 from magellan.utils import installpath
 from magellan import read_csv_
@@ -78,6 +79,44 @@ def load_dataset(filename, key=None):
         key = 'ID'
     df = read_csv_(p, key=key)
     return df
+
+
+# load and save objects
+def save_object(obj, file_path):
+    """
+    Save magellan objects
+
+    Parameters
+    ----------
+    obj : Python objects. It can be magellan objects such as rule-based blocker, feature table, rule-based matcher,
+        match trigger
+    file_path : String, file path to store object
+
+    Returns
+    -------
+    status : boolean, returns True if the command executes successfully.
+    """
+    with open(file_path, 'w') as f:
+        cloud.serialization.cloudpicke.dump(obj, f)
+    return True
+
+def load_object(file_path):
+    """
+    Load magellan objects
+
+    Parameters
+    ----------
+    file_path : String, file path to load object from
+
+    Returns
+    -------
+    result : Python object, typically magellan objects such as rule-based blocker, feature table, rule-based matcher,
+        match_trigger
+    """
+    with open(file_path, 'r') as f:
+        result = pickle.load(f)
+    return result
+
 
 
 
