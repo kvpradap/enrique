@@ -28,7 +28,12 @@ class LinRegMatcher(MLMatcher):
     """
     def __init__(self, *args, **kwargs):
         super(LinRegMatcher, self).__init__()
+        name = kwargs.pop('name')
+        if name is None:
+            self.name = 'LinearRegression'
+        else:
+            self.name = name
         self.clf = LinRegClassifierSKLearn(*args, **kwargs)
-        self.name = 'LinearRegression'
+
 
 

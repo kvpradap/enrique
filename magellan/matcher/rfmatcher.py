@@ -8,5 +8,9 @@ class RFMatcher(MLMatcher):
     """
     def __init__(self, *args, **kwargs):
         super(RFMatcher, self).__init__()
+        name = kwargs.pop('name')
+        if name is None:
+            self.name = 'RandomForest'
+        else:
+            self.name = name
         self.clf = RandomForestClassifier(*args, **kwargs)
-        self.name = 'RandomForest'

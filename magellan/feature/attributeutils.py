@@ -26,7 +26,7 @@ def get_attr_types(table):
     """
     type_list = [get_type(table[col]) for col in table.columns]
     d = dict(zip(table.columns, type_list))
-    d['_m_table'] = table
+    d['_table'] = table
     return d
 
 def get_attr_corres(table_a, table_b):

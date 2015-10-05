@@ -7,7 +7,12 @@ class NBMatcher(MLMatcher):
     Naive bayes matcher.
     """
     def __init__(self, *args, **kwargs):
-        super(NBMatcher, self).__init__(*args, **kwargs)
+        name = kwargs.pop('name')
+        if name is None:
+            self.name = 'NaiveBayes'
+        else:
+            self.name = name
+        super(NBMatcher, self).__init__()
         self.clf = GaussianNB(*args, **kwargs)
-        self.name = 'NaiveBayes'
+
 

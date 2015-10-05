@@ -10,7 +10,7 @@ from magellan.utils.ast_test import get_workflow, draw_workflow
 from magellan.feature.simfunctions import _global_sim_fns, get_sim_funs
 from magellan.feature.tokenizers import _global_tokenizers, get_single_arg_tokenizers
 from magellan.feature.attributeutils import get_attr_corres,get_attr_types
-from magellan.feature.autofeaturegen import get_features, get_features_for_blocking
+from magellan.feature.autofeaturegen import get_features, get_features_for_blocking, get_features_for_matching
 from magellan.feature.addfeatures import get_feature_fn, add_feature
 from magellan.core.mtable import MTable
 from magellan.blocker.attr_equiv_blocker import AttrEquivalenceBlocker
@@ -26,7 +26,7 @@ from magellan.matcher.linregmatcher import LinRegMatcher
 from magellan.matcher.logregmatcher import LogRegMatcher
 from magellan.matcher.svmmatcher import SVMMatcher
 from magellan.matcher.booleanrulematcher import BooleanRuleMatcher
-from magellan.matcherselection.mlmatcherselection import select_matcher
+from magellan.matcherselection.mlmatcherselection__ import select_matcher
 from magellan.matcherselection.mlmatchercombinerselection import selector_matcher_combiner
 from magellan.debug.debug_decisiontree import debug_dt, visualize_tree
 from magellan.debug.debug_randomforest import debug_rf
@@ -36,8 +36,20 @@ from magellan.evaluation.evaluation import evaluate
 
 
 
-_current_tokenizers = None
-_current_sim_funs = None
-_current_attr_types_ltable = None
-_current_attr_types_rtable = None
-_current_corres = None
+# _current_tokenizers = None
+# _current_sim_funs = None
+# _current_attr_types_ltable = None
+# _current_attr_types_rtable = None
+# _current_corres = None
+
+_block_t = None
+_block_s = None
+_block_atypes1 = None
+_block_atypes2 = None
+_block_c = None
+
+_match_t = None
+_match_s = None
+_match_atypes1 = None
+_match_atypes2 = None
+_match_c = None

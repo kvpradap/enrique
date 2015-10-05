@@ -2,6 +2,8 @@ import pandas as pd
 import magellan as mg
 import logging
 
+
+
 # get features where all inputs required for the function is given
 def get_features(ltable, rtable, l_attr_types, r_attr_types, attr_corres, tok, sim_funcs):
     """
@@ -302,9 +304,55 @@ def get_features_for_blocking(A, B):
 
     # export important variables to global name space
     #_m_current_tokenizers, _m_current_sim_funs, _m_current_attr_types_ltable, _m_current_attr_types_rtable_m_current_corres
-    mg._current_tokenizers = tok
-    mg._current_sim_funs = sim
-    mg._current_attr_types_ltable = t_A
-    mg._current_attr_types_rtable = t_B
-    mg._current_corres = attr_corres
+    mg._block_t = tok
+    mg._block_s = sim
+    mg._block_atypes1 = t_A
+    mg._block_atypes2 = t_B
+    mg._block_c = attr_corres
+    return feat_table
+
+
+
+# get features for a lay user
+def get_features_for_matching(A, B):
+    """
+    Get features with minimal input
+
+    Parameters
+    ----------
+    A, B : MTable,
+        Input tables
+
+    Returns
+    -------
+    feature_table : pandas DataFrame
+        Consists of following columns
+        * feature_name  - string, feature name
+        * left_attribute - string, attribute name
+        * right_attribute - string, attribute name
+        * left_attr_tokenizer - string, tokenizer name
+        * right_attr_tokenizer - string, tokenizer name
+        * simfunction - string, sumilarity function name
+        * function - function object
+        * function_source - string, containing source code
+
+    Notes
+    -----
+    The function also exports the important variables to global name space so if a user want to examine they can do
+    so.
+    """
+    sim = mg.get_sim_funs()
+    tok = mg.get_single_arg_tokenizers()
+    t_A = mg.get_attr_types(A)
+    t_B = mg.get_attr_types(B)
+    attr_corres = mg.get_attr_corres(A, B)
+    feat_table = get_features(A, B, t_A, t_B, attr_corres, tok, sim)
+
+    # export important variables to global name space
+    #_m_current_tokenizers, _m_current_sim_funs, _m_current_attr_types_ltable, _m_current_attr_types_rtable_m_current_corres
+    mg._match_t = tok
+    mg._match_s = sim
+    mg._match_atypes1 = t_A
+    mg._match_atypes2 = t_B
+    mg._match_c = attr_corres
     return feat_table

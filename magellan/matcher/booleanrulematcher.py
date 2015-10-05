@@ -5,8 +5,12 @@ from magellan.matcher.rulematcher import RuleMatcher
 from collections import OrderedDict
 
 class BooleanRuleMatcher(RuleMatcher):
-    def __init__(self):
-        self.name = 'BooleanRuleMatcher'
+    def __init__(self, *args, **kwargs):
+        name = kwargs.pop('name')
+        if name is None:
+            self.name = 'BooleanRuleMatcher'
+        else:
+            self.name = name
         self.rules = OrderedDict()
         self.rule_source = OrderedDict()
         self.rule_conjunct_list = OrderedDict()
