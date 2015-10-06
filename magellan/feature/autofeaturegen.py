@@ -71,12 +71,12 @@ def check_table_order(ltable, rtable, l_attr_types, r_attr_types, attr_corres):
     r_id = id(rtable)
 
     # check whether ltable id matches with id of table mentioned in l_attr_types
-    if l_id != id(l_attr_types['_m_table']):
+    if l_id != id(l_attr_types['_table']):
         logging.getLogger(__name__).error('ltable is not the same as table mentioned in left attr types')
         return False
 
     # check whether rtable id matches with id of table mentioned in r_attr_types
-    if r_id != id(r_attr_types['_m_table']):
+    if r_id != id(r_attr_types['_table']):
         logging.getLogger(__name__).error('rtable is not the same as table mentioned in right attr types')
         return False
 

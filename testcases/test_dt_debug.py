@@ -200,7 +200,7 @@ candset = ab.block_tables(bwk, wal, 'isbn', 'isbn', ['title', 'author'], ['title
 
 feat_table = mg.get_features_for_blocking(bwk, wal)
 
-sample_cset = mg.sample_one_table(candset, 30)
+sample_cset = mg.sample_table(candset, 30)
 
 mg.init_jvm('C:\\Program Files\\Java\\jre7\\bin\\server\\jvm.dll')
 

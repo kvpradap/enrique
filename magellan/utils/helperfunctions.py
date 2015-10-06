@@ -97,7 +97,7 @@ def save_object(obj, file_path):
     status : boolean, returns True if the command executes successfully.
     """
     with open(file_path, 'w') as f:
-        cloud.serialization.cloudpicke.dump(obj, f)
+        cloud.serialization.cloudpickle.dump(obj, f)
     return True
 
 def load_object(file_path):
@@ -116,6 +116,10 @@ def load_object(file_path):
     with open(file_path, 'r') as f:
         result = pickle.load(f)
     return result
+
+def apply_arbitrary_function(fn):
+    fn()
+
 
 
 

@@ -135,8 +135,11 @@ class AttrEquivalenceBlocker(Blocker):
                 valid.append(False)
         
         # should be modified
-        out_table = MTable(vtable[valid], key='_id')
-        out_table.properties = vtable.properties
+        out_table = MTable(vtable[valid], key=vtable.get_key())
+        out_table.set_property('ltable', ltable)
+        out_table.set_property('rtable', rtable)
+        out_table.set_property('foreign_key_ltable', 'ltable.'+ltable.get_key())
+        out_table.set_property('foreign_key_rtable', 'rtable.'+rtable.get_key())
         return out_table
 
     # blocking over tuples

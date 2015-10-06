@@ -28,7 +28,7 @@ F = mg.combine_block_outputs_via_union([D, E])
 #print F
 #print "----------------"
 
-S = mg.sample_one_table(C, 13)
+S = mg.sample_table(C, 13)
 #print S.get_key()
 #print S.get_property('foreign_key_ltable')
 #print S

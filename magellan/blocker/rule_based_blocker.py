@@ -155,8 +155,11 @@ class RuleBasedBlocker(Blocker):
                 valid.append(True)
             else:
                 valid.append(False)
-        out_table = MTable(vtable[valid], key='_id')
-        out_table.properties = vtable.properties
+        out_table = MTable(vtable[valid], key=vtable.get_key())
+        out_table.set_property('ltable', ltable)
+        out_table.set_property('rtable', rtable)
+        out_table.set_property('foreign_key_ltable', 'ltable.'+ltable.get_key())
+        out_table.set_property('foreign_key_rtable', 'rtable.'+rtable.get_key())
         return out_table
 
     def block_tuples(self, ltuple, rtuple):
@@ -198,11 +201,13 @@ class RuleBasedBlocker(Blocker):
         return False
 
     def get_attrs_to_retain(self, l_id, r_id, l_col, r_col):
-        ret_cols = ['_id']
+        ret_cols=[]
         ret_cols.append('ltable.' + l_id)
         ret_cols.append('rtable.' + r_id)
-        ret_cols.extend(['ltable.'+c for c in l_col])
-        ret_cols.extend(['rtable.'+c for c in r_col])
+        if l_col:
+            ret_cols.extend(['ltable.'+c for c in l_col])
+        if r_col:
+            ret_cols.extend(['rtable.'+c for c in r_col])
         return ret_cols
 
 

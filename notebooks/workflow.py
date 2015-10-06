@@ -129,7 +129,7 @@ F
 # In[21]:
 
 # sample candidate set F
-S = mg.sample_one_table(F, 13)
+S = mg.sample_table(F, 13)
 
 
 # In[22]:

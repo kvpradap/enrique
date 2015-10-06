@@ -14,7 +14,7 @@ ab = mg.AttrEquivalenceBlocker()
 C = ab.block_tables(A, B, 'zipcode', 'zipcode', l_output_attrs=['name', 'hourly_wage', 'zipcode'],
                     r_output_attrs=['name', 'hourly_wage', 'zipcode'])
 
-S = mg.sample_one_table(C, 10)
+S = mg.sample_table(C, 10)
 L = mg.load_table('../notebooks/demo_label.pkl')
 L.set_property('ltable', A)
 L.set_property('rtable', B)

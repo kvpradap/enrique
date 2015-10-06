@@ -6,7 +6,7 @@ from collections import OrderedDict
 
 class BooleanRuleMatcher(RuleMatcher):
     def __init__(self, *args, **kwargs):
-        name = kwargs.pop('name')
+        name = kwargs.pop('name', None)
         if name is None:
             self.name = 'BooleanRuleMatcher'
         else:
