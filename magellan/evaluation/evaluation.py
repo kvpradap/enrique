@@ -112,12 +112,13 @@ def eval_matches(X, gold_label_attr, predicted_label_attr):
     rec_den = n_tp + n_fn
     precision = prec_num/prec_den
     recall = rec_num/rec_den
+
     if precision == 0.0 and recall == 0.0:
         f1 = 0.0
     else:
         f1 = (2.0*precision*recall)/(precision + recall)
 
-    # need to complete it
+
     l_key = X.get_property('foreign_key_ltable')
     r_key = X.get_property('foreign_key_rtable')
     Y.set_index([l_key, r_key], drop=False, inplace=True)

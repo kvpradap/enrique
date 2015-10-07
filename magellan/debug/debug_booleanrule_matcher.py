@@ -2,7 +2,7 @@
 from magellan.matcher.booleanrulematcher import BooleanRuleMatcher
 from magellan.feature.extractfeatures import apply_feat_fns
 
-def debug_rm(rm, t1, t2, feature_table):
+def debug_booleanrule_matcher(rm, t1, t2, feature_table):
     """
     Debug boolean rule-based matcher
 

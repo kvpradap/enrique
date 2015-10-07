@@ -28,9 +28,9 @@ from magellan.matcher.svmmatcher import SVMMatcher
 from magellan.matcher.booleanrulematcher import BooleanRuleMatcher
 from magellan.matcherselection.mlmatcherselection__ import select_matcher
 from magellan.matcherselection.mlmatchercombinerselection import selector_matcher_combiner
-from magellan.debug.debug_decisiontree import debug_dt, visualize_tree
-from magellan.debug.debug_randomforest import debug_rf
-from magellan.debug.debug_booleanrulematcher import debug_rm
+from magellan.debug.debug_decisiontree_matcher import debug_decisiontree_matcher, visualize_tree
+from magellan.debug.debug_randomforest_matcher import debug_randomforest_matcher
+from magellan.debug.debug_booleanrule_matcher import debug_booleanrule_matcher
 from magellan.trigger.matchtrigger import MatchTrigger
 from magellan.evaluation.evaluation import evaluate
 

@@ -7,8 +7,8 @@
 #   --
 #   -- Probability for non-match : ; Prob. for match :
 from magellan.matcher.rfmatcher import RFMatcher
-from magellan.debug.debug_decisiontree import debug_dt, get_prob
-def debug_rf(rf, t1, t2, feat_table, fv_columns, exclude_attrs):
+from magellan.debug.debug_decisiontree_matcher import debug_decisiontree_matcher, get_prob
+def debug_randomforest_matcher(rf, t1, t2, feat_table, fv_columns, exclude_attrs):
     i = 1
     if isinstance(rf, RFMatcher):
         clf = rf.clf
@@ -33,7 +33,7 @@ def debug_rf(rf, t1, t2, feat_table, fv_columns, exclude_attrs):
     for e in clf.estimators_:
         print "Tree " + str(i)
         i += 1
-        p = debug_dt(e, t1, t2, feat_table, feature_names, exclude_attrs, ensemble_flag=True)
+        p = debug_decisiontree_matcher(e, t1, t2, feat_table, feature_names, exclude_attrs, ensemble_flag=True)
         print ""
 
 

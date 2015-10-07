@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 import subprocess
 from sklearn.tree import export_graphviz
+from sklearn.preprocessing import Imputer
 from magellan.feature.extractfeatures import apply_feat_fns
 from magellan.matcher.dtmatcher import DTMatcher
 
@@ -105,7 +106,7 @@ def get_code(tree, feature_names, target_names,
     return code_list
 
 
-def debug_dt(dt, t1, t2, feat_table, fv_columns, exclude_attrs, ensemble_flag=False):
+def debug_decisiontree_matcher(dt, t1, t2, feat_table, fv_columns, exclude_attrs, ensemble_flag=False):
     if isinstance(dt, DTMatcher):
         clf = dt.clf
     else:
@@ -142,6 +143,9 @@ def get_prob(clf, t1, t2, feat_table, feature_names):
     feat_values = pd.Series(feat_values)
     feat_values =  feat_values[feature_names]
     v = feat_values.values
+    imp = Imputer(missing_values='NaN', strategy='median', axis=0)
+    imp.fit(v)
+    v = imp.transform(v)
     p = clf.predict_proba(v)
     return p[0]
 

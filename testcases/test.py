@@ -176,22 +176,41 @@ mg.init_jvm()
 ab = mg.AttrEquivalenceBlocker()
 C = ab.block_tables(A, B, 'zipcode', 'zipcode', l_output_attrs=['name', 'hourly_wage', 'zipcode'],
                     r_output_attrs=['name', 'hourly_wage', 'zipcode'])
+
 feature_table = mg.get_features_for_blocking(A, B)
+C['gold_label'] = [0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0]
 rm = mg.BooleanRuleMatcher()
 rm.add_rule(["birth_year_birth_year_exm(ltuple, rtuple) > 0.9", "hourly_wage_hourly_wage_exm(ltuple, rtuple) < 0"], feature_table)
 rm.add_rule(['name_name_swg(ltuple, rtuple) > 0.3'], feature_table)
 D = rm.predict(C, 'predicted_label', append=True)
 
+F = mg.extract_feat_vecs(C, feat_table=feature_table, attrs_after='gold_label')
+dt = mg.DTMatcher()
+dt.fit(table=F, exclude_attrs=['_id', 'ltable.ID', 'rtable.ID', 'gold_label'], target_attr='gold_label')
+out = dt.predict(table=F, exclude_attrs=['_id', 'ltable.ID', 'rtable.ID', 'gold_label'])
+mg.debug_decisiontree_matcher(dt, A.ix[1], B.ix[2], feature_table,
+                             F.columns, exclude_attrs=['_id', 'ltable.ID', 'rtable.ID', 'gold_label'])
+
+# rf = mg.RFMatcher()
+# rf.fit(table=F, exclude_attrs=['_id', 'ltable.ID', 'rtable.ID', 'gold_label'], target_attr='gold_label')
+# out = rf.predict(table=F, exclude_attrs=['_id', 'ltable.ID', 'rtable.ID', 'gold_label'])
+# mg.debug_randomforest_matcher(rf, A.ix[1], B.ix[2], feature_table,
+#                              F.columns, exclude_attrs=['_id', 'ltable.ID', 'rtable.ID', 'gold_label'])
+
+
+
+
 #print D
 
-mg.debug_rm(rm, A.ix[2], B.ix[1], feature_table)
+mg.debug_booleanrule_matcher(rm, A.ix[2], B.ix[1], feature_table)
 
-mt = mg.MatchTrigger()
-mt.add_cond_rule(['name_name_swg(ltuple, rtuple) > 0.6'], feature_table)
-mt.add_cond_status(True)
-mt.add_action(1)
-O = mt.execute(D, 'predicted_label')
-print "Hi"
+
+# mt = mg.MatchTrigger()
+# mt.add_cond_rule(['name_name_swg(ltuple, rtuple) > 0.6'], feature_table)
+# mt.add_cond_status(True)
+# mt.add_action(1)
+# O = mt.execute(D, 'predicted_label')
+# print "Hi"
 
 
 # C.to_csv('c.csv', suppress_properties=False)

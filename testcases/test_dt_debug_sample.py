@@ -1,7 +1,7 @@
 import magellan as mg
 import pandas as pd
 
-from magellan.debug.debug_decisiontree import visualize_tree, debug_dt
+from magellan.debug.debug_decisiontree_matcher import visualize_tree, debug_decisiontree_matcher
 from magellan.feature.extractfeatures import apply_feat_fns
 
 #mg.init_jvm('C:\\Program Files\\Java\\jre7\\bin\\server\\jvm.dll')
@@ -47,7 +47,7 @@ t2 = B.ix[1]
 # print p
 #mg.debug_dt(dt, t1, t2, feat_table, S_prime.columns, ['_id', 'ltable.ID', 'rtable.ID', 'label'])
 
-mg.debug_rf(rf, t1, t2, feat_table, S_prime.columns, ['_id', 'ltable.ID', 'rtable.ID', 'label'])
+mg.debug_randomforest_matcher(rf, t1, t2, feat_table, S_prime.columns, ['_id', 'ltable.ID', 'rtable.ID', 'label'])
 
 # for id1, t1 in A.iterrows():
 #     for id2, t2 in B.iterrows():
