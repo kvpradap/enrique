@@ -25,7 +25,7 @@ def get_assign_nodes(parsed):
                 if isinstance(n, ast.Name):
                     input.append(n.id)
             assert target not in input, "Same variable is in both input and output list"
-            assert d.has_key(target) is False, "Variable " + target + " is reused"
+            assert d.has_key(target) == False, "Variable " + target + " is reused"
             d[target] = node
     return d
 
@@ -78,7 +78,7 @@ def get_workflow(hst, var):
         inp = get_input_var(node)
         inp = [a for a in inp if assign_node_dict.has_key(a)]
         for p in inp:
-            if assign_node_dict.has_key(p) is False:
+            if assign_node_dict.has_key(p) == False:
                 print "WARN %s is not there in assign nodes" %n
                 continue
             if assign_node_visit[p] is 0:
@@ -112,7 +112,7 @@ def get_workflow(hst, var):
 
 
         for n in inp:
-            if assign_node_dict.has_key(n) is False:
+            if assign_node_dict.has_key(n) == False:
                 print "%s is not there in assign nodes" %n
                 continue
             if var_node_dict.has_key(n) is True:

@@ -40,7 +40,7 @@ def get_features(ltable, rtable, l_attr_types, r_attr_types, attr_corres, tok, s
     """
 
     # check whether the order of input table matches with table mentioned in l_attr_types, r_attr_type and attr_corres
-    if check_table_order(ltable, rtable, l_attr_types, r_attr_types, attr_corres) is False:
+    if check_table_order(ltable, rtable, l_attr_types, r_attr_types, attr_corres) == False:
         raise AssertionError('Table order is different than what is mentioned in l/r_attr_types and attr_corres')
 
     # initialize output feature dictionary list

@@ -1,6 +1,7 @@
 import cPickle
 from collections import OrderedDict
 import pandas as pd
+import numpy as np
 import logging
 
 
@@ -80,7 +81,7 @@ class MTable(pd.DataFrame):
         """
         if not isinstance(key, basestring):
             raise TypeError('Input key is expected to be of type string')
-        if self.is_key_attr(key) is False:
+        if self.is_key_attr(key) == False:
             raise KeyError('Input attribute does not satisfy requirements for a key')
         else:
             self.set_property('key', key)
@@ -201,10 +202,13 @@ class MTable(pd.DataFrame):
 
     # check whether an attribute can be set as key
     def is_key_attr(self, attr_name):
-        #print attr_name
-        uniq_flag = len(self[attr_name]) == len(self)
+        uniq_flag = len(np.unique(self[attr_name])) == len(self)
+        if uniq_flag == False:
+            logging.getLogger(__name__).warning('Attribute contains duplicate values')
         nan_flag = sum(self[attr_name].isnull()) == 0
-        return uniq_flag and nan_flag
+        if nan_flag == False:
+            logging.getLogger(__name__).warning('Attribute contains missing values')
+        return (uniq_flag and nan_flag)
 
     def to_csv(self, file_path, **kwargs):
         """
@@ -230,7 +234,7 @@ class MTable(pd.DataFrame):
             kwargs['index'] = False
         mode = 'w'
         # check if the suppress properties flag is set.
-        if suppress_properties_flag is False:
+        if suppress_properties_flag == False:
             prop_dict = OrderedDict()
             for k, v in self.properties.iteritems():
                 if isinstance(v, basestring) is False:

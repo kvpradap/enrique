@@ -13,7 +13,7 @@ def view(tbl, edit_flag=False):
     datatable = QtGui.QTableWidget()
 
     # disable edit
-    if edit_flag is False:
+    if edit_flag == False:
         datatable.setEditTriggers(QtGui.QAbstractItemView.NoEditTriggers)
 
     datatable.setRowCount(len(tbl.index))

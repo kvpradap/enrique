@@ -6,7 +6,7 @@ from magellan.core.mtable import MTable
 from magellan.core.pickletable import PickleTable
 
 
-def read_csv(*args, **kwargs):
+def read_csv_(*args, **kwargs):
     """
     Read CSV (comma-separated) file into MTable
 
@@ -21,8 +21,8 @@ def read_csv(*args, **kwargs):
     -------
     result : MTable
     """
-    if kwargs.has_key('key') is False:
-        raise AttributeError('Key is not specified')
+    # if kwargs.has_key('key') is False:
+    #     raise AttributeError('Key is not specified')
     key = kwargs.pop('key', None)
     df = pd.read_csv(*args, **kwargs)
     if key is not None:
@@ -35,7 +35,7 @@ def read_csv(*args, **kwargs):
 
 
 
-def read_csv_(file_path, **kwargs):
+def read_csv(file_path, **kwargs):
     properties, num_lines = get_properties_from_file(file_path)
     properties, kwargs = update_properties(properties, **kwargs)
     check_properties(properties)
@@ -93,7 +93,7 @@ def get_properties_from_file(file_path):
     num_lines = 0
     with open(file_path) as f:
         stop_flag = False
-        while stop_flag is False:
+        while stop_flag == False:
             line = next(f)
             if line.startswith('#'):
                 line = line.lstrip('#')
@@ -146,9 +146,9 @@ def check_properties(properties):
             raise AssertionError('Virtual MTable requires all valid ltable, rtable, foreign_key_ltable, '
                                   'foreign_key_rtable parameters set')
         # check ltable, rtable are valid MTables
-        if isinstance(properties['ltable'], MTable) is False:
+        if isinstance(properties['ltable'], MTable) == False:
             raise AssertionError('The parameter ltable must be set to valid MTable')
-        if isinstance(properties['rtable'], MTable) is False:
+        if isinstance(properties['rtable'], MTable) == False:
             raise AssertionError('The parameter rtable must be set to valid MTable')
     return True
 

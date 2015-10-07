@@ -45,7 +45,7 @@ def print_conjunct_result(rm, t1, t2, conjunct, feat_table, feat_vector, name):
 
 
 def print_rule_result(rm, t1, t2, conjunct_list, feature_table, name):
-    if isinstance(conjunct_list, list) is False:
+    if isinstance(conjunct_list, list) == False:
         conjunct_list = [conjunct_list]
     rule_fn, rule_name, rule_fn_str = rm.create_rule(conjunct_list, feature_table, name)
     res = rule_fn(t1, t2)

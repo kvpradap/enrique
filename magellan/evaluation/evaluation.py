@@ -8,9 +8,9 @@ def evaluate(M, G, label_map, id_map):
     # label_map : Tuple with 2 elements; 1st element: label column name in M, 2nd element: label column name in G
     # id_map : List of tuples; each tuple contains 2 elements: 1st element : id column name in M,
     #          2nd element: id column name in G
-    if isinstance(M, MTable) is False:
+    if isinstance(M, MTable) == False:
         raise TypeError('Predicted data is not of type MTable')
-    if isinstance(G, MTable) is False:
+    if isinstance(G, MTable) == False:
         raise TypeError('Labeled data is not of type MTable')
     m_df = M.to_dataframe()
     g_df = G.to_dataframe()
@@ -20,9 +20,9 @@ def evaluate(M, G, label_map, id_map):
     g_index = [id_map[0][1], id_map[1][1]]
     m_df = m_df.set_index(m_index, drop=False)
     g_df = g_df.set_index(g_index, drop=False)
-    if all([i in m_df.columns for i in m_index]) is False:
+    if all([i in m_df.columns for i in m_index]) == False:
         raise AttributeError('Attributes mentioned in id_map do not form a part of first argument')
-    if all([i in g_df.columns for i in g_index]) is False:
+    if all([i in g_df.columns for i in g_index]) == False:
         raise AttributeError('Attributes mentioned in id_map do not form a part of second argument')
     if m_label not in m_df.columns:
         raise AttributeError('Label column in label_map is not present in columns of first argument')
@@ -31,7 +31,7 @@ def evaluate(M, G, label_map, id_map):
 
     m_idx_vals = m_index.values
     g_idx_vals = g_index.values
-    if set(m_idx_vals).issubset(g_idx_vals) is False:
+    if set(m_idx_vals).issubset(g_idx_vals) == False:
         raise AssertionError('Table with predicted labels donot form a subset of the table with actual labels')
     pm = 0.0 # predicted match (i.e 1)
     cm = 0.0 # correct match (i.e 1)

@@ -2,19 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1905aa74-c932-4fb0-8623-d4d69cb714ca" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/magellan/debug/debug_booleanrulematcher.py" afterPath="$PROJECT_DIR$/magellan/debug/debug_booleanrule_matcher.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/magellan/debug/debug_decisiontree.py" afterPath="$PROJECT_DIR$/magellan/debug/debug_decisiontree_matcher.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/magellan/debug/debug_randomforest.py" afterPath="$PROJECT_DIR$/magellan/debug/debug_randomforest_matcher.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/magellan/__init__.py" afterPath="$PROJECT_DIR$/magellan/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/magellan/matcher/dtmatcher.py" afterPath="$PROJECT_DIR$/magellan/matcher/dtmatcher.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/enrique.iml" afterPath="$PROJECT_DIR$/.idea/enrique.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/readcsv_tests.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/save_load_tests.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/tocsv_tests.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/magellan/feature/addfeatures.py" afterPath="$PROJECT_DIR$/magellan/feature/addfeatures.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/magellan/utils/ast_test.py" afterPath="$PROJECT_DIR$/magellan/utils/ast_test.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/magellan/feature/autofeaturegen.py" afterPath="$PROJECT_DIR$/magellan/feature/autofeaturegen.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/magellan/debug/debug_booleanrule_matcher.py" afterPath="$PROJECT_DIR$/magellan/debug/debug_booleanrule_matcher.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/magellan/evaluation/evaluation.py" afterPath="$PROJECT_DIR$/magellan/evaluation/evaluation.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/magellan/matcherselection/mlmatcherselection.py" afterPath="$PROJECT_DIR$/magellan/matcherselection/mlmatcherselection.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/magellan/matcher/rfmatcher.py" afterPath="$PROJECT_DIR$/magellan/matcher/rfmatcher.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testcases/test.py" afterPath="$PROJECT_DIR$/testcases/test.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testcases/test_dt_debug_sample.py" afterPath="$PROJECT_DIR$/testcases/test_dt_debug_sample.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/notebooks/test_grg.ipynb" afterPath="$PROJECT_DIR$/notebooks/test_grg.ipynb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/magellan/matcher/linregmatcher.py" afterPath="$PROJECT_DIR$/magellan/matcher/linregmatcher.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/magellan/core/mtable.py" afterPath="$PROJECT_DIR$/magellan/core/mtable.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/magellan/gui/mtable_gui.py" afterPath="$PROJECT_DIR$/magellan/gui/mtable_gui.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/magellan/io/parsers.py" afterPath="$PROJECT_DIR$/magellan/io/parsers.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="enrique.iws" />
@@ -38,95 +37,55 @@
     <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf>
-          <file leaf-file-name="mlmatcherselection.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/magellan/matcherselection/mlmatcherselection.py">
+          <file leaf-file-name="readcsv_tests.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/tests/readcsv_tests.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="67" column="0" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
+                  <caret line="52" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
                   <folding>
-                    <element signature="e#0#25#0" expanded="true" />
-                    <element signature="e#4164#5376#0" expanded="false" />
-                    <element signature="e#5422#7178#0" expanded="false" />
+                    <element signature="e#0#24#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="debug_booleanrule_matcher.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/magellan/debug/debug_booleanrule_matcher.py">
+          <file leaf-file-name="save_load_tests.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/tests/save_load_tests.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.5467626">
+                  <caret line="55" column="44" selection-start-line="55" selection-start-column="44" selection-end-line="55" selection-end-column="44" />
+                  <folding>
+                    <element signature="e#0#24#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="simfunctions.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/magellan/feature/simfunctions.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="4" column="11" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="29" />
+                  <caret line="17" column="12" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="15" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="debug_decisiontree_matcher.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/magellan/debug/debug_decisiontree_matcher.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-1.7142857">
-                  <caret line="4" column="41" selection-start-line="4" selection-start-column="41" selection-end-line="4" selection-end-column="41" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="mlmatcher.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/magellan/matcher/mlmatcher.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="41" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="debug_randomforest_matcher.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/magellan/debug/debug_randomforest_matcher.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="18" column="23" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="test.py" pinned="false" current-in-tab="true">
+          <file leaf-file-name="test.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/testcases/test.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.4665826">
-                  <caret line="198" column="0" selection-start-line="198" selection-start-column="0" selection-end-line="198" selection-end-column="0" />
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="32" column="78" selection-start-line="32" selection-start-column="3" selection-end-line="32" selection-end-column="78" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="dtmatcher.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/magellan/matcher/dtmatcher.py">
+          <file leaf-file-name="rule_based_blocker.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/magellan/blocker/rule_based_blocker.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="11" column="38" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="extractfeatures.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/magellan/feature/extractfeatures.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="evaluation.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/magellan/evaluation/evaluation.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="138" column="19" selection-start-line="138" selection-start-column="19" selection-end-line="138" selection-end-column="19" />
+                  <caret line="157" column="46" selection-start-line="157" selection-start-column="46" selection-end-line="157" selection-end-column="46" />
                   <folding />
                 </state>
               </provider>
@@ -136,12 +95,14 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="evaluation.py" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/magellan/evaluation/evaluation.py">
+          <file leaf-file-name="readcsv_tests.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/tests/readcsv_tests.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.6683481">
-                  <caret line="114" column="0" selection-start-line="114" selection-start-column="0" selection-end-line="114" selection-end-column="0" />
-                  <folding />
+                <state vertical-scroll-proportion="0.7338129">
+                  <caret line="34" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+                  <folding>
+                    <element signature="e#0#24#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -163,14 +124,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/build/lib/magellan/feature/autofeaturegen.py" />
-        <option value="$PROJECT_DIR$/magellan/feature/extractfeatures.py" />
-        <option value="$PROJECT_DIR$/magellan/blockercombiner/blockercombiner.py" />
-        <option value="$PROJECT_DIR$/magellan/labeler/labeler.py" />
-        <option value="$PROJECT_DIR$/magellan/gui/mtable_gui.py" />
-        <option value="$PROJECT_DIR$/testcases/test_ast.py" />
-        <option value="$PROJECT_DIR$/magellan/utils/ast_test.py" />
-        <option value="$PROJECT_DIR$/testcases/test_ast_1.py" />
         <option value="$PROJECT_DIR$/testcases/test_ast_2.py" />
         <option value="$PROJECT_DIR$/magellan/Trigger/Trigger.py" />
         <option value="$PROJECT_DIR$/magellan/Trigger/MatchNegativeRuleTrigger.py" />
@@ -182,38 +135,46 @@
         <option value="$PROJECT_DIR$/magellan/core/pickletable.py" />
         <option value="$PROJECT_DIR$/magellan/feature/simfunctions.py" />
         <option value="$PROJECT_DIR$/magellan/evaluation/__init__.py" />
-        <option value="$PROJECT_DIR$/magellan/feature/addfeatures.py" />
         <option value="$PROJECT_DIR$/notebooks/workflow.py" />
         <option value="$PROJECT_DIR$/testcases/test_boolean_matcher.py" />
         <option value="$PROJECT_DIR$/magellan/matcher/mlmatcher.py" />
         <option value="$PROJECT_DIR$/testcases/workflow.py" />
         <option value="$PROJECT_DIR$/magellan/matcher/ensemblematcher.py" />
         <option value="$PROJECT_DIR$/magellan/matcher/matcherutils.py" />
-        <option value="$PROJECT_DIR$/magellan/io/parsers.py" />
         <option value="$PROJECT_DIR$/magellan/debug/debug_booleanrulematcher.py" />
         <option value="$PROJECT_DIR$/magellan/trigger/matchnegativeruletrigger.py" />
-        <option value="$PROJECT_DIR$/magellan/core/mtable.py" />
         <option value="$PROJECT_DIR$/magellan/trigger/matchtrigger.py" />
         <option value="$PROJECT_DIR$/magellan/feature/attributeutils.py" />
-        <option value="$PROJECT_DIR$/magellan/matcher/linregmatcher.py" />
         <option value="$PROJECT_DIR$/magellan/matcher/logregmatcher.py" />
         <option value="$PROJECT_DIR$/magellan/matcher/nbmatcher.py" />
         <option value="$PROJECT_DIR$/magellan/matcher/svmmatcher.py" />
         <option value="$PROJECT_DIR$/magellan/__init__.py" />
         <option value="$PROJECT_DIR$/magellan/utils/helperfunctions.py" />
-        <option value="$PROJECT_DIR$/magellan/feature/autofeaturegen.py" />
         <option value="$PROJECT_DIR$/magellan/matcher/booleanrulematcher.py" />
         <option value="$PROJECT_DIR$/magellan/blocker/rule_based_blocker.py" />
         <option value="$PROJECT_DIR$/magellan/blocker/attr_equiv_blocker.py" />
         <option value="$PROJECT_DIR$/magellan/sampler/sampler.py" />
-        <option value="$PROJECT_DIR$/magellan/evaluation/evaluation.py" />
         <option value="$PROJECT_DIR$/magellan/matcherselection/mlmatcherselection.py" />
-        <option value="$PROJECT_DIR$/magellan/debug/debug_booleanrule_matcher.py" />
         <option value="$PROJECT_DIR$/magellan/debug/debug_randomforest_matcher.py" />
         <option value="$PROJECT_DIR$/magellan/matcher/dtmatcher.py" />
         <option value="$PROJECT_DIR$/magellan/matcher/rfmatcher.py" />
         <option value="$PROJECT_DIR$/magellan/debug/debug_decisiontree_matcher.py" />
         <option value="$PROJECT_DIR$/testcases/test.py" />
+        <option value="$PROJECT_DIR$/magellan/debug/debug_booleanrule_matcher.py" />
+        <option value="$PROJECT_DIR$/magellan/evaluation/evaluation.py" />
+        <option value="$PROJECT_DIR$/magellan/feature/addfeatures.py" />
+        <option value="$PROJECT_DIR$/magellan/feature/autofeaturegen.py" />
+        <option value="$PROJECT_DIR$/magellan/gui/mtable_gui.py" />
+        <option value="$PROJECT_DIR$/magellan/utils/ast_test.py" />
+        <option value="$PROJECT_DIR$/testcases/test_workflow.py" />
+        <option value="$PROJECT_DIR$/magellan/io/parsers.py" />
+        <option value="$PROJECT_DIR$/magellan/matcher/linregmatcher.py" />
+        <option value="$PROJECT_DIR$/magellan/core/mtable.py" />
+        <option value="$PROJECT_DIR$/tests/read_tests.py" />
+        <option value="$PROJECT_DIR$/tests/readcsv_tests.py" />
+        <option value="$PROJECT_DIR$/tests/tocsv_tests.py" />
+        <option value="$PROJECT_DIR$/tests/load_save_tests.py" />
+        <option value="$PROJECT_DIR$/tests/save_load_tests.py" />
       </list>
     </option>
   </component>
@@ -279,6 +240,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="tests" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="enrique" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="enrique" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="testcases" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -293,129 +268,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="notebooks" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="enrique" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="enrique" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="magellan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="enrique" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="enrique" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="magellan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="utils" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="enrique" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="enrique" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="magellan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="trigger" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="enrique" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="enrique" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="magellan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sampler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="enrique" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="enrique" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="magellan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="matcherselection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="enrique" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="enrique" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="magellan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="matcher" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="enrique" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="enrique" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="magellan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="io" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -434,78 +287,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="feature" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="enrique" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="enrique" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="magellan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="evaluation" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="enrique" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="enrique" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="magellan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="debug" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="enrique" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="enrique" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="magellan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="enrique" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="enrique" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="magellan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="blockercombiner" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -548,7 +329,7 @@
       <recent name="C:\Pradap\Research\Python-Packages\enrique\magellan\sampler" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.test">
+  <component name="RunManager" selected="Python.read_tests">
     <configuration default="false" name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -583,40 +364,6 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="test_ast_1" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/testcases" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="enrique" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/testcases/test_ast_1.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="test_dt_debug_sample" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/testcases" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="enrique" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/testcases/test_dt_debug_sample.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
     <configuration default="false" name="debug_randomforest_matcher" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -630,6 +377,40 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="enrique" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/magellan/debug/debug_randomforest_matcher.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="test_workflow" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/testcases" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="enrique" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/testcases/test_workflow.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="read_tests" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="enrique" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/readcsv_tests.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -777,17 +558,17 @@
       <item index="0" class="java.lang.String" itemvalue="Python.test_ast" />
       <item index="1" class="java.lang.String" itemvalue="Python.test" />
       <item index="2" class="java.lang.String" itemvalue="Python.workflow" />
-      <item index="3" class="java.lang.String" itemvalue="Python.test_ast_1" />
-      <item index="4" class="java.lang.String" itemvalue="Python.test_dt_debug_sample" />
-      <item index="5" class="java.lang.String" itemvalue="Python.debug_randomforest_matcher" />
+      <item index="3" class="java.lang.String" itemvalue="Python.debug_randomforest_matcher" />
+      <item index="4" class="java.lang.String" itemvalue="Python.test_workflow" />
+      <item index="5" class="java.lang.String" itemvalue="Python.read_tests" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.test" />
-        <item index="1" class="java.lang.String" itemvalue="Python.debug_randomforest_matcher" />
-        <item index="2" class="java.lang.String" itemvalue="Python.workflow" />
-        <item index="3" class="java.lang.String" itemvalue="Python.test_dt_debug_sample" />
-        <item index="4" class="java.lang.String" itemvalue="Python.test_ast_1" />
+        <item index="0" class="java.lang.String" itemvalue="Python.read_tests" />
+        <item index="1" class="java.lang.String" itemvalue="Python.test_workflow" />
+        <item index="2" class="java.lang.String" itemvalue="Python.test" />
+        <item index="3" class="java.lang.String" itemvalue="Python.debug_randomforest_matcher" />
+        <item index="4" class="java.lang.String" itemvalue="Python.workflow" />
       </list>
     </recent_temporary>
   </component>
@@ -817,15 +598,15 @@
     <frame x="0" y="28" width="1920" height="1172" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31214422" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31178707" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32352942" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3231939" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17061612" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3690702" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32649842" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21863118" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19641916" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3688213" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32604563" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21863118" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32843137" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -840,10 +621,10 @@
     <layout-to-restore>
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31214422" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31178707" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32352942" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3690702" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3231939" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3688213" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32843137" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -851,11 +632,11 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17061612" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32649842" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19641916" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32604563" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21821631" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21863118" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3287037" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
@@ -948,11 +729,21 @@
           <line>207</line>
           <option name="timeStamp" value="63" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/testcases/test_workflow.py</url>
+          <line>7</line>
+          <option name="timeStamp" value="65" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/testcases/test_workflow.py</url>
+          <line>6</line>
+          <option name="timeStamp" value="66" />
+        </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="64" />
+      <option name="time" value="67" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
@@ -960,46 +751,13 @@
         <watch expression="fitted" language="Python" />
         <watch expression="label_column" language="Python" />
         <watch expression="row[label_column]" language="Python" />
+        <watch expression="self.is_key_attr(key) is False" language="Python" />
+        <watch expression="self.is_key_attr(key)" language="Python" />
+        <watch expression="self.is_key_attr(key) == False" language="Python" />
       </configuration>
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/testcases/test_ast.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="37" column="14" selection-start-line="87" selection-start-column="38" selection-end-line="88" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/magellan/blocker/blocker.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/magellan/matcher/matcher.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="1" column="4" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/magellan/matcher/rulematcher.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.04398827">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/notebooks/mur_test1.ipynb">
-      <provider selected="true" editor-type-id="ipnb-editor">
-        <state>
-          <selected id="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/notebooks/workflow-Copy1.ipynb">
       <provider selected="true" editor-type-id="ipnb-editor">
         <state>
@@ -1049,24 +807,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/magellan/utils/ast_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="60" column="10" selection-start-line="60" selection-start-column="10" selection-end-line="60" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/magellan/utils/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/magellan/feature/simfunctions.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="17" column="12" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="15" />
         </state>
       </provider>
     </entry>
@@ -1081,13 +825,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/magellan/feature/addfeatures.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="4" column="37" selection-start-line="4" selection-start-column="37" selection-end-line="4" selection-end-column="37" />
         </state>
       </provider>
     </entry>
@@ -1120,13 +857,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/magellan/io/parsers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="99" column="0" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/magellan/trigger/matchtrigger.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1152,6 +882,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="28" column="7" selection-start-line="28" selection-start-column="7" selection-end-line="28" selection-end-column="7" />
+          <folding>
+            <element signature="e#0#19#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1173,14 +906,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/magellan/matcher/linregmatcher.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/magellan/matcher/nbmatcher.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1197,20 +922,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/magellan/matcher/ensemblematcher.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.78417265">
-          <caret line="60" column="23" selection-start-line="60" selection-start-column="22" selection-end-line="60" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/magellan/utils/helperfunctions.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="99" column="38" selection-start-line="99" selection-start-column="38" selection-end-line="99" selection-end-column="38" />
           <folding>
-            <element signature="e#11#23#0" expanded="true" />
+            <element signature="e#11#23#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1219,38 +936,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="12" column="52" selection-start-line="12" selection-start-column="52" selection-end-line="12" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/magellan/feature/autofeaturegen.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="78" column="32" selection-start-line="78" selection-start-column="32" selection-end-line="78" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/magellan/core/mtable.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/magellan/blocker/rule_based_blocker.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="157" column="46" selection-start-line="157" selection-start-column="46" selection-end-line="157" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/magellan/blocker/attr_equiv_blocker.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="133" column="17" selection-start-line="133" selection-start-column="17" selection-end-line="133" selection-end-column="17" />
           <folding />
         </state>
       </provider>
@@ -1271,31 +956,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/magellan/evaluation/evaluation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="138" column="19" selection-start-line="138" selection-start-column="19" selection-end-line="138" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/magellan/matcherselection/mlmatcherselection.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="67" column="0" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
           <folding>
-            <element signature="e#0#25#0" expanded="true" />
-            <element signature="e#4164#5376#0" expanded="false" />
+            <element signature="e#0#25#0" expanded="false" />
             <element signature="e#5422#7178#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/magellan/debug/debug_booleanrule_matcher.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="4" column="11" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1311,14 +979,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.1509434">
           <caret line="10" column="38" selection-start-line="10" selection-start-column="38" selection-end-line="10" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/magellan/debug/debug_randomforest_matcher.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="23" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
           <folding />
         </state>
       </provider>
@@ -1339,19 +999,175 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/magellan/debug/debug_booleanrule_matcher.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="47" column="48" selection-start-line="47" selection-start-column="48" selection-end-line="47" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/magellan/utils/ast_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="114" column="45" selection-start-line="114" selection-start-column="45" selection-end-line="114" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testcases/test_workflow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.5714285">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/magellan/io/parsers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/magellan/matcher/ensemblematcher.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.5714285">
+          <caret line="6" column="28" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/magellan/matcher/linregmatcher.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="30" column="38" selection-start-line="30" selection-start-column="38" selection-end-line="30" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/magellan/gui/mtable_gui.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="19" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/magellan/debug/debug_decisiontree_matcher.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.7142857">
-          <caret line="4" column="41" selection-start-line="4" selection-start-column="41" selection-end-line="4" selection-end-column="41" />
+        <state vertical-scroll-proportion="-5.714286">
+          <caret line="29" column="28" selection-start-line="29" selection-start-column="26" selection-end-line="29" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/magellan/debug/debug_randomforest_matcher.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="18" column="23" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/magellan/core/mtable.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.1714287">
+          <caret line="220" column="52" selection-start-line="220" selection-start-column="49" selection-end-line="220" selection-end-column="52" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/magellan/blocker/attr_equiv_blocker.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="133" column="17" selection-start-line="133" selection-start-column="17" selection-end-line="133" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/tocsv_tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="79" column="32" selection-start-line="79" selection-start-column="32" selection-end-line="79" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/magellan/feature/addfeatures.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.428777">
+          <caret line="147" column="105" selection-start-line="147" selection-start-column="0" selection-end-line="148" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/magellan/feature/autofeaturegen.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3266187">
+          <caret line="42" column="84" selection-start-line="42" selection-start-column="84" selection-end-line="42" selection-end-column="84" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/magellan/evaluation/evaluation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3266187">
+          <caret line="33" column="46" selection-start-line="33" selection-start-column="46" selection-end-line="33" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/magellan/feature/simfunctions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="17" column="12" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="15" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/testcases/test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4665826">
-          <caret line="198" column="0" selection-start-line="198" selection-start-column="0" selection-end-line="198" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="32" column="78" selection-start-line="32" selection-start-column="3" selection-end-line="32" selection-end-column="78" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/magellan/blocker/rule_based_blocker.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="157" column="46" selection-start-line="157" selection-start-column="46" selection-end-line="157" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/readcsv_tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="52" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/save_load_tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5467626">
+          <caret line="55" column="44" selection-start-line="55" selection-start-column="44" selection-end-line="55" selection-end-column="44" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

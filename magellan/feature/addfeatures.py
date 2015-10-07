@@ -91,7 +91,7 @@ def parse_feat_str(str, tok, sim):
     except ParseException, e:
         exp_flag = True
 
-    if exp_flag is False:
+    if exp_flag == False:
         t = [val for val in f if val in tok.keys()]
         if len(t) is 2:
             left_attr_tokenizer = t[0]
