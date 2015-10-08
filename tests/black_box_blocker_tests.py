@@ -1,5 +1,5 @@
 from nose.tools import *
-from tests import mg, path_for_A, path_for_B
+from tests import mg
 from magellan.feature.simfunctions import  monge_elkan, jaccard
 from magellan.feature.tokenizers import tok_qgram
 def block_fn(x, y):
@@ -11,8 +11,8 @@ def evil_block_fn(x, y):
     return True
 
 def test_bb_block_tables():
-    A = mg.read_csv(path_for_A, key='ID')
-    B = mg.read_csv(path_for_B, key='ID')
+    A = mg.load_dataset('table_A')
+    B = mg.load_dataset('table_B')
     bb = mg.BlackBoxBlocker()
     bb.set_black_box_function(block_fn)
     C = bb.block_tables(A, B, 'zipcode', 'zipcode')
@@ -36,8 +36,8 @@ def test_bb_block_tables():
     assert_equal(cmp(ids_exp, ids_act), 0)
 
 def test_bb_block_candset():
-    A = mg.read_csv(path_for_A, key='ID')
-    B = mg.read_csv(path_for_B, key='ID')
+    A = mg.load_dataset('table_A')
+    B = mg.load_dataset('table_B')
     ab = mg.AttrEquivalenceBlocker()
     E = ab.block_tables(A, B, 'zipcode', 'zipcode')
     bb = mg.BlackBoxBlocker()
@@ -53,8 +53,8 @@ def test_bb_block_candset():
     assert_equal(cmp(ids_exp, ids_act), 0)
 
 def test_bb_block_tuples():
-    A = mg.read_csv(path_for_A, key='ID')
-    B = mg.read_csv(path_for_B, key='ID')
+    A = mg.load_dataset('table_A')
+    B = mg.load_dataset('table_B')
     bb = mg.BlackBoxBlocker()
     bb.set_black_box_function(block_fn)
     assert_equal(bb.block_tuples(A.ix[0], B.ix[0]), True)
@@ -62,8 +62,8 @@ def test_bb_block_tuples():
 
 
 def test_bb_block_tables_wi_no_tuples():
-    A = mg.read_csv(path_for_A, key='ID')
-    B = mg.read_csv(path_for_B, key='ID')
+    A = mg.load_dataset('table_A')
+    B = mg.load_dataset('table_B')
     bb = mg.BlackBoxBlocker()
     bb.set_black_box_function(evil_block_fn)
     C = bb.block_tables(A, B)
@@ -74,8 +74,8 @@ def test_bb_block_tables_wi_no_tuples():
     assert_equal(C.get_property('foreign_key_rtable'), 'rtable.ID')
 
 def test_bb_block_candset_wi_no_tuples():
-    A = mg.read_csv(path_for_A, key='ID')
-    B = mg.read_csv(path_for_B, key='ID')
+    A = mg.load_dataset('table_A')
+    B = mg.load_dataset('table_B')
     ab = mg.AttrEquivalenceBlocker()
     C = ab.block_tables(A, B, 'birth_year', 'birth_year')
     bb = mg.BlackBoxBlocker()

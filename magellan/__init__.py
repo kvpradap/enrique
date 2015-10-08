@@ -6,7 +6,7 @@ from magellan.io.parsers import read_csv
 from magellan.sampler.sampler import sample_table, down_sample
 from magellan.utils.helperfunctions import get_install_path, init_jvm, diff, \
     load_dataset, load_object, save_object, apply_arbitrary_function
-from magellan.utils.ast_test import get_workflow, draw_workflow
+#from magellan.utils.ast_test import get_workflow, draw_workflow
 from magellan.feature.simfunctions import _global_sim_fns, get_sim_funs
 from magellan.feature.tokenizers import _global_tokenizers, get_single_arg_tokenizers
 from magellan.feature.attributeutils import get_attr_corres,get_attr_types

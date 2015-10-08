@@ -306,8 +306,8 @@ def get_features_for_blocking(A, B):
     #_m_current_tokenizers, _m_current_sim_funs, _m_current_attr_types_ltable, _m_current_attr_types_rtable_m_current_corres
     mg._block_t = tok
     mg._block_s = sim
-    mg._block_atypes1 = t_A
-    mg._block_atypes2 = t_B
+    mg._atypes1 = t_A
+    mg._atypes2 = t_B
     mg._block_c = attr_corres
     return feat_table
 
@@ -352,7 +352,7 @@ def get_features_for_matching(A, B):
     #_m_current_tokenizers, _m_current_sim_funs, _m_current_attr_types_ltable, _m_current_attr_types_rtable_m_current_corres
     mg._match_t = tok
     mg._match_s = sim
-    mg._match_atypes1 = t_A
-    mg._match_atypes2 = t_B
+    mg._atypes1 = t_A
+    mg._atypes2 = t_B
     mg._match_c = attr_corres
     return feat_table

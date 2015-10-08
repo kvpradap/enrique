@@ -77,7 +77,7 @@ def load_dataset(filename, key=None):
     p = os.sep.join([p, 'datasets', filename + '.csv'])
     if filename is 'table_A' or 'table_B':
         key = 'ID'
-    df = read_csv_(p, key=key)
+    df = read_csv(p, key=key)
     return df
 
 

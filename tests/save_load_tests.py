@@ -2,7 +2,7 @@ from nose.tools import *
 import sys
 import math
 import os
-from tests import mg, path_for_A, path_for_B
+from tests import mg
 def test_save_load_ab_blocker():
     filename = '__mg_obj__.pkl'
     ab0 = mg.AttrEquivalenceBlocker()
@@ -18,8 +18,8 @@ def test_save_load_feature_table():
     #mg.init_jvm()
 
     filename = '__mg_obj__.pkl'
-    A = mg.read_csv(path_for_A, key='ID')
-    B = mg.read_csv(path_for_B, key='ID')
+    A = mg.load_dataset('table_A')
+    B = mg.load_dataset('table_B')
     feature_table0 = mg.get_features_for_blocking(A, B)
     mg.save_object(feature_table0, filename)
     feature_table1 = mg.load_object(filename)
@@ -44,8 +44,8 @@ def test_save_load_feature_table():
 def test_save_load_rb_blocker():
     #mg.init_jvm()
     filename = '__mg_obj__.pkl'
-    A = mg.read_csv(path_for_A, key='ID')
-    B = mg.read_csv(path_for_B, key='ID')
+    A = mg.load_dataset('table_A')
+    B = mg.load_dataset('table_B')
     feature_table = mg.get_features_for_blocking(A, B)
     rb0 = mg.RuleBasedBlocker()
     rb0.add_rule(['zipcode_zipcode_exm(ltuple, rtuple) == 1'], feature_table)
@@ -83,8 +83,8 @@ def test_save_load_bb_blocker():
     bb0 = mg.BlackBoxBlocker()
     bb0.set_black_box_function(block_fn_1)
     filename = '__mg_obj__.pkl'
-    A = mg.read_csv(path_for_A, key='ID')
-    B = mg.read_csv(path_for_B, key='ID')
+    A = mg.load_dataset('table_A')
+    B = mg.load_dataset('table_B')
 
     C0 = bb0.block_tables(A, B)
     mg.save_object(bb0, filename)
