@@ -133,6 +133,11 @@ def down_sample(ltable, rtable, size, y):
 
 # sample one table using random sampling
 def sample_table(table, size, replace=False):
+    if len(table) == 0:
+        raise AttributeError('size of table is 0')
+    if len(table) < size:
+        raise AttributeError('sample size is larger than input table size')
+
     s_indices = np.random.choice(len(table), size, replace=replace)
     # sort the indices - just to have an order
     s_indices = sorted(s_indices)

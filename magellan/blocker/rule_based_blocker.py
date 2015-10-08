@@ -9,9 +9,7 @@ from magellan import MTable
 class RuleBasedBlocker(Blocker):
 
     def __init__(self, *args, **kwargs):
-        feature_table = kwargs.get('feature_table', None)
-        if 'feature_table' in kwargs.keys():
-            del kwargs['feature_table']
+        feature_table = kwargs.pop('feature_table', None)
         self.feature_table = feature_table
         self.rules = OrderedDict()
 
@@ -44,7 +42,25 @@ class RuleBasedBlocker(Blocker):
 
         return feat_dict[name], name, fn_str
 
-    def add_rule(self, conjunct_list, feature_table=None):
+    def add_rule(self, conjunct_list, feature_table):
+        """
+        Add rule to rule-based blocker
+
+        Parameters
+        ----------
+        conjunct_list : list of string, and each conjunct is a predicate
+        feature_table : pandas dataframe containing feature information
+
+        Returns
+        -------
+        status : boolean, returns True if the rule addition was successful
+
+        Example
+        -------
+        feature_table = mg.get_features_for_blocking(A, B)
+        rb = mg.RuleBasedBlocker()
+        rb.add_rule(['name_name_mel(ltuple, rtuple) < 0.6', 'zipcode_zipcode_exm(ltuple, rtuple) != 1'], feature_table)
+        """
         if not isinstance(conjunct_list, list):
             conjunct_list = [conjunct_list]
 
@@ -86,6 +102,36 @@ class RuleBasedBlocker(Blocker):
 
 
     def block_tables(self, ltable, rtable, l_output_attrs=None, r_output_attrs=None):
+        """
+        Block two tables
+
+        Parameters
+        ----------
+        ltable, rtable : MTable
+            Input MTables
+        l_output_attrs, r_output_attrs : list (of strings), defaults to None
+            attribute names to be included in the output table
+
+        Returns
+        -------
+        blocked_table : MTable
+            Containing tuple pairs whose l_block_attr and r_block_attr values are same
+
+        Notes
+        -----
+        Output MTable contains the following three attributes
+            * _id
+            * id column from ltable
+            * id column from rtable
+
+        Also, the properties of blocked table is updated with following key-value pairs
+            * ltable - ref to ltable
+            * rtable - ref to rtable
+            * key
+            * foreign_key_ltable - string, ltable's  id attribute name
+            * foreign_key_rtable - string, rtable's id attribute name
+        """
+
         # do integrity checks
         l_output_attrs, r_output_attrs = self.check_attrs(ltable, rtable, l_output_attrs, r_output_attrs)
         block_list = []
@@ -119,7 +165,12 @@ class RuleBasedBlocker(Blocker):
 
         candset = pd.DataFrame(block_list)
         ret_cols = self.get_attrs_to_retain(ltable.get_key(), rtable.get_key(), l_output_attrs, r_output_attrs)
-        candset = MTable(candset[ret_cols])
+
+        if len(candset) > 0:
+            candset = MTable(candset[ret_cols])
+        else:
+            candset = MTable(candset, columns=ret_cols)
+
         # add key
         #key_name = candset._get_name_for_key(candset.columns)
         #candset.add_key(key_name)
@@ -155,7 +206,11 @@ class RuleBasedBlocker(Blocker):
                 valid.append(True)
             else:
                 valid.append(False)
-        out_table = MTable(vtable[valid], key=vtable.get_key())
+        # should be modified
+        if len(vtable) > 0:
+            out_table = MTable(vtable[valid], key=vtable.get_key())
+        else:
+            out_table = MTable(columns=vtable.columns, key=vtable.get_key())
         out_table.set_property('ltable', ltable)
         out_table.set_property('rtable', rtable)
         out_table.set_property('foreign_key_ltable', vtable.get_property('foreign_key_ltable'))

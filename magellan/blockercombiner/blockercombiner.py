@@ -51,16 +51,20 @@ def combine_block_outputs_via_union(blocker_output_list):
     # get the final column names for output table
     f_cols = fin_cols(l_col, r_col, ltable.get_key(), rtable.get_key())
 
-    # project df and convert to MTable
-    table = MTable(table[f_cols])
-    #key_name = table._get_name_for_key(table.columns)
-    #table.add_key(key_name)
 
-    # set metadata
+    if len(table) > 0:
+        table.sort(['ltable.ID', 'rtable.ID'], inplace=True)
+        table.reset_index(inplace=True)
+        table = MTable(table[f_cols])
+    else:
+        table = MTable(table, columns=f_cols)
+
+    # project df and convert to MTable
     table.set_property('ltable', ltable)
     table.set_property('rtable', rtable)
     table.set_property('foreign_key_ltable', 'ltable.'+ltable.get_key())
     table.set_property('foreign_key_rtable', 'rtable.'+rtable.get_key())
+
 
     return table
 

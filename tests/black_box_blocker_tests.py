@@ -7,6 +7,8 @@ def block_fn(x, y):
         return True
     else:
         return False
+def evil_block_fn(x, y):
+    return True
 
 def test_bb_block_tables():
     A = mg.read_csv(path_for_A, key='ID')
@@ -59,4 +61,29 @@ def test_bb_block_tuples():
     assert_equal(bb.block_tuples(A.ix[2], B.ix[1]), False)
 
 
+def test_bb_block_tables_wi_no_tuples():
+    A = mg.read_csv(path_for_A, key='ID')
+    B = mg.read_csv(path_for_B, key='ID')
+    bb = mg.BlackBoxBlocker()
+    bb.set_black_box_function(evil_block_fn)
+    C = bb.block_tables(A, B)
+    assert_equal(len(C),  0)
+    assert_equal(sorted(C.columns), sorted(['_id', 'ltable.ID', 'rtable.ID']))
+    assert_equal(C.get_key(), '_id')
+    assert_equal(C.get_property('foreign_key_ltable'), 'ltable.ID')
+    assert_equal(C.get_property('foreign_key_rtable'), 'rtable.ID')
+
+def test_bb_block_candset_wi_no_tuples():
+    A = mg.read_csv(path_for_A, key='ID')
+    B = mg.read_csv(path_for_B, key='ID')
+    ab = mg.AttrEquivalenceBlocker()
+    C = ab.block_tables(A, B, 'birth_year', 'birth_year')
+    bb = mg.BlackBoxBlocker()
+    bb.set_black_box_function(evil_block_fn)
+    D = bb.block_candset(C)
+    assert_equal(len(D),  0)
+    assert_equal(sorted(D.columns), sorted(['_id', 'ltable.ID', 'rtable.ID']))
+    assert_equal(D.get_key(), '_id')
+    assert_equal(D.get_property('foreign_key_ltable'), 'ltable.ID')
+    assert_equal(D.get_property('foreign_key_rtable'), 'rtable.ID')
 

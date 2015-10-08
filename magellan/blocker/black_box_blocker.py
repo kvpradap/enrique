@@ -47,7 +47,11 @@ class BlackBoxBlocker(Blocker):
                     block_list.append(d)
         candset = pd.DataFrame(block_list)
         ret_cols = self.get_attrs_to_retain(ltable.get_key(), rtable.get_key(), l_output_attrs, r_output_attrs)
-        candset = MTable(candset[ret_cols])
+        if len(candset) > 0:
+            candset = MTable(candset[ret_cols])
+        else:
+            candset = MTable(candset, columns=ret_cols)
+
         # set metadata
         candset.set_property('ltable', ltable)
         candset.set_property('rtable', rtable)
@@ -79,7 +83,12 @@ class BlackBoxBlocker(Blocker):
                 valid.append(True)
             else:
                 valid.append(False)
-        out_table = MTable(vtable[valid], key=vtable.get_key())
+
+        if len(vtable) > 0:
+            out_table = MTable(vtable[valid], key=vtable.get_key())
+        else:
+            out_table = MTable(columns=vtable.columns, key=vtable.get_key())
+
         out_table.set_property('ltable', ltable)
         out_table.set_property('rtable', rtable)
         out_table.set_property('foreign_key_ltable', vtable.get_property('foreign_key_ltable'))

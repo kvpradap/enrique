@@ -75,3 +75,34 @@ def test_rb_block_tuples():
 
     assert_equal(rb.block_tuples(A.ix[0], B.ix[0]), False)
     assert_equal(rb.block_tuples(A.ix[1], B.ix[1]), True)
+
+def test_rb_block_tables_wi_no_tuples():
+    A = mg.read_csv(path_for_A, key='ID')
+    B = mg.read_csv(path_for_B, key='ID')
+    rb = mg.RuleBasedBlocker()
+    feature_table = mg.get_features_for_blocking(A, B)
+    rb.add_rule(['zipcode_zipcode_exm(ltuple, rtuple) >= 0'],
+                feature_table)
+    C = rb.block_tables(A, B)
+    assert_equal(len(C),  0)
+    assert_equal(sorted(C.columns), sorted(['_id', 'ltable.ID', 'rtable.ID']))
+    assert_equal(C.get_key(), '_id')
+    assert_equal(C.get_property('foreign_key_ltable'), 'ltable.ID')
+    assert_equal(C.get_property('foreign_key_rtable'), 'rtable.ID')
+
+def test_rb_block_candset_wi_no_tuples():
+    A = mg.read_csv(path_for_A, key='ID')
+    B = mg.read_csv(path_for_B, key='ID')
+    ab = mg.AttrEquivalenceBlocker()
+    C = ab.block_tables(A, B, 'birth_year', 'birth_year')
+    rb = mg.RuleBasedBlocker()
+    feature_table = mg.get_features_for_blocking(A, B)
+    rb.add_rule(['zipcode_zipcode_exm(ltuple, rtuple) >= 0'],
+                feature_table)
+    D = rb.block_candset(C)
+    assert_equal(len(D),  0)
+    assert_equal(sorted(D.columns), sorted(['_id', 'ltable.ID', 'rtable.ID']))
+    assert_equal(D.get_key(), '_id')
+    assert_equal(D.get_property('foreign_key_ltable'), 'ltable.ID')
+    assert_equal(D.get_property('foreign_key_rtable'), 'rtable.ID')
+

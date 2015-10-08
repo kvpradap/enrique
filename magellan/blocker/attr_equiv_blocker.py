@@ -135,7 +135,10 @@ class AttrEquivalenceBlocker(Blocker):
                 valid.append(False)
         
         # should be modified
-        out_table = MTable(vtable[valid], key=vtable.get_key())
+        if len(vtable) > 0:
+            out_table = MTable(vtable[valid], key=vtable.get_key())
+        else:
+            out_table = MTable(columns=vtable.columns, key=vtable.get_key())
         out_table.set_property('ltable', ltable)
         out_table.set_property('rtable', rtable)
         out_table.set_property('foreign_key_ltable', 'ltable.'+ltable.get_key())

@@ -29,7 +29,8 @@ setup(
                       'pandas >= 0.16.0',
                       'numpy >= 1.7.0',
                       'six',
-                      'cloud'
+                      'cloud >= 2.8.5',
+                      'pyparsing >= 2.0.3'
                       ],
     include_package_data=True,
     zip_safe=False

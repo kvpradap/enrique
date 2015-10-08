@@ -2,7 +2,7 @@
 
 __prop__ = True
 
-from magellan.io.parsers import read_csv, load_table, read_csv_
+from magellan.io.parsers import read_csv
 from magellan.sampler.sampler import sample_table, down_sample
 from magellan.utils.helperfunctions import get_install_path, init_jvm, diff, \
     load_dataset, load_object, save_object, apply_arbitrary_function

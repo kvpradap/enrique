@@ -7,7 +7,7 @@ import cloud
 import pickle
 
 from magellan.utils import installpath
-from magellan import read_csv_
+from magellan import read_csv
 # get installation path
 def get_install_path():
     plist = installpath.split(os.sep)

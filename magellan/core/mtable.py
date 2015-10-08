@@ -179,7 +179,7 @@ class MTable(pd.DataFrame):
         """
         return list(self.columns)
 
-    def save_table(self, path):
+    def _save_table(self, path):
         """
         Pickle object to input file path
 
@@ -202,13 +202,16 @@ class MTable(pd.DataFrame):
 
     # check whether an attribute can be set as key
     def is_key_attr(self, attr_name):
-        uniq_flag = len(np.unique(self[attr_name])) == len(self)
-        if uniq_flag == False:
-            logging.getLogger(__name__).warning('Attribute contains duplicate values')
-        nan_flag = sum(self[attr_name].isnull()) == 0
-        if nan_flag == False:
-            logging.getLogger(__name__).warning('Attribute contains missing values')
-        return (uniq_flag and nan_flag)
+        if len(self) > 0:
+            uniq_flag = len(np.unique(self[attr_name])) == len(self)
+            if uniq_flag == False:
+                logging.getLogger(__name__).warning('Attribute contains duplicate values')
+            nan_flag = sum(self[attr_name].isnull()) == 0
+            if nan_flag == False:
+                logging.getLogger(__name__).warning('Attribute contains missing values')
+            return (uniq_flag and nan_flag)
+        else:
+            return True
 
     def to_csv(self, file_path, **kwargs):
         """

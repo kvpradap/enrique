@@ -36,6 +36,29 @@ def read_csv_(*args, **kwargs):
 
 
 def read_csv(file_path, **kwargs):
+    """
+    Read CSV (comma-separated) file into MTable
+
+    Parameters
+    ----------
+    args : arguments to pandas read_csv command
+    kwargs : arguments to pandas read_csv command along with optional "key" if its MTable
+            or "key", "ltable", "rtable", "foreign_key_ltable", "foreign_key_rtable" if its VTable
+
+    Returns
+    -------
+    result : MTable
+
+    Note
+    ----
+    read_csv can read in the meta data mentioned at the beginning of the file like this:
+
+    #key=id
+
+    A user can override or supply  metadata as key-value args to the function
+
+    """
+
     properties, num_lines = get_properties_from_file(file_path)
     properties, kwargs = update_properties(properties, **kwargs)
     check_properties(properties)
@@ -54,7 +77,7 @@ def read_csv(file_path, **kwargs):
 
 
 
-def load_table(path):
+def _load_table(path):
     """
     Load picked MTable object from the specified file path
 
@@ -151,15 +174,3 @@ def check_properties(properties):
         if isinstance(properties['rtable'], MTable) == False:
             raise AssertionError('The parameter rtable must be set to valid MTable')
     return True
-
-
-
-
-    # add based on what the user can give as key value argument
-
-    # add another function to check properties.
-
-
-
-    # vtable_flag = any(x in vtable_props for x in properties)
-    # if vtable_flag is True
