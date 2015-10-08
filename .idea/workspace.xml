@@ -2,41 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1905aa74-c932-4fb0-8623-d4d69cb714ca" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/testcases/archive/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/attr_equi_blocker_tests.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/magellan/blocker/black_box_blocker.py" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/testcases/a.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/testcases/book_label.pkl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/testcases/c.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/testcases/dt.dot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/testcases/dt.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/testcases/dt_.dot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/testcases/dt_.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/testcases/garage.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/testcases/label.pkl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/testcases/mur2.pkl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/testcases/mur_3.pkl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/testcases/table_a.pkl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/testcases/table_a_test.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/testcases/tbla.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/testcases/test_ast.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/testcases/test_ast_1.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/testcases/test_ast_2.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/testcases/test_boolean_matcher.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/testcases/test_dt_debug.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/testcases/test_dt_debug_sample.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/testcases/test_workflow.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/testcases/workflow.py" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/magellan/__init__.py" afterPath="$PROJECT_DIR$/magellan/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/enrique.iml" afterPath="$PROJECT_DIR$/.idea/enrique.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/readcsv_tests.py" afterPath="$PROJECT_DIR$/tests/readcsv_tests.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/black_box_blocker_tests.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/blocker_combiner_tests.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/rule_based_blocker_tests.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/similarity_function_tests.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/notebooks/blocking_test.ipynb" afterPath="$PROJECT_DIR$/notebooks/blocking_test.ipynb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/magellan/blocker/rule_based_blocker.py" afterPath="$PROJECT_DIR$/magellan/blocker/rule_based_blocker.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/save_load_tests.py" afterPath="$PROJECT_DIR$/tests/save_load_tests.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/setup.py" afterPath="$PROJECT_DIR$/setup.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testcases/test.py" afterPath="$PROJECT_DIR$/testcases/test.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/tocsv_tests.py" afterPath="$PROJECT_DIR$/tests/tocsv_tests.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/magellan/feature/simfunctions.py" afterPath="$PROJECT_DIR$/magellan/feature/simfunctions.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="enrique.iws" />
@@ -58,38 +30,82 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="black_box_blocker.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/magellan/blocker/black_box_blocker.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="125" column="23" selection-start-line="125" selection-start-column="23" selection-end-line="125" selection-end-column="23" />
-              <folding>
-                <element signature="e#0#14#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="save_load_tests.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/save_load_tests.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="4" column="44" selection-start-line="4" selection-start-column="44" selection-end-line="4" selection-end-column="44" />
-              <folding>
-                <element signature="e#0#24#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="attr_equi_blocker_tests.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="attr_equi_blocker_tests.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/attr_equi_blocker_tests.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7407407">
-              <caret line="39" column="78" selection-start-line="39" selection-start-column="78" selection-end-line="39" selection-end-column="78" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="14" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
               <folding>
                 <element signature="e#0#24#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="rule_based_blocker_tests.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/rule_based_blocker_tests.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="39" column="51" selection-start-line="35" selection-start-column="0" selection-end-line="39" selection-end-column="51" />
+              <folding>
+                <element signature="e#0#24#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="simfunctions.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/magellan/feature/simfunctions.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="191" column="17" selection-start-line="191" selection-start-column="17" selection-end-line="191" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="black_box_blocker_tests.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/black_box_blocker_tests.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="21" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#24#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="blocker_combiner_tests.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/blocker_combiner_tests.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="24" />
+              <folding>
+                <element signature="e#0#24#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="similarity_function_tests.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/tests/similarity_function_tests.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.5555556">
+              <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#24#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="rule_based_blocker.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/magellan/blocker/rule_based_blocker.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="200" column="19" selection-start-line="200" selection-start-column="19" selection-end-line="200" selection-end-column="19" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -109,12 +125,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/magellan/matcher/rulematcher.py" />
-        <option value="$PROJECT_DIR$/magellan/debug/decisiontree.py" />
-        <option value="$PROJECT_DIR$/testcases/test_dt_debug_sample.py" />
-        <option value="$PROJECT_DIR$/magellan/debug/randomforest.py" />
         <option value="$PROJECT_DIR$/magellan/core/pickletable.py" />
-        <option value="$PROJECT_DIR$/magellan/feature/simfunctions.py" />
         <option value="$PROJECT_DIR$/magellan/evaluation/__init__.py" />
         <option value="$PROJECT_DIR$/notebooks/workflow.py" />
         <option value="$PROJECT_DIR$/testcases/test_boolean_matcher.py" />
@@ -152,7 +163,6 @@
         <option value="$PROJECT_DIR$/tests/load_save_tests.py" />
         <option value="$PROJECT_DIR$/setup.py" />
         <option value="$PROJECT_DIR$/magellan/blocker/black_box_blocker.py" />
-        <option value="$PROJECT_DIR$/magellan/blocker/rule_based_blocker.py" />
         <option value="$PROJECT_DIR$/magellan/__init__.py" />
         <option value="$PROJECT_DIR$/testcases/test.py" />
         <option value="$PROJECT_DIR$/tests/__init__.py" />
@@ -160,6 +170,12 @@
         <option value="$PROJECT_DIR$/tests/save_load_tests.py" />
         <option value="$PROJECT_DIR$/tests/tocsv_tests.py" />
         <option value="$PROJECT_DIR$/tests/attr_equi_blocker_tests.py" />
+        <option value="$PROJECT_DIR$/magellan/blocker/rule_based_blocker.py" />
+        <option value="$PROJECT_DIR$/tests/rule_based_blocker_tests.py" />
+        <option value="$PROJECT_DIR$/tests/black_box_blocker_tests.py" />
+        <option value="$PROJECT_DIR$/tests/blocker_combiner_tests.py" />
+        <option value="$PROJECT_DIR$/magellan/feature/simfunctions.py" />
+        <option value="$PROJECT_DIR$/tests/similarity_function_tests.py" />
       </list>
     </option>
   </component>
@@ -241,6 +257,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="magellan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="enrique" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="enrique" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="magellan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="feature" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -550,9 +584,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="722" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31269842" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31269842" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32900432" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -924,26 +958,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/magellan/feature/simfunctions.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="17" column="12" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/setup.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.8148148">
           <caret line="22" column="43" selection-start-line="22" selection-start-column="43" selection-end-line="22" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/magellan/blocker/rule_based_blocker.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="140" column="55" selection-start-line="140" selection-start-column="55" selection-end-line="140" selection-end-column="55" />
           <folding />
         </state>
       </provider>
@@ -995,7 +1013,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="125" column="23" selection-start-line="125" selection-start-column="23" selection-end-line="125" selection-end-column="23" />
           <folding>
-            <element signature="e#0#14#0" expanded="true" />
+            <element signature="e#0#14#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1005,15 +1023,71 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="44" selection-start-line="4" selection-start-column="44" selection-end-line="4" selection-end-column="44" />
           <folding>
-            <element signature="e#0#24#0" expanded="true" />
+            <element signature="e#0#24#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/attr_equi_blocker_tests.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7407407">
-          <caret line="39" column="78" selection-start-line="39" selection-start-column="78" selection-end-line="39" selection-end-column="78" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="14" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/magellan/blocker/rule_based_blocker.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="200" column="19" selection-start-line="200" selection-start-column="19" selection-end-line="200" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/rule_based_blocker_tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="39" column="51" selection-start-line="35" selection-start-column="0" selection-end-line="39" selection-end-column="51" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/black_box_blocker_tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="21" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/blocker_combiner_tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/magellan/feature/simfunctions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="191" column="17" selection-start-line="191" selection-start-column="17" selection-end-line="191" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/similarity_function_tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5555556">
+          <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
           </folding>

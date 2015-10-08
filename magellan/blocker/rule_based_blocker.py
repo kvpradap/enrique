@@ -195,10 +195,11 @@ class RuleBasedBlocker(Blocker):
         for fn in self.rules.values():
             # here if the function returns true, then the tuple pair must be dropped.
             # At the implementation level, what we want are the tuple pairs that passes
-            res = not fn(ltuple, rtuple)
+            res =  fn(ltuple, rtuple)
             if res is True:
-                return True
-        return False
+                return False
+        return True
+
 
     def get_attrs_to_retain(self, l_id, r_id, l_col, r_col):
         ret_cols=[]
