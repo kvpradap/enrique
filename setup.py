@@ -20,7 +20,7 @@ setup(
     2) Iterate and debug the workflow
     3) Deploy it in production
     """,
-    url='http://github.com/kvpradap/Magellan',
+    url='http://github.com/kvpradap/enrique',
     author='Pradap Konda',
     author_email='pradap@cs.wisc.edu',
     license=['MIT'],
@@ -28,7 +28,8 @@ setup(
     install_requires=['JPype1>=0.5.7',
                       'pandas >= 0.16.0',
                       'numpy >= 1.7.0',
-                      'six'
+                      'six',
+                      'cloud'
                       ],
     include_package_data=True,
     zip_safe=False

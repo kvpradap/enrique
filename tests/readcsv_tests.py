@@ -1,11 +1,7 @@
 from nose.tools import *
 import sys
 import os
-sys.path.append('/scratch/pradap/python-work/enrique')
-import magellan as mg
-path_for_A = '../magellan/datasets/table_A.csv'
-path_for_B = '../magellan/datasets/table_B.csv'
-
+from tests import mg, path_for_A, path_for_B
 
 def test_readcsv_valid_id():
     A = mg.read_csv(path_for_A, key='ID')

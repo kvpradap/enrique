@@ -15,6 +15,7 @@ from magellan.feature.addfeatures import get_feature_fn, add_feature
 from magellan.core.mtable import MTable
 from magellan.blocker.attr_equiv_blocker import AttrEquivalenceBlocker
 from magellan.blocker.rule_based_blocker import RuleBasedBlocker
+from magellan.blocker.black_box_blocker import BlackBoxBlocker
 from magellan.blockercombiner.blockercombiner import combine_block_outputs_via_union
 from magellan.gui.mtable_gui import view, edit
 from magellan.labeler.labeler import label

@@ -2,12 +2,7 @@ from nose.tools import *
 import sys
 import math
 import os
-sys.path.append('/scratch/pradap/python-work/enrique')
-import magellan as mg
-import numpy as np
-path_for_A = '../magellan/datasets/table_A.csv'
-path_for_B = '../magellan/datasets/table_B.csv'
-
+from tests import mg, path_for_A, path_for_B
 def test_save_load_ab_blocker():
     filename = '__mg_obj__.pkl'
     ab0 = mg.AttrEquivalenceBlocker()
@@ -20,7 +15,8 @@ def test_save_load_ab_blocker():
     assert_equal(type(ab0), type(ab1))
 
 def test_save_load_feature_table():
-    mg.init_jvm()
+    #mg.init_jvm()
+
     filename = '__mg_obj__.pkl'
     A = mg.read_csv(path_for_A, key='ID')
     B = mg.read_csv(path_for_B, key='ID')
@@ -46,7 +42,7 @@ def test_save_load_feature_table():
 
 
 def test_save_load_rb_blocker():
-    mg.init_jvm()
+    #mg.init_jvm()
     filename = '__mg_obj__.pkl'
     A = mg.read_csv(path_for_A, key='ID')
     B = mg.read_csv(path_for_B, key='ID')
@@ -70,6 +66,36 @@ def test_save_load_rb_blocker():
     assert_equal(rb0.rule_cnt, rb1.rule_cnt)
 
     C1 = rb1.block_tables(A, B)
+    assert_equal(len(C0), len(C1))
+    assert_equal(sorted(C0.columns), sorted(C0.columns))
+
+
+def test_save_load_bb_blocker():
+    mg.init_jvm('/Library/Java/JavaVirtualMachines/jdk1.8.0_45.jdk/Contents/Home/jre/lib/server/libjvm.dylib')
+    from magellan.feature.simfunctions import jaccard
+    from magellan.feature.tokenizers import tok_qgram
+    def block_fn_1(ltuple, rtuple):
+        val = jaccard(tok_qgram(ltuple['address'], 3), tok_qgram(rtuple['address'], 3))
+        if  val < 0.4:
+            return True
+        else:
+            return False
+    bb0 = mg.BlackBoxBlocker()
+    bb0.set_black_box_function(block_fn_1)
+    filename = '__mg_obj__.pkl'
+    A = mg.read_csv(path_for_A, key='ID')
+    B = mg.read_csv(path_for_B, key='ID')
+
+    C0 = bb0.block_tables(A, B)
+    mg.save_object(bb0, filename)
+    bb1 = mg.load_object(filename)
+    try:
+        os.remove(filename)
+    except OSError:
+        pass
+
+    assert_equal(type(bb0), type(bb1))
+    C1 = bb1.block_tables(A, B)
     assert_equal(len(C0), len(C1))
     assert_equal(sorted(C0.columns), sorted(C0.columns))
 

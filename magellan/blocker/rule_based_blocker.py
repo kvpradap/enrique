@@ -137,8 +137,8 @@ class RuleBasedBlocker(Blocker):
         rtable = vtable.get_property('rtable')
 
         self.check_attrs(ltable, rtable, None, None)
-        l_key = 'ltable.' + ltable.get_key()
-        r_key = 'rtable.' + rtable.get_key()
+        l_key = vtable.get_property('foreign_key_ltable')
+        r_key = vtable.get_property('foreign_key_rtable')
 
         # set the index and store it in l_tbl/r_tbl
         l_tbl = ltable.set_index(ltable.get_key(), drop=False)
@@ -158,8 +158,8 @@ class RuleBasedBlocker(Blocker):
         out_table = MTable(vtable[valid], key=vtable.get_key())
         out_table.set_property('ltable', ltable)
         out_table.set_property('rtable', rtable)
-        out_table.set_property('foreign_key_ltable', 'ltable.'+ltable.get_key())
-        out_table.set_property('foreign_key_rtable', 'rtable.'+rtable.get_key())
+        out_table.set_property('foreign_key_ltable', vtable.get_property('foreign_key_ltable'))
+        out_table.set_property('foreign_key_rtable', vtable.get_property('foreign_key_rtable'))
         return out_table
 
     def block_tuples(self, ltuple, rtuple):
