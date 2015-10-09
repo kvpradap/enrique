@@ -98,6 +98,15 @@ magellan/matcherselection/mlmatcherselection.py
 magellan/matcherselection/mlmatcherselection__.py
 magellan/sampler/__init__.py
 magellan/sampler/sampler.py
+magellan/tests/__init__.py
+magellan/tests/attr_equi_blocker_tests.py
+magellan/tests/black_box_blocker_tests.py
+magellan/tests/blocker_combiner_tests.py
+magellan/tests/readcsv_tests.py
+magellan/tests/rule_based_blocker_tests.py
+magellan/tests/save_load_tests.py
+magellan/tests/similarity_function_tests.py
+magellan/tests/tocsv_tests.py
 magellan/trigger/__init__.py
 magellan/trigger/matchtrigger.py
 magellan/utils/__init__.py
