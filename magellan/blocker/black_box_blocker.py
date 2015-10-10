@@ -17,11 +17,20 @@ class BlackBoxBlocker(Blocker):
         return True
 
     def block_tables(self, ltable, rtable, l_output_attrs=None,
-                     r_output_attrs=None):
+                     r_output_attrs=None, verbose=False, percent=10):
         l_output_attrs, r_output_attrs = self.check_attrs(ltable, rtable, l_output_attrs, r_output_attrs)
         block_list = []
+        if verbose:
+            count = 0
+            per_count = percent/100.0*len(ltable)*len(rtable)
+
         for i, l in ltable.iterrows():
             for j, r in rtable.iterrows():
+                if verbose:
+                    count += 1
+                    if count%per_count == 0:
+                        print str(percent*count/per_count) + ' percentage done !!!'
+
                 res = self.black_box_function(l, r)
                 if not res is True:
                     d = OrderedDict()
@@ -60,7 +69,7 @@ class BlackBoxBlocker(Blocker):
         return candset
 
 
-    def block_candset(self, vtable):
+    def block_candset(self, vtable, verbose=False, percent=10):
         ltable = vtable.get_property('ltable')
         rtable = vtable.get_property('rtable')
         self.check_attrs(ltable, rtable, None, None)
@@ -75,7 +84,16 @@ class BlackBoxBlocker(Blocker):
 
         valid = []
         #iterate candidate set and process each row
+        if verbose:
+            count = 0
+            per_count = percent/100.0*len(ltable)*len(rtable)
+
         for idx, row in vtable.iterrows():
+            if verbose:
+                count += 1
+                if count%per_count == 0:
+                    print str(percent*count/per_count) + ' percentage done !!!'
+
             l_row = l_tbl.ix[row[l_key]]
             r_row = r_tbl.ix[row[r_key]]
             res = self.black_box_function(l_row, r_row)

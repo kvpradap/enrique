@@ -101,7 +101,8 @@ class RuleBasedBlocker(Blocker):
         return True
 
 
-    def block_tables(self, ltable, rtable, l_output_attrs=None, r_output_attrs=None):
+    def block_tables(self, ltable, rtable, l_output_attrs=None, r_output_attrs=None,
+                     verbose=False, percent=10):
         """
         Block two tables
 
@@ -135,8 +136,15 @@ class RuleBasedBlocker(Blocker):
         # do integrity checks
         l_output_attrs, r_output_attrs = self.check_attrs(ltable, rtable, l_output_attrs, r_output_attrs)
         block_list = []
+        if verbose:
+            count = 0
+            per_count = percent/100.0*len(ltable)*len(rtable)
         for i, l in ltable.iterrows():
             for j, r in rtable.iterrows():
+                if verbose:
+                    count += 1
+                    if count%per_count == 0:
+                        print str(percent*count/per_count) + ' percentage done !!!'
                 # check whether it passes
                 res = self.apply_rules(l, r)
                 if res is True:
@@ -183,7 +191,7 @@ class RuleBasedBlocker(Blocker):
         return candset
 
 
-    def block_candset(self, vtable):
+    def block_candset(self, vtable, verbose=False, percent=10):
         ltable = vtable.get_property('ltable')
         rtable = vtable.get_property('rtable')
 
@@ -197,7 +205,15 @@ class RuleBasedBlocker(Blocker):
         # keep track of valid ids
         valid = []
         # iterate candidate set and process each row
+        if verbose:
+            count = 0
+            per_count = percent/100.0*len(ltable)*len(rtable)
         for idx, row in vtable.iterrows():
+            if verbose:
+                count += 1
+                if count%per_count == 0:
+                    print str(percent*count/per_count) + ' percentage done !!!'
+
             # get the value of block attribute from ltuple
             l_row = l_tbl.ix[row[l_key]]
             r_row = r_tbl.ix[row[r_key]]
