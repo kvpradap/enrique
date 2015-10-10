@@ -52,3 +52,7 @@ _block_c = None
 _match_t = None
 _match_s = None
 _match_c = None
+
+# verbose - experimental
+_verbose = False
+_percent = 10
