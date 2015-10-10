@@ -1,0 +1,11 @@
+#key=_id
+#ltable=POINTER
+#rtable=POINTER
+#foreign_key_ltable=ltable.ID
+#foreign_key_rtable=rtable.ID
+_id,ltable.ID,rtable.ID,ltable.birth_year,ltable.name,ltable.zipcode,rtable.birth_year,rtable.name,rtable.zipcode
+0,a2,b3,1988,Michael Franklin,94122,1988,Mike Franklin,94122
+1,a2,b6,1988,Michael Franklin,94122,1987,Michael Brodie,94107
+2,a3,b2,1986,William Bridge,94107,1986,Bill Bridge,94107
+3,a3,b6,1986,William Bridge,94107,1987,Michael Brodie,94107
+4,a5,b5,1984,Alphonse Kemper,94122,1984,Alfons Kemper,94122

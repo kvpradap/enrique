@@ -117,7 +117,6 @@ class RuleBasedBlocker(Blocker):
         Returns
         -------
         blocked_table : MTable
-            Containing tuple pairs whose l_block_attr and r_block_attr values are same
 
         Notes
         -----
@@ -140,13 +139,29 @@ class RuleBasedBlocker(Blocker):
         if mg._verbose:
             count = 0
             per_count = math.ceil(mg._percent/100.0*len(ltable)*len(rtable))
-        for i, l in ltable.iterrows():
-            for j, r in rtable.iterrows():
+        l_df = ltable.set_index(ltable.get_key(), drop=False)
+        r_df = rtable.set_index(rtable.get_key(), drop=False)
+        l_dict = {}
+        for k, r in l_df.iterrows():
+            l_dict[k] = r
+        r_dict = {}
+        for k, r in r_df.iterrows():
+            r_dict[k] = r
+
+        lid_idx = ltable.get_attr_names().index(ltable.get_key())
+        rid_idx = rtable.get_attr_names().index(rtable.get_key())
+        for l_t in ltable.itertuples(index=False):
+            for r_t in rtable.itertuples(index=False):
                 if mg._verbose:
                     count += 1
                     if count%per_count == 0:
                         print str(mg._percent*count/per_count) + ' percentage done !!!'
+
+
+                l = l_dict[l_t[lid_idx]]
+                r = r_dict[r_t[rid_idx]]
                 # check whether it passes
+
                 res = self.apply_rules(l, r)
                 if res is True:
                     d = OrderedDict()
@@ -193,6 +208,34 @@ class RuleBasedBlocker(Blocker):
 
 
     def block_candset(self, vtable):
+        """
+        Block candidate set (virtual MTable)
+
+        Parameters
+        ----------
+        vtable : MTable
+            Input candidate set
+
+        Returns
+        -------
+        blocked_table : MTable
+
+
+        Notes
+        -----
+        Output MTable contains the following three attributes
+            * _id
+            * id column from ltable
+            * id column from rtable
+
+        Also, the properties of blocked table is updated with following key-value pairs
+            * ltable - ref to ltable
+            * rtable - ref to rtable
+            * key
+            * foreign_key_ltable - string, ltable's  id attribute name
+            * foreign_key_rtable - string, rtable's id attribute name
+        """
+
         ltable = vtable.get_property('ltable')
         rtable = vtable.get_property('rtable')
 
@@ -203,21 +246,34 @@ class RuleBasedBlocker(Blocker):
         # set the index and store it in l_tbl/r_tbl
         l_tbl = ltable.set_index(ltable.get_key(), drop=False)
         r_tbl = rtable.set_index(rtable.get_key(), drop=False)
+
+        # create look up table for quick access of rows
+        l_dict = {}
+        for k, r in l_tbl.iterrows():
+            l_dict[k] = r
+        r_dict = {}
+        for k, r in r_tbl.iterrows():
+            r_dict[k] = r
         # keep track of valid ids
         valid = []
         # iterate candidate set and process each row
         if mg._verbose:
             count = 0
-            per_count = math.ceil(mg._percent/100.0*len(ltable)*len(rtable))
-        for idx, row in vtable.iterrows():
+            per_count = math.ceil(mg._percent/100.0*len(vtable))
+
+        column_names = list(vtable.columns)
+        lid_idx = column_names.index(l_key)
+        rid_idx = column_names.index(r_key)
+
+        for row in vtable.itertuples(index=False):
             if mg._verbose:
                 count += 1
                 if count%per_count == 0:
                     print str(mg._percent*count/per_count) + ' percentage done !!!'
 
-            # get the value of block attribute from ltuple
-            l_row = l_tbl.ix[row[l_key]]
-            r_row = r_tbl.ix[row[r_key]]
+            l_row = l_dict[row[lid_idx]]
+            r_row = r_dict[row[rid_idx]]
+
             res = self.apply_rules(l_row, r_row)
             if res is True:
                 valid.append(True)
