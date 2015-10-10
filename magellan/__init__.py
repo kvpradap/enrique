@@ -45,12 +45,10 @@ from magellan.feature.extractfeatures import extract_feat_vecs
 
 _block_t = None
 _block_s = None
-_block_atypes1 = None
-_block_atypes2 = None
+_atypes1 = None
+_atypes2 = None
 _block_c = None
 
 _match_t = None
 _match_s = None
-_match_atypes1 = None
-_match_atypes2 = None
 _match_c = None
