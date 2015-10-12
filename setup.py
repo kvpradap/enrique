@@ -1,5 +1,17 @@
 from setuptools import setup
 
+# Set this to True to enable building extensions using Cython.
+# Set it to False to build extensions from the C file (that
+# was previously created using Cython).
+# Set it to 'auto' to build with Cython if available, otherwise
+# from the C file.
+
+
+
+import sys
+
+
+
 setup(
     name='Magellan',
     version='0.1',

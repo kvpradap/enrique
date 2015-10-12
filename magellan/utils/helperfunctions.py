@@ -5,9 +5,11 @@ import logging
 import os
 import cloud
 import pickle
+import pyximport; pyximport.install()
 
 from magellan.utils import installpath
 from magellan import read_csv
+from magellan.cython.test_functions import *
 # get installation path
 def get_install_path():
     plist = installpath.split(os.sep)
@@ -117,8 +119,12 @@ def load_object(file_path):
         result = pickle.load(f)
     return result
 
-def apply_arbitrary_function(fn):
-    fn()
+def my_jaccard(s1, s2):
+    s1 = ngrams(s1, 3)
+    s2 = ngrams(s2, 3)
+    #print s1
+    #print s2
+    return compute_jaccard_index(set(s1), set(s2))
 
 
 

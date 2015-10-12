@@ -198,10 +198,6 @@ class AttrEquivalenceBlocker(Blocker):
         return l_output_attrs, r_output_attrs
 
 
-    # remove nows with nan values at block_attr
-    def rem_nan(self, table, block_attr):
-        l = table.index.values[np.where(table[block_attr].notnull())[0]]
-        return table.ix[l]
 
     # get output columns
     def output_columns(self, l_key, r_key, col_names, l_output_attrs, r_output_attrs):

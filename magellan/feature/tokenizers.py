@@ -1,6 +1,8 @@
 import jpype
 import pandas as pd
+import pyximport; pyximport.install()
 
+from magellan.cython.test_functions import *
 from magellan.utils.helperfunctions import remove_non_ascii
 
 _global_tokenizers = pd.DataFrame({'function_name':['tok_qgram', 'tok_delim'], 'short_name' : ['qgm', 'dlm']})
@@ -50,7 +52,7 @@ def make_tok_delim(d):
     return tok_delim
 
 # return a qgram-based tokenizer with a fixed q
-def make_tok_qgram(q):
+def _make_tok_qgram(q):
     def tok_qgram(s):
         # check if the input is of type base string
         if pd.isnull(s):
@@ -66,8 +68,22 @@ def make_tok_qgram(q):
         return list(tokenizer.qgramTokenizer(s, float(q))) # fix in java, it should be int
     return tok_qgram
 
+# return a qgram-based tokenizer with a fixed q
+def make_tok_qgram(q):
+    def tok_qgram(s):
+        # check if the input is of type base string
+        if pd.isnull(s):
+            return s
+        if not isinstance(s, basestring):
+            raise ValueError('Input should be of type string')
+        if q <= 0:
+            raise ValueError('q value must be greater than 0')
+        return ngrams(s, q)
+
+    return tok_qgram
+
 # q-gram tokenizer
-def tok_qgram(s, q):
+def _tok_qgram(s, q):
     """
     q-gram tokenizer; splits the input string into a list of q-grams
 
@@ -96,6 +112,33 @@ def tok_qgram(s, q):
     tokenizer = tok_cls()
     return list(tokenizer.qgramTokenizer(s, float(q))) # fix in java, it should be int
 
+# q-gram tokenizer
+def tok_qgram(s, q):
+    """
+    q-gram tokenizer; splits the input string into a list of q-grams
+
+    Parameters
+    ----------
+    s : string
+        source string to be converted into qgrams
+    q : integer
+        q-value
+
+    Returns
+    -------
+    qgram_list : list,
+         q-gram list of source string
+    """
+    # check if the input is of type base string
+    if pd.isnull(s):
+        return s
+    if not isinstance(s, basestring):
+        raise ValueError('Input should be of type string')
+    if q <= 0:
+        raise ValueError('q value must be greater than 0')
+    return ngrams(s, q)
+
+
 def tok_delim(s, d):
     """
     delimiter based tokenizer; splits the input string into a list of tokens
@@ -118,5 +161,5 @@ def tok_delim(s, d):
         return s
     if not isinstance(s, basestring):
         raise ValueError('Input should be of type string')
-    s = remove_non_ascii(s)
+    #s = remove_non_ascii(s)
     return s.split(d)

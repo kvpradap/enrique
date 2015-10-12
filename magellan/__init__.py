@@ -5,7 +5,7 @@ __prop__ = True
 from magellan.io.parsers import read_csv
 from magellan.sampler.sampler import sample_table, down_sample
 from magellan.utils.helperfunctions import get_install_path, init_jvm, diff, \
-    load_dataset, load_object, save_object, apply_arbitrary_function
+    load_dataset, load_object, save_object
 #from magellan.utils.ast_test import get_workflow, draw_workflow
 from magellan.feature.simfunctions import *
 from magellan.feature.tokenizers import *
@@ -16,6 +16,7 @@ from magellan.core.mtable import MTable
 from magellan.blocker.attr_equiv_blocker import AttrEquivalenceBlocker
 from magellan.blocker.rule_based_blocker import RuleBasedBlocker
 from magellan.blocker.black_box_blocker import BlackBoxBlocker
+from magellan.blocker.overlap_blocker import OverlapBlocker
 from magellan.blockercombiner.blockercombiner import combine_block_outputs_via_union
 from magellan.gui.mtable_gui import view, edit
 from magellan.labeler.labeler import label

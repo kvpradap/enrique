@@ -1,7 +1,10 @@
 import jpype
 import pandas as pd
 import numpy as np
+import Levenshtein
+import pyximport; pyximport.install()
 
+from magellan.cython.test_functions import *
 from magellan.utils.helperfunctions import remove_non_ascii
 
 # list of sim functions supported : UPDATE LATER
@@ -27,7 +30,7 @@ def get_sim_funs():
 # similarity measures
 
 # set based
-def jaccard(arr1, arr2):
+def _jaccard(arr1, arr2):
     if arr1 is None or arr2 is None:
         return np.NaN
     if not isinstance(arr1, list):
@@ -39,8 +42,23 @@ def jaccard(arr1, arr2):
     if any(pd.isnull(arr2)):
         return np.NaN
 
+
     sim = jpype.JClass('build.SimilarityFunction')()
     return sim.jaccard(arr1, arr2)
+
+def jaccard(arr1, arr2):
+    if arr1 is None or arr2 is None:
+        return np.NaN
+    if not isinstance(arr1, list):
+        arr1 = [arr1]
+    if any(pd.isnull(arr1)):
+        return np.NaN
+    if not isinstance(arr2, list):
+        arr2 = [arr2]
+    if any(pd.isnull(arr2)):
+        return np.NaN
+    return compute_jaccard_index(set(arr1), set(arr2))
+
 
 def cosine(arr1, arr2):
     if arr1 is None or arr2 is None:
@@ -61,7 +79,7 @@ def cosine(arr1, arr2):
 
 
 # string based
-def lev(s1, s2):
+def _lev(s1, s2):
     if s1 is None or s2 is None:
         return np.NaN
     if pd.isnull(s1) or pd.isnull(s2):
@@ -72,6 +90,19 @@ def lev(s1, s2):
         s2 = remove_non_ascii(s2)
     sim = jpype.JClass('build.SimilarityFunction')()
     return sim.levenshtein(str(s1), str(s2))
+
+def lev(s1, s2):
+    if s1 is None or s2 is None:
+        return np.NaN
+    if pd.isnull(s1) or pd.isnull(s2):
+        return np.NaN
+    s1 = str(s1)
+    s2 = str(s2)
+    l1 = float(len(s1))
+    l2 = float(len(s2))
+    return 1.0 - Levenshtein.distance(s1, s2)/(max(l1, l2))
+
+
 
 
 def jaro(s1, s2):
