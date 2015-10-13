@@ -2,6 +2,8 @@
 from magellan.blocker.blocker import Blocker
 import pyximport; pyximport.install()
 import logging
+import magellan as mg
+import math
 
 from magellan.cython.test_functions import ngrams
 from magellan.utils.helperfunctions import remove_non_ascii
@@ -29,10 +31,28 @@ class OverlapBlocker(Blocker):
 
     def block_tables(self, ltable, rtable,
                      l_overlap_attr, r_overlap_attr,
-                     qgram=None, word_level=True, overlap_size=2,
-                     rem_stop_words = True,
+                     rem_stop_words = False,
+                     qgram=None, word_level=True, overlap_size=1,
                      l_output_attrs=None, r_output_attrs=None
+
                      ):
+        """
+        Block tables with overlap blocker
+
+        Parameters
+        ----------
+        ltable, rtable : MTables, input MTables to block
+        l_overlap_attr, r_overlap_attr : String, overlap attribute from left and right table
+        rem_stop_words : flag to indicate whether stop words should be removed
+        qgram : int, value of q in qgram tokenizer. Default value is None
+        word_level : boolean, flag to indicate to use word level tokenizer
+        overlap_size : int, number of tokens to overlap
+        l_output_attrs, r_output_attrs - list of attribtues to be included in the output table
+
+        Returns
+        -------
+        result : MTable
+        """
         # do some integrity checks
         if l_overlap_attr not in ltable.columns:
             raise AssertionError('Left overlap attribute  not in ltable columns')
@@ -46,12 +66,16 @@ class OverlapBlocker(Blocker):
                               'to true by default, so explicity set word_level=False to use qgram')
 
 
+
         # remove nans
         l_df = self.rem_nan(ltable, l_overlap_attr)
         r_df = self.rem_nan(rtable, r_overlap_attr)
 
         l_df.reset_index(inplace=True, drop=True)
         r_df.reset_index(inplace=True, drop=True)
+
+        l_df['_dummy_'] = 1
+        r_df['_dummy_'] = 1
 
         if l_df.dtypes[l_overlap_attr] != object:
             logger.warning('Left overlap attribute is not of type string; converting to string temporarily')
@@ -74,37 +98,52 @@ class OverlapBlocker(Blocker):
         zipped_l_col_values = zip(l_col_values_chopped, range(0, len(l_col_values_chopped)))
         appended_l_col_idx_values = [self.append_index_values(v[0], v[1]) for v in zipped_l_col_values]
         inv_idx = {}
+        if mg._verbose:
+            print 'Creating inverted index '
         sink = [self.compute_inv_index(t, inv_idx) for c in appended_l_col_idx_values for t in c]
+        if mg._verbose:
+            print 'Done'
 
         r_col_values_chopped = self.process_table(r_df, r_overlap_attr, qgram, rem_stop_words)
         r_idx = 0;
         l_key =  ltable.get_key()
         r_key = rtable.get_key()
         block_list = [] # misnomer - should be white list
+        if mg._verbose:
+            count = 0
+            per_count = math.ceil(mg._percent/100.0*len(rtable))
+            print per_count
 
-
+        df_list = []
         for col_values in r_col_values_chopped:
+            if mg._verbose:
+                count += 1
+                if count%per_count == 0:
+                    print str(mg._percent*count/per_count) + ' percentage done !!!'
+
             qualifying_ltable_indices = self.get_potential_match_indices(col_values, inv_idx, overlap_size)
             r_row = r_dict[r_idx]
-            for idx in qualifying_ltable_indices:
-                l_row = l_dict[idx]
-                d = self.get_row_dict_with_output_attrs(l_row, r_row, l_key, r_key,l_output_attrs, r_output_attrs)
-                block_list.append(d)
+            r_row_dict = r_row.to_frame().T
+            #r_row_dict['dummy'] = 1
+            l_rows_dict = l_df.iloc[qualifying_ltable_indices]
+            #l_rows_dict['dummy'] = 1
+            df = l_rows_dict.merge(r_row_dict, on='_dummy_', suffixes=('_ltable', '_rtable'))
+            df_list.append(df)
             r_idx += 1
 
-        candset = pd.DataFrame(block_list)
-        ret_cols = self.get_attrs_to_retain(ltable.get_key(), rtable.get_key(), l_output_attrs, r_output_attrs)
+        candset = pd.concat(df_list)
+    # get output columns
+        retain_cols, final_cols = self.output_columns(ltable.get_key(), rtable.get_key(), list(candset.columns),
+                                                   l_output_attrs, r_output_attrs)
 
+
+        candset = candset[retain_cols]
+        candset.columns = final_cols
         if len(candset) > 0:
-            candset.sort(['ltable.'+l_key, 'rtable.'+r_key], inplace=True)
-            candset.reset_index(inplace=True)
-            candset = MTable(candset[ret_cols])
-        else:
-            candset = MTable(candset, columns=ret_cols)
+            candset.sort(['ltable.'+ltable.get_key(), 'rtable.'+rtable.get_key()], inplace=True)
+            candset.reset_index(inplace=True, drop=True)
+        candset = MTable(candset)
 
-        # add key
-        #key_name = candset._get_name_for_key(candset.columns)
-        #candset.add_key(key_name)
 
         # set metadata
         candset.set_property('ltable', ltable)
@@ -113,12 +152,32 @@ class OverlapBlocker(Blocker):
         candset.set_property('foreign_key_rtable', 'rtable.'+rtable.get_key())
         return candset
 
-    def block_candset(self,vtable, l_overlap_attr, r_overlap_attr,
-                     qgram=None, word_level=True, overlap_size=2,
-                     rem_stop_words = True):
+
+    def block_candset(self,vtable, l_overlap_attr, r_overlap_attr, rem_stop_words=False,
+                     qgram=None, word_level=True, overlap_size=1):
+
+        """
+        Block candidateset with overlap blocker
+
+        Parameters
+        ----------
+        vtable : MTable, candidate set to block
+        l_overlap_attr, r_overlap_attr : String, overlap attribute from left and right table
+        rem_stop_words : flag to indicate whether stop words should be removed
+        qgram : int, value of q in qgram tokenizer. Default value is None
+        word_level : boolean, flag to indicate to use word level tokenizer
+        overlap_size : int, number of tokens to overlap
+        l_output_attrs, r_output_attrs - list of attribtues to be included in the output table
+
+        Returns
+        -------
+        result : MTable
+        """
+
 
         ltable = vtable.get_property('ltable')
         rtable = vtable.get_property('rtable')
+
 
         self.check_attrs(ltable, rtable, None, None)
         # do some integrity checks
@@ -148,7 +207,17 @@ class OverlapBlocker(Blocker):
         lid_idx = column_names.index(l_key)
         rid_idx = column_names.index(r_key)
 
+        if mg._verbose:
+            count = 0
+            per_count = math.ceil(mg._percent/100.0*len(vtable))
+            print per_count
+
         for row in vtable.itertuples(index=False):
+            if mg._verbose:
+                count += 1
+                if count%per_count == 0:
+                    print str(mg._percent*count/per_count) + ' percentage done !!!'
+
             l_row = l_dict[row[lid_idx]]
             r_row = r_dict[row[rid_idx]]
 
@@ -172,8 +241,27 @@ class OverlapBlocker(Blocker):
         return out_table
 
 
-    def block_tuples(self, ltuple, rtuple, l_overlap_attr, r_overlap_attr,
-                     qgram=None, word_level=True, overlap_size = 2, rem_stop_words = True):
+    def block_tuples(self, ltuple, rtuple, l_overlap_attr, r_overlap_attr,rem_stop_words = False,
+                     qgram=None, word_level=True, overlap_size=1):
+        """
+        Block tables with overlap blocker
+
+        Parameters
+        ----------
+        ltuple, rtuple : Pandas series, tuples to block
+        l_overlap_attr, r_overlap_attr : String, overlap attribute from left and right table
+        rem_stop_words : flag to indicate whether stop words should be removed
+        qgram : int, value of q in qgram tokenizer. Default value is None
+        word_level : boolean, flag to indicate to use word level tokenizer
+        overlap_size : int, number of tokens to overlap
+        l_output_attrs, r_output_attrs - list of attribtues to be included in the output table
+
+        Returns
+        -------
+        result : boolean, True if the tuple pair is dropped.
+
+
+        """
 
         num_overlap = self.get_token_overlap_bt_two_tuples(ltuple, rtuple,
                                                                l_overlap_attr, r_overlap_attr,
@@ -270,6 +358,7 @@ class OverlapBlocker(Blocker):
         return [(v, idx) for v in ls]
 
     def compute_inv_index(self, tok_idx, idx):
+        #print '.',
         ls = idx.pop(tok_idx[0], None)
         if ls is None:
             ls = list()
@@ -338,8 +427,50 @@ class OverlapBlocker(Blocker):
             ret_cols.extend(['rtable.'+c for c in r_col])
         return ret_cols
 
+   # get output columns
+    def output_columns(self, l_key, r_key, col_names, l_output_attrs, r_output_attrs):
 
+        ret_cols = []
+        fin_cols = []
 
+        # retain id columns from merge
+        ret_l_id = [self.retain_names(x, col_names, '_ltable') for x in [l_key]]
+        ret_r_id = [self.retain_names(x, col_names, '_rtable') for x in [r_key]]
+        ret_cols.extend(ret_l_id)
+        ret_cols.extend(ret_r_id)
+
+        # retain output attrs from merge
+        if l_output_attrs:
+            ret_l_col = [self.retain_names(x, col_names, '_ltable') for x in l_output_attrs]
+            ret_cols.extend(ret_l_col)
+        if r_output_attrs:
+            ret_r_col = [self.retain_names(x, col_names, '_rtable') for x in r_output_attrs]
+            ret_cols.extend(ret_r_col)
+
+        # final columns in the output
+        fin_l_id = [self.final_names(x, 'ltable.') for x in [l_key]]
+        fin_r_id = [self.final_names(x, 'rtable.') for x in [r_key]]
+        fin_cols.extend(fin_l_id)
+        fin_cols.extend(fin_r_id)
+
+        # final output attrs from merge
+        if l_output_attrs:
+            fin_l_col = [self.final_names(x, 'ltable.') for x in l_output_attrs]
+            fin_cols.extend(fin_l_col)
+        if r_output_attrs:
+            fin_r_col = [self.final_names(x, 'rtable.') for x in r_output_attrs]
+            fin_cols.extend(fin_r_col)
+
+        return ret_cols, fin_cols
+
+    def retain_names(self, x, col_names, suffix):
+        if x in col_names:
+            return x
+        else:
+            return str(x) + suffix
+
+    def final_names(self, x, prefix):
+        return prefix + str(x)
 
 
 

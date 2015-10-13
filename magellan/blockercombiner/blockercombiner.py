@@ -54,7 +54,7 @@ def combine_block_outputs_via_union(blocker_output_list):
 
     if len(table) > 0:
         table.sort([l_key, r_key], inplace=True)
-        table.reset_index(inplace=True)
+        table.reset_index(inplace=True, drop=True)
         table = MTable(table[f_cols])
     else:
         table = MTable(table, columns=f_cols)

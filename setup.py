@@ -29,7 +29,7 @@ setup(
 
     To solve the above problems, Magellan provides a set of commands that help the user to
     1) Come up with a EM workflow
-    2) Iterate and debug the workflow
+    2) Iterate and debugmatcher the workflow
     3) Deploy it in production
     """,
     url='http://github.com/kvpradap/enrique',
@@ -43,7 +43,8 @@ setup(
                       'six',
                       'scikit-learn >= 0.16.1',
                       'cloud >= 2.8.5',
-                      'pyparsing >= 2.0.3'
+                      'pyparsing >= 2.0.3',
+                      'python-Levenshtein >= 0.12.0',
                       ],
     include_package_data=True,
     zip_safe=False

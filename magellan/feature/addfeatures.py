@@ -162,3 +162,40 @@ def add_feature(feat_table, feat_name, feat_dict):
                               'right_attr_tokenizer', 'simfunction', 'function', 'function_source']
         feat_table.loc[len(feat_table)] = feat_dict
     return True
+
+# add black_box feature
+def add_blackbox_feature(feat_table, feat_name, feat_fn):
+    """
+    Add the black box feature to feature table
+
+    Parameters
+    ----------
+    feat_table : pandas DataFrame,
+        Consists of features (typically from mg.get_features)
+    feat_name : string,
+        feature name
+    feat_fn : python function,
+
+
+    Returns
+    -------
+    status : boolean,
+        Whether the feature was successfully added to to feature table
+    """
+    d = {}
+    d['feature_name'] = feat_name
+    d['function'] = feat_fn
+    d['left_attribute'] = None
+    d['right_attribute'] = None
+    d['left_attr_tokenizer'] = None
+    d['right_attr_tokenizer'] = None
+    d['simfunction'] = None
+    d['function_source'] = None
+
+    if len(feat_table) > 0:
+        feat_table.loc[len(feat_table)] = d
+    else:
+        feat_table.columns = ['feature_name', 'left_attribute', 'right_attribute', 'left_attr_tokenizer',
+                              'right_attr_tokenizer', 'simfunction', 'function', 'function_source']
+        feat_table.loc[len(feat_table)] = d
+    return True

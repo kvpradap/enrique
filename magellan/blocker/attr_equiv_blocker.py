@@ -56,13 +56,9 @@ class AttrEquivalenceBlocker(Blocker):
         retain_cols, final_cols = self.output_columns(ltable.get_key(), rtable.get_key(), list(candset.columns),
                                                    l_output_attrs, r_output_attrs)
 
-        #print candset.columns
-        #print retain_cols
         candset = candset[retain_cols]
         candset.columns = final_cols
         candset = MTable(candset)
-        #key_name = candset._get_name_for_key(candset.columns)
-        #candset.add_key(key_name)
 
         # set metadata
         candset.set_property('ltable', ltable)

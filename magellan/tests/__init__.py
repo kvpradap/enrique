@@ -1,6 +1,6 @@
 import sys
 #sys.path.append('/Users/pradap/Documents/Research/Python-Package/enrique')
-sys.path.append('/scratch/pradap/python-work/enrqiue')
+#sys.path.append('/scratch/pradap/python-work/enrqiue')
 import os
 import magellan as mg
 import jpype

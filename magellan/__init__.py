@@ -11,12 +11,13 @@ from magellan.feature.simfunctions import *
 from magellan.feature.tokenizers import *
 from magellan.feature.attributeutils import get_attr_corres,get_attr_types
 from magellan.feature.autofeaturegen import get_features, get_features_for_blocking, get_features_for_matching
-from magellan.feature.addfeatures import get_feature_fn, add_feature
+from magellan.feature.addfeatures import get_feature_fn, add_feature, add_blackbox_feature
 from magellan.core.mtable import MTable
 from magellan.blocker.attr_equiv_blocker import AttrEquivalenceBlocker
 from magellan.blocker.rule_based_blocker import RuleBasedBlocker
 from magellan.blocker.black_box_blocker import BlackBoxBlocker
 from magellan.blocker.overlap_blocker import OverlapBlocker
+from magellan.debugblocker.blocking_debugger import debug_blocker
 from magellan.blockercombiner.blockercombiner import combine_block_outputs_via_union
 from magellan.gui.mtable_gui import view, edit
 from magellan.labeler.labeler import label
@@ -30,9 +31,9 @@ from magellan.feature.extractfeatures import extract_feat_vecs
 #from magellan.matcher.booleanrulematcher import BooleanRuleMatcher
 #from magellan.matcherselection.mlmatcherselection__ import select_matcher
 #from magellan.matcherselection.mlmatchercombinerselection import selector_matcher_combiner
-#from magellan.debug.debug_decisiontree_matcher import debug_decisiontree_matcher, visualize_tree
-#from magellan.debug.debug_randomforest_matcher import debug_randomforest_matcher
-#from magellan.debug.debug_booleanrule_matcher import debug_booleanrule_matcher
+#from magellan.debugmatcher.debug_decisiontree_matcher import debug_decisiontree_matcher, visualize_tree
+#from magellan.debugmatcher.debug_randomforest_matcher import debug_randomforest_matcher
+#from magellan.debugmatcher.debug_booleanrule_matcher import debug_booleanrule_matcher
 #from magellan.trigger.matchtrigger import MatchTrigger
 #from magellan.evaluation.evaluation import evaluate
 
