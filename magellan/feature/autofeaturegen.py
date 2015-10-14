@@ -103,13 +103,14 @@ def get_feat_lkp_tbl():
     lkp_tbl['STR_BT_1W_5W'] = [('jaccard', 'qgm_3', 'qgm_3'),
                                ('cosine', 'dlm_dc0', 'dlm_dc0'),
                                ('jaccard', 'dlm_dc0', 'dlm_dc0'),
-                               ('monge_elkan'), ('needleman_wunsch'), ('smith_waterman'), ('smith_waterman_gotoh')
+                               ('monge_elkan'), ('lev'), ('needleman_wunsch'), ('smith_waterman'),
+                               ('smith_waterman_gotoh')
                                ] # dlm_dc0 is the concrete space tokenizer
 
     # features for type str_bt_5w_10w
     lkp_tbl['STR_BT_5W_10W'] = [('jaccard', 'qgm_3', 'qgm_3'),
                                 ('cosine', 'dlm_dc0', 'dlm_dc0'),
-                                ('monge_elkan')]
+                                ('monge_elkan'), ('lev')]
 
     # features for type str_gt_10w
     lkp_tbl['STR_GT_10W'] = [('jaccard', 'qgm_3', 'qgm_3'),

@@ -7,6 +7,7 @@ from magellan.blocker.blocker import Blocker
 from magellan import MTable
 import magellan as mg
 import math
+import pyprind
 
 class RuleBasedBlocker(Blocker):
 
@@ -139,6 +140,9 @@ class RuleBasedBlocker(Blocker):
         if mg._verbose:
             count = 0
             per_count = math.ceil(mg._percent/100.0*len(ltable)*len(rtable))
+        elif mg._progbar:
+            bar = pyprind.ProgBar(len(ltable)*len(rtable))
+
         l_df = ltable.set_index(ltable.get_key(), drop=False)
         r_df = rtable.set_index(rtable.get_key(), drop=False)
         l_dict = {}
@@ -156,6 +160,8 @@ class RuleBasedBlocker(Blocker):
                     count += 1
                     if count%per_count == 0:
                         print str(mg._percent*count/per_count) + ' percentage done !!!'
+                elif mg._progbar:
+                    bar.update()
 
 
                 l = l_dict[l_t[lid_idx]]
@@ -260,6 +266,8 @@ class RuleBasedBlocker(Blocker):
         if mg._verbose:
             count = 0
             per_count = math.ceil(mg._percent/100.0*len(vtable))
+        elif mg._progbar:
+            bar = pyprind.ProgBar(len(vtable))
 
         column_names = list(vtable.columns)
         lid_idx = column_names.index(l_key)
@@ -270,6 +278,8 @@ class RuleBasedBlocker(Blocker):
                 count += 1
                 if count%per_count == 0:
                     print str(mg._percent*count/per_count) + ' percentage done !!!'
+            elif mg._progbar:
+                bar.update()
 
             l_row = l_dict[row[lid_idx]]
             r_row = r_dict[row[rid_idx]]

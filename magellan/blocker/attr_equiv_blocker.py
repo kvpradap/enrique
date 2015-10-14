@@ -5,7 +5,8 @@ import numpy as np
 from magellan.blocker.blocker import Blocker
 from magellan.core.mtable import MTable
 import magellan as mg
-
+import math
+import pyprind
 class AttrEquivalenceBlocker(Blocker):
 
     def block_tables(self, ltable, rtable, l_block_attr, r_block_attr,
@@ -115,10 +116,27 @@ class AttrEquivalenceBlocker(Blocker):
         l_df.set_index(ltable.get_key(), inplace=True)
         r_df.set_index(rtable.get_key(), inplace=True)
 
+        if mg._verbose:
+            count = 0
+            per_count = math.ceil(mg._percent/100.0*len(vtable))
+            print per_count
+
+        elif mg._progbar:
+            bar = pyprind.ProgBar(len(vtable))
+
+
         # keep track of valid ids
         valid = []
         # iterate candidate set and process each row
         for idx, row in vtable.iterrows():
+
+            if mg._verbose:
+                count += 1
+                if count%per_count == 0:
+                    print str(mg._percent*count/per_count) + ' percentage done !!!'
+            elif mg._progbar:
+                bar.update()
+
             # get the value of block attribute from ltuple
             l_val = l_df.ix[row[l_key], l_block_attr]
             r_val = r_df.ix[row[r_key], r_block_attr]

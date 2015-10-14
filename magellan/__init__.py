@@ -58,3 +58,4 @@ _match_c = None
 # verbose - experimental
 _verbose = False
 _percent = 10
+_progbar = True

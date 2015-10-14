@@ -5,13 +5,16 @@ import logging
 import magellan as mg
 import math
 
+
 from magellan.cython.test_functions import ngrams
 from magellan.utils.helperfunctions import remove_non_ascii
 from magellan import MTable
 from collections import Counter, OrderedDict
 
+
 import re, string
 import pandas as pd
+import pyprind
 
 logger = logging.getLogger(__name__)
 
@@ -112,7 +115,10 @@ class OverlapBlocker(Blocker):
         if mg._verbose:
             count = 0
             per_count = math.ceil(mg._percent/100.0*len(rtable))
+            per_float = mg._percent/100.0*len(rtable)
             print per_count
+        elif mg._progbar:
+            bar = pyprind.ProgBar(len(r_col_values_chopped))
 
         df_list = []
         for col_values in r_col_values_chopped:
@@ -120,6 +126,8 @@ class OverlapBlocker(Blocker):
                 count += 1
                 if count%per_count == 0:
                     print str(mg._percent*count/per_count) + ' percentage done !!!'
+            elif mg._progbar:
+                bar.update()
 
             qualifying_ltable_indices = self.get_potential_match_indices(col_values, inv_idx, overlap_size)
             r_row = r_dict[r_idx]
@@ -128,14 +136,15 @@ class OverlapBlocker(Blocker):
             l_rows_dict = l_df.iloc[qualifying_ltable_indices]
             #l_rows_dict['dummy'] = 1
             df = l_rows_dict.merge(r_row_dict, on='_dummy_', suffixes=('_ltable', '_rtable'))
-            df_list.append(df)
+            if len(df) > 0:
+                df_list.append(df)
             r_idx += 1
 
         candset = pd.concat(df_list)
-    # get output columns
+
+       # get output columns
         retain_cols, final_cols = self.output_columns(ltable.get_key(), rtable.get_key(), list(candset.columns),
                                                    l_output_attrs, r_output_attrs)
-
 
         candset = candset[retain_cols]
         candset.columns = final_cols
@@ -143,7 +152,6 @@ class OverlapBlocker(Blocker):
             candset.sort(['ltable.'+ltable.get_key(), 'rtable.'+rtable.get_key()], inplace=True)
             candset.reset_index(inplace=True, drop=True)
         candset = MTable(candset)
-
 
         # set metadata
         candset.set_property('ltable', ltable)
@@ -212,11 +220,17 @@ class OverlapBlocker(Blocker):
             per_count = math.ceil(mg._percent/100.0*len(vtable))
             print per_count
 
+        elif mg._progbar:
+            bar = pyprind.ProgBar(len(vtable))
+
+
         for row in vtable.itertuples(index=False):
             if mg._verbose:
                 count += 1
                 if count%per_count == 0:
                     print str(mg._percent*count/per_count) + ' percentage done !!!'
+            elif mg._progbar:
+                bar.update()
 
             l_row = l_dict[row[lid_idx]]
             r_row = r_dict[row[rid_idx]]
@@ -281,7 +295,7 @@ class OverlapBlocker(Blocker):
         if not isinstance(l_val, basestring):
             l_val = str(l_val)
         if not isinstance(r_val, basestring):
-            r_val = str
+            r_val = str(r_val)
 
         l_val_ls = set(self.process_val(l_val, l_overlap_attr, qgram, rem_stop_words))
         r_val_ls = set(self.process_val(r_val, r_overlap_attr, qgram, rem_stop_words))
@@ -322,7 +336,7 @@ class OverlapBlocker(Blocker):
         if qgram != None:
             values = ' '.join(chopped_vals)
             chopped_vals = ngrams(values, qgram)
-        return chopped_vals
+        return list(set(chopped_vals))
 
 
 
@@ -338,6 +352,10 @@ class OverlapBlocker(Blocker):
         attr_col_values = [self.rem_punctuations(v).lower() for v in attr_col_values]
         # chop the attribute values
         col_values_chopped = [v.split() for v in attr_col_values]
+        # convert it into set
+
+        col_values_chopped = [list(set(v)) for v in col_values_chopped]
+
         # remove stop words
         if rem_stop_words == True:
             col_values_chopped = [self.rem_stopwords(v) for v in col_values_chopped]
@@ -471,8 +489,6 @@ class OverlapBlocker(Blocker):
 
     def final_names(self, x, prefix):
         return prefix + str(x)
-
-
 
 
 
