@@ -1,11 +1,14 @@
 # imports
 
-import jpype
 import logging
 import os
-import cloud
 import pickle
-import pyximport; pyximport.install()
+
+import jpype
+import cloud
+import pyximport;
+
+pyximport.install()
 
 from magellan.utils import installpath
 from magellan import read_csv
@@ -125,6 +128,10 @@ def my_jaccard(s1, s2):
     #print s1
     #print s2
     return compute_jaccard_index(set(s1), set(s2))
+
+
+
+
 
 
 

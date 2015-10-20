@@ -2,6 +2,8 @@
 
 __prop__ = True
 
+from PyQt4 import QtGui
+
 from magellan.io.parsers import read_csv
 from magellan.sampler.sampler import sample_table, down_sample
 from magellan.utils.helperfunctions import get_install_path, init_jvm, diff, \
@@ -55,7 +57,11 @@ _match_t = None
 _match_s = None
 _match_c = None
 
+# GUI related
+_viewapp = QtGui.QApplication([])
+
 # verbose - experimental
 _verbose = False
 _percent = 10
 _progbar = True
+

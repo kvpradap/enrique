@@ -1,0 +1,1216 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  SIGSEGV (0xb) at pc=0x0000003ee5abfa9c, pid=3724, tid=140407584503552
+#
+# JRE version: 7.0_25-b15
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (23.25-b01 mixed mode linux-amd64 compressed oops)
+# Problematic frame:
+# C  [libgtk-x11-2.0.so.0+0xbfa9c]  gtk_container_add+0x1c
+#
+# Failed to write core dump. Core dumps have been disabled. To enable core dumping, try "ulimit -c unlimited" before starting Java again
+#
+# If you would like to submit a bug report, please visit:
+#   http://bugreport.sun.com/bugreport/crash.jsp
+# The crash happened outside the Java Virtual Machine in native code.
+# See problematic frame for where to report the bug.
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x0000000002214000):  JavaThread "main" [_thread_in_native, id=3724, stack(0x00007fff551a5000,0x00007fff552a5000)]
+
+siginfo:si_signo=SIGSEGV: si_errno=0, si_code=1 (SEGV_MAPERR), si_addr=0x0000000000000018
+
+Registers:
+RAX=0x0000000003013440, RBX=0x000000000304dd90, RCX=0x0000000000000003, RDX=0x0000000000000018
+RSP=0x00007fff5529e700, RBP=0x00000000030e6a60, RSI=0x00000000030e6a60, RDI=0x000000000304dd90
+R8 =0x0000003edf04b188, R9 =0x0000000000000e8c, R10=0x0000000000000001, R11=0x0000000000000001
+R12=0x00000000030470c0, R13=0x00000000030e2070, R14=0x0000000000e0d607, R15=0x00007fff5529e814
+RIP=0x0000003ee5abfa9c, EFLAGS=0x0000000000010206, CSGSFS=0x0000000000000033, ERR=0x0000000000000004
+  TRAPNO=0x000000000000000e
+
+Top of Stack: (sp=0x00007fff5529e700)
+0x00007fff5529e700:   00000000030e6a60 0000000003130808
+0x00007fff5529e710:   00000000030470c0 00007fb2fe0a205b
+0x00007fff5529e720:   00000000030e2070 0000000000e0d607
+0x00007fff5529e730:   00007fff5529e814 00000000030e6a60
+0x00007fff5529e740:   0000000003130808 00000000030470c0
+0x00007fff5529e750:   00000000030e2070 00007fb2fe0a210e
+0x00007fff5529e760:   00000000030e6a60 00007fb2fe0a34a1
+0x00007fff5529e770:   00007fff5529e950 0000000002fbe0d0
+0x00007fff5529e780:   00007fff5529e7d0 00007fb2fd75760e
+0x00007fff5529e790:   0000000000000009 0000000002fa9b10
+0x00007fff5529e7a0:   0000000000000009 00007fb2fe3ffa19
+0x00007fff5529e7b0:   00007fff00000009 00007fb2fe3ffad8
+0x00007fff5529e7c0:   0000000000000000 00007fb2fe0a446a
+0x00007fff5529e7d0:   00007fb2fdad80f0 0000000000000000
+0x00007fff5529e7e0:   0000000002fbe0d0 00007fff5529e900
+0x00007fff5529e7f0:   0000000003133670 000000000304cfb0
+0x00007fff5529e800:   0000000003133670 00000000030f2540
+0x00007fff5529e810:   00e0d60703133670 0000000800000008
+0x00007fff5529e820:   0000000000000008 00000000030e2070
+0x00007fff5529e830:   000000000304cfb0 00000000030f2540
+0x00007fff5529e840:   00007fff5529e950 0000000000000000
+0x00007fff5529e850:   0000000000000000 00007fb2fe0883df
+0x00007fff5529e860:   000000000304cfb0 00007fb2fe8339c0
+0x00007fff5529e870:   00000000030f2540 00007fb2fe001061
+0x00007fff5529e880:   000000000305c9d0 000000005529e900
+0x00007fff5529e890:   00007fb2fe3dd161 00000000030f2540
+0x00007fff5529e8a0:   00007fb2fe3f9ff8 00007fb2fd668e7a
+0x00007fff5529e8b0:   00007fb2fe3dd169 00007fff5529e8f0
+0x00007fff5529e8c0:   00007fb2fe3e07fa 00007fff5529e8f0
+0x00007fff5529e8d0:   00007fb2fe3dd156 0000006000000002
+0x00007fff5529e8e0:   00007fb2fe3f9ffe 0000000300000001
+0x00007fff5529e8f0:   00007fb2fe3fa002 0000008000000001 
+
+Instructions: (pc=0x0000003ee5abfa9c)
+0x0000003ee5abfa7c:   1f 44 00 00 41 54 55 48 89 f5 53 48 89 fb e8 31
+0x0000003ee5abfa8c:   e9 ff ff 48 85 db 74 1c 48 8b 13 48 85 d2 74 05
+0x0000003ee5abfa9c:   48 3b 02 74 2f 48 89 c6 48 89 df e8 4c 73 fa ff
+0x0000003ee5abfaac:   85 c0 75 20 48 8d 15 e2 32 26 00 5b 5d 41 5c 48 
+
+Register to memory mapping:
+
+RAX=0x0000000003013440 is an unknown value
+RBX=0x000000000304dd90 is an unknown value
+RCX=0x0000000000000003 is an unknown value
+RDX=0x0000000000000018 is an unknown value
+RSP=0x00007fff5529e700 is pointing into the stack for thread: 0x0000000002214000
+RBP=0x00000000030e6a60 is an unknown value
+RSI=0x00000000030e6a60 is an unknown value
+RDI=0x000000000304dd90 is an unknown value
+R8 =0x0000003edf04b188: <offset 0x24b188> in /lib64/libgobject-2.0.so.0 at 0x0000003edee00000
+R9 =0x0000000000000e8c is an unknown value
+R10=0x0000000000000001 is an unknown value
+R11=0x0000000000000001 is an unknown value
+R12=0x00000000030470c0 is an unknown value
+R13=0x00000000030e2070 is an unknown value
+R14=0x0000000000e0d607 is an unknown value
+R15=0x00007fff5529e814 is pointing into the stack for thread: 0x0000000002214000
+
+
+Stack: [0x00007fff551a5000,0x00007fff552a5000],  sp=0x00007fff5529e700,  free space=997k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+C  [libgtk-x11-2.0.so.0+0xbfa9c]  gtk_container_add+0x1c
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x0000000002f62800 JavaThread "Thread-0" [_thread_blocked, id=3766, stack(0x00007fb2f4687000,0x00007fb2f4788000)]
+  0x0000000002f40000 JavaThread "Service Thread" daemon [_thread_blocked, id=3764, stack(0x00007fb2f4889000,0x00007fb2f498a000)]
+  0x0000000002f3d800 JavaThread "C2 CompilerThread1" daemon [_thread_blocked, id=3763, stack(0x00007fb2f498a000,0x00007fb2f4a8b000)]
+  0x0000000002f3a800 JavaThread "C2 CompilerThread0" daemon [_thread_blocked, id=3762, stack(0x00007fb2f4a8b000,0x00007fb2f4b8c000)]
+  0x0000000002f38800 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=3761, stack(0x00007fb2f4b8c000,0x00007fb2f4c8d000)]
+  0x0000000002eec000 JavaThread "Finalizer" daemon [_thread_blocked, id=3760, stack(0x00007fb2f4c8d000,0x00007fb2f4d8e000)]
+  0x0000000002ee9800 JavaThread "Reference Handler" daemon [_thread_blocked, id=3759, stack(0x00007fb2f4d8e000,0x00007fb2f4e8f000)]
+=>0x0000000002214000 JavaThread "main" [_thread_in_native, id=3724, stack(0x00007fff551a5000,0x00007fff552a5000)]
+
+Other Threads:
+  0x0000000002ee2000 VMThread [stack: 0x00007fb2f4e8f000,0x00007fb2f4f90000] [id=3758]
+  0x0000000002f4a800 WatcherThread [stack: 0x00007fb2f4788000,0x00007fb2f4889000] [id=3765]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Heap
+ PSYoungGen      total 73920K, used 1267K [0x00000007ad800000, 0x00000007b2a80000, 0x0000000800000000)
+  eden space 63360K, 2% used [0x00000007ad800000,0x00000007ad93cd38,0x00000007b15e0000)
+  from space 10560K, 0% used [0x00000007b2030000,0x00000007b2030000,0x00000007b2a80000)
+  to   space 10560K, 0% used [0x00000007b15e0000,0x00000007b15e0000,0x00000007b2030000)
+ ParOldGen       total 168960K, used 0K [0x0000000708800000, 0x0000000712d00000, 0x00000007ad800000)
+  object space 168960K, 0% used [0x0000000708800000,0x0000000708800000,0x0000000712d00000)
+ PSPermGen       total 21248K, used 2301K [0x0000000703600000, 0x0000000704ac0000, 0x0000000708800000)
+  object space 21248K, 10% used [0x0000000703600000,0x000000070383f410,0x0000000704ac0000)
+
+Card table byte_map: [0x00007fb2f6988000,0x00007fb2f716e000] byte_map_base: 0x00007fb2f316d000
+
+Polling page: 0x00007fb330354000
+
+Code Cache  [0x00007fb2f722e000, 0x00007fb2f749e000, 0x00007fb2fa22e000)
+ total_blobs=156 nmethods=0 adapters=124 free_code_cache=48779Kb largest_free_block=49950016
+
+Compilation events (0 events):
+No events
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (0 events):
+No events
+
+Internal exceptions (1 events):
+Event: 0.025 Thread 0x0000000002214000 Threw 0x00000007ad8061b0 at /HUDSON/workspace/jdk7u25-2-build-linux-amd64-product/jdk7u25/hotspot/src/share/vm/prims/jni.cpp:3994
+
+Events (10 events):
+Event: 0.045 loading class 0x0000000002d6c450 done
+Event: 0.045 loading class 0x0000000002e18710
+Event: 0.045 loading class 0x0000000002f59130
+Event: 0.045 loading class 0x0000000002f58be0
+Event: 0.045 loading class 0x0000000002f58be0 done
+Event: 0.045 loading class 0x0000000002f59130 done
+Event: 0.045 loading class 0x0000000002e18710 done
+Event: 0.046 Thread 0x0000000002f62800 Thread added: 0x0000000002f62800
+Event: 4.048 Executing VM operation: EnableBiasedLocking
+Event: 4.048 Executing VM operation: EnableBiasedLocking done
+
+
+Dynamic libraries:
+00400000-00401000 r-xp 00000000 08:06 1444306                            /scratch/pradap/local/share/anaconda/bin/python2.7
+00600000-00601000 rw-p 00000000 08:06 1444306                            /scratch/pradap/local/share/anaconda/bin/python2.7
+01689000-033fd000 rw-p 00000000 00:00 0                                  [heap]
+703600000-704ac0000 rw-p 00000000 00:00 0 
+704ac0000-708800000 rw-p 00000000 00:00 0 
+708800000-712d00000 rw-p 00000000 00:00 0 
+712d00000-7ad800000 rw-p 00000000 00:00 0 
+7ad800000-7b2a80000 rw-p 00000000 00:00 0 
+7b2a80000-800000000 rw-p 00000000 00:00 0 
+3edbe00000-3edbe20000 r-xp 00000000 08:02 2359489                        /lib64/ld-2.12.so
+3edc01f000-3edc020000 r--p 0001f000 08:02 2359489                        /lib64/ld-2.12.so
+3edc020000-3edc021000 rw-p 00020000 08:02 2359489                        /lib64/ld-2.12.so
+3edc021000-3edc022000 rw-p 00000000 00:00 0 
+3edc200000-3edc38a000 r-xp 00000000 08:02 2359490                        /lib64/libc-2.12.so
+3edc38a000-3edc58a000 ---p 0018a000 08:02 2359490                        /lib64/libc-2.12.so
+3edc58a000-3edc58e000 r--p 0018a000 08:02 2359490                        /lib64/libc-2.12.so
+3edc58e000-3edc58f000 rw-p 0018e000 08:02 2359490                        /lib64/libc-2.12.so
+3edc58f000-3edc594000 rw-p 00000000 00:00 0 
+3edc600000-3edc617000 r-xp 00000000 08:02 2359494                        /lib64/libpthread-2.12.so
+3edc617000-3edc817000 ---p 00017000 08:02 2359494                        /lib64/libpthread-2.12.so
+3edc817000-3edc818000 r--p 00017000 08:02 2359494                        /lib64/libpthread-2.12.so
+3edc818000-3edc819000 rw-p 00018000 08:02 2359494                        /lib64/libpthread-2.12.so
+3edc819000-3edc81d000 rw-p 00000000 00:00 0 
+3edca00000-3edca02000 r-xp 00000000 08:02 2359496                        /lib64/libdl-2.12.so
+3edca02000-3edcc02000 ---p 00002000 08:02 2359496                        /lib64/libdl-2.12.so
+3edcc02000-3edcc03000 r--p 00002000 08:02 2359496                        /lib64/libdl-2.12.so
+3edcc03000-3edcc04000 rw-p 00003000 08:02 2359496                        /lib64/libdl-2.12.so
+3edce00000-3edce83000 r-xp 00000000 08:02 2359498                        /lib64/libm-2.12.so
+3edce83000-3edd082000 ---p 00083000 08:02 2359498                        /lib64/libm-2.12.so
+3edd082000-3edd083000 r--p 00082000 08:02 2359498                        /lib64/libm-2.12.so
+3edd083000-3edd084000 rw-p 00083000 08:02 2359498                        /lib64/libm-2.12.so
+3edd600000-3edd607000 r-xp 00000000 08:02 2359530                        /lib64/librt-2.12.so
+3edd607000-3edd806000 ---p 00007000 08:02 2359530                        /lib64/librt-2.12.so
+3edd806000-3edd807000 r--p 00006000 08:02 2359530                        /lib64/librt-2.12.so
+3edd807000-3edd808000 rw-p 00007000 08:02 2359530                        /lib64/librt-2.12.so
+3edda00000-3edda1d000 r-xp 00000000 08:02 2359414                        /lib64/libselinux.so.1
+3edda1d000-3eddc1c000 ---p 0001d000 08:02 2359414                        /lib64/libselinux.so.1
+3eddc1c000-3eddc1d000 r--p 0001c000 08:02 2359414                        /lib64/libselinux.so.1
+3eddc1d000-3eddc1e000 rw-p 0001d000 08:02 2359414                        /lib64/libselinux.so.1
+3eddc1e000-3eddc1f000 rw-p 00000000 00:00 0 
+3edde00000-3eddf15000 r-xp 00000000 08:02 2359531                        /lib64/libglib-2.0.so.0.2800.8
+3eddf15000-3ede115000 ---p 00115000 08:02 2359531                        /lib64/libglib-2.0.so.0.2800.8
+3ede115000-3ede116000 rw-p 00115000 08:02 2359531                        /lib64/libglib-2.0.so.0.2800.8
+3ede116000-3ede117000 rw-p 00000000 00:00 0 
+3ede200000-3ede216000 r-xp 00000000 08:02 2359544                        /lib64/libresolv-2.12.so
+3ede216000-3ede416000 ---p 00016000 08:02 2359544                        /lib64/libresolv-2.12.so
+3ede416000-3ede417000 r--p 00016000 08:02 2359544                        /lib64/libresolv-2.12.so
+3ede417000-3ede418000 rw-p 00017000 08:02 2359544                        /lib64/libresolv-2.12.so
+3ede418000-3ede41a000 rw-p 00000000 00:00 0 
+3ede600000-3ede604000 r-xp 00000000 08:02 2359534                        /lib64/libgthread-2.0.so.0.2800.8
+3ede604000-3ede803000 ---p 00004000 08:02 2359534                        /lib64/libgthread-2.0.so.0.2800.8
+3ede803000-3ede804000 rw-p 00003000 08:02 2359534                        /lib64/libgthread-2.0.so.0.2800.8
+3edea00000-3edea1e000 r-xp 00000000 08:02 165189                         /usr/lib64/libxcb.so.1.1.0
+3edea1e000-3edec1d000 ---p 0001e000 08:02 165189                         /usr/lib64/libxcb.so.1.1.0
+3edec1d000-3edec1e000 rw-p 0001d000 08:02 165189                         /usr/lib64/libxcb.so.1.1.0
+3edee00000-3edee4a000 r-xp 00000000 08:02 2359535                        /lib64/libgobject-2.0.so.0.2800.8
+3edee4a000-3edf049000 ---p 0004a000 08:02 2359535                        /lib64/libgobject-2.0.so.0.2800.8
+3edf049000-3edf04b000 rw-p 00049000 08:02 2359535                        /lib64/libgobject-2.0.so.0.2800.8
+3edf04b000-3edf04c000 rw-p 00000000 00:00 0 
+3edf200000-3edf202000 r-xp 00000000 08:02 159727                         /usr/lib64/libXau.so.6.0.0
+3edf202000-3edf402000 ---p 00002000 08:02 159727                         /usr/lib64/libXau.so.6.0.0
+3edf402000-3edf403000 rw-p 00002000 08:02 159727                         /usr/lib64/libXau.so.6.0.0
+3edf600000-3edf737000 r-xp 00000000 08:02 165190                         /usr/lib64/libX11.so.6.3.0
+3edf737000-3edf937000 ---p 00137000 08:02 165190                         /usr/lib64/libX11.so.6.3.0
+3edf937000-3edf93d000 rw-p 00137000 08:02 165190                         /usr/lib64/libX11.so.6.3.0
+3edfa00000-3edfa11000 r-xp 00000000 08:02 165191                         /usr/lib64/libXext.so.6.4.0
+3edfa11000-3edfc11000 ---p 00011000 08:02 165191                         /usr/lib64/libXext.so.6.4.0
+3edfc11000-3edfc12000 rw-p 00011000 08:02 165191                         /usr/lib64/libXext.so.6.4.0
+3ee0600000-3ee0616000 r-xp 00000000 08:02 2359505                        /lib64/libgcc_s-4.4.7-20120601.so.1
+3ee0616000-3ee0815000 ---p 00016000 08:02 2359505                        /lib64/libgcc_s-4.4.7-20120601.so.1
+3ee0815000-3ee0816000 rw-p 00015000 08:02 2359505                        /lib64/libgcc_s-4.4.7-20120601.so.1
+3ee0a00000-3ee0a25000 r-xp 00000000 08:02 148501                         /usr/lib64/libpng12.so.0.49.0
+3ee0a25000-3ee0c25000 ---p 00025000 08:02 148501                         /usr/lib64/libpng12.so.0.49.0
+3ee0c25000-3ee0c26000 rw-p 00025000 08:02 148501                         /usr/lib64/libpng12.so.0.49.0
+3ee1200000-3ee1240000 r-xp 00000000 08:02 2359547                        /lib64/libdbus-1.so.3.4.0
+3ee1240000-3ee143f000 ---p 00040000 08:02 2359547                        /lib64/libdbus-1.so.3.4.0
+3ee143f000-3ee1440000 r--p 0003f000 08:02 2359547                        /lib64/libdbus-1.so.3.4.0
+3ee1440000-3ee1441000 rw-p 00040000 08:02 2359547                        /lib64/libdbus-1.so.3.4.0
+3ee1600000-3ee1609000 r-xp 00000000 08:02 165212                         /usr/lib64/libXrender.so.1.3.0
+3ee1609000-3ee1808000 ---p 00009000 08:02 165212                         /usr/lib64/libXrender.so.1.3.0
+3ee1808000-3ee1809000 rw-p 00008000 08:02 165212                         /usr/lib64/libXrender.so.1.3.0
+3ee1a00000-3ee1a03000 r-xp 00000000 08:02 2359540                        /lib64/libgmodule-2.0.so.0.2800.8
+3ee1a03000-3ee1c02000 ---p 00003000 08:02 2359540                        /lib64/libgmodule-2.0.so.0.2800.8
+3ee1c02000-3ee1c03000 rw-p 00002000 08:02 2359540                        /lib64/libgmodule-2.0.so.0.2800.8
+3ee1e00000-3ee1e0f000 r-xp 00000000 08:02 165218                         /usr/lib64/libXi.so.6.1.0
+3ee1e0f000-3ee200e000 ---p 0000f000 08:02 165218                         /usr/lib64/libXi.so.6.1.0
+3ee200e000-3ee200f000 rw-p 0000e000 08:02 165218                         /usr/lib64/libXi.so.6.1.0
+3ee2200000-3ee2205000 r-xp 00000000 08:02 165220                         /usr/lib64/libXfixes.so.3.1.0
+3ee2205000-3ee2404000 ---p 00005000 08:02 165220                         /usr/lib64/libXfixes.so.3.1.0
+3ee2404000-3ee2405000 rw-p 00004000 08:02 165220                         /usr/lib64/libXfixes.so.3.1.0
+3ee2600000-3ee2609000 r-xp 00000000 08:02 165221                         /usr/lib64/libXcursor.so.1.0.2
+3ee2609000-3ee2809000 ---p 00009000 08:02 165221                         /usr/lib64/libXcursor.so.1.0.2
+3ee2809000-3ee280a000 rw-p 00009000 08:02 165221                         /usr/lib64/libXcursor.so.1.0.2
+3ee2a00000-3ee2a02000 r-xp 00000000 08:02 165217                         /usr/lib64/libXinerama.so.1.0.0
+3ee2a02000-3ee2c01000 ---p 00002000 08:02 165217                         /usr/lib64/libXinerama.so.1.0.0
+3ee2c01000-3ee2c02000 rw-p 00001000 08:02 165217                         /usr/lib64/libXinerama.so.1.0.0
+3ee2e00000-3ee2e09000 r-xp 00000000 08:02 165219                         /usr/lib64/libXrandr.so.2.2.0
+3ee2e09000-3ee3008000 ---p 00009000 08:02 165219                         /usr/lib64/libXrandr.so.2.2.0
+3ee3008000-3ee3009000 rw-p 00008000 08:02 165219                         /usr/lib64/libXrandr.so.2.2.0
+3ee3200000-3ee32e8000 r-xp 00000000 08:02 133704                         /usr/lib64/libstdc++.so.6.0.13
+3ee32e8000-3ee34e8000 ---p 000e8000 08:02 133704                         /usr/lib64/libstdc++.so.6.0.13
+3ee34e8000-3ee34ef000 r--p 000e8000 08:02 133704                         /usr/lib64/libstdc++.so.6.0.13
+3ee34ef000-3ee34f1000 rw-p 000ef000 08:02 133704                         /usr/lib64/libstdc++.so.6.0.13
+3ee34f1000-3ee3506000 rw-p 00000000 00:00 0 
+3ee3600000-3ee3714000 r-xp 00000000 08:02 2359545                        /lib64/libgio-2.0.so.0.2800.8
+3ee3714000-3ee3913000 ---p 00114000 08:02 2359545                        /lib64/libgio-2.0.so.0.2800.8
+3ee3913000-3ee3918000 rw-p 00113000 08:02 2359545                        /lib64/libgio-2.0.so.0.2800.8
+3ee3918000-3ee391a000 rw-p 00000000 00:00 0 
+3ee3a00000-3ee3a02000 r-xp 00000000 08:02 165223                         /usr/lib64/libXdamage.so.1.1.0
+3ee3a02000-3ee3c01000 ---p 00002000 08:02 165223                         /usr/lib64/libXdamage.so.1.1.0
+3ee3c01000-3ee3c02000 rw-p 00001000 08:02 165223                         /usr/lib64/libXdamage.so.1.1.0
+3ee3e00000-3ee3e2a000 r-xp 00000000 08:02 165215                         /usr/lib64/libpangoft2-1.0.so.0.2800.1
+3ee3e2a000-3ee4029000 ---p 0002a000 08:02 165215                         /usr/lib64/libpangoft2-1.0.so.0.2800.1
+3ee4029000-3ee402b000 rw-p 00029000 08:02 165215                         /usr/lib64/libpangoft2-1.0.so.0.2800.1
+3ee4600000-3ee4648000 r-xp 00000000 08:02 165214                         /usr/lib64/libpango-1.0.so.0.2800.1
+3ee4648000-3ee4848000 ---p 00048000 08:02 165214                         /usr/lib64/libpango-1.0.so.0.2800.1
+3ee4848000-3ee484b000 rw-p 00048000 08:02 165214                         /usr/lib64/libpango-1.0.so.0.2800.1
+3ee4a00000-3ee4a1e000 r-xp 00000000 08:02 165241                         /usr/lib64/libatk-1.0.so.0.3009.1
+3ee4a1e000-3ee4c1e000 ---p 0001e000 08:02 165241                         /usr/lib64/libatk-1.0.so.0.3009.1
+3ee4c1e000-3ee4c21000 rw-p 0001e000 08:02 165241                         /usr/lib64/libatk-1.0.so.0.3009.1
+3ee4e00000-3ee4e02000 r-xp 00000000 08:02 165222                         /usr/lib64/libXcomposite.so.1.0.0
+3ee4e02000-3ee5001000 ---p 00002000 08:02 165222                         /usr/lib64/libXcomposite.so.1.0.0
+3ee5001000-3ee5002000 rw-p 00001000 08:02 165222                         /usr/lib64/libXcomposite.so.1.0.0
+3ee5600000-3ee5620000 r-xp 00000000 08:02 165224                         /usr/lib64/libgdk_pixbuf-2.0.so.0.2400.1
+3ee5620000-3ee5820000 ---p 00020000 08:02 165224                         /usr/lib64/libgdk_pixbuf-2.0.so.0.2400.1
+3ee5820000-3ee5821000 rw-p 00020000 08:02 165224                         /usr/lib64/libgdk_pixbuf-2.0.so.0.2400.1
+3ee5a00000-3ee5e73000 r-xp 00000000 08:02 165242                         /usr/lib64/libgtk-x11-2.0.so.0.2400.23
+3ee5e73000-3ee6073000 ---p 00473000 08:02 165242                         /usr/lib64/libgtk-x11-2.0.so.0.2400.23
+3ee6073000-3ee607e000 rw-p 00473000 08:02 165242                         /usr/lib64/libgtk-x11-2.0.so.0.2400.23
+3ee607e000-3ee6080000 rw-p 00000000 00:00 0 
+3ee6200000-3ee6203000 r-xp 00000000 08:02 2359640                        /lib64/libcom_err.so.2.1
+3ee6203000-3ee6402000 ---p 00003000 08:02 2359640                        /lib64/libcom_err.so.2.1
+3ee6402000-3ee6403000 r--p 00002000 08:02 2359640                        /lib64/libcom_err.so.2.1
+3ee6403000-3ee6404000 rw-p 00003000 08:02 2359640                        /lib64/libcom_err.so.2.1
+3ee6a00000-3ee6abb000 r-xp 00000000 08:02 165240                         /usr/lib64/libgdk-x11-2.0.so.0.2400.23
+3ee6abb000-3ee6cbb000 ---p 000bb000 08:02 165240                         /usr/lib64/libgdk-x11-2.0.so.0.2400.23
+3ee6cbb000-3ee6cc0000 rw-p 000bb000 08:02 165240                         /usr/lib64/libgdk-x11-2.0.so.0.2400.23
+3ee6e00000-3ee6e0b000 r-xp 00000000 08:02 165216                         /usr/lib64/libpangocairo-1.0.so.0.2800.1
+3ee6e0b000-3ee700b000 ---p 0000b000 08:02 165216                         /usr/lib64/libpangocairo-1.0.so.0.2800.1
+3ee700b000-3ee700c000 rw-p 0000b000 08:02 165216                         /usr/lib64/libpangocairo-1.0.so.0.2800.1
+3ee7e00000-3ee7e02000 r-xp 00000000 08:02 2359551                        /lib64/libkeyutils.so.1.3
+3ee7e02000-3ee8001000 ---p 00002000 08:02 2359551                        /lib64/libkeyutils.so.1.3
+3ee8001000-3ee8002000 r--p 00001000 08:02 2359551                        /lib64/libkeyutils.so.1.3
+3ee8002000-3ee8003000 rw-p 00002000 08:02 2359551                        /lib64/libkeyutils.so.1.3
+3ee8200000-3ee83b9000 r-xp 00000000 08:02 165304                         /usr/lib64/libcrypto.so.1.0.1e
+3ee83b9000-3ee85b8000 ---p 001b9000 08:02 165304                         /usr/lib64/libcrypto.so.1.0.1e
+3ee85b8000-3ee85d3000 r--p 001b8000 08:02 165304                         /usr/lib64/libcrypto.so.1.0.1e
+3ee85d3000-3ee85df000 rw-p 001d3000 08:02 165304                         /usr/lib64/libcrypto.so.1.0.1e
+3ee85df000-3ee85e3000 rw-p 00000000 00:00 0 
+3ee8e00000-3ee8e2e000 r-xp 00000000 08:02 2359306                        /lib64/libncursesw.so.5.7
+3ee8e2e000-3ee902d000 ---p 0002e000 08:02 2359306                        /lib64/libncursesw.so.5.7
+3ee902d000-3ee902e000 rw-p 0002d000 08:02 2359306                        /lib64/libncursesw.so.5.7
+3ee9200000-3ee9217000 r-xp 00000000 08:02 165192                         /usr/lib64/libICE.so.6.3.0
+3ee9217000-3ee9417000 ---p 00017000 08:02 165192                         /usr/lib64/libICE.so.6.3.0
+3ee9417000-3ee9418000 rw-p 00017000 08:02 165192                         /usr/lib64/libICE.so.6.3.0
+3ee9418000-3ee941c000 rw-p 00000000 00:00 0 
+3ee9600000-3ee9662000 r-xp 00000000 08:02 165332                         /usr/lib64/libssl.so.1.0.1e
+3ee9662000-3ee9861000 ---p 00062000 08:02 165332                         /usr/lib64/libssl.so.1.0.1e
+3ee9861000-3ee9865000 r--p 00061000 08:02 165332                         /usr/lib64/libssl.so.1.0.1e
+3ee9865000-3ee986c000 rw-p 00065000 08:02 165332                         /usr/lib64/libssl.so.1.0.1e
+3ee9a00000-3ee9a02000 r-xp 00000000 08:02 2359659                        /lib64/libfreebl3.so
+3ee9a02000-3ee9c01000 ---p 00002000 08:02 2359659                        /lib64/libfreebl3.so
+3ee9c01000-3ee9c02000 r--p 00001000 08:02 2359659                        /lib64/libfreebl3.so
+3ee9c02000-3ee9c03000 rw-p 00002000 08:02 2359659                        /lib64/libfreebl3.so
+3ee9e00000-3ee9e07000 r-xp 00000000 08:02 2359660                        /lib64/libcrypt-2.12.so
+3ee9e07000-3eea007000 ---p 00007000 08:02 2359660                        /lib64/libcrypt-2.12.so
+3eea007000-3eea008000 r--p 00007000 08:02 2359660                        /lib64/libcrypt-2.12.so
+3eea008000-3eea009000 rw-p 00008000 08:02 2359660                        /lib64/libcrypt-2.12.so
+3eea009000-3eea037000 rw-p 00000000 00:00 0 
+3eea200000-3eea22c000 r-xp 00000000 08:02 167498                         /usr/lib64/libvorbis.so.0.4.3
+3eea22c000-3eea42b000 ---p 0002c000 08:02 167498                         /usr/lib64/libvorbis.so.0.4.3
+3eea42b000-3eea42c000 rw-p 0002b000 08:02 167498                         /usr/lib64/libvorbis.so.0.4.3
+3eea600000-3eea622000 r-xp 00000000 08:02 165270                         /usr/lib64/libdbus-glib-1.so.2.1.0
+3eea622000-3eea821000 ---p 00022000 08:02 165270                         /usr/lib64/libdbus-glib-1.so.2.1.0
+3eea821000-3eea823000 rw-p 00021000 08:02 165270                         /usr/lib64/libdbus-glib-1.so.2.1.0
+3eeaa00000-3eeaa5e000 r-xp 00000000 08:02 165251                         /usr/lib64/libORBit-2.so.0.1.0
+3eeaa5e000-3eeac5d000 ---p 0005e000 08:02 165251                         /usr/lib64/libORBit-2.so.0.1.0
+3eeac5d000-3eeac70000 rw-p 0005d000 08:02 165251                         /usr/lib64/libORBit-2.so.0.1.0
+3eed200000-3eed23b000 r-xp 00000000 08:02 165252                         /usr/lib64/libgconf-2.so.4.1.5
+3eed23b000-3eed43a000 ---p 0003b000 08:02 165252                         /usr/lib64/libgconf-2.so.4.1.5
+3eed43a000-3eed43f000 rw-p 0003a000 08:02 165252                         /usr/lib64/libgconf-2.so.4.1.5
+3eed600000-3eed602000 r-xp 00000000 08:02 2359643                        /lib64/libutil-2.12.so
+3eed602000-3eed801000 ---p 00002000 08:02 2359643                        /lib64/libutil-2.12.so
+3eed801000-3eed802000 r--p 00001000 08:02 2359643                        /lib64/libutil-2.12.so
+3eed802000-3eed803000 rw-p 00002000 08:02 2359643                        /lib64/libutil-2.12.so
+3eeda00000-3eeda1d000 r-xp 00000000 08:02 2359477                        /lib64/libtinfo.so.5.7
+3eeda1d000-3eedc1c000 ---p 0001d000 08:02 2359477                        /lib64/libtinfo.so.5.7
+3eedc1c000-3eedc20000 rw-p 0001c000 08:02 2359477                        /lib64/libtinfo.so.5.7
+3eedc20000-3eedc21000 rw-p 00000000 00:00 0 
+3eede00000-3eede10000 r-xp 00000000 08:02 165351                         /usr/lib64/libavahi-client.so.3.2.5
+3eede10000-3eee00f000 ---p 00010000 08:02 165351                         /usr/lib64/libavahi-client.so.3.2.5
+3eee00f000-3eee010000 rw-p 0000f000 08:02 165351                         /usr/lib64/libavahi-client.so.3.2.5
+3eee200000-3eee20b000 r-xp 00000000 08:02 165338                         /usr/lib64/libavahi-common.so.3.5.1
+3eee20b000-3eee40b000 ---p 0000b000 08:02 165338                         /usr/lib64/libavahi-common.so.3.5.1
+3eee40b000-3eee40c000 rw-p 0000b000 08:02 165338                         /usr/lib64/libavahi-common.so.3.5.1
+3eeea00000-3eeea09000 r-xp 00000000 08:02 165210                         /usr/lib64/libltdl.so.7.2.1
+3eeea09000-3eeec08000 ---p 00009000 08:02 165210                         /usr/lib64/libltdl.so.7.2.1
+3eeec08000-3eeec09000 rw-p 00008000 08:02 165210                         /usr/lib64/libltdl.so.7.2.1
+3eeee00000-3eeee17000 r-xp 00000000 08:02 165354                         /usr/lib64/libbonobo-activation.so.4.0.0
+3eeee17000-3eef017000 ---p 00017000 08:02 165354                         /usr/lib64/libbonobo-activation.so.4.0.0
+3eef017000-3eef01b000 rw-p 00017000 08:02 165354                         /usr/lib64/libbonobo-activation.so.4.0.0
+3eef200000-3eef205000 r-xp 00000000 08:02 165353                         /usr/lib64/libORBitCosNaming-2.so.0.1.0
+3eef205000-3eef404000 ---p 00005000 08:02 165353                         /usr/lib64/libORBitCosNaming-2.so.0.1.0
+3eef404000-3eef406000 rw-p 00004000 08:02 165353                         /usr/lib64/libORBitCosNaming-2.so.0.1.0
+3eef800000-3eef805000 r-xp 00000000 08:02 136934                         /usr/lib64/libogg.so.0.6.0
+3eef805000-3eefa05000 ---p 00005000 08:02 136934                         /usr/lib64/libogg.so.0.6.0
+3eefa05000-3eefa06000 rw-p 00005000 08:02 136934                         /usr/lib64/libogg.so.0.6.0
+3eefc00000-3eefc14000 r-xp 00000000 08:02 165525                         /usr/lib64/libgnome-keyring.so.0.1.1
+3eefc14000-3eefe14000 ---p 00014000 08:02 165525                         /usr/lib64/libgnome-keyring.so.0.1.1
+3eefe14000-3eefe15000 rw-p 00014000 08:02 165525                         /usr/lib64/libgnome-keyring.so.0.1.1
+3ef0800000-3ef0803000 r-xp 00000000 08:02 165350                         /usr/lib64/libavahi-glib.so.1.0.1
+3ef0803000-3ef0a02000 ---p 00003000 08:02 165350                         /usr/lib64/libavahi-glib.so.1.0.1
+3ef0a02000-3ef0a03000 rw-p 00002000 08:02 165350                         /usr/lib64/libavahi-glib.so.1.0.1
+3ef1000000-3ef1067000 r-xp 00000000 08:02 165352                         /usr/lib64/libgnomevfs-2.so.0.2400.2
+3ef1067000-3ef1266000 ---p 00067000 08:02 165352                         /usr/lib64/libgnomevfs-2.so.0.2400.2
+3ef1266000-3ef126b000 rw-p 00066000 08:02 165352                         /usr/lib64/libgnomevfs-2.so.0.2400.2
+3ef1400000-3ef1407000 r-xp 00000000 08:02 165248                         /usr/lib64/libgailutil.so.18.0.1
+3ef1407000-3ef1606000 ---p 00007000 08:02 165248                         /usr/lib64/libgailutil.so.18.0.1
+3ef1606000-3ef1607000 rw-p 00006000 08:02 165248                         /usr/lib64/libgailutil.so.18.0.1
+3ef1800000-3ef1866000 r-xp 00000000 08:02 165355                         /usr/lib64/libbonobo-2.so.0.0.0
+3ef1866000-3ef1a65000 ---p 00066000 08:02 165355                         /usr/lib64/libbonobo-2.so.0.0.0
+3ef1a65000-3ef1a76000 rw-p 00065000 08:02 165355                         /usr/lib64/libbonobo-2.so.0.0.0
+3ef1c00000-3ef1c11000 r-xp 00000000 08:02 167516                         /usr/lib64/libtdb.so.1.2.10
+3ef1c11000-3ef1e10000 ---p 00011000 08:02 167516                         /usr/lib64/libtdb.so.1.2.10
+3ef1e10000-3ef1e11000 rw-p 00010000 08:02 167516                         /usr/lib64/libtdb.so.1.2.10
+3ef2000000-3ef2015000 r-xp 00000000 08:02 165357                         /usr/lib64/libgnome-2.so.0.2800.0
+3ef2015000-3ef2215000 ---p 00015000 08:02 165357                         /usr/lib64/libgnome-2.so.0.2800.0
+3ef2215000-3ef2217000 rw-p 00015000 08:02 165357                         /usr/lib64/libgnome-2.so.0.2800.0
+3ef2400000-3ef246d000 r-xp 00000000 08:02 165366                         /usr/lib64/libbonoboui-2.so.0.0.0
+3ef246d000-3ef266c000 ---p 0006d000 08:02 165366                         /usr/lib64/libbonoboui-2.so.0.0.0
+3ef266c000-3ef2671000 rw-p 0006c000 08:02 165366                         /usr/lib64/libbonoboui-2.so.0.0.0
+3ef2800000-3ef2832000 r-xp 00000000 08:02 165250                         /usr/lib64/libgnomecanvas-2.so.0.2600.0
+3ef2832000-3ef2a32000 ---p 00032000 08:02 165250                         /usr/lib64/libgnomecanvas-2.so.0.2600.0
+3ef2a32000-3ef2a34000 rw-p 00032000 08:02 165250                         /usr/lib64/libgnomecanvas-2.so.0.2600.0
+3ef2c00000-3ef2c19000 r-xp 00000000 08:02 165249                         /usr/lib64/libart_lgpl_2.so.2.3.20
+3ef2c19000-3ef2e18000 ---p 00019000 08:02 165249                         /usr/lib64/libart_lgpl_2.so.2.3.20
+3ef2e18000-3ef2e19000 rw-p 00018000 08:02 165249                         /usr/lib64/libart_lgpl_2.so.2.3.20
+3ef3c00000-3ef3c07000 r-xp 00000000 08:02 148117                         /usr/lib64/libvorbisfile.so.3.3.2
+3ef3c07000-3ef3e06000 ---p 00007000 08:02 148117                         /usr/lib64/libvorbisfile.so.3.3.2
+3ef3e06000-3ef3e07000 rw-p 00006000 08:02 148117                         /usr/lib64/libvorbisfile.so.3.3.2
+3ef4000000-3ef400f000 r-xp 00000000 08:02 167517                         /usr/lib64/libcanberra.so.0.2.1
+3ef400f000-3ef420f000 ---p 0000f000 08:02 167517                         /usr/lib64/libcanberra.so.0.2.1
+3ef420f000-3ef4210000 rw-p 0000f000 08:02 167517                         /usr/lib64/libcanberra.so.0.2.1
+3ef4400000-3ef4404000 r-xp 00000000 08:02 167518                         /usr/lib64/libcanberra-gtk.so.0.1.5
+3ef4404000-3ef4603000 ---p 00004000 08:02 167518                         /usr/lib64/libcanberra-gtk.so.0.1.5
+3ef4603000-3ef4604000 rw-p 00003000 08:02 167518                         /usr/lib64/libcanberra-gtk.so.0.1.5
+7fb2b4000000-7fb2b4021000 rw-p 00000000 00:00 0 
+7fb2b4021000-7fb2b8000000 ---p 00000000 00:00 0 
+7fb2b8000000-7fb2b8021000 rw-p 00000000 00:00 0 
+7fb2b8021000-7fb2bc000000 ---p 00000000 00:00 0 
+7fb2bc000000-7fb2bc021000 rw-p 00000000 00:00 0 
+7fb2bc021000-7fb2c0000000 ---p 00000000 00:00 0 
+7fb2c0000000-7fb2c0021000 rw-p 00000000 00:00 0 
+7fb2c0021000-7fb2c4000000 ---p 00000000 00:00 0 
+7fb2c4000000-7fb2c4021000 rw-p 00000000 00:00 0 
+7fb2c4021000-7fb2c8000000 ---p 00000000 00:00 0 
+7fb2c8000000-7fb2c8021000 rw-p 00000000 00:00 0 
+7fb2c8021000-7fb2cc000000 ---p 00000000 00:00 0 
+7fb2cc000000-7fb2cc021000 rw-p 00000000 00:00 0 
+7fb2cc021000-7fb2d0000000 ---p 00000000 00:00 0 
+7fb2d0000000-7fb2d0021000 rw-p 00000000 00:00 0 
+7fb2d0021000-7fb2d4000000 ---p 00000000 00:00 0 
+7fb2d4000000-7fb2d4021000 rw-p 00000000 00:00 0 
+7fb2d4021000-7fb2d8000000 ---p 00000000 00:00 0 
+7fb2d8000000-7fb2d8021000 rw-p 00000000 00:00 0 
+7fb2d8021000-7fb2dc000000 ---p 00000000 00:00 0 
+7fb2dc000000-7fb2dc021000 rw-p 00000000 00:00 0 
+7fb2dc021000-7fb2e0000000 ---p 00000000 00:00 0 
+7fb2e01b0000-7fb2e8000000 rw-p 00000000 00:00 0 
+7fb2e8000000-7fb2e8021000 rw-p 00000000 00:00 0 
+7fb2e8021000-7fb2ec000000 ---p 00000000 00:00 0 
+7fb2ec3d1000-7fb2ec598000 rw-s 00000000 00:04 1769495                    /SYSV00000000 (deleted)
+7fb2ec598000-7fb2ec5f8000 rw-s 00000000 00:04 1736726                    /SYSV00000000 (deleted)
+7fb2ec5f8000-7fb2ec7bf000 rw-s 00000000 00:04 1703957                    /SYSV00000000 (deleted)
+7fb2ec914000-7fb2ec9c4000 r--p 00000000 08:02 274278                     /usr/share/fonts/dejavu/DejaVuSans.ttf
+7fb2ec9c4000-7fb2ec9cf000 r-xp 00000000 08:06 1459810                    /scratch/pradap/local/share/anaconda/lib/libkrb5support.so.0.1
+7fb2ec9cf000-7fb2ecbce000 ---p 0000b000 08:06 1459810                    /scratch/pradap/local/share/anaconda/lib/libkrb5support.so.0.1
+7fb2ecbce000-7fb2ecbcf000 rw-p 0000a000 08:06 1459810                    /scratch/pradap/local/share/anaconda/lib/libkrb5support.so.0.1
+7fb2ecbcf000-7fb2ecbd2000 r-xp 00000000 08:06 1459781                    /scratch/pradap/local/share/anaconda/lib/libcom_err.so.3.0
+7fb2ecbd2000-7fb2ecdd1000 ---p 00003000 08:06 1459781                    /scratch/pradap/local/share/anaconda/lib/libcom_err.so.3.0
+7fb2ecdd1000-7fb2ecdd2000 rw-p 00002000 08:06 1459781                    /scratch/pradap/local/share/anaconda/lib/libcom_err.so.3.0
+7fb2ecdd2000-7fb2ecdff000 r-xp 00000000 08:06 1459790                    /scratch/pradap/local/share/anaconda/lib/libk5crypto.so.3.1
+7fb2ecdff000-7fb2ecffe000 ---p 0002d000 08:06 1459790                    /scratch/pradap/local/share/anaconda/lib/libk5crypto.so.3.1
+7fb2ecffe000-7fb2ed000000 rw-p 0002c000 08:06 1459790                    /scratch/pradap/local/share/anaconda/lib/libk5crypto.so.3.1
+7fb2ed000000-7fb2ed001000 rw-p 00000000 00:00 0 
+7fb2ed001000-7fb2ed0c1000 r-xp 00000000 08:06 1459807                    /scratch/pradap/local/share/anaconda/lib/libkrb5.so.3.3
+7fb2ed0c1000-7fb2ed2c0000 ---p 000c0000 08:06 1459807                    /scratch/pradap/local/share/anaconda/lib/libkrb5.so.3.3
+7fb2ed2c0000-7fb2ed2ce000 rw-p 000bf000 08:06 1459807                    /scratch/pradap/local/share/anaconda/lib/libkrb5.so.3.3
+7fb2ed2ce000-7fb2ed312000 r-xp 00000000 08:06 1459784                    /scratch/pradap/local/share/anaconda/lib/libgssapi_krb5.so.2.2
+7fb2ed312000-7fb2ed512000 ---p 00044000 08:06 1459784                    /scratch/pradap/local/share/anaconda/lib/libgssapi_krb5.so.2.2
+7fb2ed512000-7fb2ed515000 rw-p 00044000 08:06 1459784                    /scratch/pradap/local/share/anaconda/lib/libgssapi_krb5.so.2.2
+7fb2ed515000-7fb2ed51d000 r-xp 00000000 08:02 2359644                    /lib64/libpopt.so.0.0.0
+7fb2ed51d000-7fb2ed71d000 ---p 00008000 08:02 2359644                    /lib64/libpopt.so.0.0.0
+7fb2ed71d000-7fb2ed71e000 rw-p 00008000 08:02 2359644                    /lib64/libpopt.so.0.0.0
+7fb2ed71e000-7fb2ed7b7000 r-xp 00000000 08:02 139516                     /usr/lib64/libgnomeui-2.so.0.2400.1
+7fb2ed7b7000-7fb2ed9b6000 ---p 00099000 08:02 139516                     /usr/lib64/libgnomeui-2.so.0.2400.1
+7fb2ed9b6000-7fb2ed9bc000 rw-p 00098000 08:02 139516                     /usr/lib64/libgnomeui-2.so.0.2400.1
+7fb2ed9bc000-7fb2ed9c1000 r-xp 00000000 08:02 659993                     /usr/lib64/gtk-2.0/modules/libcanberra-gtk-module.so
+7fb2ed9c1000-7fb2edbc1000 ---p 00005000 08:02 659993                     /usr/lib64/gtk-2.0/modules/libcanberra-gtk-module.so
+7fb2edbc1000-7fb2edbc2000 rw-p 00005000 08:02 659993                     /usr/lib64/gtk-2.0/modules/libcanberra-gtk-module.so
+7fb2edbc2000-7fb2edbec000 r-xp 00000000 08:02 399533                     /usr/lib64/gtk-2.0/2.10.0/engines/libclearlooks.so
+7fb2edbec000-7fb2eddec000 ---p 0002a000 08:02 399533                     /usr/lib64/gtk-2.0/2.10.0/engines/libclearlooks.so
+7fb2eddec000-7fb2edded000 rw-p 0002a000 08:02 399533                     /usr/lib64/gtk-2.0/2.10.0/engines/libclearlooks.so
+7fb2edded000-7fb2ede67000 r-xp 00000000 08:06 2497543                    /scratch/pradap/local/share/anaconda/lib/libpixman-1.so.0.26.2
+7fb2ede67000-7fb2ee066000 ---p 0007a000 08:06 2497543                    /scratch/pradap/local/share/anaconda/lib/libpixman-1.so.0.26.2
+7fb2ee066000-7fb2ee06c000 rw-p 00079000 08:06 2497543                    /scratch/pradap/local/share/anaconda/lib/libpixman-1.so.0.26.2
+7fb2ee06c000-7fb2f0000000 rw-p 00000000 00:00 0 
+7fb2f0000000-7fb2f0021000 rw-p 00000000 00:00 0 
+7fb2f0021000-7fb2f4000000 ---p 00000000 00:00 0 
+7fb2f4062000-7fb2f419e000 r-xp 00000000 08:06 2885172                    /scratch/pradap/local/share/anaconda/lib/libcairo.so.2.11200.18
+7fb2f419e000-7fb2f439d000 ---p 0013c000 08:06 2885172                    /scratch/pradap/local/share/anaconda/lib/libcairo.so.2.11200.18
+7fb2f439d000-7fb2f43a1000 rw-p 0013b000 08:06 2885172                    /scratch/pradap/local/share/anaconda/lib/libcairo.so.2.11200.18
+7fb2f43a1000-7fb2f43a2000 rw-p 00000000 00:00 0 
+7fb2f43c9000-7fb2f43cd000 r--s 00000000 08:06 3555394                    /scratch/pradap/local/share/anaconda/var/cache/fontconfig/87f5e051180a7a75f16eb6fe7dbd3749-le64.cache-4
+7fb2f43cd000-7fb2f43d8000 r--s 00000000 08:06 3555393                    /scratch/pradap/local/share/anaconda/var/cache/fontconfig/b79f3aaa7d385a141ab53ec885cc22a8-le64.cache-4
+7fb2f43d8000-7fb2f43df000 r--s 00000000 08:06 3555392                    /scratch/pradap/local/share/anaconda/var/cache/fontconfig/9002a69689e7a2331bf56772654b6d83-le64.cache-4
+7fb2f43df000-7fb2f43e2000 r--s 00000000 08:06 3555391                    /scratch/pradap/local/share/anaconda/var/cache/fontconfig/0b1bcc92b4d25cc154d77dafe3bceaa0-le64.cache-4
+7fb2f43e2000-7fb2f43e4000 r--s 00000000 08:06 3555390                    /scratch/pradap/local/share/anaconda/var/cache/fontconfig/2e1514a9fdd499050989183bb65136db-le64.cache-4
+7fb2f43e4000-7fb2f4403000 r--s 00000000 08:06 3555381                    /scratch/pradap/local/share/anaconda/var/cache/fontconfig/73a61b34dd8ca4d8a159807604ab432f-le64.cache-4
+7fb2f4403000-7fb2f4405000 r-xp 00000000 08:02 159748                     /usr/lib64/gconv/UTF-16.so
+7fb2f4405000-7fb2f4605000 ---p 00002000 08:02 159748                     /usr/lib64/gconv/UTF-16.so
+7fb2f4605000-7fb2f4606000 r--p 00002000 08:02 159748                     /usr/lib64/gconv/UTF-16.so
+7fb2f4606000-7fb2f4607000 rw-p 00003000 08:02 159748                     /usr/lib64/gconv/UTF-16.so
+7fb2f4607000-7fb2f4687000 rw-p 00000000 00:00 0 
+7fb2f4687000-7fb2f468a000 ---p 00000000 00:00 0 
+7fb2f468a000-7fb2f4788000 rw-p 00000000 00:00 0 
+7fb2f4788000-7fb2f4789000 ---p 00000000 00:00 0 
+7fb2f4789000-7fb2f4889000 rw-p 00000000 00:00 0 
+7fb2f4889000-7fb2f488c000 ---p 00000000 00:00 0 
+7fb2f488c000-7fb2f498a000 rw-p 00000000 00:00 0 
+7fb2f498a000-7fb2f498d000 ---p 00000000 00:00 0 
+7fb2f498d000-7fb2f4a8b000 rw-p 00000000 00:00 0 
+7fb2f4a8b000-7fb2f4a8e000 ---p 00000000 00:00 0 
+7fb2f4a8e000-7fb2f4b8c000 rw-p 00000000 00:00 0 
+7fb2f4b8c000-7fb2f4b8f000 ---p 00000000 00:00 0 
+7fb2f4b8f000-7fb2f4c8d000 rw-p 00000000 00:00 0 
+7fb2f4c8d000-7fb2f4c90000 ---p 00000000 00:00 0 
+7fb2f4c90000-7fb2f4d8e000 rw-p 00000000 00:00 0 
+7fb2f4d8e000-7fb2f4d91000 ---p 00000000 00:00 0 
+7fb2f4d91000-7fb2f4e8f000 rw-p 00000000 00:00 0 
+7fb2f4e8f000-7fb2f4e90000 ---p 00000000 00:00 0 
+7fb2f4e90000-7fb2f5e9f000 rw-p 00000000 00:00 0 
+7fb2f5e9f000-7fb2f605c000 r--s 039f9000 08:06 6947762                    /scratch/pradap/local/share/jdk1.7.0_25/jre/lib/rt.jar
+7fb2f605c000-7fb2f605d000 ---p 00000000 00:00 0 
+7fb2f605d000-7fb2f615d000 rw-p 00000000 00:00 0 
+7fb2f615d000-7fb2f615e000 ---p 00000000 00:00 0 
+7fb2f615e000-7fb2f625e000 rw-p 00000000 00:00 0 
+7fb2f625e000-7fb2f625f000 ---p 00000000 00:00 0 
+7fb2f625f000-7fb2f635f000 rw-p 00000000 00:00 0 
+7fb2f635f000-7fb2f6360000 ---p 00000000 00:00 0 
+7fb2f6360000-7fb2f64b3000 rw-p 00000000 00:00 0 
+7fb2f64b3000-7fb2f6988000 rw-p 00000000 00:00 0 
+7fb2f6988000-7fb2f6993000 rw-p 00000000 00:00 0 
+7fb2f6993000-7fb2f69b1000 rw-p 00000000 00:00 0 
+7fb2f69b1000-7fb2f6a04000 rw-p 00000000 00:00 0 
+7fb2f6a04000-7fb2f6ed9000 rw-p 00000000 00:00 0 
+7fb2f6ed9000-7fb2f6f03000 rw-p 00000000 00:00 0 
+7fb2f6f03000-7fb2f716d000 rw-p 00000000 00:00 0 
+7fb2f716d000-7fb2f7178000 rw-p 00000000 00:00 0 
+7fb2f7178000-7fb2f722e000 rw-p 00000000 00:00 0 
+7fb2f722e000-7fb2f749e000 rwxp 00000000 00:00 0 
+7fb2f749e000-7fb2fa22e000 rw-p 00000000 00:00 0 
+7fb2fa22e000-7fb2fa249000 r-xp 00000000 08:06 6947913                    /scratch/pradap/local/share/jdk1.7.0_25/jre/lib/amd64/libzip.so
+7fb2fa249000-7fb2fa448000 ---p 0001b000 08:06 6947913                    /scratch/pradap/local/share/jdk1.7.0_25/jre/lib/amd64/libzip.so
+7fb2fa448000-7fb2fa449000 rw-p 0001a000 08:06 6947913                    /scratch/pradap/local/share/jdk1.7.0_25/jre/lib/amd64/libzip.so
+7fb2fa449000-7fb2fac4e000 r--s 00000000 08:02 1705332                    /var/lib/sss/mc/passwd
+7fb2fac4e000-7fb2fac56000 r-xp 00000000 08:02 2359382                    /lib64/libnss_sss.so.2
+7fb2fac56000-7fb2fae55000 ---p 00008000 08:02 2359382                    /lib64/libnss_sss.so.2
+7fb2fae55000-7fb2fae56000 rw-p 00007000 08:02 2359382                    /lib64/libnss_sss.so.2
+7fb2fae56000-7fb2fae62000 r-xp 00000000 08:02 2359418                    /lib64/libnss_files-2.12.so
+7fb2fae62000-7fb2fb062000 ---p 0000c000 08:02 2359418                    /lib64/libnss_files-2.12.so
+7fb2fb062000-7fb2fb063000 r--p 0000c000 08:02 2359418                    /lib64/libnss_files-2.12.so
+7fb2fb063000-7fb2fb064000 rw-p 0000d000 08:02 2359418                    /lib64/libnss_files-2.12.so
+7fb2fb064000-7fb2fb08d000 r-xp 00000000 08:06 6947922                    /scratch/pradap/local/share/jdk1.7.0_25/jre/lib/amd64/libjava.so
+7fb2fb08d000-7fb2fb28d000 ---p 00029000 08:06 6947922                    /scratch/pradap/local/share/jdk1.7.0_25/jre/lib/amd64/libjava.so
+7fb2fb28d000-7fb2fb28f000 rw-p 00029000 08:06 6947922                    /scratch/pradap/local/share/jdk1.7.0_25/jre/lib/amd64/libjava.so
+7fb2fb28f000-7fb2fb29c000 r-xp 00000000 08:06 6947880                    /scratch/pradap/local/share/jdk1.7.0_25/jre/lib/amd64/libverify.so
+7fb2fb29c000-7fb2fb49b000 ---p 0000d000 08:06 6947880                    /scratch/pradap/local/share/jdk1.7.0_25/jre/lib/amd64/libverify.so
+7fb2fb49b000-7fb2fb49d000 rw-p 0000c000 08:06 6947880                    /scratch/pradap/local/share/jdk1.7.0_25/jre/lib/amd64/libverify.so
+7fb2fb49d000-7fb2fbede000 r-xp 00000000 08:06 6947891                    /scratch/pradap/local/share/jdk1.7.0_25/jre/lib/amd64/server/libjvm.so
+7fb2fbede000-7fb2fc0de000 ---p 00a41000 08:06 6947891                    /scratch/pradap/local/share/jdk1.7.0_25/jre/lib/amd64/server/libjvm.so
+7fb2fc0de000-7fb2fc181000 rw-p 00a41000 08:06 6947891                    /scratch/pradap/local/share/jdk1.7.0_25/jre/lib/amd64/server/libjvm.so
+7fb2fc181000-7fb2fc2bd000 rw-p 00000000 00:00 0 
+7fb2fc2bd000-7fb2fc4cd000 r-xp 00000000 08:06 3015945                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/PyQt4/QtCore.so
+7fb2fc4cd000-7fb2fc6cd000 ---p 00210000 08:06 3015945                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/PyQt4/QtCore.so
+7fb2fc6cd000-7fb2fc72e000 rw-p 00210000 08:06 3015945                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/PyQt4/QtCore.so
+7fb2fc72e000-7fb2fc749000 r-xp 00000000 08:06 2507675                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/sip.so
+7fb2fc749000-7fb2fc948000 ---p 0001b000 08:06 2507675                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/sip.so
+7fb2fc948000-7fb2fc94b000 rw-p 0001a000 08:06 2507675                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/sip.so
+7fb2fc94b000-7fb2fca9b000 r-xp 00000000 08:06 2884800                    /scratch/pradap/local/share/anaconda/lib/libxml2.so.2.9.2
+7fb2fca9b000-7fb2fcc9a000 ---p 00150000 08:06 2884800                    /scratch/pradap/local/share/anaconda/lib/libxml2.so.2.9.2
+7fb2fcc9a000-7fb2fcca4000 rw-p 0014f000 08:06 2884800                    /scratch/pradap/local/share/anaconda/lib/libxml2.so.2.9.2
+7fb2fcca4000-7fb2fcca5000 rw-p 00000000 00:00 0 
+7fb2fcca5000-7fb2fcce0000 r-xp 00000000 08:06 1455206                    /scratch/pradap/local/share/anaconda/lib/libfontconfig.so.1.8.0
+7fb2fcce0000-7fb2fcee0000 ---p 0003b000 08:06 1455206                    /scratch/pradap/local/share/anaconda/lib/libfontconfig.so.1.8.0
+7fb2fcee0000-7fb2fcee2000 rw-p 0003b000 08:06 1455206                    /scratch/pradap/local/share/anaconda/lib/libfontconfig.so.1.8.0
+7fb2fcee2000-7fb2fcee9000 r-xp 00000000 08:02 165193                     /usr/lib64/libSM.so.6.0.1
+7fb2fcee9000-7fb2fd0e9000 ---p 00007000 08:02 165193                     /usr/lib64/libSM.so.6.0.1
+7fb2fd0e9000-7fb2fd0ea000 rw-p 00007000 08:02 165193                     /usr/lib64/libSM.so.6.0.1
+7fb2fd0ea000-7fb2fd178000 r-xp 00000000 08:06 2884647                    /scratch/pradap/local/share/anaconda/lib/libfreetype.so.6.11.1
+7fb2fd178000-7fb2fd377000 ---p 0008e000 08:06 2884647                    /scratch/pradap/local/share/anaconda/lib/libfreetype.so.6.11.1
+7fb2fd377000-7fb2fd37d000 rw-p 0008d000 08:06 2884647                    /scratch/pradap/local/share/anaconda/lib/libfreetype.so.6.11.1
+7fb2fd37d000-7fb2fd3bf000 r-xp 00000000 08:06 2884545                    /scratch/pradap/local/share/anaconda/lib/libpng16.so.16.17.0
+7fb2fd3bf000-7fb2fd5be000 ---p 00042000 08:06 2884545                    /scratch/pradap/local/share/anaconda/lib/libpng16.so.16.17.0
+7fb2fd5be000-7fb2fd5bf000 rw-p 00041000 08:06 2884545                    /scratch/pradap/local/share/anaconda/lib/libpng16.so.16.17.0
+7fb2fd5bf000-7fb2fd8d2000 r-xp 00000000 08:06 2887864                    /scratch/pradap/local/share/anaconda/lib/libQtCore.so.4.8.6
+7fb2fd8d2000-7fb2fdad1000 ---p 00313000 08:06 2887864                    /scratch/pradap/local/share/anaconda/lib/libQtCore.so.4.8.6
+7fb2fdad1000-7fb2fdae2000 rw-p 00312000 08:06 2887864                    /scratch/pradap/local/share/anaconda/lib/libQtCore.so.4.8.6
+7fb2fdae2000-7fb2fe5de000 r-xp 00000000 08:06 2887892                    /scratch/pradap/local/share/anaconda/lib/libQtGui.so.4.8.6
+7fb2fe5de000-7fb2fe7de000 ---p 00afc000 08:06 2887892                    /scratch/pradap/local/share/anaconda/lib/libQtGui.so.4.8.6
+7fb2fe7de000-7fb2fe834000 rw-p 00afc000 08:06 2887892                    /scratch/pradap/local/share/anaconda/lib/libQtGui.so.4.8.6
+7fb2fe834000-7fb2fe837000 rw-p 00000000 00:00 0 
+7fb2fe837000-7fb2feea6000 r-xp 00000000 08:06 3015949                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/PyQt4/QtGui.so
+7fb2feea6000-7fb2ff0a6000 ---p 0066f000 08:06 3015949                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/PyQt4/QtGui.so
+7fb2ff0a6000-7fb2ff1c0000 rw-p 0066f000 08:06 3015949                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/PyQt4/QtGui.so
+7fb2ff1c0000-7fb2ff200000 rw-p 00000000 00:00 0 
+7fb2ff200000-7fb2ff211000 r-xp 00000000 08:06 1459607                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/Levenshtein/_levenshtein.so
+7fb2ff211000-7fb2ff410000 ---p 00011000 08:06 1459607                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/Levenshtein/_levenshtein.so
+7fb2ff410000-7fb2ff411000 rw-p 00010000 08:06 1459607                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/Levenshtein/_levenshtein.so
+7fb2ff411000-7fb2ff417000 r-xp 00000000 00:12 390474740                  /afs/cs.wisc.edu/u/p/r/pradap/.pyxbld/lib.linux-x86_64-2.7/magellan/cython/test_functions.so
+7fb2ff417000-7fb2ff616000 ---p 00006000 00:12 390474740                  /afs/cs.wisc.edu/u/p/r/pradap/.pyxbld/lib.linux-x86_64-2.7/magellan/cython/test_functions.so
+7fb2ff616000-7fb2ff617000 rw-p 00005000 00:12 390474740                  /afs/cs.wisc.edu/u/p/r/pradap/.pyxbld/lib.linux-x86_64-2.7/magellan/cython/test_functions.so
+7fb2ff617000-7fb2ff757000 rw-p 00000000 00:00 0 
+7fb2ff758000-7fb2ff818000 rw-p 00000000 00:00 0 
+7fb2ff818000-7fb2ff84c000 r-xp 00000000 08:06 1574981                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/pyexpat.so
+7fb2ff84c000-7fb2ffa4c000 ---p 00034000 08:06 1574981                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/pyexpat.so
+7fb2ffa4c000-7fb2ffa50000 rw-p 00034000 08:06 1574981                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/pyexpat.so
+7fb2ffa50000-7fb2ffa90000 rw-p 00000000 00:00 0 
+7fb2ffa91000-7fb2ffad3000 rw-p 00000000 00:00 0 
+7fb2ffad3000-7fb2ffb58000 r-xp 00000000 08:06 1459435                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/_jpype.so
+7fb2ffb58000-7fb2ffd57000 ---p 00085000 08:06 1459435                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/_jpype.so
+7fb2ffd57000-7fb2ffd5d000 rw-p 00084000 08:06 1459435                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/_jpype.so
+7fb2ffd5d000-7fb2ffd9d000 rw-p 00000000 00:00 0 
+7fb2ffd9d000-7fb2ffda7000 r-xp 00000000 08:06 3021173                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/pandas/_testing.so
+7fb2ffda7000-7fb2fffa6000 ---p 0000a000 08:06 3021173                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/pandas/_testing.so
+7fb2fffa6000-7fb2fffa8000 rw-p 00009000 08:06 3021173                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/pandas/_testing.so
+7fb2fffa8000-7fb2fffc2000 r-xp 00000000 08:06 3021476                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/pandas/msgpack.so
+7fb2fffc2000-7fb3001c2000 ---p 0001a000 08:06 3021476                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/pandas/msgpack.so
+7fb3001c2000-7fb3001c6000 rw-p 0001a000 08:06 3021476                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/pandas/msgpack.so
+7fb3001c6000-7fb300286000 rw-p 00000000 00:00 0 
+7fb300286000-7fb30029c000 r-xp 00000000 08:06 3021474                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/pandas/json.so
+7fb30029c000-7fb30049c000 ---p 00016000 08:06 3021474                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/pandas/json.so
+7fb30049c000-7fb30049d000 rw-p 00016000 08:06 3021474                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/pandas/json.so
+7fb30049d000-7fb3004f7000 r-xp 00000000 08:06 3021477                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/pandas/parser.so
+7fb3004f7000-7fb3006f6000 ---p 0005a000 08:06 3021477                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/pandas/parser.so
+7fb3006f6000-7fb3006fd000 rw-p 00059000 08:06 3021477                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/pandas/parser.so
+7fb3006fd000-7fb3007bd000 rw-p 00000000 00:00 0 
+7fb3007be000-7fb30083e000 rw-p 00000000 00:00 0 
+7fb30083f000-7fb30087f000 rw-p 00000000 00:00 0 
+7fb30087f000-7fb3008cd000 r-xp 00000000 08:06 3018845                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/matplotlib/_path.so
+7fb3008cd000-7fb300acc000 ---p 0004e000 08:06 3018845                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/matplotlib/_path.so
+7fb300acc000-7fb300acf000 rw-p 0004d000 08:06 3018845                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/matplotlib/_path.so
+7fb300acf000-7fb300ccf000 rw-p 00000000 00:00 0 
+7fb300ccf000-7fb300cd0000 ---p 00000000 00:00 0 
+7fb300cd0000-7fb3016d0000 rw-p 00000000 00:00 0 
+7fb3016d0000-7fb3016d1000 ---p 00000000 00:00 0 
+7fb3016d1000-7fb3020d1000 rw-p 00000000 00:00 0 
+7fb3020d1000-7fb3020d2000 ---p 00000000 00:00 0 
+7fb3020d2000-7fb302ad2000 rw-p 00000000 00:00 0 
+7fb302ad2000-7fb302ad3000 ---p 00000000 00:00 0 
+7fb302ad3000-7fb303513000 rw-p 00000000 00:00 0 
+7fb303513000-7fb303551000 r-xp 00000000 08:06 2895030                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/numexpr/interpreter.so
+7fb303551000-7fb303751000 ---p 0003e000 08:06 2895030                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/numexpr/interpreter.so
+7fb303751000-7fb303752000 rw-p 0003e000 08:06 2895030                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/numexpr/interpreter.so
+7fb303752000-7fb3037b6000 rw-p 00000000 00:00 0 
+7fb3037b6000-7fb3037f3000 r-xp 00000000 08:06 3021172                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/pandas/_sparse.so
+7fb3037f3000-7fb3039f2000 ---p 0003d000 08:06 3021172                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/pandas/_sparse.so
+7fb3039f2000-7fb3039f6000 rw-p 0003c000 08:06 3021172                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/pandas/_sparse.so
+7fb3039f6000-7fb303a36000 rw-p 00000000 00:00 0 
+7fb303a37000-7fb303b77000 rw-p 00000000 00:00 0 
+7fb303b78000-7fb303bb8000 rw-p 00000000 00:00 0 
+7fb303bb9000-7fb303c39000 rw-p 00000000 00:00 0 
+7fb303c3a000-7fb303c7a000 rw-p 00000000 00:00 0 
+7fb303c7a000-7fb303cc9000 r-xp 00000000 08:06 3021171                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/pandas/_period.so
+7fb303cc9000-7fb303ec9000 ---p 0004f000 08:06 3021171                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/pandas/_period.so
+7fb303ec9000-7fb303ed2000 rw-p 0004f000 08:06 3021171                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/pandas/_period.so
+7fb303ed2000-7fb303f13000 rw-p 00000000 00:00 0 
+7fb303f14000-7fb303f94000 rw-p 00000000 00:00 0 
+7fb303f94000-7fb303fcb000 r-xp 00000000 08:06 3021268                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/pandas/index.so
+7fb303fcb000-7fb3041cb000 ---p 00037000 08:06 3021268                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/pandas/index.so
+7fb3041cb000-7fb3041cf000 rw-p 00037000 08:06 3021268                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/pandas/index.so
+7fb3041cf000-7fb30424f000 rw-p 00000000 00:00 0 
+7fb30424f000-7fb30426a000 r-xp 00000000 08:06 2894252                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/bottleneck/move.so
+7fb30426a000-7fb304469000 ---p 0001b000 08:06 2894252                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/bottleneck/move.so
+7fb304469000-7fb30446f000 rw-p 0001a000 08:06 2894252                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/bottleneck/move.so
+7fb30446f000-7fb304481000 r-xp 00000000 08:06 2894254                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/bottleneck/nonreduce_axis.so
+7fb304481000-7fb304681000 ---p 00012000 08:06 2894254                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/bottleneck/nonreduce_axis.so
+7fb304681000-7fb304686000 rw-p 00012000 08:06 2894254                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/bottleneck/nonreduce_axis.so
+7fb304686000-7fb30468d000 r-xp 00000000 08:06 2894253                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/bottleneck/nonreduce.so
+7fb30468d000-7fb30488c000 ---p 00007000 08:06 2894253                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/bottleneck/nonreduce.so
+7fb30488c000-7fb30488e000 rw-p 00006000 08:06 2894253                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/bottleneck/nonreduce.so
+7fb30488e000-7fb3048be000 r-xp 00000000 08:06 2894255                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/bottleneck/reduce.so
+7fb3048be000-7fb304abd000 ---p 00030000 08:06 2894255                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/bottleneck/reduce.so
+7fb304abd000-7fb304ac8000 rw-p 0002f000 08:06 2894255                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/bottleneck/reduce.so
+7fb304ac8000-7fb304b08000 rw-p 00000000 00:00 0 
+7fb304b08000-7fb304d22000 r-xp 00000000 08:06 3021174                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/pandas/algos.so
+7fb304d22000-7fb304f21000 ---p 0021a000 08:06 3021174                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/pandas/algos.so
+7fb304f21000-7fb304f35000 rw-p 00219000 08:06 3021174                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/pandas/algos.so
+7fb304f35000-7fb304f39000 rw-p 00000000 00:00 0 
+7fb304f39000-7fb304f3e000 r-xp 00000000 08:06 1574938                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/_csv.so
+7fb304f3e000-7fb30513d000 ---p 00005000 08:06 1574938                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/_csv.so
+7fb30513d000-7fb305140000 rw-p 00004000 08:06 1574938                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/_csv.so
+7fb305140000-7fb3051c0000 rw-p 00000000 00:00 0 
+7fb3051c0000-7fb3052a3000 r-xp 00000000 08:06 3021475                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/pandas/lib.so
+7fb3052a3000-7fb3054a3000 ---p 000e3000 08:06 3021475                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/pandas/lib.so
+7fb3054a3000-7fb3054b2000 rw-p 000e3000 08:06 3021475                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/pandas/lib.so
+7fb3054b2000-7fb3054b4000 rw-p 00000000 00:00 0 
+7fb3054b4000-7fb3054b6000 r-xp 00000000 08:06 1574930                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/_bisect.so
+7fb3054b6000-7fb3056b5000 ---p 00002000 08:06 1574930                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/_bisect.so
+7fb3056b5000-7fb3056b6000 rw-p 00001000 08:06 1574930                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/_bisect.so
+7fb3056b6000-7fb305736000 rw-p 00000000 00:00 0 
+7fb305737000-7fb305777000 rw-p 00000000 00:00 0 
+7fb305777000-7fb305883000 r-xp 00000000 08:06 3021758                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/pandas/tslib.so
+7fb305883000-7fb305a82000 ---p 0010c000 08:06 3021758                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/pandas/tslib.so
+7fb305a82000-7fb305a95000 rw-p 0010b000 08:06 3021758                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/pandas/tslib.so
+7fb305a95000-7fb305ad8000 rw-p 00000000 00:00 0 
+7fb305ad8000-7fb305b33000 r-xp 00000000 08:06 1462053                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/numpy/random/mtrand.so
+7fb305b33000-7fb305d32000 ---p 0005b000 08:06 1462053                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/numpy/random/mtrand.so
+7fb305d32000-7fb305d6b000 rw-p 0005a000 08:06 1462053                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/numpy/random/mtrand.so
+7fb305d6b000-7fb305dac000 rw-p 00000000 00:00 0 
+7fb305dac000-7fb305db5000 r-xp 00000000 08:06 1461837                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/numpy/fft/fftpack_lite.so
+7fb305db5000-7fb305fb4000 ---p 00009000 08:06 1461837                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/numpy/fft/fftpack_lite.so
+7fb305fb4000-7fb305fb5000 rw-p 00008000 08:06 1461837                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/numpy/fft/fftpack_lite.so
+7fb305fb5000-7fb305ff5000 rw-p 00000000 00:00 0 
+7fb305ff5000-7fb305ff6000 r-xp 00000000 08:06 1574971                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/future_builtins.so
+7fb305ff6000-7fb3061f6000 ---p 00001000 08:06 1574971                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/future_builtins.so
+7fb3061f6000-7fb3061f7000 rw-p 00001000 08:06 1574971                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/future_builtins.so
+7fb3061f7000-7fb306210000 r-xp 00000000 08:06 1461947                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/numpy/linalg/_umath_linalg.so
+7fb306210000-7fb30640f000 ---p 00019000 08:06 1461947                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/numpy/linalg/_umath_linalg.so
+7fb30640f000-7fb306411000 rw-p 00018000 08:06 1461947                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/numpy/linalg/_umath_linalg.so
+7fb306411000-7fb306414000 r-xp 00000000 08:06 1461950                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/numpy/linalg/lapack_lite.so
+7fb306414000-7fb306613000 ---p 00003000 08:06 1461950                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/numpy/linalg/lapack_lite.so
+7fb306613000-7fb306614000 rw-p 00002000 08:06 1461950                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/numpy/linalg/lapack_lite.so
+7fb306614000-7fb306654000 rw-p 00000000 00:00 0 
+7fb306654000-7fb30665a000 r-xp 00000000 08:06 1461852                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/numpy/lib/_compiled_base.so
+7fb30665a000-7fb30685a000 ---p 00006000 08:06 1461852                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/numpy/lib/_compiled_base.so
+7fb30685a000-7fb30685b000 rw-p 00006000 08:06 1461852                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/numpy/lib/_compiled_base.so
+7fb30685b000-7fb306888000 r-xp 00000000 08:06 1461464                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/numpy/core/scalarmath.so
+7fb306888000-7fb306a88000 ---p 0002d000 08:06 1461464                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/numpy/core/scalarmath.so
+7fb306a88000-7fb306a8a000 rw-p 0002d000 08:06 1461464                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/numpy/core/scalarmath.so
+7fb306a8a000-7fb306b20000 r-xp 00000000 08:06 1459839                    /scratch/pradap/local/share/anaconda/lib/libgfortran.so.1.0.0
+7fb306b20000-7fb306d1f000 ---p 00096000 08:06 1459839                    /scratch/pradap/local/share/anaconda/lib/libgfortran.so.1.0.0
+7fb306d1f000-7fb306d21000 rw-p 00095000 08:06 1459839                    /scratch/pradap/local/share/anaconda/lib/libgfortran.so.1.0.0
+7fb306d21000-7fb30772a000 r-xp 00000000 08:06 1459886                    /scratch/pradap/local/share/anaconda/lib/libopenblas_nehalem-r0.2.14.so
+7fb30772a000-7fb307929000 ---p 00a09000 08:06 1459886                    /scratch/pradap/local/share/anaconda/lib/libopenblas_nehalem-r0.2.14.so
+7fb307929000-7fb307935000 rw-p 00a08000 08:06 1459886                    /scratch/pradap/local/share/anaconda/lib/libopenblas_nehalem-r0.2.14.so
+7fb307935000-7fb307a43000 rw-p 00000000 00:00 0 
+7fb307a43000-7fb307a49000 r-xp 00000000 08:06 1461400                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/numpy/core/_dotblas.so
+7fb307a49000-7fb307c48000 ---p 00006000 08:06 1461400                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/numpy/core/_dotblas.so
+7fb307c48000-7fb307c49000 rw-p 00005000 08:06 1461400                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/numpy/core/_dotblas.so
+7fb307c49000-7fb307de0000 r-xp 00000000 08:06 1461455                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/numpy/core/multiarray.so
+7fb307de0000-7fb307fe0000 ---p 00197000 08:06 1461455                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/numpy/core/multiarray.so
+7fb307fe0000-7fb307fef000 rw-p 00197000 08:06 1461455                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/numpy/core/multiarray.so
+7fb307fef000-7fb308000000 rw-p 00000000 00:00 0 
+7fb308000000-7fb308021000 rw-p 00000000 00:00 0 
+7fb308021000-7fb30c000000 ---p 00000000 00:00 0 
+7fb30c000000-7fb30c021000 rw-p 00000000 00:00 0 
+7fb30c021000-7fb310000000 ---p 00000000 00:00 0 
+7fb310000000-7fb310021000 rw-p 00000000 00:00 0 
+7fb310021000-7fb314000000 ---p 00000000 00:00 0 
+7fb314000000-7fb314021000 rw-p 00000000 00:00 0 
+7fb314021000-7fb318000000 ---p 00000000 00:00 0 
+7fb318000000-7fb318003000 r--s 00000000 08:06 3555389                    /scratch/pradap/local/share/anaconda/var/cache/fontconfig/5c755b2f27115486aa6359c84dd3cbda-le64.cache-4
+7fb318003000-7fb318005000 r--s 00000000 08:06 3555387                    /scratch/pradap/local/share/anaconda/var/cache/fontconfig/3f821257dd33660ba7bbb45c32deb84c-le64.cache-4
+7fb318005000-7fb318007000 r--s 00000000 08:06 3555386                    /scratch/pradap/local/share/anaconda/var/cache/fontconfig/830f035fa84a65ce80e050178dbb630d-le64.cache-4
+7fb318007000-7fb318008000 r--s 00000000 08:06 3555380                    /scratch/pradap/local/share/anaconda/var/cache/fontconfig/46d51d90fe9d963f6f4186edb936a931-le64.cache-4
+7fb318008000-7fb318009000 r--s 00000000 08:06 3555379                    /scratch/pradap/local/share/anaconda/var/cache/fontconfig/b887eea8f1b96e1d899b44ed6681fc27-le64.cache-4
+7fb318009000-7fb31800a000 r--s 00000000 08:06 3555378                    /scratch/pradap/local/share/anaconda/var/cache/fontconfig/860639f272b8b4b3094f9e399e41bccd-le64.cache-4
+7fb31800a000-7fb31800b000 r--s 00000000 08:06 3555377                    /scratch/pradap/local/share/anaconda/var/cache/fontconfig/211368abcb0ff835c229ff05c9ec01dc-le64.cache-4
+7fb31800b000-7fb31800c000 r--s 00000000 08:06 3555376                    /scratch/pradap/local/share/anaconda/var/cache/fontconfig/c46020d7221988a13df853d2b46304fc-le64.cache-4
+7fb31800c000-7fb31800d000 r--s 00000000 08:06 3555375                    /scratch/pradap/local/share/anaconda/var/cache/fontconfig/df893b4576ad6107f9397134092c4059-le64.cache-4
+7fb31800d000-7fb31800e000 r--s 00000000 08:06 3555374                    /scratch/pradap/local/share/anaconda/var/cache/fontconfig/900402270e15d763a6e008bb2d4c7686-le64.cache-4
+7fb31800e000-7fb31800f000 r--s 00000000 08:06 3555373                    /scratch/pradap/local/share/anaconda/var/cache/fontconfig/47f48679023f44a4d1e44699a69464f6-le64.cache-4
+7fb31800f000-7fb318010000 r--s 00000000 08:06 3555372                    /scratch/pradap/local/share/anaconda/var/cache/fontconfig/2881ed3fd21ca306ddad6f9b0dd3189f-le64.cache-4
+7fb318010000-7fb318011000 r--s 00000000 08:06 3555371                    /scratch/pradap/local/share/anaconda/var/cache/fontconfig/3c3fb04d32a5211b073874b125d29701-le64.cache-4
+7fb318011000-7fb318012000 r--s 00000000 08:06 3555370                    /scratch/pradap/local/share/anaconda/var/cache/fontconfig/e61abf8156cc476151baa07d67337cae-le64.cache-4
+7fb318012000-7fb318017000 r--s 00000000 08:06 3555369                    /scratch/pradap/local/share/anaconda/var/cache/fontconfig/b67b32625a2bb51b023d3814a918f351-le64.cache-4
+7fb318017000-7fb318057000 rw-p 00000000 00:00 0 
+7fb318057000-7fb3180c5000 r-xp 00000000 08:06 1461543                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/numpy/core/umath.so
+7fb3180c5000-7fb3182c5000 ---p 0006e000 08:06 1461543                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/numpy/core/umath.so
+7fb3182c5000-7fb3182ca000 rw-p 0006e000 08:06 1461543                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/numpy/core/umath.so
+7fb3182ca000-7fb3182cc000 rw-p 00000000 00:00 0 
+7fb3182cc000-7fb31830a000 r-xp 00000000 08:06 3021267                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/pandas/hashtable.so
+7fb31830a000-7fb318509000 ---p 0003e000 08:06 3021267                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/pandas/hashtable.so
+7fb318509000-7fb31850e000 rw-p 0003d000 08:06 3021267                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/pandas/hashtable.so
+7fb31850e000-7fb31868e000 rw-p 00000000 00:00 0 
+7fb31868e000-7fb31873b000 r-xp 00000000 08:06 1460029                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/Cython/Compiler/Parsing.so
+7fb31873b000-7fb31893b000 ---p 000ad000 08:06 1460029                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/Cython/Compiler/Parsing.so
+7fb31893b000-7fb318946000 rw-p 000ad000 08:06 1460029                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/Cython/Compiler/Parsing.so
+7fb318946000-7fb318947000 rw-p 00000000 00:00 0 
+7fb318947000-7fb31897f000 r-xp 00000000 08:06 1460075                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/Cython/Compiler/Visitor.so
+7fb31897f000-7fb318b7f000 ---p 00038000 08:06 1460075                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/Cython/Compiler/Visitor.so
+7fb318b7f000-7fb318b85000 rw-p 00038000 08:06 1460075                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/Cython/Compiler/Visitor.so
+7fb318b85000-7fb318bc6000 rw-p 00000000 00:00 0 
+7fb318bc6000-7fb318c41000 r-xp 00000000 08:06 1460264                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/Cython/Tempita/_tempita.so
+7fb318c41000-7fb318e41000 ---p 0007b000 08:06 1460264                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/Cython/Tempita/_tempita.so
+7fb318e41000-7fb318e4c000 rw-p 0007b000 08:06 1460264                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/Cython/Tempita/_tempita.so
+7fb318e4c000-7fb31930e000 rw-p 00000000 00:00 0 
+7fb31930f000-7fb31938f000 rw-p 00000000 00:00 0 
+7fb31938f000-7fb319489000 r-xp 00000000 08:06 1459991                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/Cython/Compiler/Code.so
+7fb319489000-7fb319689000 ---p 000fa000 08:06 1459991                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/Cython/Compiler/Code.so
+7fb319689000-7fb3196a1000 rw-p 000fa000 08:06 1459991                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/Cython/Compiler/Code.so
+7fb3196a1000-7fb319725000 rw-p 00000000 00:00 0 
+7fb319725000-7fb319770000 r-xp 00000000 08:06 1460010                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/Cython/Compiler/Lexicon.so
+7fb319770000-7fb319970000 ---p 0004b000 08:06 1460010                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/Cython/Compiler/Lexicon.so
+7fb319970000-7fb319973000 rw-p 0004b000 08:06 1460010                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/Cython/Compiler/Lexicon.so
+7fb319973000-7fb319982000 r-xp 00000000 08:06 1460243                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/Cython/Plex/Scanners.so
+7fb319982000-7fb319b82000 ---p 0000f000 08:06 1460243                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/Cython/Plex/Scanners.so
+7fb319b82000-7fb319b84000 rw-p 0000f000 08:06 1460243                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/Cython/Plex/Scanners.so
+7fb319b84000-7fb319b8b000 r-xp 00000000 08:06 1460231                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/Cython/Plex/Actions.so
+7fb319b8b000-7fb319d8a000 ---p 00007000 08:06 1460231                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/Cython/Plex/Actions.so
+7fb319d8a000-7fb319d8c000 rw-p 00006000 08:06 1460231                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/Cython/Plex/Actions.so
+7fb319d8c000-7fb319db5000 r-xp 00000000 08:06 1460035                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/Cython/Compiler/Scanning.so
+7fb319db5000-7fb319fb5000 ---p 00029000 08:06 1460035                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/Cython/Compiler/Scanning.so
+7fb319fb5000-7fb319fbb000 rw-p 00029000 08:06 1460035                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/Cython/Compiler/Scanning.so
+7fb319fbb000-7fb319fbc000 rw-p 00000000 00:00 0 
+7fb319fbc000-7fb319fbd000 ---p 00000000 00:00 0 
+7fb319fbd000-7fb31a9bd000 rw-p 00000000 00:00 0 
+7fb31a9bd000-7fb31a9f5000 r-xp 00000000 08:06 2504091                    /scratch/pradap/local/share/anaconda/lib/libreadline.so.6.2
+7fb31a9f5000-7fb31abf5000 ---p 00038000 08:06 2504091                    /scratch/pradap/local/share/anaconda/lib/libreadline.so.6.2
+7fb31abf5000-7fb31abfd000 rw-p 00038000 08:06 2504091                    /scratch/pradap/local/share/anaconda/lib/libreadline.so.6.2
+7fb31abfd000-7fb31abfe000 rw-p 00000000 00:00 0 
+7fb31abfe000-7fb31abff000 ---p 00000000 00:00 0 
+7fb31abff000-7fb31b5ff000 rw-p 00000000 00:00 0 
+7fb31b5ff000-7fb31b600000 ---p 00000000 00:00 0 
+7fb31b600000-7fb31c000000 rw-p 00000000 00:00 0 
+7fb31c000000-7fb31c025000 rw-p 00000000 00:00 0 
+7fb31c025000-7fb320000000 ---p 00000000 00:00 0 
+7fb320000000-7fb320002000 r--s 00000000 08:06 3555364                    /scratch/pradap/local/share/anaconda/var/cache/fontconfig/f9d379b867d7c69c85310a4f24e5228f-le64.cache-4
+7fb320002000-7fb32000d000 r--s 00000000 08:06 3555064                    /scratch/pradap/local/share/anaconda/var/cache/fontconfig/12b26b760a24f8b4feb03ad48a333a72-le64.cache-4
+7fb32000d000-7fb3200cd000 rw-p 00000000 00:00 0 
+7fb3200cd000-7fb3200d2000 r-xp 00000000 08:06 1574982                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/readline.so
+7fb3200d2000-7fb3202d1000 ---p 00005000 08:06 1574982                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/readline.so
+7fb3202d1000-7fb3202d3000 rw-p 00004000 08:06 1574982                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/readline.so
+7fb3202d3000-7fb320313000 rw-p 00000000 00:00 0 
+7fb320313000-7fb320314000 ---p 00000000 00:00 0 
+7fb320314000-7fb320d14000 rw-p 00000000 00:00 0 
+7fb320d14000-7fb320d15000 ---p 00000000 00:00 0 
+7fb320d15000-7fb321715000 rw-p 00000000 00:00 0 
+7fb321715000-7fb321716000 ---p 00000000 00:00 0 
+7fb321716000-7fb322116000 rw-p 00000000 00:00 0 
+7fb322116000-7fb322117000 ---p 00000000 00:00 0 
+7fb322117000-7fb322c17000 rw-p 00000000 00:00 0 
+7fb322c17000-7fb322c29000 r-xp 00000000 08:06 1574941                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/_curses.so
+7fb322c29000-7fb322e29000 ---p 00012000 08:06 1574941                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/_curses.so
+7fb322e29000-7fb322e2b000 rw-p 00012000 08:06 1574941                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/_curses.so
+7fb322e2b000-7fb322e2c000 r-xp 00000000 08:06 1470099                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/tornado/speedups.so
+7fb322e2c000-7fb32302b000 ---p 00001000 08:06 1470099                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/tornado/speedups.so
+7fb32302b000-7fb32302c000 rw-p 00000000 08:06 1470099                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/tornado/speedups.so
+7fb32302c000-7fb32306c000 rw-p 00000000 00:00 0 
+7fb32306c000-7fb32306f000 r-xp 00000000 08:06 2760315                    /scratch/pradap/local/share/anaconda/lib/libuuid.so.1.3.0
+7fb32306f000-7fb32326f000 ---p 00003000 08:06 2760315                    /scratch/pradap/local/share/anaconda/lib/libuuid.so.1.3.0
+7fb32326f000-7fb323270000 rw-p 00003000 08:06 2760315                    /scratch/pradap/local/share/anaconda/lib/libuuid.so.1.3.0
+7fb323270000-7fb3232b0000 rw-p 00000000 00:00 0 
+7fb3232b0000-7fb3232b9000 r-xp 00000000 08:06 2896359                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/zmq/devices/monitoredqueue.so
+7fb3232b9000-7fb3234b8000 ---p 00009000 08:06 2896359                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/zmq/devices/monitoredqueue.so
+7fb3234b8000-7fb3234ba000 rw-p 00008000 08:06 2896359                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/zmq/devices/monitoredqueue.so
+7fb3234ba000-7fb3234c0000 r-xp 00000000 08:06 1574953                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/_multiprocessing.so
+7fb3234c0000-7fb3236c0000 ---p 00006000 08:06 1574953                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/_multiprocessing.so
+7fb3236c0000-7fb3236c1000 rw-p 00006000 08:06 1574953                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/_multiprocessing.so
+7fb3236c1000-7fb323701000 rw-p 00000000 00:00 0 
+7fb323701000-7fb323708000 r-xp 00000000 08:06 2896336                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/zmq/backend/cython/_device.so
+7fb323708000-7fb323908000 ---p 00007000 08:06 2896336                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/zmq/backend/cython/_device.so
+7fb323908000-7fb323909000 rw-p 00007000 08:06 2896336                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/zmq/backend/cython/_device.so
+7fb323909000-7fb32390b000 r-xp 00000000 08:06 2896338                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/zmq/backend/cython/_version.so
+7fb32390b000-7fb323b0b000 ---p 00002000 08:06 2896338                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/zmq/backend/cython/_version.so
+7fb323b0b000-7fb323b0c000 rw-p 00002000 08:06 2896338                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/zmq/backend/cython/_version.so
+7fb323b0c000-7fb323b16000 r-xp 00000000 08:06 2896337                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/zmq/backend/cython/_poll.so
+7fb323b16000-7fb323d15000 ---p 0000a000 08:06 2896337                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/zmq/backend/cython/_poll.so
+7fb323d15000-7fb323d17000 rw-p 00009000 08:06 2896337                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/zmq/backend/cython/_poll.so
+7fb323d17000-7fb323d1d000 r-xp 00000000 08:06 2896350                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/zmq/backend/cython/utils.so
+7fb323d1d000-7fb323f1c000 ---p 00006000 08:06 2896350                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/zmq/backend/cython/utils.so
+7fb323f1c000-7fb323f1e000 rw-p 00005000 08:06 2896350                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/zmq/backend/cython/utils.so
+7fb323f1e000-7fb323f36000 r-xp 00000000 08:06 2896348                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/zmq/backend/cython/socket.so
+7fb323f36000-7fb324136000 ---p 00018000 08:06 2896348                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/zmq/backend/cython/socket.so
+7fb324136000-7fb32413a000 rw-p 00018000 08:06 2896348                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/zmq/backend/cython/socket.so
+7fb32413a000-7fb324143000 r-xp 00000000 08:06 2896342                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/zmq/backend/cython/context.so
+7fb324143000-7fb324343000 ---p 00009000 08:06 2896342                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/zmq/backend/cython/context.so
+7fb324343000-7fb324345000 rw-p 00009000 08:06 2896342                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/zmq/backend/cython/context.so
+7fb324345000-7fb324353000 r-xp 00000000 08:06 2896346                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/zmq/backend/cython/message.so
+7fb324353000-7fb324552000 ---p 0000e000 08:06 2896346                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/zmq/backend/cython/message.so
+7fb324552000-7fb324554000 rw-p 0000d000 08:06 2896346                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/zmq/backend/cython/message.so
+7fb324554000-7fb324555000 rw-p 00000000 00:00 0 
+7fb324555000-7fb324558000 r-xp 00000000 08:06 2896343                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/zmq/backend/cython/error.so
+7fb324558000-7fb324758000 ---p 00003000 08:06 2896343                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/zmq/backend/cython/error.so
+7fb324758000-7fb324759000 rw-p 00003000 08:06 2896343                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/zmq/backend/cython/error.so
+7fb324759000-7fb3247ab000 r-xp 00000000 08:06 2281650                    /scratch/pradap/local/share/anaconda/lib/libsodium.so.4.5.0
+7fb3247ab000-7fb3249aa000 ---p 00052000 08:06 2281650                    /scratch/pradap/local/share/anaconda/lib/libsodium.so.4.5.0
+7fb3249aa000-7fb3249ab000 r--p 00051000 08:06 2281650                    /scratch/pradap/local/share/anaconda/lib/libsodium.so.4.5.0
+7fb3249ab000-7fb3249b4000 rw-p 00052000 08:06 2281650                    /scratch/pradap/local/share/anaconda/lib/libsodium.so.4.5.0
+7fb3249b4000-7fb324a05000 r-xp 00000000 08:06 2885050                    /scratch/pradap/local/share/anaconda/lib/libzmq.so.4.0.0
+7fb324a05000-7fb324c05000 ---p 00051000 08:06 2885050                    /scratch/pradap/local/share/anaconda/lib/libzmq.so.4.0.0
+7fb324c05000-7fb324c09000 rw-p 00051000 08:06 2885050                    /scratch/pradap/local/share/anaconda/lib/libzmq.so.4.0.0
+7fb324c09000-7fb324c13000 r-xp 00000000 08:06 2896340                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/zmq/backend/cython/constants.so
+7fb324c13000-7fb324e13000 ---p 0000a000 08:06 2896340                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/zmq/backend/cython/constants.so
+7fb324e13000-7fb324e16000 rw-p 0000a000 08:06 2896340                    /scratch/pradap/local/share/anaconda/lib/python2.7/site-packages/zmq/backend/cython/constants.so
+7fb324e16000-7fb324e56000 rw-p 00000000 00:00 0 
+7fb324e56000-7fb324e77000 r-xp 00000000 08:06 1574939                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/_ctypes.so
+7fb324e77000-7fb325076000 ---p 00021000 08:06 1574939                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/_ctypes.so
+7fb325076000-7fb32507b000 rw-p 00020000 08:06 1574939                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/_ctypes.so
+7fb32507b000-7fb3250bb000 rw-p 00000000 00:00 0 
+7fb3250bb000-7fb3250bf000 r-xp 00000000 08:06 1574951                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/_lsprof.so
+7fb3250bf000-7fb3252be000 ---p 00004000 08:06 1574951                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/_lsprof.so
+7fb3252be000-7fb3252bf000 rw-p 00003000 08:06 1574951                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/_lsprof.so
+7fb3252bf000-7fb325340000 rw-p 00000000 00:00 0 
+7fb325340000-7fb3253d6000 r-xp 00000000 08:06 1574990                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/unicodedata.so
+7fb3253d6000-7fb3255d5000 ---p 00096000 08:06 1574990                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/unicodedata.so
+7fb3255d5000-7fb3255e9000 rw-p 00095000 08:06 1574990                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/unicodedata.so
+7fb3255e9000-7fb325629000 rw-p 00000000 00:00 0 
+7fb325629000-7fb3256df000 r-xp 00000000 08:06 2755201                    /scratch/pradap/local/share/anaconda/lib/libsqlite3.so.0.8.6
+7fb3256df000-7fb3258de000 ---p 000b6000 08:06 2755201                    /scratch/pradap/local/share/anaconda/lib/libsqlite3.so.0.8.6
+7fb3258de000-7fb3258e3000 rw-p 000b5000 08:06 2755201                    /scratch/pradap/local/share/anaconda/lib/libsqlite3.so.0.8.6
+7fb3258e3000-7fb3258f4000 r-xp 00000000 08:06 1574956                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/_sqlite3.so
+7fb3258f4000-7fb325af4000 ---p 00011000 08:06 1574956                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/_sqlite3.so
+7fb325af4000-7fb325af7000 rw-p 00011000 08:06 1574956                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/_sqlite3.so
+7fb325af7000-7fb325b37000 rw-p 00000000 00:00 0 
+7fb325b37000-7fb325b49000 r-xp 00000000 08:06 1574965                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/cPickle.so
+7fb325b49000-7fb325d48000 ---p 00012000 08:06 1574965                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/cPickle.so
+7fb325d48000-7fb325d4a000 rw-p 00011000 08:06 1574965                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/cPickle.so
+7fb325d4a000-7fb325dca000 rw-p 00000000 00:00 0 
+7fb325dca000-7fb325dd7000 r-xp 00000000 08:06 1574980                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/parser.so
+7fb325dd7000-7fb325fd7000 ---p 0000d000 08:06 1574980                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/parser.so
+7fb325fd7000-7fb325fd8000 rw-p 0000d000 08:06 1574980                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/parser.so
+7fb325fd8000-7fb326098000 rw-p 00000000 00:00 0 
+7fb326098000-7fb32609d000 r-xp 00000000 08:06 1574991                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/zlib.so
+7fb32609d000-7fb32629c000 ---p 00005000 08:06 1574991                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/zlib.so
+7fb32629c000-7fb32629e000 rw-p 00004000 08:06 1574991                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/zlib.so
+7fb32629e000-7fb3262a6000 r-xp 00000000 08:06 1574961                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/array.so
+7fb3262a6000-7fb3264a5000 ---p 00008000 08:06 1574961                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/array.so
+7fb3264a5000-7fb3264a8000 rw-p 00007000 08:06 1574961                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/array.so
+7fb3264a8000-7fb3264e8000 rw-p 00000000 00:00 0 
+7fb3264e9000-7fb326569000 rw-p 00000000 00:00 0 
+7fb326569000-7fb32657b000 r-xp 00000000 08:06 1574969                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/datetime.so
+7fb32657b000-7fb32677a000 ---p 00012000 08:06 1574969                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/datetime.so
+7fb32677a000-7fb32677e000 rw-p 00011000 08:06 1574969                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/datetime.so
+7fb32677e000-7fb3267fe000 rw-p 00000000 00:00 0 
+7fb3267fe000-7fb326811000 r-xp 00000000 08:06 1574957                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/_ssl.so
+7fb326811000-7fb326a11000 ---p 00013000 08:06 1574957                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/_ssl.so
+7fb326a11000-7fb326a15000 rw-p 00013000 08:06 1574957                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/_ssl.so
+7fb326a15000-7fb326a23000 r-xp 00000000 08:06 1574955                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/_socket.so
+7fb326a23000-7fb326c23000 ---p 0000e000 08:06 1574955                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/_socket.so
+7fb326c23000-7fb326c28000 rw-p 0000e000 08:06 1574955                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/_socket.so
+7fb326c28000-7fb326ca8000 rw-p 00000000 00:00 0 
+7fb326ca8000-7fb326cac000 r-xp 00000000 08:06 1574988                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/termios.so
+7fb326cac000-7fb326eac000 ---p 00004000 08:06 1574988                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/termios.so
+7fb326eac000-7fb326eae000 rw-p 00004000 08:06 1574988                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/termios.so
+7fb326eae000-7fb326eb0000 r-xp 00000000 08:06 1574983                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/resource.so
+7fb326eb0000-7fb3270b0000 ---p 00002000 08:06 1574983                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/resource.so
+7fb3270b0000-7fb3270b1000 rw-p 00002000 08:06 1574983                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/resource.so
+7fb3270b1000-7fb3270f1000 rw-p 00000000 00:00 0 
+7fb3270f1000-7fb32710e000 r-xp 00000000 08:06 1574948                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/_io.so
+7fb32710e000-7fb32730e000 ---p 0001d000 08:06 1574948                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/_io.so
+7fb32730e000-7fb327318000 rw-p 0001d000 08:06 1574948                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/_io.so
+7fb327318000-7fb327398000 rw-p 00000000 00:00 0 
+7fb327398000-7fb32739b000 r-xp 00000000 08:06 1574954                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/_random.so
+7fb32739b000-7fb32759a000 ---p 00003000 08:06 1574954                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/_random.so
+7fb32759a000-7fb32759b000 rw-p 00002000 08:06 1574954                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/_random.so
+7fb32759b000-7fb3275db000 rw-p 00000000 00:00 0 
+7fb3275db000-7fb32778e000 r-xp 00000000 08:06 1459197                    /scratch/pradap/local/share/anaconda/lib/libcrypto.so.1.0.0
+7fb32778e000-7fb32798d000 ---p 001b3000 08:06 1459197                    /scratch/pradap/local/share/anaconda/lib/libcrypto.so.1.0.0
+7fb32798d000-7fb3279b3000 rw-p 001b2000 08:06 1459197                    /scratch/pradap/local/share/anaconda/lib/libcrypto.so.1.0.0
+7fb3279b3000-7fb3279b6000 rw-p 00000000 00:00 0 
+7fb3279b6000-7fb327a17000 r-xp 00000000 08:06 2496114                    /scratch/pradap/local/share/anaconda/lib/libssl.so.1.0.0
+7fb327a17000-7fb327c16000 ---p 00061000 08:06 2496114                    /scratch/pradap/local/share/anaconda/lib/libssl.so.1.0.0
+7fb327c16000-7fb327c20000 rw-p 00060000 08:06 2496114                    /scratch/pradap/local/share/anaconda/lib/libssl.so.1.0.0
+7fb327c20000-7fb327c24000 r-xp 00000000 08:06 1574945                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/_hashlib.so
+7fb327c24000-7fb327e24000 ---p 00004000 08:06 1574945                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/_hashlib.so
+7fb327e24000-7fb327e25000 rw-p 00004000 08:06 1574945                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/_hashlib.so
+7fb327e25000-7fb327e2d000 r-xp 00000000 08:06 1574975                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/math.so
+7fb327e2d000-7fb32802c000 ---p 00008000 08:06 1574975                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/math.so
+7fb32802c000-7fb32802e000 rw-p 00007000 08:06 1574975                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/math.so
+7fb32802e000-7fb32806e000 rw-p 00000000 00:00 0 
+7fb32806e000-7fb32806f000 r--s 00000000 08:06 3555388                    /scratch/pradap/local/share/anaconda/var/cache/fontconfig/b966c23d19cce9e9a98d55765cf2a0c7-le64.cache-4
+7fb32806f000-7fb3280ef000 rw-p 00000000 00:00 0 
+7fb3280ef000-7fb3280f4000 r-xp 00000000 08:06 1574986                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/strop.so
+7fb3280f4000-7fb3282f3000 ---p 00005000 08:06 1574986                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/strop.so
+7fb3282f3000-7fb3282f5000 rw-p 00004000 08:06 1574986                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/strop.so
+7fb3282f5000-7fb3282f6000 r--s 00000000 08:06 3555385                    /scratch/pradap/local/share/anaconda/var/cache/fontconfig/81a173283b451552b599cfaafd6236bd-le64.cache-4
+7fb3282f6000-7fb3283b6000 rw-p 00000000 00:00 0 
+7fb3283b6000-7fb3283b8000 r-xp 00000000 08:06 1574944                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/_functools.so
+7fb3283b8000-7fb3285b8000 ---p 00002000 08:06 1574944                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/_functools.so
+7fb3285b8000-7fb3285b9000 rw-p 00002000 08:06 1574944                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/_functools.so
+7fb3285b9000-7fb3285f9000 rw-p 00000000 00:00 0 
+7fb3285f9000-7fb3285fb000 r-xp 00000000 08:06 1574972                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/grp.so
+7fb3285fb000-7fb3287fa000 ---p 00002000 08:06 1574972                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/grp.so
+7fb3287fa000-7fb3287fb000 rw-p 00001000 08:06 1574972                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/grp.so
+7fb3287fb000-7fb32883b000 rw-p 00000000 00:00 0 
+7fb32883b000-7fb32883e000 r-xp 00000000 08:06 1574946                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/_heapq.so
+7fb32883e000-7fb328a3e000 ---p 00003000 08:06 1574946                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/_heapq.so
+7fb328a3e000-7fb328a40000 rw-p 00003000 08:06 1574946                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/_heapq.so
+7fb328a40000-7fb328a4a000 r-xp 00000000 08:06 1574973                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/itertools.so
+7fb328a4a000-7fb328c4a000 ---p 0000a000 08:06 1574973                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/itertools.so
+7fb328c4a000-7fb328c4f000 rw-p 0000a000 08:06 1574973                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/itertools.so
+7fb328c4f000-7fb328c57000 r-xp 00000000 08:06 1574978                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/operator.so
+7fb328c57000-7fb328e57000 ---p 00008000 08:06 1574978                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/operator.so
+7fb328e57000-7fb328e59000 rw-p 00008000 08:06 1574978                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/operator.so
+7fb328e59000-7fb328e60000 r-xp 00000000 08:06 1574937                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/_collections.so
+7fb328e60000-7fb32905f000 ---p 00007000 08:06 1574937                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/_collections.so
+7fb32905f000-7fb329061000 rw-p 00006000 08:06 1574937                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/_collections.so
+7fb329061000-7fb3290a1000 rw-p 00000000 00:00 0 
+7fb3290a1000-7fb3290a5000 r-xp 00000000 08:06 1574966                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/cStringIO.so
+7fb3290a5000-7fb3292a4000 ---p 00004000 08:06 1574966                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/cStringIO.so
+7fb3292a4000-7fb3292a6000 rw-p 00003000 08:06 1574966                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/cStringIO.so
+7fb3292a6000-7fb3292bc000 r-xp 00000000 08:06 2760751                    /scratch/pradap/local/share/anaconda/lib/libz.so.1.2.8
+7fb3292bc000-7fb3294bb000 ---p 00016000 08:06 2760751                    /scratch/pradap/local/share/anaconda/lib/libz.so.1.2.8
+7fb3294bb000-7fb3294bc000 rw-p 00015000 08:06 2760751                    /scratch/pradap/local/share/anaconda/lib/libz.so.1.2.8
+7fb3294bc000-7fb3294c0000 r-xp 00000000 08:06 1574963                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/binascii.so
+7fb3294c0000-7fb3296c0000 ---p 00004000 08:06 1574963                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/binascii.so
+7fb3296c0000-7fb3296c1000 rw-p 00004000 08:06 1574963                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/binascii.so
+7fb3296c1000-7fb3296c4000 r-xp 00000000 08:06 1574970                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/fcntl.so
+7fb3296c4000-7fb3298c3000 ---p 00003000 08:06 1574970                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/fcntl.so
+7fb3298c3000-7fb3298c5000 rw-p 00002000 08:06 1574970                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/fcntl.so
+7fb3298c5000-7fb3298c9000 r-xp 00000000 08:06 1574984                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/select.so
+7fb3298c9000-7fb329ac9000 ---p 00004000 08:06 1574984                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/select.so
+7fb329ac9000-7fb329acb000 rw-p 00004000 08:06 1574984                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/select.so
+7fb329acb000-7fb329acf000 r-xp 00000000 08:06 1574989                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/time.so
+7fb329acf000-7fb329cce000 ---p 00004000 08:06 1574989                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/time.so
+7fb329cce000-7fb329cd0000 rw-p 00003000 08:06 1574989                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/time.so
+7fb329cd0000-7fb329cd8000 r-xp 00000000 08:06 1574949                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/_json.so
+7fb329cd8000-7fb329ed8000 ---p 00008000 08:06 1574949                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/_json.so
+7fb329ed8000-7fb329ed9000 rw-p 00008000 08:06 1574949                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/_json.so
+7fb329ed9000-7fb329ee0000 r-xp 00000000 08:06 1574958                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/_struct.so
+7fb329ee0000-7fb32a0e0000 ---p 00007000 08:06 1574958                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/_struct.so
+7fb32a0e0000-7fb32a0e2000 rw-p 00007000 08:06 1574958                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/_struct.so
+7fb32a0e2000-7fb32a122000 rw-p 00000000 00:00 0 
+7fb32a122000-7fb32ffb3000 r--p 00000000 08:02 159731                     /usr/lib/locale/locale-archive
+7fb32ffb3000-7fb32fff3000 rw-p 00000000 00:00 0 
+7fb32fff3000-7fb32fff7000 r-xp 00000000 08:06 1574950                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/_locale.so
+7fb32fff7000-7fb3301f7000 ---p 00004000 08:06 1574950                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/_locale.so
+7fb3301f7000-7fb3301f8000 rw-p 00004000 08:06 1574950                    /scratch/pradap/local/share/anaconda/lib/python2.7/lib-dynload/_locale.so
+7fb3301f8000-7fb330238000 rw-p 00000000 00:00 0 
+7fb330238000-7fb330239000 r--s 00000000 08:06 3555384                    /scratch/pradap/local/share/anaconda/var/cache/fontconfig/ac68f755438cc3dc5a526084839fc7ca-le64.cache-4
+7fb330239000-7fb33023a000 r--s 00000000 08:06 3555383                    /scratch/pradap/local/share/anaconda/var/cache/fontconfig/6cfc7d49b27ba7d3eb71ab86e04def2c-le64.cache-4
+7fb33023a000-7fb33023b000 r--s 00000000 08:06 3555382                    /scratch/pradap/local/share/anaconda/var/cache/fontconfig/6fcb01a03a016cc71057b587cdea6709-le64.cache-4
+7fb33023b000-7fb33023c000 r--s 00000000 08:06 3555368                    /scratch/pradap/local/share/anaconda/var/cache/fontconfig/991510d2da7f7b2bf8468002aae90060-le64.cache-4
+7fb33023c000-7fb33023e000 r--s 00000000 08:06 3555367                    /scratch/pradap/local/share/anaconda/var/cache/fontconfig/d3379abda271c4acd2ad0c01f565d0b0-le64.cache-4
+7fb33023e000-7fb33023f000 r--s 00000000 08:06 3555366                    /scratch/pradap/local/share/anaconda/var/cache/fontconfig/b4d0b56f766d89640448751fcd18ec1e-le64.cache-4
+7fb33023f000-7fb330241000 r--s 00000000 08:06 3555365                    /scratch/pradap/local/share/anaconda/var/cache/fontconfig/99a1ce9f8b6a0434aadb01d3779b0780-le64.cache-4
+7fb330241000-7fb33024c000 rw-p 00000000 00:00 0 
+7fb33024c000-7fb33026a000 rw-p 00000000 00:00 0 
+7fb33026a000-7fb33032f000 rw-p 00000000 00:00 0 
+7fb33032f000-7fb330337000 r--s 00000000 08:06 3555361                    /scratch/pradap/local/share/anaconda/var/cache/fontconfig/928306c3ad40271d946e41014a49fc28-le64.cache-4
+7fb330337000-7fb330338000 r--s 00000000 08:06 3555360                    /scratch/pradap/local/share/anaconda/var/cache/fontconfig/1248881498ac025e45c3042f6afe9284-le64.cache-4
+7fb330338000-7fb330344000 r--s 00000000 08:06 3555359                    /scratch/pradap/local/share/anaconda/var/cache/fontconfig/125a3cf9761970d125ff8e84ba9ab1a2-le64.cache-4
+7fb330344000-7fb33034b000 r--s 00000000 08:02 139182                     /usr/lib64/gconv/gconv-modules.cache
+7fb33034b000-7fb330353000 rw-s 00000000 08:03 131173                     /tmp/hsperfdata_pradap/3724
+7fb330353000-7fb330354000 rw-p 00000000 00:00 0 
+7fb330354000-7fb330355000 r--p 00000000 00:00 0 
+7fb330355000-7fb330356000 rwxp 00000000 00:00 0 
+7fb330356000-7fb3304eb000 r-xp 00000000 08:06 1573429                    /scratch/pradap/local/share/anaconda/lib/libpython2.7.so.1.0
+7fb3304eb000-7fb3306eb000 ---p 00195000 08:06 1573429                    /scratch/pradap/local/share/anaconda/lib/libpython2.7.so.1.0
+7fb3306eb000-7fb33072a000 rw-p 00195000 08:06 1573429                    /scratch/pradap/local/share/anaconda/lib/libpython2.7.so.1.0
+7fb33072a000-7fb33073a000 rw-p 00000000 00:00 0 
+7fff551a5000-7fff551a8000 ---p 00000000 00:00 0 
+7fff551a9000-7fff552a5000 rw-p 00000000 00:00 0                          [stack]
+7fff553ff000-7fff55400000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+
+VM Arguments:
+java_command: <unknown>
+Launcher Type: generic
+
+Environment Variables:
+JAVA_HOME=/scratch/pradap/local/share/jdk1.7.0_25
+CLASSPATH=.:/scratch/pradap/local/share/apache-tomcat/webapps/sb-admin/WEB-INF/lib:/scratch/pradap/local/share/apache-tomcat/webapps/sb-admin/WEB-INF/classes/:/scratch/pradap/courses/cs739/ycsb/YCSB/hbase/target/hbase-binding-0.1.4.jar:/scratch/pradap/courses/cs739/ycsb/YCSB/core/target/core-0.1.4.jar:/scratch/pradap/local/share/hbase-0.94.13/hbase-0.94.13.jar:/scratch/pradap/courses/cs739/ycsb/YCSB/hbase/target/hbase-binding-0.1.4.jar:/scratch/pradap/courses/cs739/ycsb/YCSB/core/target/core-0.1.4.jar:/scratch/pradap/local/share/hbase-0.94.13/hbase-0.94.13.jar
+PATH=/scratch/pradap/local/share/anaconda/bin:/scratch/pradap/local/share/jdk1.7.0_25:/scratch/pradap/local/share/Python-2.7.9:/scratch/pradap/local/share/topicpages/scripts:/unsup/vim-7.3.831/bin/vim:/unsup/llvm-3.3/bin:/scratch/pradap/local/bin:/scratch/pradap/local/share/boost_1_54_0:/scratch/pradap/local/include:/scratch.1/pradap/R-install/R-2.15.2/bin:/scratch.1/pradap/postgres/bin:/s/std/bin:/scratch/pradap/local/share/anaconda/bin:/scratch/pradap/local/share/jdk1.7.0_25:/scratch/pradap/local/share/Python-2.7.9:/scratch/pradap/local/share/topicpages/scripts:/unsup/vim-7.3.831/bin/vim:/unsup/llvm-3.3/bin:/scratch/pradap/local/bin:/scratch/pradap/local/share/boost_1_54_0:/scratch/pradap/local/include:/scratch.1/pradap/R-install/R-2.15.2/bin:/scratch.1/pradap/postgres/bin:/s/std/bin:/scratch/pradap/local/share/anaconda/bin::/scratch/pradap/local/share/Python-2.7.9:/scratch/pradap/local/share/topicpages/scripts:/unsup/vim-7.3.831/bin/vim:/unsup/llvm-3.3/bin:/scratch/pradap/local/bin:/scratch/pradap/local/share/boost_1_54_0:/scratch/pradap/local/include:/scratch.1/pradap/R-install/R-2.15.2/bin:/scratch.1/pradap/postgres/bin:/s/std/bin:/usr/lib64/qt-3.3/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/afsws/bin:/opt/SUNWspro/bin:/usr/ccs/bin:/usr/ucb:/bin:/usr/bin:/usr/X11R6/bin:/s/handin/bin:/u/p/r/pradap/bin:.:/usr/afsws/bin:/opt/SUNWspro/bin:/usr/ccs/bin:/usr/ucb:/bin:/usr/bin:/usr/X11R6/bin:/s/handin/bin:/u/p/r/pradap/bin:.:/usr/afsws/bin:/opt/SUNWspro/bin:/usr/ccs/bin:/usr/ucb:/bin:/usr/bin:/usr/X11R6/bin:/s/handin/bin:/u/p/r/pradap/bin:.
+USERNAME=pradap
+LD_LIBRARY_PATH=/scratch/pradap/lib:.:/scratch/pradap/lib:/scratch/pradap/lib:
+SHELL=/bin/bash
+DISPLAY=:0.0
+
+Signal Handlers:
+SIGSEGV: [libjvm.so+0x8a26a0], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGBUS: [libjvm.so+0x8a26a0], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGFPE: [libjvm.so+0x73f3d0], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGPIPE: SIG_IGN, sa_mask[0]=0x00001000, sa_flags=0x10000000
+SIGXFSZ: [libjvm.so+0x73f3d0], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGILL: [libjvm.so+0x73f3d0], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGUSR1: SIG_DFL, sa_mask[0]=0x00000000, sa_flags=0x00000000
+SIGUSR2: [libjvm.so+0x73ed20], sa_mask[0]=0x00000004, sa_flags=0x10000004
+SIGHUP: [libjvm.so+0x7410b0], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGINT: [libpython2.7.so.1.0+0x133990], sa_mask[0]=0x00000000, sa_flags=0x00000000
+SIGTERM: [libjvm.so+0x7410b0], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGQUIT: [libjvm.so+0x7410b0], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+
+
+---------------  S Y S T E M  ---------------
+
+OS:Red Hat Enterprise Linux Server release 6.7 (Santiago)
+
+uname:Linux 2.6.32-504.1.3.el6.x86_64 #1 SMP Fri Oct 31 11:37:10 EDT 2014 x86_64
+libc:glibc 2.12 NPTL 2.12 
+rlimit: STACK 10240k, CORE 0k, NPROC 1024, NOFILE 4096, AS infinity
+load average:0.04 0.08 0.10
+
+/proc/meminfo:
+MemTotal:       16218416 kB
+MemFree:         2979640 kB
+Buffers:          504360 kB
+Cached:          5021612 kB
+SwapCached:            0 kB
+Active:          8886800 kB
+Inactive:        3689844 kB
+Active(anon):    7055644 kB
+Inactive(anon):   609460 kB
+Active(file):    1831156 kB
+Inactive(file):  3080384 kB
+Unevictable:           0 kB
+Mlocked:               0 kB
+SwapTotal:       8388604 kB
+SwapFree:        8388604 kB
+Dirty:              2168 kB
+Writeback:             0 kB
+AnonPages:       7050700 kB
+Mapped:           696680 kB
+Shmem:            614452 kB
+Slab:             407764 kB
+SReclaimable:     352140 kB
+SUnreclaim:        55624 kB
+KernelStack:        6864 kB
+PageTables:        89596 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:    16497812 kB
+Committed_AS:   15842872 kB
+VmallocTotal:   34359738367 kB
+VmallocUsed:      388648 kB
+VmallocChunk:   34359322032 kB
+HardwareCorrupted:     0 kB
+AnonHugePages:   1224704 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       2048 kB
+DirectMap4k:        8200 kB
+DirectMap2M:    16658432 kB
+
+
+CPU:total 4 (4 cores per cpu, 1 threads per core) family 6 model 58 stepping 9, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, tsc, tscinvbit, tscinv
+
+/proc/cpuinfo:
+processor	: 0
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 58
+model name	: Intel(R) Core(TM) i5-3570 CPU @ 3.40GHz
+stepping	: 9
+microcode	: 27
+cpu MHz		: 3392.478
+cache size	: 6144 KB
+physical id	: 0
+siblings	: 4
+core id		: 0
+cpu cores	: 4
+apicid		: 0
+initial apicid	: 0
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good xtopology nonstop_tsc aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm ida arat epb xsaveopt pln pts dts tpr_shadow vnmi flexpriority ept vpid fsgsbase smep erms
+bogomips	: 6784.95
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 36 bits physical, 48 bits virtual
+power management:
+
+processor	: 1
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 58
+model name	: Intel(R) Core(TM) i5-3570 CPU @ 3.40GHz
+stepping	: 9
+microcode	: 27
+cpu MHz		: 3392.478
+cache size	: 6144 KB
+physical id	: 0
+siblings	: 4
+core id		: 1
+cpu cores	: 4
+apicid		: 2
+initial apicid	: 2
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good xtopology nonstop_tsc aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm ida arat epb xsaveopt pln pts dts tpr_shadow vnmi flexpriority ept vpid fsgsbase smep erms
+bogomips	: 6784.95
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 36 bits physical, 48 bits virtual
+power management:
+
+processor	: 2
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 58
+model name	: Intel(R) Core(TM) i5-3570 CPU @ 3.40GHz
+stepping	: 9
+microcode	: 27
+cpu MHz		: 3392.478
+cache size	: 6144 KB
+physical id	: 0
+siblings	: 4
+core id		: 2
+cpu cores	: 4
+apicid		: 4
+initial apicid	: 4
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good xtopology nonstop_tsc aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm ida arat epb xsaveopt pln pts dts tpr_shadow vnmi flexpriority ept vpid fsgsbase smep erms
+bogomips	: 6784.95
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 36 bits physical, 48 bits virtual
+power management:
+
+processor	: 3
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 58
+model name	: Intel(R) Core(TM) i5-3570 CPU @ 3.40GHz
+stepping	: 9
+microcode	: 27
+cpu MHz		: 3392.478
+cache size	: 6144 KB
+physical id	: 0
+siblings	: 4
+core id		: 3
+cpu cores	: 4
+apicid		: 6
+initial apicid	: 6
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good xtopology nonstop_tsc aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm ida arat epb xsaveopt pln pts dts tpr_shadow vnmi flexpriority ept vpid fsgsbase smep erms
+bogomips	: 6784.95
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 36 bits physical, 48 bits virtual
+power management:
+
+
+
+Memory: 4k page, physical 16218416k(2979640k free), swap 8388604k(8388604k free)
+
+vm_info: Java HotSpot(TM) 64-Bit Server VM (23.25-b01) for linux-amd64 JRE (1.7.0_25-b15), built on Jun  5 2013 20:48:36 by "java_re" with gcc 4.3.0 20080428 (Red Hat 4.3.0-8)
+
+time: Fri Oct 16 11:29:39 2015
+elapsed time: 15 seconds
+

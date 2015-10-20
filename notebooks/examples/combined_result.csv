@@ -8,4 +8,5 @@ _id,ltable.ID,rtable.ID,ltable.birth_year,ltable.name,ltable.zipcode,rtable.birt
 1,a2,b6,1988,Michael Franklin,94122,1987,Michael Brodie,94107
 2,a3,b2,1986,William Bridge,94107,1986,Bill Bridge,94107
 3,a3,b6,1986,William Bridge,94107,1987,Michael Brodie,94107
-4,a5,b5,1984,Alphonse Kemper,94122,1984,Alfons Kemper,94122
+4,a4,b2,1987,Binto George,94122,1986,Bill Bridge,94107
+5,a5,b5,1984,Alphonse Kemper,94122,1984,Alfons Kemper,94122

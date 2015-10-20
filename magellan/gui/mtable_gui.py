@@ -1,15 +1,19 @@
 import logging
 from PyQt4 import QtGui
 
+
+import magellan as mg
 from magellan.utils.helperfunctions import remove_non_ascii
+
 
 logger = logging.getLogger(__name__)
 
 # contain basic routines to view and edit table -- should be updated with leon's code
 
+
 # view table
+
 def view(tbl, edit_flag=False):
-    app = QtGui.QApplication([])
     datatable = QtGui.QTableWidget()
 
     # disable edit
@@ -28,8 +32,8 @@ def view(tbl, edit_flag=False):
     datatable.setHorizontalHeaderLabels(list_col)
 
     # set window size
-    width = min((j + 1)*105, app.desktop().screenGeometry().width() - 50)
-    height = min((i + 1)*41, app.desktop().screenGeometry().width() - 100)
+    width = min((j + 1)*105, mg._viewapp.desktop().screenGeometry().width() - 50)
+    height = min((i + 1)*41, mg._viewapp.desktop().screenGeometry().width() - 100)
     datatable.resize(width, height)
 
     # set window title
@@ -37,9 +41,9 @@ def view(tbl, edit_flag=False):
 
     # show window
     datatable.show()
-    app.exec_()
-    #app.deleteLater()
-    app.exit(0)
+    mg._viewapp.exec_()
+    #mg._viewapp.deleteLater()
+    # mg._viewapp.exit(0)
     if edit_flag:
         return datatable
 
