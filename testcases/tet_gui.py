@@ -27,6 +27,21 @@ class DataModel():
 
         self.dataframe = df
 
+
+class MTableViewWithLabel(QWidget):
+    def __init__(self, model):
+        super(MTableViewWithLabel, self).__init__()
+        self.mv = MTableView(model)
+        self.init_gui()
+
+    def init_gui(self):
+        lbl = QLabel('Metrics')
+        layout = QVBoxLayout()
+        layout.addWidget(lbl)
+        layout.addWidget(self.mv)
+        self.setLayout(layout)
+
+
 class MTableView(QTableWidget):
     def __init__(self, model, *args):
         super(MTableView, self).__init__(*args)
@@ -145,7 +160,7 @@ class MurWidget(QWidget):
     def __init__(self, d):
         super(MurWidget, self).__init__()
         self.model = DataModel(d)
-        self.view = MTableView(self.model)
+        self.view = MTableViewWithLabel(self.model)
         self.setWindowTitle("Debug - Mtable")
         metric_data = OrderedDict()
         metric_data['Precision'] = 0.95
