@@ -1,6 +1,6 @@
-from functools import partial
-from PyQt4 import QtGui, QtCore, Qt
-import pandas as pd
+from PyQt4 import QtGui, QtCore
+from  magellan.utils.gui_utils import DictTableView, DictTableViewWithLabel, DataFrameTableView, \
+    DataFrameTableViewWithLabel, TreeView, TreeViewWithLabel
 
 
 class MainWindowManager(QtGui.QWidget):
@@ -13,6 +13,8 @@ class MainWindowManager(QtGui.QWidget):
         self.metric_widget = None
         self.dataframe_widget = None
         self.combo_box = None
+        self.current_combo_text = 'False Positives'
+        self.current_dataframe = self.fp_dataframe
         self.setup_gui()
 
     def setup_gui(self):
@@ -23,7 +25,7 @@ class MainWindowManager(QtGui.QWidget):
         self.metric_widget = DictTableViewWithLabel(self, self.dictionary, 'Metrics',
                                                     self.combo_box)
         self.dataframe_widget = DataFrameTableViewWithLabel(self,
-                                                            self.fp_dataframe, 'False Postives')
+                                                            self.current_dataframe, self.current_combo_text)
         self.setWindowTitle('Debugger')
         layout = QtGui.QVBoxLayout(self)
         splitter = QtGui.QSplitter(QtCore.Qt.Horizontal)
@@ -32,154 +34,98 @@ class MainWindowManager(QtGui.QWidget):
         layout.addWidget(splitter)
         self.setLayout(layout)
 
-
-
-
-
     def handle_debug_button(self, index):
         print 'Debug button clicked : ' + str(index)
+        d1 = self.fp_dataframe.ix[1].to_dict()
+        d2 = self.fn_dataframe.ix[2].to_dict()
+        debug_obj = DebugWindowManager(d1, d2, d1)
+        debug_obj.show()
+
+
     def handle_show_button(self, index):
         print 'Show button clicked : ' + str(index)
+        d1 = self.fp_dataframe.ix[1].to_dict()
+        d2 = self.fn_dataframe.ix[2].to_dict()
+        show_obj = ShowWindowManager(d1, d2)
+        show_obj.show()
+
+
+
+
+
     def combobox_onactivated(self, text):
-        print text + "is on"
+        if text != self.current_combo_text:
+            print text
+            if text == 'False Negatives':
+                self.current_combo_text = text
+                self.current_dataframe = self.fn_dataframe
+            else:
+                self.current_combo_text = text
+                self.current_dataframe = self.fp_dataframe
+            self.dataframe_widget.tbl_obj.dataframe = self.current_dataframe
+            self.dataframe_widget.tbl_obj.setup_gui()
+            self.dataframe_widget.label_obj.setText(text)
+            # self.dataframe_widget.setup_gui()
 
-class DataFrameTableView(QtGui.QTableWidget):
-    def __init__(self, controller, dataframe):
-        super(DataFrameTableView, self).__init__()
-        self.controller = controller
-        self.dataframe = dataframe
+
+class ShowWindowManager(QtGui.QWidget):
+    def __init__(self, left_tuple_dict, right_tuple_dict):
+        super(ShowWindowManager, self).__init__()
+        self.left_tuple_dict = left_tuple_dict
+        self.right_tuple_dict = right_tuple_dict
+        self.left_tuple_widget = None
+        self.right_tuple_widget = None
+
         self.setup_gui()
 
-    def set_dataframe(self, dataframe):
-        self.dataframe = dataframe
-
     def setup_gui(self):
-        # set rowcount
-        nrows = len(self.dataframe)
-        self.setRowCount(nrows)
-        # set col count
-        ncols = len(self.dataframe.columns)
-        self.setColumnCount(ncols + 2) # + 2 because of show and debug icons
-
-        # set headers
-        # horiz. header
-        headers = ['Show', 'Debug']
-        headers.extend(list(self.dataframe.columns))
-        self.setHorizontalHeaderLabels(headers)
-        self.horizontalHeader().setStretchLastSection(True)
-        # vertic. header
-        self.verticalHeader().setVisible(True)
-
-        # populate data
-        for i in range(nrows):
-            for j in range(ncols + 2):
-                if j == 0:
-                    button = QtGui.QPushButton('Show', self)
-                    self.setCellWidget(i, j, button)
-                    button.clicked.connect(partial(self.controller.handle_show_button, i))
-                elif j == 1:
-                    button = QtGui.QPushButton('Debug', self)
-                    self.setCellWidget(i, j, button)
-                    button.clicked.connect(partial(self.controller.handle_debug_button, i))
-                else:
-                    if pd.isnull(self.dataframe.iloc(i, j - 2)):
-                        self.setItem(i, j, QtGui.QTableWidgetItem(""))
-                    else:
-                        self.setItem(i, j, QtGui.QTableWidgetItem(
-                            str(self.dataframe.iloc[i, j - 2])
-                        ))
-                    self.item(i, j).setFlags(QtCore.Qt.ItemIsSelectable | QtCore.Qt.ItemIsEnabled)
-
-
-
-
-class DataFrameTableViewWithLabel(QtGui.QWidget):
-    def __init__(self, controller, dataframe, label):
-        super(DataFrameTableViewWithLabel, self).__init__()
-        self.dataframe = dataframe
-        self.label = label
-        self.controller = controller
-        self.setup_gui()
-
-    def set_dataframe(self, data_frame):
-        self.dataframe = data_frame
-
-    def set_label(self, label):
-        self.label = label
-
-    def setup_gui(self):
-        label = QtGui.QLabel(self.label)
-        tbl_view = DataFrameTableView(self.controller, self.dataframe)
+        self.left_tuple_widget = DictTableViewWithLabel(self, self.left_tuple_dict, 'Left Tuple')
+        self.right_tuple_widget = DictTableViewWithLabel(self, self.right_tuple_dict, 'Right Tuple')
+        self.setWindowTitle('Show Tuples')
         layout = QtGui.QVBoxLayout()
-        layout.addWidget(label)
-        layout.addWidget(tbl_view)
-        self.setLayout(layout)
-
-class DictTableViewWithLabel(QtGui.QWidget):
-    def __init__(self, controller, dictionary, label, combo_box=None):
-        super(DictTableViewWithLabel, self).__init__()
-        self.dictionary = dictionary
-        self.label = label
-        self.controller = controller
-        self.combo_box = combo_box
-        self.setup_gui()
-
-    def setup_gui(self):
-        label = QtGui.QLabel(self.label)
-        dict_view = DictTableView(self.controller, self.dictionary,
-                                  self.combo_box)
-        layout = QtGui.QVBoxLayout()
-        layout.addWidget(label)
-        layout.addWidget(dict_view)
+        splitter = QtGui.QSplitter(QtCore.Qt.Horizontal)
+        splitter.addWidget(self.left_tuple_widget)
+        splitter.addWidget(self.right_tuple_widget)
+        layout.addWidget(splitter)
         self.setLayout(layout)
 
 
 
-class DictTableView(QtGui.QTableWidget):
-    def __init__(self, controller, dictionary, combo_box=None):
-        super(DictTableView, self).__init__()
-        self.controller = controller
-        self.dictionary = dictionary
-        self.combo_box = combo_box
+class DebugWindowManager(QtGui.QWidget):
+    def __init__(self, left_tuple_dict, right_tuple_dict, d):
+        super(DebugWindowManager, self).__init__()
+        self.left_tuple_dict = left_tuple_dict
+        self.right_tuple_dict = right_tuple_dict
+        self.debug_result = d
+        self.left_tuple_widget = None
+        self.right_tuple_widget = None
+        self.debug_widget = None
         self.setup_gui()
 
-
-    def set_dictionary(self, dictionary):
-        self.dictionary = dictionary
-
     def setup_gui(self):
-        #sorting
-        self.setSortingEnabled(True)
-        self.setColumnCount(1)
+        self.left_tuple_widget = DictTableViewWithLabel(self, self.left_tuple_dict, 'Left Tuple')
+        self.right_tuple_widget = DictTableViewWithLabel(self, self.right_tuple_dict, 'Right Tuple')
+        self.setWindowTitle('Debug Tuples')
+        # self.debug_widget = DictTableViewWithLabel(self, self.debug_result, 'Debug Result')
+        self.debug_widget = TreeViewWithLabel(self, "Tree details", type="dt")
 
-        #nrows
-        nrows = len(self.dictionary.keys())
-        if self.combo_box is not None:
-            nrows += 1
-        self.setRowCount(nrows)
+        layout = QtGui.QHBoxLayout()
+        splitter1 = QtGui.QSplitter(QtCore.Qt.Vertical)
+        splitter1.addWidget(self.left_tuple_widget)
+        splitter1.addWidget(self.right_tuple_widget)
 
-        # horizontal headers
-        self.setHorizontalHeaderLabels(['Value'])
-        self.horizontalHeader().setStretchLastSection(True)
-
-        # vertical headers
-        h = self.dictionary.keys()
-        h.append('Show')
-        self.setVerticalHeaderLabels(h)
-
-        idx = 0
-
-        for k, v in self.dictionary.iteritems():
-            self.setItem(idx, 0, QtGui.QTableWidgetItem(str(v)))
-            idx += 1
-        if self.combo_box is not None:
-            self.setCellWidget(idx, 0, self.combo_box)
+        splitter2 = QtGui.QSplitter(QtCore.Qt.Horizontal)
+        splitter2.addWidget(splitter1)
+        splitter2.addWidget(self.debug_widget)
+        layout.addWidget(splitter2)
+        self.setLayout(layout)
 
 
 import magellan as mg
 from collections import OrderedDict
 app = mg._viewapp
 dataframe = mg.load_dataset('table_A')
+b = mg.load_dataset('table_B')
 metric_data = OrderedDict()
 metric_data['Precision'] = 0.95
 metric_data['Recall'] = 0.93
@@ -187,7 +133,7 @@ metric_data['F1'] = 0.94
 metric_data['Num. False Positives'] = 5
 metric_data['Num. False Negatives'] = 6
 
-m = MainWindowManager(metric_data, dataframe, dataframe)
+m = MainWindowManager(metric_data, dataframe, b)
 m.show()
 app.exec_()
 

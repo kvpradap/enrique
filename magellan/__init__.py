@@ -24,20 +24,21 @@ from magellan.blockercombiner.blockercombiner import combine_block_outputs_via_u
 from magellan.gui.mtable_gui import view, edit
 from magellan.labeler.labeler import label
 from magellan.feature.extractfeatures import extract_feat_vecs
-#from magellan.matcher.nbmatcher import NBMatcher
-#from magellan.matcher.dtmatcher import DTMatcher
-#from magellan.matcher.rfmatcher import RFMatcher
-#from magellan.matcher.linregmatcher import LinRegMatcher
-#from magellan.matcher.logregmatcher import LogRegMatcher
-#from magellan.matcher.svmmatcher import SVMMatcher
-#from magellan.matcher.booleanrulematcher import BooleanRuleMatcher
-#from magellan.matcherselection.mlmatcherselection__ import select_matcher
-#from magellan.matcherselection.mlmatchercombinerselection import selector_matcher_combiner
-#from magellan.debugmatcher.debug_decisiontree_matcher import debug_decisiontree_matcher, visualize_tree
-#from magellan.debugmatcher.debug_randomforest_matcher import debug_randomforest_matcher
-#from magellan.debugmatcher.debug_booleanrule_matcher import debug_booleanrule_matcher
-#from magellan.trigger.matchtrigger import MatchTrigger
-#from magellan.evaluation.evaluation import evaluate
+from magellan.matcher.nbmatcher import NBMatcher
+from magellan.matcher.dtmatcher import DTMatcher
+from magellan.matcher.rfmatcher import RFMatcher
+from magellan.matcher.linregmatcher import LinRegMatcher
+from magellan.matcher.logregmatcher import LogRegMatcher
+from magellan.matcher.svmmatcher import SVMMatcher
+from magellan.matcher.booleanrulematcher import BooleanRuleMatcher
+from magellan.matcher.matcherutils import train_test_split
+from magellan.matcherselection.mlmatcherselection import select_matcher
+from magellan.matcherselection.mlmatchercombinerselection import selector_matcher_combiner
+from magellan.debugmatcher.debug_decisiontree_matcher import debug_decisiontree_matcher, visualize_tree
+from magellan.debugmatcher.debug_randomforest_matcher import debug_randomforest_matcher
+from magellan.debugmatcher.debug_booleanrule_matcher import debug_booleanrule_matcher
+from magellan.trigger.matchtrigger import MatchTrigger
+from magellan.evaluation.evaluation import  eval_matches
 
 
 
