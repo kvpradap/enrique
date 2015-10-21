@@ -1,82 +1,64 @@
+"""
+ZetCode PyQt4 tutorial
+
+This example shows
+how to use QtGui.QSplitter widget.
+
+author: Jan Bodnar
+website: zetcode.com
+last edited: September 2011
+"""
+
 import sys
-import magellan as mg
 from PyQt4 import QtGui, QtCore
 
-edit_flag = False
+class Example(QtGui.QWidget):
 
-#data = {'col1':['1','2','3'], 'col2':['4','5','6'], 'col3':['7','8','9']}
+    def __init__(self):
+        super(Example, self).__init__()
 
-# tbl = mg.load_dataset('table_A')
-# datatable = QtGui.QTableWidget()
-#
-# # disable edit
-# if edit_flag == False:
-#     datatable.setEditTriggers(QtGui.QAbstractItemView.NoEditTriggers)
-#
-# datatable.setRowCount(len(tbl.index))
-# datatable.setColumnCount(len(tbl.columns))
-#
-# # set data
-# for i in range(len(tbl.index)):
-#     for j in range(len(tbl.columns)):
-#         datatable.setItem(i, j, QtGui.QTableWidgetItem(str(tbl.iget_value(i, j))))
-#
-# list_col = list(tbl.columns.values)
-# datatable.setHorizontalHeaderLabels(list_col)
-#
-# # set window size
-# width = min((j + 1)*105, mg._viewapp.desktop().screenGeometry().width() - 50)
-# height = min((i + 1)*41, mg._viewapp.desktop().screenGeometry().width() - 100)
-# datatable.resize(width, height)
-#
-# # set window title
-# datatable.setWindowTitle("Mtable")
-#
-# # show window
-# datatable.show()
-# mg._viewapp.exec_()
+        self.initUI()
 
+    def initUI(self):
 
+        hbox = QtGui.QHBoxLayout(self)
 
+        # topleft = QtGui.QFrame(self)
+        # topleft.setFrameShape(QtGui.QFrame.StyledPanel)
 
-class MurTable(QtGui.QTableWidget):
+        topleft = QtGui.QTableWidget()
+        topleft1 = QtGui.QComboBox()
+        topleft1.addItems(['FP', 'FN'])
+        # topleft1 = QtGui.QTableWidget()
+        # topright = QtGui.QFrame(self)
+        # topright.setFrameShape(QtGui.QFrame.StyledPanel)
 
-    def __init__(self, data):
-        self.data = data
-        super(MurTable, self).__init__()
-        self.init_gui()
-        print 'returning from init gui'
+        # bottom = QtGui.QFrame(self)
+        # bottom.setFrameShape(QtGui.QFrame.StyledPanel)
+        bottom = QtGui.QTableWidget()
 
-    def init_gui(self):
-        nrows = len(self.data.index)
-        ncols = len(self.data.columns)
+        splitter1 = QtGui.QSplitter(QtCore.Qt.Horizontal)
+        splitter1.addWidget(topleft)
+        splitter1.addWidget(topleft1)
 
-        self.setRowCount(nrows)
-        self.setColumnCount(ncols)
-        self.setHorizontalHeaderLabels(list(self.data.columns))
+        splitter2 = QtGui.QSplitter(QtCore.Qt.Vertical)
+        splitter2.addWidget(splitter1)
+        splitter2.addWidget(bottom)
 
-        for i in range(nrows):
-            for j in range(ncols):
-                self.setItem(i, j, QtGui.QTableWidgetItem(str(self.data.iget_value(i, j))))
+        hbox.addWidget(splitter2)
+        self.setLayout(hbox)
+        # QtGui.QApplication.setStyle(QtGui.QStyleFactory.create('Cleanlooks'))
+
+        self.setGeometry(300, 300, 500, 500)
+        self.setWindowTitle('QtGui.QSplitter')
+        self.show()
+
+def main():
+
+    app = QtGui.QApplication(sys.argv)
+    ex = Example()
+    sys.exit(app.exec_())
 
 
-        width = min((j + 1)*105, mg._viewapp.desktop().screenGeometry().width() - 50)
-        height = min((i + 1)*41, mg._viewapp.desktop().screenGeometry().width() - 100)
-        self.resize(width, height)
-
-
-
-
-
-
-
-
-
-
-
-data = mg.load_dataset('table_A')
-table = QtGui.QTableWidget()
-table = MurTable(data)
-table.show()
-mg._viewapp.exec_()
-
+if __name__ == '__main__':
+    main()
