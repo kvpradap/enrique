@@ -135,7 +135,7 @@ S = mg.sample_table(F, 13)
 # In[22]:
 
 # label candidate set and name the label column as gold_label
-L = mg.label(S, 'gold_label')
+L = mg.label_table(S, 'gold_label')
 
 
 # In[ ]:

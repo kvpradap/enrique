@@ -88,8 +88,8 @@ def eval_matches(X, gold_label_attr, predicted_label_attr):
     pf = p[p == 0].index.values
 
     # get true label (1) indices
-    gt = g[g == 0].index.values
-    pt = p[p == 0].index.values
+    gt = g[g == 1].index.values
+    pt = p[p == 1].index.values
 
     # get false positive indices
     fp_indices = list(set(gf).intersection(pt))

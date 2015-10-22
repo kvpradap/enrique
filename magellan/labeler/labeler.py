@@ -1,7 +1,7 @@
 import logging
 import magellan as mg
 from magellan.core.mtable import MTable
-def label(tbl, col_name):
+def label_table(tbl, col_name):
     from magellan.gui.mtable_gui import edit
     table = tbl.copy()
     if col_name in table.columns:

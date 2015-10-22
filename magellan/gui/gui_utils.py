@@ -30,24 +30,26 @@ class DataFrameTableView(QtGui.QTableWidget):
         self.verticalHeader().setVisible(True)
 
         # populate data
-        for i in range(nrows):
-            for j in range(ncols + 2):
-                if j == 0:
-                    button = QtGui.QPushButton('Show', self)
-                    self.setCellWidget(i, j, button)
-                    button.clicked.connect(partial(self.controller.handle_show_button, i))
-                elif j == 1:
-                    button = QtGui.QPushButton('Debug', self)
-                    self.setCellWidget(i, j, button)
-                    button.clicked.connect(partial(self.controller.handle_debug_button, i))
-                else:
-                    if pd.isnull(self.dataframe.iloc(i, j - 2)):
-                        self.setItem(i, j, QtGui.QTableWidgetItem(""))
+        # print self.dataframe
+        if nrows > 0:
+            for i in range(nrows):
+                for j in range(ncols + 2):
+                    if j == 0:
+                        button = QtGui.QPushButton('Show', self)
+                        self.setCellWidget(i, j, button)
+                        button.clicked.connect(partial(self.controller.handle_show_button, i))
+                    elif j == 1:
+                        button = QtGui.QPushButton('Debug', self)
+                        self.setCellWidget(i, j, button)
+                        button.clicked.connect(partial(self.controller.handle_debug_button, i))
                     else:
-                        self.setItem(i, j, QtGui.QTableWidgetItem(
-                            str(self.dataframe.iloc[i, j - 2])
-                        ))
-                    self.item(i, j).setFlags(QtCore.Qt.ItemIsSelectable | QtCore.Qt.ItemIsEnabled)
+                        if pd.isnull(self.dataframe.iloc(i, j - 2)):
+                            self.setItem(i, j, QtGui.QTableWidgetItem(""))
+                        else:
+                            self.setItem(i, j, QtGui.QTableWidgetItem(
+                                str(self.dataframe.iloc[i, j - 2])
+                            ))
+                        self.item(i, j).setFlags(QtCore.Qt.ItemIsSelectable | QtCore.Qt.ItemIsEnabled)
 
 
 

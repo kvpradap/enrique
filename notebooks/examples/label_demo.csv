@@ -1,0 +1,21 @@
+#key=_id
+#ltable=POINTER
+#rtable=POINTER
+#foreign_key_ltable=ltable.ID
+#foreign_key_rtable=rtable.ID
+_id,ltable.ID,rtable.ID,ltable.name,rtable.name,gold
+0,a1,b1,Kevin Smith,Mark Levene,0
+1,a1,b2,Kevin Smith,Bill Bridge,1
+2,a1,b6,Kevin Smith,Michael Brodie,0
+3,a3,b1,William Bridge,Mark Levene,1
+4,a3,b2,William Bridge,Bill Bridge,0
+5,a3,b6,William Bridge,Michael Brodie,0
+6,a2,b3,Michael Franklin,Mike Franklin,1
+7,a2,b4,Michael Franklin,Joseph Kuan,0
+8,a2,b5,Michael Franklin,Alfons Kemper,1
+9,a4,b3,Binto George,Mike Franklin,0
+10,a4,b4,Binto George,Joseph Kuan,1
+11,a4,b5,Binto George,Alfons Kemper,0
+12,a5,b3,Alphonse Kemper,Mike Franklin,0
+13,a5,b4,Alphonse Kemper,Joseph Kuan,0
+14,a5,b5,Alphonse Kemper,Alfons Kemper,1

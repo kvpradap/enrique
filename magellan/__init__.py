@@ -22,7 +22,7 @@ from magellan.blocker.overlap_blocker import OverlapBlocker
 from magellan.debugblocker.blocking_debugger import debug_blocker
 from magellan.blockercombiner.blockercombiner import combine_block_outputs_via_union
 from magellan.gui.mtable_gui import view, edit
-from magellan.labeler.labeler import label
+from magellan.labeler.labeler import label_table
 from magellan.feature.extractfeatures import extract_feat_vecs
 from magellan.matcher.nbmatcher import NBMatcher
 from magellan.matcher.dtmatcher import DTMatcher
@@ -39,6 +39,7 @@ from magellan.debugmatcher.debug_randomforest_matcher import debug_randomforest_
 from magellan.debugmatcher.debug_booleanrule_matcher import debug_booleanrule_matcher
 from magellan.trigger.matchtrigger import MatchTrigger
 from magellan.evaluation.evaluation import  eval_matches
+from magellan.gui.debug_gui import vis_debug_dt
 
 
 

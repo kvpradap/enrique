@@ -1,15 +1,26 @@
 from PyQt4 import QtGui, QtCore
+from collections import OrderedDict
+import pandas as pd
+import magellan as mg
 
 from  magellan.gui.gui_utils import DictTableViewWithLabel, DataFrameTableViewWithLabel, TreeViewWithLabel
 
 
 class MainWindowManager(QtGui.QWidget):
 
-    def __init__(self, dictionary, fp_dataframe, fn_dataframe):
+    def __init__(self, dictionary, table, fp_dataframe, fn_dataframe):
         super(MainWindowManager, self).__init__()
         self.dictionary = dictionary
+        self.table = table
         self.fp_dataframe = fp_dataframe
         self.fn_dataframe = fn_dataframe
+
+        ltable = self.table.get_property('ltable')
+        rtable = self.table.get_property('rtable')
+        l_df = ltable.to_dataframe()
+        r_df = rtable.to_dataframe()
+        self.l_df = l_df.set_index(ltable.get_key(), drop=False)
+        self.r_df = r_df.set_index(rtable.get_key(), drop=False)
         self.metric_widget = None
         self.dataframe_widget = None
         self.combo_box = None
@@ -36,16 +47,26 @@ class MainWindowManager(QtGui.QWidget):
 
     def handle_debug_button(self, index):
         print 'Debug button clicked : ' + str(index)
-        d1 = self.fp_dataframe.ix[1].to_dict()
-        d2 = self.fn_dataframe.ix[2].to_dict()
+        r = self.current_dataframe.ix[index]
+        l_fkey = self.table.get_property('foreign_key_ltable')
+        r_fkey = self.table.get_property('foreign_key_rtable')
+        l_val = r[l_fkey]
+        r_val = r[r_fkey]
+        d1 = OrderedDict(self.l_df.ix[l_val])
+        d2 = OrderedDict(self.r_df.ix[r_val])
         debug_obj = DebugWindowManager(d1, d2, d1)
         debug_obj.show()
 
 
     def handle_show_button(self, index):
         print 'Show button clicked : ' + str(index)
-        d1 = self.fp_dataframe.ix[1].to_dict()
-        d2 = self.fn_dataframe.ix[2].to_dict()
+        r = self.current_dataframe.ix[index]
+        l_fkey = self.table.get_property('foreign_key_ltable')
+        r_fkey = self.table.get_property('foreign_key_rtable')
+        l_val = r[l_fkey]
+        r_val = r[r_fkey]
+        d1 = OrderedDict(self.l_df.ix[l_val])
+        d2 = OrderedDict(self.r_df.ix[r_val])
         show_obj = ShowWindowManager(d1, d2)
         show_obj.show()
 
@@ -121,19 +142,37 @@ class DebugWindowManager(QtGui.QWidget):
         self.setLayout(layout)
 
 
-import magellan as mg
-from collections import OrderedDict
-app = mg._viewapp
-dataframe = mg.load_dataset('table_A')
-b = mg.load_dataset('table_B')
-metric_data = OrderedDict()
-metric_data['Precision'] = 0.95
-metric_data['Recall'] = 0.93
-metric_data['F1'] = 0.94
-metric_data['Num. False Positives'] = 5
-metric_data['Num. False Negatives'] = 6
 
-m = MainWindowManager(metric_data, dataframe, b)
-m.show()
-app.exec_()
+def vis_debug_dt(matcher, summary_stats, table, exclude_attrs, feat_table):
+    metric = get_metric(summary_stats)
+    fp_dataframe = get_dataframe(table, summary_stats['false_pos_ls'])
+    fn_dataframe = get_dataframe(table, summary_stats['false_neg_ls'])
+    app = mg._viewapp
+    m = MainWindowManager(metric, table, fp_dataframe, fn_dataframe)
+    m.show()
+    app.exec_()
+
+
+
+
+def get_metric(summary_stats):
+    d = OrderedDict()
+    keys = summary_stats.keys()
+    mkeys = [k for k in keys if k not in ['false_pos_ls', 'false_neg_ls']]
+    for k in mkeys:
+        d[k] = summary_stats[k]
+    return d
+
+def get_dataframe(table, ls):
+    df = table.to_dataframe()
+    ret = pd.DataFrame(columns=table.columns.values)
+    if len(ls) > 0:
+        l_fkey = table.get_property('foreign_key_ltable')
+        r_fkey = table.get_property('foreign_key_rtable')
+        df = df.set_index([l_fkey, r_fkey], drop=False)
+        d = df.ix[ls]
+        ret = d
+        ret.reset_index(inplace=True, drop=True)
+    return ret
+
 
