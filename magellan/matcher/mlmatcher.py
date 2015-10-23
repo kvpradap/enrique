@@ -161,9 +161,10 @@ class MLMatcher(Matcher):
                 y = np.delete(y, 0, 1)
             else:
                 y = y.values
-        imp = Imputer(missing_values='NaN', strategy='median', axis=0)
-        imp.fit(x)
-        x = imp.transform(x)
+        if mg._impute_flag == True:
+            imp = Imputer(missing_values='NaN', strategy='median', axis=0)
+            imp.fit(x)
+            x = imp.transform(x)
         if y is not None:
             return x, y
         else:

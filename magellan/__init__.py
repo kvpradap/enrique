@@ -62,8 +62,13 @@ _match_c = None
 # GUI related
 _viewapp = QtGui.QApplication([])
 
-# verbose - experimental
+# experimental
+# verbose
 _verbose = False
 _percent = 10
 _progbar = True
+
+# imputation
+_impute_flag = False
+
 

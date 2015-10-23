@@ -1,4 +1,5 @@
 from magellan.matcher.mlmatcher import MLMatcher
+from magellan.matcher.matcherutils import get_ts
 from sklearn.linear_model import LinearRegression
 from sklearn.base import BaseEstimator
 from sklearn.base import ClassifierMixin
@@ -30,7 +31,7 @@ class LinRegMatcher(MLMatcher):
         super(LinRegMatcher, self).__init__()
         name = kwargs.pop('name', None)
         if name is None:
-            self.name = 'LinearRegression'
+            self.name = 'LinearRegression' + '_' + get_ts()
         else:
             self.name = name
         self.clf = LinRegClassifierSKLearn(*args, **kwargs)

@@ -5,6 +5,7 @@ from sklearn.tree import export_graphviz
 from sklearn.preprocessing import Imputer
 from magellan.feature.extractfeatures import apply_feat_fns
 from magellan.matcher.dtmatcher import DTMatcher
+import magellan as mg
 
 def visualize_tree(dt, fv_columns, exclude_attrs):
     """Create tree png using graphviz.
@@ -105,6 +106,97 @@ def get_code(tree, feature_names, target_names,
     recurse(left, right, threshold, features, 0, 0)
     return code_list
 
+def get_code_vis(tree, feature_names, target_names,
+             spacer_base="    "):
+    """Produce psuedo-code for decision tree.
+
+    Args
+    ----
+    tree -- scikit-leant DescisionTree.
+    feature_names -- list of feature names.
+    target_names -- list of target (class) names.
+    spacer_base -- used for spacing code (default: "    ").
+
+    Notes
+    -----
+    based on http://stackoverflow.com/a/30104792.
+    """
+    left = tree.tree_.children_left
+    right = tree.tree_.children_right
+    threshold = tree.tree_.threshold
+    features = [feature_names[i] for i in tree.tree_.feature]
+    value = tree.tree_.value
+
+    code_list = []
+
+    def recurse(left, right, threshold, features, node, depth):
+        spacer = spacer_base * depth
+        if (threshold[node] != -2):
+            code_str = spacer + "if ( " + features[node] + " <= " + \
+                       str(threshold[node]) + " ):"
+            code_list.append(code_str)
+            # print(spacer + "if ( " + features[node] + " <= " + \
+            #       str(threshold[node]) + " ):")
+
+            # This code makes sense for printing the predicate
+            # code_str = spacer + spacer_base + "print \'" + spacer_base + "" + features[node] + " <= " + str(
+            #     threshold[node]) + \
+            #            " is True " + "(  value : \'  + str(" + str(features[node]) + ") + \')\'"
+            code_str = spacer + spacer_base + "node_list.extend([" + str(features[node]) + " <= " + \
+                       str(threshold[node] + ", True, " +  str(features[node]) +"])")
+
+
+            code_list.append(code_str)
+
+
+
+            # print(spacer + spacer_base + "print \'" + features[node] + " <= " + str(threshold[node]) +
+            #       " PASSED " + "(  value : \'  + str(" +  str(features[node])  + ") + \')\'")
+            if left[node] != -1:
+                recurse(left, right, threshold, features,
+                        left[node], depth + 1)
+            # print(spacer + "}\n" + spacer +"else:")
+            code_str = spacer + "else:"
+            code_list.append(code_str)
+            # print(spacer + "else:")
+
+            # code_str = spacer + spacer_base + "print \'" + spacer_base + "" + features[node] + " <= " + str(
+            #     threshold[node]) + \
+            #            " is False " + "(  value : \'  + str(" + str(features[node]) + ") + \')\'"
+
+            code_str = spacer + spacer_base + "node_list.extend([\'" + str(features[node]) + " <= " + \
+                       str(threshold[node] + "\', False, " +  str(features[node]) +"])")
+
+
+
+            code_list.append(code_str)
+            # print(spacer + spacer_base + "print \'" + features[node] + " <= " + str(threshold[node]) +
+            #       " FAILED " + "(  value : \'  + str(" +  str(features[node])  + ") + \')\'")
+            if right[node] != -1:
+                recurse(left, right, threshold, features,
+                        right[node], depth + 1)
+                # print(spacer + "}")
+        else:
+            target = value[node]
+            for i, v in zip(np.nonzero(target)[1],
+                            target[np.nonzero(target)]):
+                target_name = target_names[i]
+                target_count = int(v)
+                # print(spacer + "return " + str(target_name) + \
+                #       " ( " + str(target_count) + " examples )")
+                code_str = spacer + "return " + str(target_name) + ", node_list" + \
+                           " #( " + str(target_count) + " examples )"
+                code_list.append(code_str)
+                # print(spacer + "return " + str(target_name) + \
+                #       " #( " + str(target_count) + " examples )")
+
+    recurse(left, right, threshold, features, 0, 0)
+    return code_list
+
+
+
+
+
 
 def debug_decisiontree_matcher(dt, t1, t2, feat_table, fv_columns, exclude_attrs, ensemble_flag=False):
     if isinstance(dt, DTMatcher):
@@ -121,6 +213,7 @@ def debug_decisiontree_matcher(dt, t1, t2, feat_table, fv_columns, exclude_attrs
     code = get_code(clf, feature_names, ['False', 'True'])
     feat_vals = apply_feat_fns(t1, t2, feat_table)
     code = get_dbg_fn(code)
+    print code
     d = {}
     d.update(feat_vals)
     exec code in d
@@ -143,9 +236,10 @@ def get_prob(clf, t1, t2, feat_table, feature_names):
     feat_values = pd.Series(feat_values)
     feat_values =  feat_values[feature_names]
     v = feat_values.values
-    imp = Imputer(missing_values='NaN', strategy='median', axis=0)
-    imp.fit(v)
-    v = imp.transform(v)
+    if mg._impute_flag == True:
+        imp = Imputer(missing_values='NaN', strategy='median', axis=0)
+        imp.fit(v)
+        v = imp.transform(v)
     p = clf.predict_proba(v)
     return p[0]
 

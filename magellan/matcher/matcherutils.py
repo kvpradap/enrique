@@ -3,6 +3,7 @@ import sklearn.cross_validation as cv
 import numpy as np
 
 from magellan import MTable
+import time
 
 def train_test_split(labeled_data, test_size, train_size, random_state=80):
     idx_values = np.array(labeled_data.index.values)
@@ -30,5 +31,10 @@ def train_test_split(labeled_data, test_size, train_size, random_state=80):
     result['test'] = lbl_test
 
     return result
+
+def get_ts():
+    t = int(round(time.time()*1e10))
+    return str(t)[::-1]
+
 
 

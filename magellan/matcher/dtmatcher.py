@@ -1,4 +1,5 @@
 from magellan.matcher.mlmatcher import MLMatcher
+from magellan.matcher.matcherutils import get_ts
 
 from sklearn.tree import DecisionTreeClassifier
 
@@ -11,7 +12,7 @@ class DTMatcher(MLMatcher):
 
         name = kwargs.pop('name', None)
         if name is None:
-            self.name = 'DecisionTree'
+            self.name = 'DecisionTree' + '_' + get_ts()
         else:
             self.name = name
         self.clf = DecisionTreeClassifier(*args, **kwargs)

@@ -2,13 +2,14 @@ import logging
 import magellan as mg
 
 from magellan.matcher.rulematcher import RuleMatcher
+from magellan.matcher.matcherutils import get_ts
 from collections import OrderedDict
 
 class BooleanRuleMatcher(RuleMatcher):
     def __init__(self, *args, **kwargs):
         name = kwargs.pop('name', None)
         if name is None:
-            self.name = 'BooleanRuleMatcher'
+            self.name = 'BooleanRuleMatcher' + '_' + get_ts()
         else:
             self.name = name
         self.rules = OrderedDict()
