@@ -142,8 +142,8 @@ def get_code_vis(tree, feature_names, target_names,
             # code_str = spacer + spacer_base + "print \'" + spacer_base + "" + features[node] + " <= " + str(
             #     threshold[node]) + \
             #            " is True " + "(  value : \'  + str(" + str(features[node]) + ") + \')\'"
-            code_str = spacer + spacer_base + "node_list.extend([" + str(features[node]) + " <= " + \
-                       str(threshold[node] + ", True, " +  str(features[node]) +"])")
+            code_str = spacer + spacer_base + "node_list.extend([True, \'" + str(features[node]) + " <= " + \
+                       str(threshold[node]) + "\', " + str(features[node]) +"])"
 
 
             code_list.append(code_str)
@@ -164,8 +164,8 @@ def get_code_vis(tree, feature_names, target_names,
             #     threshold[node]) + \
             #            " is False " + "(  value : \'  + str(" + str(features[node]) + ") + \')\'"
 
-            code_str = spacer + spacer_base + "node_list.extend([\'" + str(features[node]) + " <= " + \
-                       str(threshold[node] + "\', False, " +  str(features[node]) +"])")
+            code_str = spacer + spacer_base + "node_list.extend([False, \'" + str(features[node]) + " <= " + \
+                       str(threshold[node]) + "\', " +  str(features[node]) +"])"
 
 
 
@@ -194,6 +194,28 @@ def get_code_vis(tree, feature_names, target_names,
     return code_list
 
 
+
+def debug_decisiontree_matcher_vis(dt, t1, t2, feat_table, fv_columns, exclude_attrs, ensemble_flag=False):
+    if isinstance(dt, DTMatcher):
+        clf = dt.clf
+    else:
+        clf = dt
+
+    if exclude_attrs is None:
+        feature_names = fv_columns
+    else:
+        cols = [c not in exclude_attrs for c in fv_columns]
+        feature_names = fv_columns[cols]
+
+    code = get_code_vis(clf, feature_names, ['False', 'True'])
+    code = get_dbg_fn_vis(code)
+    feat_vals = apply_feat_fns(t1, t2, feat_table)
+    d = {}
+    d.update(feat_vals)
+    exec code in d
+    ret_val, node_list = d['debug_fn']()
+
+    return ret_val, node_list
 
 
 
@@ -248,6 +270,14 @@ def get_prob(clf, t1, t2, feat_table, feature_names):
 def get_dbg_fn(code):
     spacer_basic = '    '
     c = "def debug_fn(): \n"
+    upd_code = [spacer_basic + e + "\n" for e in code]
+    c = c + ''.join(upd_code)
+    return c
+
+def get_dbg_fn_vis(code):
+    spacer_basic = '    '
+    c = "def debug_fn(): \n"
+    c += spacer_basic + "node_list = []\n"
     upd_code = [spacer_basic + e + "\n" for e in code]
     c = c + ''.join(upd_code)
     return c
