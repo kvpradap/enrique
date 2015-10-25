@@ -90,7 +90,7 @@ class MLMatcher(Matcher):
 
 
     # predict method
-    def predict(self, x=None, table=None, exclude_attrs=None, target_attr=None, append=False):
+    def predict(self, x=None, table=None, exclude_attrs=None, target_attr=None, append=False, inplace=True):
         """
         Predict 'matches' on a MTable of feature vectors
 
@@ -111,6 +111,9 @@ class MLMatcher(Matcher):
         append : boolean,
             Whether the output should be appended
 
+        inplace : boolean
+            Whether the update should be done inplace
+
         Returns
         -------
         The function can return either an array or MTable.
@@ -127,13 +130,24 @@ class MLMatcher(Matcher):
         if x is not None:
             y = self.predict_sklearn(x)
             if table is not None and target_attr is not None and append is True:
-                table[target_attr] = y
-                return table
+                if inplace == True:
+                    table[target_attr] = y
+                    return table
+                else:
+                    tbl = table.copy()
+                    tbl[target_attr] = y
+                    return tbl
         elif table is not None and exclude_attrs is not None:
             y = self.predict_ex_attrs(table, exclude_attrs)
             if target_attr is not None and append is True:
-                table[target_attr] = y
-                return table
+                if inplace == True:
+                    table[target_attr] = y
+                    return table
+                else:
+                    tbl = table.copy()
+                    tbl[target_attr] = y
+                    return tbl
+
         else:
             raise SyntaxError('The arguments supplied does not match the signatures supported !!!')
         return y

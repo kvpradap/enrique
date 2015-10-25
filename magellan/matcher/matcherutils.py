@@ -4,8 +4,13 @@ import numpy as np
 
 from magellan import MTable
 import time
+import math
+def train_test_split(labeled_data, train_proportion = 0.5, random_state=80):
 
-def train_test_split(labeled_data, test_size, train_size, random_state=80):
+    num_rows = len(labeled_data)
+    train_size = int(math.floor(num_rows*train_proportion))
+    test_size = int(num_rows - train_size)
+
     idx_values = np.array(labeled_data.index.values)
     idx_train, idx_test = cv.train_test_split(idx_values, test_size=test_size, train_size=train_size,
                                               random_state=random_state)

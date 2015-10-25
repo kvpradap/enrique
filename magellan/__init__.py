@@ -35,11 +35,12 @@ from magellan.matcher.matcherutils import train_test_split
 from magellan.matcherselection.mlmatcherselection import select_matcher
 from magellan.matcherselection.mlmatchercombinerselection import selector_matcher_combiner
 from magellan.debugmatcher.debug_decisiontree_matcher import debug_decisiontree_matcher, visualize_tree
-from magellan.debugmatcher.debug_randomforest_matcher import debug_randomforest_matcher
-from magellan.debugmatcher.debug_booleanrule_matcher import debug_booleanrule_matcher
+
+from magellan.debugmatcher.debug_randomforest_matcher import debug_randomforest_matcher, debug_randomforest_matcher_vis
+from magellan.debugmatcher.debug_booleanrule_matcher import debug_booleanrule_matcher, debug_booleanrule_matcher_vis
 from magellan.trigger.matchtrigger import MatchTrigger
 from magellan.evaluation.evaluation import  eval_matches
-from magellan.gui.debug_gui import vis_debug_dt
+from magellan.debugmatcher.debug_gui_decisiontree_matcher import vis_debug_dt, vis_tuple_debug_dt_matcher
 
 
 

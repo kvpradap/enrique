@@ -1,6 +1,6 @@
 import sys
 import magellan as mg
-from magellan.gui.debug_gui import vis_debug_dt
+from magellan.gui.debug_gui_base import vis_debug_dt
 
 sys.path.append('/Users/Pradap/Documents/Research/Python-Package/enrique/')
 mg.init_jvm()

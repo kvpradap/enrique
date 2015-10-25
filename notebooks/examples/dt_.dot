@@ -1,0 +1,23 @@
+digraph Tree {
+0 [label="author_author_jac_qgm_3_qgm_3 <= 0.2391\ngini = 0.41828881847\nsamples = 47", shape="box"] ;
+1 [label="gini = 0.0000\nsamples = 12\nvalue = [ 12.   0.]", shape="box"] ;
+0 -> 1 ;
+2 [label="publisher_publisher_jac_qgm_3_qgm_3 <= 0.1417\ngini = 0.107755102041\nsamples = 35", shape="box"] ;
+0 -> 2 ;
+3 [label="publisher_publisher_jac_qgm_3_qgm_3 <= 0.0545\ngini = 0.375\nsamples = 4", shape="box"] ;
+2 -> 3 ;
+4 [label="gini = 0.0000\nsamples = 3\nvalue = [ 0.  3.]", shape="box"] ;
+3 -> 4 ;
+5 [label="gini = 0.0000\nsamples = 1\nvalue = [ 1.  0.]", shape="box"] ;
+3 -> 5 ;
+6 [label="title_title_jac_qgm_3_qgm_3 <= 0.9061\ngini = 0.0624349635796\nsamples = 31", shape="box"] ;
+2 -> 6 ;
+7 [label="gini = 0.0000\nsamples = 19\nvalue = [  0.  19.]", shape="box"] ;
+6 -> 7 ;
+8 [label="title_title_jac_qgm_3_qgm_3 <= 0.9231\ngini = 0.152777777778\nsamples = 12", shape="box"] ;
+6 -> 8 ;
+9 [label="gini = 0.0000\nsamples = 1\nvalue = [ 1.  0.]", shape="box"] ;
+8 -> 9 ;
+10 [label="gini = 0.0000\nsamples = 11\nvalue = [  0.  11.]", shape="box"] ;
+8 -> 10 ;
+}

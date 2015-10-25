@@ -5,11 +5,13 @@ import magellan as mg
 
 from  magellan.gui.gui_utils import DictTableViewWithLabel, DataFrameTableViewWithLabel, TreeViewWithLabel
 
-
 class MainWindowManager(QtGui.QWidget):
 
-    def __init__(self, dictionary, table, fp_dataframe, fn_dataframe):
+    def __init__(self, matcher, matcher_type, exclude_attrs, dictionary, table, fp_dataframe, fn_dataframe):
         super(MainWindowManager, self).__init__()
+        self.matcher = matcher
+        self.matcher_type = matcher_type
+        self.exclude_attrs = exclude_attrs
         self.dictionary = dictionary
         self.table = table
         self.fp_dataframe = fp_dataframe
@@ -47,24 +49,28 @@ class MainWindowManager(QtGui.QWidget):
 
     def handle_debug_button(self, index):
         print 'Debug button clicked : ' + str(index)
-        r = self.current_dataframe.ix[index]
+        r = self.current_dataframe.iloc[[index]]
         l_fkey = self.table.get_property('foreign_key_ltable')
         r_fkey = self.table.get_property('foreign_key_rtable')
-        l_val = r[l_fkey]
-        r_val = r[r_fkey]
+        l_val = r.ix[r.index.values[0], l_fkey]
+        r_val = r.ix[r.index.values[0], r_fkey]
         d1 = OrderedDict(self.l_df.ix[l_val])
         d2 = OrderedDict(self.r_df.ix[r_val])
-        debug_obj = DebugWindowManager(d1, d2, d1)
-        debug_obj.show()
+        if self.matcher_type == 'dt':
+            ret_val, node_list = mg.vis_tuple_debug_dt_matcher(self.matcher, r, self.exclude_attrs)
+            debug_result = [ret_val]
+            debug_result.append(node_list)
+            debug_obj = DebugWindowManager(d1, d2, self.matcher_type, debug_result)
+            debug_obj.show()
 
 
     def handle_show_button(self, index):
         print 'Show button clicked : ' + str(index)
-        r = self.current_dataframe.ix[index]
+        r = self.current_dataframe.iloc[[index]]
         l_fkey = self.table.get_property('foreign_key_ltable')
         r_fkey = self.table.get_property('foreign_key_rtable')
-        l_val = r[l_fkey]
-        r_val = r[r_fkey]
+        l_val = r.ix[r.index.values[0], l_fkey]
+        r_val = r.ix[r.index.values[0], r_fkey]
         d1 = OrderedDict(self.l_df.ix[l_val])
         d2 = OrderedDict(self.r_df.ix[r_val])
         show_obj = ShowWindowManager(d1, d2)
@@ -113,11 +119,12 @@ class ShowWindowManager(QtGui.QWidget):
 
 
 class DebugWindowManager(QtGui.QWidget):
-    def __init__(self, left_tuple_dict, right_tuple_dict, d):
+    def __init__(self, left_tuple_dict, right_tuple_dict, matcher_type, debug_result):
         super(DebugWindowManager, self).__init__()
         self.left_tuple_dict = left_tuple_dict
         self.right_tuple_dict = right_tuple_dict
-        self.debug_result = d
+        self.matcher_type = matcher_type
+        self.debug_result = debug_result
         self.left_tuple_widget = None
         self.right_tuple_widget = None
         self.debug_widget = None
@@ -128,7 +135,9 @@ class DebugWindowManager(QtGui.QWidget):
         self.right_tuple_widget = DictTableViewWithLabel(self, self.right_tuple_dict, 'Right Tuple')
         self.setWindowTitle('Debug Tuples')
         # self.debug_widget = DictTableViewWithLabel(self, self.debug_result, 'Debug Result')
-        self.debug_widget = TreeViewWithLabel(self, "Tree details", type="dt")
+        self.debug_widget = TreeViewWithLabel(self, "Tree details", type=self.matcher_type,
+                                              debug_result = self.debug_result
+                                              )
 
         layout = QtGui.QHBoxLayout()
         splitter1 = QtGui.QSplitter(QtCore.Qt.Vertical)
@@ -143,36 +152,9 @@ class DebugWindowManager(QtGui.QWidget):
 
 
 
-def vis_debug_dt(matcher, summary_stats, table, exclude_attrs, feat_table):
-    metric = get_metric(summary_stats)
-    fp_dataframe = get_dataframe(table, summary_stats['false_pos_ls'])
-    fn_dataframe = get_dataframe(table, summary_stats['false_neg_ls'])
-    app = mg._viewapp
-    m = MainWindowManager(metric, table, fp_dataframe, fn_dataframe)
-    m.show()
-    app.exec_()
 
 
 
 
-def get_metric(summary_stats):
-    d = OrderedDict()
-    keys = summary_stats.keys()
-    mkeys = [k for k in keys if k not in ['false_pos_ls', 'false_neg_ls']]
-    for k in mkeys:
-        d[k] = summary_stats[k]
-    return d
-
-def get_dataframe(table, ls):
-    df = table.to_dataframe()
-    ret = pd.DataFrame(columns=table.columns.values)
-    if len(ls) > 0:
-        l_fkey = table.get_property('foreign_key_ltable')
-        r_fkey = table.get_property('foreign_key_rtable')
-        df = df.set_index([l_fkey, r_fkey], drop=False)
-        d = df.ix[ls]
-        ret = d
-        ret.reset_index(inplace=True, drop=True)
-    return ret
 
 
