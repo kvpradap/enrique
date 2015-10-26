@@ -4,7 +4,7 @@ digraph Tree {
 0 -> 1 ;
 2 [label="publisher_publisher_jac_qgm_3_qgm_3 <= 0.1417\ngini = 0.107755102041\nsamples = 35", shape="box"] ;
 0 -> 2 ;
-3 [label="publisher_publisher_jac_qgm_3_qgm_3 <= 0.0545\ngini = 0.375\nsamples = 4", shape="box"] ;
+3 [label="author_author_jac_qgm_3_qgm_3 <= 0.6433\ngini = 0.375\nsamples = 4", shape="box"] ;
 2 -> 3 ;
 4 [label="gini = 0.0000\nsamples = 3\nvalue = [ 0.  3.]", shape="box"] ;
 3 -> 4 ;

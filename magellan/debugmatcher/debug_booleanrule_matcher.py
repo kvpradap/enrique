@@ -25,19 +25,7 @@ def debug_booleanrule_matcher(rm, t1, t2, feature_table):
             print_conjunct_result(rm, t1, t2, c, feature_table, fv, conj_name+str(num_conjuncts))
 
 
-def debug_booleanrule_matcher_vis(rm, t1, t2, feature_table):
-    # format [True, [False, [[False, conjunct, value], [False, conjunct, value]]]]
 
-    consol_res = []
-    for r_name, conjunct_list in rm.rule_conjunct_list.iteritems():
-        res = get_rule_result(rm, t1, t2, conjunct_list, feature_table)
-        res_ls = res
-        ls = get_conjunct_result_as_list(rm, t1, t2)
-        res_ls.extend(ls)
-
-        consol_res.extend(res_ls)
-
-    return consol_res
 
 def get_feature_vector(t1, t2, feat_table):
     fv = apply_feat_fns(t1, t2, feat_table)
@@ -59,27 +47,6 @@ def print_conjunct_result(rm, t1, t2, conjunct, feat_table, feat_vector, name):
     return res
 
 
-def get_conjunct_result_as_list(rm, t1, t2, conjunct, feat_table, feat_vector):
-    # currently I am reusing create_rule function in booleanrulematcher
-    cnj_fn, cnj_name, cnj_fn_str = rm.create_rule([conjunct], feat_table, '_temp_')
-    res = cnj_fn(t1, t2)
-    spacer = '    '
-    feat_name = get_feature_name_from_conjunct(conjunct)
-    feature_names = list(feat_table['feature_name'])
-    ls = []
-    if feat_name in feature_names:
-        ls = [str(res), conjunct, str(feat_table[feat_name])]
-    else:
-        ls = [str(res), conjunct, ""]
-
-    return ls
-
-def get_rule_result(rm, t1, t2, conjunct_list, feature_table):
-    if isinstance(conjunct_list, list) == False:
-        conjunct_list = [conjunct_list]
-    rule_fn, rule_name, rule_fn_str = rm.create_rule(conjunct_list, feature_table, '_temp_')
-    res = rule_fn(t1, t2)
-    return res
 
 
 def print_rule_result(rm, t1, t2, conjunct_list, feature_table, name):

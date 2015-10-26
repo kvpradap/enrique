@@ -7,11 +7,11 @@ from  magellan.gui.gui_utils import DictTableViewWithLabel, DataFrameTableViewWi
 
 class MainWindowManager(QtGui.QWidget):
 
-    def __init__(self, matcher, matcher_type, exclude_attrs, dictionary, table, fp_dataframe, fn_dataframe):
+    def __init__(self, matcher, matcher_type, exclude_attrs_or_feature_table, dictionary, table, fp_dataframe, fn_dataframe):
         super(MainWindowManager, self).__init__()
         self.matcher = matcher
         self.matcher_type = matcher_type
-        self.exclude_attrs = exclude_attrs
+        self.exclude_attrs_or_feature_table = exclude_attrs_or_feature_table
         self.dictionary = dictionary
         self.table = table
         self.fp_dataframe = fp_dataframe
@@ -57,11 +57,18 @@ class MainWindowManager(QtGui.QWidget):
         d1 = OrderedDict(self.l_df.ix[l_val])
         d2 = OrderedDict(self.r_df.ix[r_val])
         if self.matcher_type == 'dt':
-            ret_val, node_list = mg.vis_tuple_debug_dt_matcher(self.matcher, r, self.exclude_attrs)
-            debug_result = [ret_val]
-            debug_result.append(node_list)
-            debug_obj = DebugWindowManager(d1, d2, self.matcher_type, debug_result)
-            debug_obj.show()
+            ret_val, node_list = mg.vis_tuple_debug_dt_matcher(self.matcher, r, self.exclude_attrs_or_feature_table)
+        elif self.matcher_type == 'rf':
+            ret_val, node_list = mg.vis_tuple_debug_rf_matcher(self.matcher, r, self.exclude_attrs_or_feature_table)
+        elif self.matcher_type == 'rm':
+            ret_val, node_list = mg.vis_tuple_debug_rm_matcher(self.matcher, self.l_df.ix[l_val], self.r_df.ix[r_val],
+                                                               self.exclude_attrs_or_feature_table)
+        else:
+            raise TypeError('Unknown matcher type ')
+        debug_result = [ret_val]
+        debug_result.append(node_list)
+        debug_obj = DebugWindowManager(d1, d2, self.matcher_type, debug_result)
+        debug_obj.show()
 
 
     def handle_show_button(self, index):

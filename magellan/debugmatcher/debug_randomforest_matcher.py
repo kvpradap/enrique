@@ -9,30 +9,6 @@
 from magellan.matcher.rfmatcher import RFMatcher
 from magellan.debugmatcher.debug_decisiontree_matcher import debug_decisiontree_matcher, get_prob
 
-def debug_randomforest_matcher_vis(rf, t1, t2, feat_table, fv_columns, exclude_attrs):
-    i = 1
-    if isinstance(rf, RFMatcher):
-        clf = rf.clf
-    else:
-        clf = rf
-
-    if exclude_attrs is None:
-        feature_names = fv_columns
-    else:
-        cols = [c not in exclude_attrs for c in fv_columns]
-        feature_names = fv_columns[cols]
-
-    prob = get_prob(clf, t1, t2, feat_table, feature_names)
-    prediction = False
-    if prob[1] > prob[0]:
-        prediction = True
-    consol_node_list = []
-    consol_node_list.append(prediction)
-    for e in clf.estimators_:
-        print "Tree " + str(i)
-        i += 1
-        ret_val, node_list = debug_decisiontree_matcher(e, t1, t2, feat_table, feature_names, exclude_attrs, ensemble_flag=True)
-        consol_node_list.append([ret_val, node_list])
 
 def debug_randomforest_matcher(rf, t1, t2, feat_table, fv_columns, exclude_attrs):
     i = 1

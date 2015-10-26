@@ -49,12 +49,17 @@ class BooleanRuleMatcher(RuleMatcher):
                 y.append(0)
         return y
 
-    def predict(self, table=None, target_attr=None, append=False):
+    def predict(self, table=None, target_attr=None, append=False, inplace=True):
         if table  is not None:
             y = self.predict_candset(table)
             if target_attr is not None and append is True:
-                table[target_attr] = y
-                return table
+                if inplace == True:
+                    table[target_attr] = y
+                    return table
+                else:
+                    tbl = table.copy()
+                    tbl[target_attr] = y
+                    return tbl
             else:
                 return y
         else:

@@ -162,17 +162,65 @@ class TreeView(QtGui.QTreeWidget):
             # barA = QtGui.QTreeWidgetItem(root, ["" "", "", ""])
             # barA = QtGui.QTreeWidgetItem(root, ["Node 4", "Fail", "address_address_lev > 0.6", "0.4"])
             root = self.get_treewidget_items_for_dt()
+        elif self.type == 'rf':
+            header=QtGui.QTreeWidgetItem(["Debug-Tree","Status","Predicate", "Feature value"])
+            self.setHeaderItem(header)   #Another alternative is setHeaderLabels(["Tree","First",...])
+            root = self.get_treewidget_items_for_rf()
+        elif self.type == 'rm':
+            header=QtGui.QTreeWidgetItem(["Debug-Rules","Status","Conjunct", "Feature value"])
+            self.setHeaderItem(header)
+            root = self.get_treewidget_items_for_rm()
+        else:
+            raise TypeError('Unknown matcher type ')
+
+
 
     def get_treewidget_items_for_dt(self):
         overall_status = self.debug_result[0]
         node_list = self.debug_result[1]
         root = QtGui.QTreeWidgetItem(self, ['Nodes', str(overall_status), '', ''])
-        idx = 1
+        idx = 0
         for ls in node_list:
-            temp = QtGui.QTreeWidgetItem(root, ['Node ' + str(idx+1), str(ls[0]), str(ls[1]), str(ls[2])])
             temp = QtGui.QTreeWidgetItem(root, ['','','',''])
+            temp = QtGui.QTreeWidgetItem(root, ['Node ' + str(idx+1), str(ls[0]), str(ls[1]), str(ls[2])])
+
             idx += 1
         return root
+
+    def get_treewidget_items_for_rf(self):
+        overall_status = self.debug_result[0]
+        consol_node_list = self.debug_result[1]
+        root = QtGui.QTreeWidgetItem(self, ['Trees('+str(len(consol_node_list))+')', str(overall_status),'', ''])
+        tree_idx = 1
+        for node_list in consol_node_list:
+            sub_root = QtGui.QTreeWidgetItem(root, ['','','',''])
+            sub_root = QtGui.QTreeWidgetItem(root, ['Tree ' + str(tree_idx), str(node_list[0]), '', ''])
+
+            node_idx = 1
+            for ls in node_list[1]:
+                temp = QtGui.QTreeWidgetItem(sub_root, ['','','',''])
+                temp = QtGui.QTreeWidgetItem(sub_root, ['Node ' + str(node_idx), str(ls[0]), str(ls[1]), str(ls[2])])
+                node_idx += 1
+            tree_idx += 1
+        return root
+
+    def get_treewidget_items_for_rm(self):
+        overall_status = self.debug_result[0]
+        consol_rule_list = self.debug_result[1]
+        root = QtGui.QTreeWidgetItem(self, ['Rules('+str(len(consol_rule_list))+')',  str(overall_status),'', ''])
+        rule_idx = 1
+        for rule_list  in consol_rule_list:
+            sub_root = QtGui.QTreeWidgetItem(root, ['','','',''])
+            sub_root = QtGui.QTreeWidgetItem(root, ['Rule ' + str(rule_idx), str(rule_list[0]), '', ''])
+
+            node_idx = 1
+            for ls in rule_list[1]:
+                temp = QtGui.QTreeWidgetItem(sub_root, ['','','',''])
+                temp = QtGui.QTreeWidgetItem(sub_root, ['Conjunct ' + str(node_idx), str(ls[0]), str(ls[1]), str(ls[2])])
+                node_idx += 1
+            rule_idx += 1
+        return root
+
 
 class TreeViewWithLabel(QtGui.QWidget):
     def __init__(self, controller, label, type, debug_result):
