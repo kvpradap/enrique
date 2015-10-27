@@ -61,7 +61,10 @@ def select_matcher(matchers, x=None, y=None, table=None, exclude_attrs=None, tar
             max_score = np.mean(scores)
     stats = pd.DataFrame(dict_list)
     stats = stats[header]
-    return sel_matcher, stats
+    res = OrderedDict()
+    res['selected_matcher'] = sel_matcher
+    res['cv_stats'] = stats
+    return res
 
 def cross_validation(matcher, x, y, metric, k):
     cv = KFold(len(y), k, shuffle=True, random_state=0)

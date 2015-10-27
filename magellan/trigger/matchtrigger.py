@@ -87,6 +87,7 @@ class MatchTrigger(object):
         rtable = input_table.get_property('rtable')
         assert ltable is not None, 'Left table is not set'
         assert rtable is not None, 'Right table is not set'
+        assert label_column in input_table.columns, 'Label column not in the input table'
         if inplace == False:
             table = input_table.copy()
         else:
@@ -98,17 +99,36 @@ class MatchTrigger(object):
         r_key = input_table.get_property('foreign_key_rtable')
 
         # set the index and store it in l_tbl/r_tbl
-        l_tbl = ltable.set_index(ltable.get_key(), drop=False)
-        r_tbl = rtable.set_index(rtable.get_key(), drop=False)
+        l_df = ltable.set_index(ltable.get_key(), drop=False)
+        r_df = rtable.set_index(rtable.get_key(), drop=False)
 
         # keep track of valid ids
         y = []
         # iterate candidate set and process each row
-        for idx, row in input_table.iterrows():
-            if row[label_column] != self.value_to_set:
+
+        l_dict = {}
+        for k, r in l_df.iterrows():
+            l_dict[k] = r
+        r_dict = {}
+        for k, r in r_df.iterrows():
+            r_dict[k] = r
+
+        column_names = list(input_table.columns)
+        lid_idx = column_names.index(l_key)
+        rid_idx = column_names.index(r_key)
+        label_idx = column_names.index(label_column)
+
+        for row in input_table.iterrows(index=False):
+
+            if row[label_idx] != self.value_to_set:
                 # get the value of block attribute from ltuple
-                l_row = l_tbl.ix[row[l_key]]
-                r_row = r_tbl.ix[row[r_key]]
+                # t.ix[t.index.values[0], feature_names]
+                # l_row = l_tbl.ix[row.ix[l_key]]
+                # l_row = l_tbl.ix[row.ix[row.index.values[0], l_key]]
+                # r_row = r_tbl.ix[row.ix[row.index.values[0], r_key]]
+                # r_row = r_tbl.ix[row[r_key]]
+                l_row = l_dict[row[lid_idx]]
+                r_row = r_dict[row[rid_idx]]
                 res = self.apply_rules(l_row, r_row)
                 if res == self.cond_status:
                     # switch labels.
