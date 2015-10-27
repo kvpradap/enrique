@@ -18,6 +18,8 @@ C = ab.block_tables(wal, bwk, 'isbn', 'isbn', ['title', 'author'], ['title', 'au
 
 L = mg.read_csv('label_ab_correct_books.csv', ltable=wal, rtable=bwk)
 
+print len(L)
+
 feat_table = mg.get_features_for_matching(wal, bwk)
 
 
@@ -67,6 +69,9 @@ rm = mg.BooleanRuleMatcher()
 rm.add_rule(['title_title_jac_qgm_3_qgm_3(ltuple, rtuple) > 0.6', 'lang_lang_lev(ltuple, rtuple) > 0.5'], feature_table=f)
 rm.add_rule(['author_author_jac_qgm_3_qgm_3(ltuple, rtuple) > 0.6'], feature_table=f)
 rm.add_rule(['binding_binding_jac_qgm_3_qgm_3(ltuple, rtuple) > 0.5'], feature_table=f)
+X = rm.predict(table=L, target_attr='predicted', append=True, inplace=False)
+metric = mg.eval_matches(X, 'gold', 'predicted')
+print metric
 
 # ret_val, node_list = mg.vis_tuple_debug_rm_matcher(rm, wal.iloc[0], bwk.iloc[1], feature_table=f)
 # print ret_val

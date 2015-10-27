@@ -106,6 +106,7 @@ def eval_matches(X, gold_label_attr, predicted_label_attr):
     n_tp = float(len(tp_indices))
     n_fp = float(len(fp_indices))
     n_fn = float(len(fn_indices))
+    n_tn = float(len(tn_indices))
     prec_num = n_tp
     prec_den = n_tp + n_fp
     rec_num = n_tp
@@ -132,8 +133,10 @@ def eval_matches(X, gold_label_attr, predicted_label_attr):
     ret_dict['recall_denominator'] = rec_den
     ret_dict['recall'] = recall
     ret_dict['f1'] = f1
+    ret_dict['pred_pos_num'] = n_tp + n_fp
     ret_dict['false_pos_num'] = n_fp
     ret_dict['false_pos_ls'] = false_pos_ls
+    ret_dict['pred_neg_num'] = n_fn + n_tn
     ret_dict['false_neg_num'] = n_fn
     ret_dict['false_neg_ls'] = false_neg_ls
     return ret_dict

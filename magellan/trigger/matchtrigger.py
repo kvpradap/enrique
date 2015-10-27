@@ -22,7 +22,7 @@ class MatchTrigger(object):
         Parameters
         ----------
         conjunct_list : List of strings.
-         List of predicates as in ['title_title_lev > 0.8', 'name_name_mel' > 0.6]
+         List of predicates as in ['title_title_lev(ltuple, rtuple) > 0.8', 'name_name_mel(ltuple, rtuple)' > 0.6]
 
         feature_table : Pandas dataframe.
           Feature table containing information about features.
@@ -82,12 +82,17 @@ class MatchTrigger(object):
         self.value_to_set = value
         return True
     # --------------------- currently working on --------------------------
-    def execute(self, input_table, label_column):
+    def execute(self, input_table, label_column, inplace=True):
         ltable = input_table.get_property('ltable')
         rtable = input_table.get_property('rtable')
         assert ltable is not None, 'Left table is not set'
         assert rtable is not None, 'Right table is not set'
-        table = input_table.copy()
+        if inplace == False:
+            table = input_table.copy()
+        else:
+            table = input_table
+
+
 
         l_key = input_table.get_property('foreign_key_ltable')
         r_key = input_table.get_property('foreign_key_rtable')

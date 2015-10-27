@@ -6,8 +6,26 @@ def get_metric(summary_stats):
     d = OrderedDict()
     keys = summary_stats.keys()
     mkeys = [k for k in keys if k not in ['false_pos_ls', 'false_neg_ls']]
-    for k in mkeys:
-        d[k] = summary_stats[k]
+    # for k in mkeys:
+    #
+    #     d[k] = summary_stats[k]
+    p = round(summary_stats['precision']*100, 2)
+    pn = int(summary_stats['prec_numerator'])
+    pd = int(summary_stats['prec_denominator'])
+    d['Precision'] = str(p) +"% (" + str(pn) +"/" + str(pd) +")"
+    r = round(summary_stats['recall']*100, 2)
+    rn = summary_stats['recall_numerator']
+    rd = summary_stats['recall_denominator']
+    d['Recall'] = str(r)+"% (" + str(rn) +"/" + str(rd) +")"
+    f1 = round(summary_stats['f1']*100, 2)
+    d['F1'] = str(f1) +"%"
+    ppos_num = int(summary_stats['pred_pos_num'])
+    fpos_num = int(summary_stats['false_pos_num'])
+    d['False positives']=str(fpos_num) + " (out of " + str(ppos_num) + " positive predictions)"
+    pneg_num = int(summary_stats['pred_neg_num'])
+    fneg_num = int(summary_stats['false_neg_num'])
+    d['False negatives'] = str(fneg_num) + " (out of " + str(pneg_num) + " negative predictions)"
+
     return d
 
 def get_dataframe(table, ls):
@@ -118,7 +136,7 @@ def get_dbg_fn_vis(code):
 
 
 def get_name_for_predict_column(columns):
-    k = '__predicted__'
+    k = '_predicted'
     i = 0
     # try attribute name of the form "_id", "_id0", "_id1", ... and
     # return the first available name
@@ -126,6 +144,6 @@ def get_name_for_predict_column(columns):
         if k not in columns:
             break
         else:
-            k = '__predicted__' + str(i)
+            k = '_predicted' + str(i)
         i += 1
     return k
