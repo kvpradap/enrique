@@ -7,7 +7,8 @@ from sklearn.preprocessing import Imputer
 
 from collections import OrderedDict
 
-def select_matcher(matchers, x=None, y=None, table=None, exclude_attrs=None, target_attr=None, metric='precision', k=5):
+def select_matcher(matchers, x=None, y=None, table=None, exclude_attrs=None, target_attr=None, metric='precision', k=5,
+                   random_state=None):
     """
     Select matcher using cross validation
 
@@ -48,7 +49,7 @@ def select_matcher(matchers, x=None, y=None, table=None, exclude_attrs=None, tar
     #print header
 
     for m in matchers:
-        matcher, scores = cross_validation(m, x, y, metric, k)
+        matcher, scores = cross_validation(m, x, y, metric, k, random_state)
         val_list = [matcher.get_name(), matcher, k]
         val_list.extend(scores)
         val_list.append(np.mean(scores))
@@ -66,8 +67,8 @@ def select_matcher(matchers, x=None, y=None, table=None, exclude_attrs=None, tar
     res['cv_stats'] = stats
     return res
 
-def cross_validation(matcher, x, y, metric, k):
-    cv = KFold(len(y), k, shuffle=True, random_state=0)
+def cross_validation(matcher, x, y, metric, k, random_state):
+    cv = KFold(len(y), k, shuffle=True, random_state=random_state)
     scores = cross_val_score(matcher.clf, x, y, scoring=metric, cv=cv)
     return matcher, scores
 

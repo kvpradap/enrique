@@ -43,7 +43,7 @@ def vis_tuple_debug_rf_matcher(matcher, t, exclude_attrs):
     consol_status = []
 
     for e in clf.estimators_:
-        print t
+        # print t
         ret_val, node_list = vis_tuple_debug_dt_matcher(e, t, exclude_attrs)
         consol_status.append(ret_val)
         consol_node_list.append([ret_val, node_list])

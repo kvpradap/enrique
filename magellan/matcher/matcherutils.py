@@ -5,7 +5,7 @@ import numpy as np
 from magellan import MTable
 import time
 import math
-def train_test_split(labeled_data, train_proportion = 0.5, random_state=80):
+def train_test_split(labeled_data, train_proportion = 0.5, random_state=None):
 
     num_rows = len(labeled_data)
     train_size = int(math.floor(num_rows*train_proportion))

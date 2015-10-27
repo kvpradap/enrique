@@ -50,11 +50,6 @@ class MLMatcher(Matcher):
             target attribute name containing labels
 
 
-        Returns
-        -------
-        model : object
-            trained classifier model
-
         """
         if x is not None and y is not None:
             self.fit_sklearn(x, y)

@@ -77,7 +77,7 @@ class MatchTrigger(object):
         status : boolean, returns True if the command was executed successfully.
 
         """
-        if value is not 1 or 0:
+        if value != 0 and value != 1:
             raise AssertionError('Currently magellan supports only values 0/1 as label value')
         self.value_to_set = value
         return True
@@ -99,40 +99,71 @@ class MatchTrigger(object):
         r_key = input_table.get_property('foreign_key_rtable')
 
         # set the index and store it in l_tbl/r_tbl
-        l_df = ltable.set_index(ltable.get_key(), drop=False)
-        r_df = rtable.set_index(rtable.get_key(), drop=False)
+        l_tbl = ltable.set_index(ltable.get_key(), drop=False)
+        r_tbl = rtable.set_index(rtable.get_key(), drop=False)
 
         # keep track of valid ids
         y = []
+
+
         # iterate candidate set and process each row
 
-        l_dict = {}
-        for k, r in l_df.iterrows():
-            l_dict[k] = r
-        r_dict = {}
-        for k, r in r_df.iterrows():
-            r_dict[k] = r
+        # l_dict = {}
+        # header = list(l_df.columns)
+        # key_idx = header.index(ltable.get_key())
+        # for row in l_df.itertuples(index=False):
+        #     k = row[key_idx]
+        #     r = OrderedDict(zip(header, row))
+        #     l_dict[k] = r
+        #
+        # r_dict = {}
+        # header = list(r_df.columns)
+        # key_idx = header.index(rtable.get_key())
+        # for row in r_df.itertuples(index=False):
+        #     k = row[key_idx]
+        #     r = OrderedDict(zip(header, row))
+        #     r_dict[k] = r
+
+        # l_dict = {}
+        # r_dict = {}
+        # for k, r in l_df.iterrows():
+        #     l_dict[k] = r
+        # for k, r in r_df.iterrows():
+        #     r_dict[k] = r
+
 
         column_names = list(input_table.columns)
         lid_idx = column_names.index(l_key)
         rid_idx = column_names.index(r_key)
-        label_idx = column_names.index(label_column)
+        id_idx = column_names.index(input_table.get_key())
 
-        for row in input_table.iterrows(index=False):
+        label_idx = column_names.index(label_column)
+        test_idx = 0
+        idx = 0
+        for row in input_table.itertuples(index=False):
 
             if row[label_idx] != self.value_to_set:
                 # get the value of block attribute from ltuple
                 # t.ix[t.index.values[0], feature_names]
-                # l_row = l_tbl.ix[row.ix[l_key]]
+                l_row = l_tbl.ix[row[lid_idx]]
                 # l_row = l_tbl.ix[row.ix[row.index.values[0], l_key]]
                 # r_row = r_tbl.ix[row.ix[row.index.values[0], r_key]]
-                # r_row = r_tbl.ix[row[r_key]]
-                l_row = l_dict[row[lid_idx]]
-                r_row = r_dict[row[rid_idx]]
+                r_row = r_tbl.ix[row[rid_idx]]
+                # l_row = l_dict[row[l_key]]
+                # r_row = r_dict[row[r_key]]
                 res = self.apply_rules(l_row, r_row)
+                if test_idx == 0:
+                    print l_row
+                    print r_row
+                    print res
+                    print 'before : ' + str(table.iat[idx, label_idx])
                 if res == self.cond_status:
                     # switch labels.
-                    table[label_column] = self.value_to_set
+                    table.iat[idx, label_idx] = self.value_to_set
+                if test_idx == 0:
+                    print 'after : ' + str(table.iat[idx, label_idx])
+                    test_idx = 1
+            idx += 1
         return table
 
 
@@ -182,7 +213,7 @@ class MatchTrigger(object):
     def apply_rules(self, ltuple, rtuple):
         for fn in self.rules.values():
             res = fn(ltuple, rtuple)
-            if res is True:
+            if res == True:
                 return True
         return False
 

@@ -14,8 +14,8 @@ def get_metric(summary_stats):
     pd = int(summary_stats['prec_denominator'])
     d['Precision'] = str(p) +"% (" + str(pn) +"/" + str(pd) +")"
     r = round(summary_stats['recall']*100, 2)
-    rn = summary_stats['recall_numerator']
-    rd = summary_stats['recall_denominator']
+    rn = int(summary_stats['recall_numerator'])
+    rd = int(summary_stats['recall_denominator'])
     d['Recall'] = str(r)+"% (" + str(rn) +"/" + str(rd) +")"
     f1 = round(summary_stats['f1']*100, 2)
     d['F1'] = str(f1) +"%"

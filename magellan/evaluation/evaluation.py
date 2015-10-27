@@ -80,16 +80,30 @@ def eval_matches(X, gold_label_attr, predicted_label_attr):
 
     Y = X.reset_index(drop=False, inplace=False)
     g = Y[gold_label_attr]
+    if isinstance(g, pd.DataFrame):
+        g = g.T
+        assert len(g) == 1, 'Error: Column is picked as dataframe and the num rows > 1'
+        g = g.iloc[0]
+
+
+
     p = Y[predicted_label_attr]
+    if isinstance(p, pd.DataFrame):
+        p = p.T
+        assert len(p) == 1, 'Error: Column is picked as dataframe and the num rows > 1'
+        p = p.iloc[0]
 
 
     # get false label (0) indices
     gf = g[g == 0].index.values
+
     pf = p[p == 0].index.values
 
     # get true label (1) indices
     gt = g[g == 1].index.values
+
     pt = p[p == 1].index.values
+
 
     # get false positive indices
     fp_indices = list(set(gf).intersection(pt))
@@ -97,8 +111,10 @@ def eval_matches(X, gold_label_attr, predicted_label_attr):
     # get true positive indices
     tp_indices = list(set(gt).intersection(pt))
 
+
     # get false negative indices
     fn_indices = list(set(gt).intersection(pf))
+
 
     # get true negative indices
     tn_indices = list(set(gf).intersection(pf))

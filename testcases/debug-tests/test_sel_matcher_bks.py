@@ -77,5 +77,12 @@ print metric
 # print ret_val
 # print node_list
 
-mg.vis_debug_rm(rm, L, 'gold', feature_table=f)
+#mg.vis_debug_rm(rm, L, 'gold', feature_table=f)
+trigger = mg.MatchTrigger()
+trigger.add_cond_rule('title_title_jac_qgm_3_qgm_3(ltuple, rtuple) < 0.8', f)
+trigger.add_cond_status(True)
+trigger.add_action(0)
+# print P[['_id', 'gold', 'predicted']]
+Y = trigger.execute(X, 'predicted', inplace=False)
+print Y
 print 'Hi'

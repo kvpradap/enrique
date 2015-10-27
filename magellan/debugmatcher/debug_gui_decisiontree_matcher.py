@@ -17,10 +17,12 @@ def vis_debug_dt(matcher, train, test, exclude_attrs, target_attr):
     predict_attr_name = get_name_for_predict_column(test.columns)
     predicted = matcher.predict(table=test, exclude_attrs=exclude_attrs, target_attr=predict_attr_name, append=True,
                                 inplace=False)
+    # print predicted
     eval_summary = mg.eval_matches(predicted, target_attr, predict_attr_name)
+    # print eval_summary
     metric = get_metric(eval_summary)
     fp_dataframe = get_dataframe(predicted, eval_summary['false_pos_ls'])
-    print fp_dataframe.dtypes
+    # print fp_dataframe.dtypes
     fn_dataframe = get_dataframe(predicted, eval_summary['false_neg_ls'])
     app = mg._viewapp
     m = MainWindowManager(matcher, "dt", exclude_attrs, metric, predicted, fp_dataframe, fn_dataframe)
