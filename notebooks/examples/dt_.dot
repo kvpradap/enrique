@@ -4,11 +4,11 @@ digraph Tree {
 0 -> 1 ;
 2 [label="publisher_publisher_jac_qgm_3_qgm_3 <= 0.2064\ngini = 0.244897959184\nsamples = 28", shape="box"] ;
 0 -> 2 ;
-3 [label="title_title_jac_qgm_3_qgm_3 <= 0.7873\ngini = 0.444444444444\nsamples = 3", shape="box"] ;
+3 [label="author_author_jac_qgm_3_qgm_3 <= 0.6433\ngini = 0.444444444444\nsamples = 3", shape="box"] ;
 2 -> 3 ;
-4 [label="gini = 0.0000\nsamples = 2\nvalue = [ 2.  0.]", shape="box"] ;
+4 [label="gini = 0.0000\nsamples = 1\nvalue = [ 0.  1.]", shape="box"] ;
 3 -> 4 ;
-5 [label="gini = 0.0000\nsamples = 1\nvalue = [ 0.  1.]", shape="box"] ;
+5 [label="gini = 0.0000\nsamples = 2\nvalue = [ 2.  0.]", shape="box"] ;
 3 -> 5 ;
 6 [label="title_title_jac_qgm_3_qgm_3 <= 0.9848\ngini = 0.1472\nsamples = 25", shape="box"] ;
 2 -> 6 ;

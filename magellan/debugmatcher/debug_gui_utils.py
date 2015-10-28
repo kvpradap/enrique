@@ -110,17 +110,27 @@ def get_code_vis(tree, feature_names, target_names,
                 # print(spacer + "}")
         else:
             target = value[node]
+            winning_target_name = None
+            winning_target_count = None
             for i, v in zip(np.nonzero(target)[1],
                             target[np.nonzero(target)]):
                 target_name = target_names[i]
                 target_count = int(v)
+                if winning_target_count == None:
+                    winning_target_count = target_count
+                    winning_target_name = target_name
+
+                elif target_count > winning_target_count:
+                    winning_target_count = target_count
+                    winning_target_name = target_name
+
                 # print(spacer + "return " + str(target_name) + \
                 #       " ( " + str(target_count) + " examples )")
-                code_str = spacer + "return " + str(target_name) + ", node_list" + \
-                           " #( " + str(target_count) + " examples )"
-                code_list.append(code_str)
-                # print(spacer + "return " + str(target_name) + \
-                #       " #( " + str(target_count) + " examples )")
+            code_str = spacer + "return " + str(winning_target_name) + ", node_list" + \
+                           " #( " + str(winning_target_count) + " examples )"
+            code_list.append(code_str)
+            # print(spacer + "return " + str(target_name) + \
+            #       " #( " + str(target_count) + " examples )")
 
     recurse(left, right, threshold, features, 0, 0)
     return code_list

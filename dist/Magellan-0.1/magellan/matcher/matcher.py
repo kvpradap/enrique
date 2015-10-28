@@ -1,0 +1,2 @@
+class Matcher(object):
+    pass

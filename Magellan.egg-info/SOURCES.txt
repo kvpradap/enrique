@@ -63,6 +63,10 @@ magellan/debugblocker/blocking_debugger.py
 magellan/debugmatcher/__init__.py
 magellan/debugmatcher/debug_booleanrule_matcher.py
 magellan/debugmatcher/debug_decisiontree_matcher.py
+magellan/debugmatcher/debug_gui_booleanrule_matcher.py
+magellan/debugmatcher/debug_gui_decisiontree_matcher.py
+magellan/debugmatcher/debug_gui_randomforest_matcher.py
+magellan/debugmatcher/debug_gui_utils.py
 magellan/debugmatcher/debug_randomforest_matcher.py
 magellan/evaluation/__init__.py
 magellan/evaluation/evaluation.py
@@ -75,6 +79,8 @@ magellan/feature/modifyfeatures.py
 magellan/feature/simfunctions.py
 magellan/feature/tokenizers.py
 magellan/gui/__init__.py
+magellan/gui/debug_gui_base.py
+magellan/gui/gui_utils.py
 magellan/gui/mtable_gui.py
 magellan/inst/java/secondstring-20120620.jar
 magellan/inst/java/simfunction.jar
@@ -97,10 +103,10 @@ magellan/matcher/rfmatcher.py
 magellan/matcher/rulematcher.py
 magellan/matcher/svmmatcher.py
 magellan/matcherselection/__init__.py
+magellan/matcherselection/_mlmatcherselection.py
 magellan/matcherselection/matchercombiner.py
 magellan/matcherselection/mlmatchercombinerselection.py
 magellan/matcherselection/mlmatcherselection.py
-magellan/matcherselection/mlmatcherselection__.py
 magellan/sampler/__init__.py
 magellan/sampler/sampler.py
 magellan/tests/__init__.py
