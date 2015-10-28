@@ -4,6 +4,17 @@ import magellan as mg
 from magellan.gui.debug_gui_base import MainWindowManager
 
 def vis_debug_rm(matcher, validation_set, target_attr, feature_table):
+    """
+    Visual debugger for boolean rule-based matcher
+
+    Parameters
+    ----------
+    matcher : object, Boolean rule-based matcher object
+    validation_set : MTable, used to debug
+    target_attr : String, column name in validation_set containing 'True' labels
+    feature_table : pandas dataframe, containing feature information
+
+    """
     predict_attr_name = get_name_for_predict_column(validation_set.columns)
     predicted = matcher.predict(validation_set, predict_attr_name, append=True, inplace=False)
     eval_summary = mg.eval_matches(predicted, target_attr, predict_attr_name)

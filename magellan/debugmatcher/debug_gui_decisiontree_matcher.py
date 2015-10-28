@@ -6,6 +6,22 @@ from magellan.gui.debug_gui_base import MainWindowManager
 from magellan.debugmatcher.debug_gui_utils import *
 
 def vis_debug_dt(matcher, train, test, exclude_attrs, target_attr):
+    """
+    Visual debugger for decision tree matcher
+
+    Parameters
+    ----------
+    matcher : object, DTMatcher object
+    train : MTable, containing training data with "True" labels
+    test : MTable, containing test data with "True labels.
+            The "True" labels are used for evaluation.
+    exclude_attrs : List, attributes to be excluded from train and test,
+        for training and testing.
+
+    target_attr : String, column name in validation_set containing 'True' labels
+
+    """
+
     assert set(test.columns) == set(train.columns), "The train and test columns are not same"
     assert set(train.columns).intersection(exclude_attrs) == set(exclude_attrs), "Some of exclude attrs are not part of" \
                                                                                  "train columns"

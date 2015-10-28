@@ -133,6 +133,20 @@ def down_sample(ltable, rtable, size, y):
 
 # sample one table using random sampling
 def sample_table(table, size, replace=False):
+    """
+    Sample MTable
+
+    Parameters
+    ----------
+    table : MTable, input table to be sampled
+    size : int, number of samples
+    replace : boolean, whether sampling should be done with replacement.
+            By default, it is set to False.
+
+    Returns
+    -------
+    sampled_table: MTable, sampled table
+    """
     if len(table) == 0:
         raise AttributeError('size of table is 0')
     if len(table) < size:

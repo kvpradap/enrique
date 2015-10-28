@@ -339,8 +339,8 @@ def get_features_for_matching(A, B):
 
     Notes
     -----
-    The function also exports the important variables to global name space so if a user want to examine they can do
-    so.
+    The function also exports the important variables such as: _match_t, _match_s, _atypes1, _atypes2, _match_c;
+     to global name space so if a user want to examine they can do so.
     """
     sim = mg.get_sim_funs()
     tok = mg.get_single_arg_tokenizers()

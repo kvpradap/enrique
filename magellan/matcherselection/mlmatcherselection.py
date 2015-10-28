@@ -27,6 +27,14 @@ def select_matcher(matchers, x=None, y=None, table=None, exclude_attrs=None, tar
             target attribute name containing labels
     k : integer,
         number of folds to be used for crossvalidation
+    random_state : int,Pseudo-random number generator state used for random sampling.
+        If None, use default numpy RNG for shuffling
+
+    Returns
+    -------
+    result : Python dictionary, containing two keys: selected_matcher, cv_stats. The value for selected_matcher
+        is a matcher object (such as:DTMatcher, RFMatcher, etc.,) and the value for cv_stats is a pandas
+        dataframe containing cross validation statistics.
 
     """
     x,y = get_xy_data(x, y, table, exclude_attrs, target_attr)

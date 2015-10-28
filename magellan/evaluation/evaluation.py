@@ -77,6 +77,34 @@ def evaluate(M, G, label_map, id_map):
     return out_dict
 
 def eval_matches(X, gold_label_attr, predicted_label_attr):
+    """
+    Evaluate matches
+
+    Parameters
+    ----------
+    X : MTable, containing both the 'True' labels and predicted labels
+    gold_label_attr : String, column name containing True labels
+    predicted_label_attr : String, column name containing predicted labels
+
+    Returns
+    -------
+    eval_summary : Python dictionary containing the following key-value pairs:
+
+    prec_numerator : int, numerator for precision value computation (i.e the number of true positives)
+    prec_denominator : int, denominator for precision value computation (i.e. tp + fp)
+    precision : float, precision
+    recall_numerator : int, numerator for  recall value computation (i.e the number of true positives)
+    recall_denominator : int, denominator for recall value computation (i.e. tp + fn)
+    recall : float, recall
+    f1 : float, f1 value
+    pred_pos_num : int, number of predicted postives (i.e matches)
+    false_pos_num : int, number of false positives
+    false_pos_ls : List of tuples. Each tuple is a false positive pair containing ltable id, rtable id.
+    pred_neg_num : int, number of predicted negatives (i.e non-matches)
+    false_neg_num : int, number of false negatives
+    false_neg_ls : List of tuples. Each tuple is a false negative pair containing ltable id, rtable id.
+
+    """
 
     Y = X.reset_index(drop=False, inplace=False)
     g = Y[gold_label_attr]

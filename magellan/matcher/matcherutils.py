@@ -6,8 +6,23 @@ from magellan import MTable
 import time
 import math
 def train_test_split(labeled_data, train_proportion = 0.5, random_state=None):
+    """
+    Split MTable into Train and Test
+
+    Parameters
+    ----------
+    labeled_data : MTable
+    train_proportion : float, in the range 0-1. Proportion of train tuples, by default set to 0.5
+    random_state : int, Pseudo-random number generator state for random sampling
+
+    Returns
+    -------
+    result: Python dictionary with two keys: train, test. The value for each key is
+    a MTable containing tuples for train and test respectively.
+    """
 
     num_rows = len(labeled_data)
+    assert train_proportion >=0 and train_proportion <= 1, " Train proportion is expected to be between 0 and 1"
     train_size = int(math.floor(num_rows*train_proportion))
     test_size = int(num_rows - train_size)
 
