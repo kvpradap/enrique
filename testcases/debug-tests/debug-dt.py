@@ -12,7 +12,7 @@ C = ab.block_tables(A, B, 'zipcode', 'zipcode', ['name', 'address'], ['name', 'a
 L = mg.read_csv('label_ab_correct_labels.csv', ltable=A, rtable=B)
 feat_table = mg.get_features_for_matching(A, B)
 f = feat_table.ix[[9, 10, 17]]
-G = mg.extract_feat_vecs(L, feat_table=f, attrs_after='gold')
+G = mg.extract_feat_vecs(L, feature_table=f, attrs_after='gold')
 
 dt = mg.DTMatcher()
 dt.fit(table=G,  exclude_attrs=['_id', 'ltable.ID', 'rtable.ID', 'gold'], target_attr='gold')

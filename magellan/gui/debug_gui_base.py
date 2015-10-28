@@ -48,7 +48,7 @@ class MainWindowManager(QtGui.QWidget):
         self.setLayout(layout)
 
     def handle_debug_button(self, index):
-        print 'Debug button clicked : ' + str(index)
+        # print 'Debug button clicked : ' + str(index)
         r = self.current_dataframe.iloc[[index]]
         l_fkey = self.table.get_property('foreign_key_ltable')
         r_fkey = self.table.get_property('foreign_key_rtable')
@@ -72,7 +72,7 @@ class MainWindowManager(QtGui.QWidget):
 
 
     def handle_show_button(self, index):
-        print 'Show button clicked : ' + str(index)
+        # print 'Show button clicked : ' + str(index)
         r = self.current_dataframe.iloc[[index]]
         l_fkey = self.table.get_property('foreign_key_ltable')
         r_fkey = self.table.get_property('foreign_key_rtable')
@@ -89,7 +89,7 @@ class MainWindowManager(QtGui.QWidget):
 
     def combobox_onactivated(self, text):
         if text != self.current_combo_text:
-            print text
+            # print text
             if text == 'False Negatives':
                 self.current_combo_text = text
                 self.current_dataframe = self.fn_dataframe

@@ -157,7 +157,7 @@ def debug_decisiontree_matcher(dt, t1, t2, feat_table, fv_columns, exclude_attrs
     code = get_code(clf, feature_names, ['False', 'True'])
     feat_vals = apply_feat_fns(t1, t2, feat_table)
     code = get_dbg_fn(code)
-    print code
+    # print code
     d = {}
     d.update(feat_vals)
     exec code in d

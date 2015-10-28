@@ -1,0 +1,56 @@
+#key=_id
+#rtable=POINTER
+#foreign_key_ltable=ltable.id
+#foreign_key_rtable=rtable.id
+#ltable=POINTER
+_id,ltable.id,rtable.id,ltable.title,ltable.author,rtable.title,rtable.author,gold
+0,4086892,9780226156439,The Bedtrick: Tales of Sex and Masquerade,"Doniger, Wendy",Bedtrick : Tales of Sex and Masquerade,"Doniger, Wendy",1
+1,535599,9780060655808,HarperCollins Study Bible-NRSV,"Meeks, Wayne A.",Harpercollins Study Bible Standard Version with the Apocryphal/Deuterocanonical Books,"Meeks, Wayne A.",1
+3,1386538,9780130901262,Adaptive Filter Theory,"Haykin, Simon S.",Adaptive Filter Theory,"Haykin, Simon",1
+5,15280600,9780217455008,"Catalogue of Earthquakes on the Pacific Coast, 1897 to 1906 (49, Nos. 1-5)","McAdie, Alexander","Catalogue of Earthquakes on the Pacific Coast, 1897 To 1906","Mcadie, Alexander",1
+6,15286798,9780217825382,"Cured by an Incurable, by Crowquill and Pencilpoint","Pseud, Crowquill","Cured by an Incurable, by Crowquill and Pencilpoint","Pseud, Crowquill",1
+7,15295588,9780217940207,"The Daring Adventures of Kit Carson and Fremont; Among Buffaloes, Grizzlies and Indians Being a Spirited Diary of the Most Difficult and Wonderful Exp","Frmont, John Charles",Daring Adventures of Kit Carson and Fremont,"Frmont, John Charles",0
+8,15334872,9780217270052,"Personal Efficiency, Applied Salesmanship, and Sales Administration","Allen, Irving Ross","Personal Efficiency, Applied Salesmanship, and Sales Administration","Allen, Irving Ross",1
+9,15338150,9780217304399,The Universal Merchant; In Theory and Practice Improved and Enl,"Alldridge, W. J.",Universal Merchant,"Alldridge, W. J.",1
+10,1566948,9780070479081,The Elusive Eden: A New History of California,"Rice, Richard B.",Elusive Eden : A New History of California,"Rice, Richard Bullough, Bonnie Bullough, William Orsi, Richard J.",1
+12,4564015,9780080446837,Vintage Papers from the Lancet,"Richardson, Ruth",Vintage Papers from the Lancet,,0
+15,5514791,9780114958367,Conserving Bogs: The Management Handbook,"Stoneman, Rob",Conserving Bogs : The Management Handbook,TSO Staff,0
+16,5681971,9780073380339,Fundamentals of Digital Logic with Verilog Design [With CDROM],"Brown, Stephen",Fundamentals of Digital Logic with Verilog Design,"Vranesic, Zvonko Brown, Stephen",1
+17,6000607,9780061374050,Not Quite What I Was Planning: Six-Word Memoirs by Writers Famous and Obscure,"Fershleiser, Rachel",Not Quite What I Was Planning : Six-Word Memoirs by Writers Famous and Obscure,"Smith, Larry Fershleiser, Rachel",1
+19,7809485,9780152062279,Love Among the Walnuts,"Ferris, Jean",Love among the Walnuts,"Ferris, Jean",1
+20,4082544,9780071451574,Business Calculus Demystified,"Huettenmueller, Rhonda",Business Calculus Demystified,"Huettenmueller, Rhonda",1
+22,5087512,9780028348261,"Geometry: Concepts and Applications, Study Guide Workbook",McGraw-Hill,Geometry : Concepts and Applications,McGraw-Hill Staff,1
+23,515921,9780140447040,Sixteen Satires: Revised Edition,"Juvenal, Decimus Junius Juvenalis",Sixteen Satires,Juvenal,0
+24,17800413,9780061490057,Ascendant,"Peterfreund, Diana",Ascendant,"Peterfreund, Diana",1
+25,19747771,9780217516556,The Bog of Stars; And Other Stories and Sketches of Elizabethan Ireland,"O'Grady, Standish",Bog of Stars; and Other Stories and Sketches of Elizabethan Ireland,"O'Grady, Standish",1
+26,22922094,9780077864262,Economics Alternate Edition + Connect Plus,"McConnell, Campbell",Gen cmb alt ed econ; Cnct+ac,"Flynn, Sean Brue, Stanley McConnell, Campbell",1
+27,2351244,9780226492360,Foundations of Biogeography: Classic Papers with Commentaries,"Lomolino, Mark V.",Foundations of Biogeography : Classic Papers with Commentaries,,0
+28,2524032,9780198280354,"Elitism, Populism, and European Politics","Hayward, Jack","Elitism, Populism, and European Politics",,0
+29,3618742,9780060837563,Native Son,"Wright, Richard",Native Son,"Wright, Richard",1
+30,10082209,9780007183456,Antarctica: Exploring a Fragile Eden,"Scott, Jonathan",Antarctica : Exploring a Fragile Eden,"Scott, Angela Scott, Jonathan",1
+31,10865895,9780153234514,Harcourt School Publishers Trophies: On-LVL: Seventh Gr Penny Drve G6 Seventh Gr Penny Drve,HSP,Seventh Grade Penny Drive On Level,Harcourt School Publishers Staff,0
+33,13907045,9780195398113,Terrorism: Commentary on Security; Terrorist Financing and Money Laundering,,Terrorism: Commentary on Security DocumentsVolume 106: Terrorist Financing and Money Laundering,"Huq, Aziz Lovelace, Douglas C. Boon, Kristen E.",0
+34,1490720,9780029066850,"Measures for Clinical Practice: A Sourcebook : Couples, Families, and Children","Fischer, Joel","Measures for Clinical Practice Vol. 1 : Couples, Families, and Children","Fischer, Joel",1
+36,15348586,9780217521376,On the Broads,"Dodd, Anna Bowman",On the Broads,"Dodd, Anna Bowman",1
+37,15368811,9780217110952,The True Story of Hamlet and Ophelia,"Gilchrist, Fredericka Raymond Beardsley",True Story of Hamlet and Opheli,"Gilchrist, Fredericka Raymond Beardsley",1
+39,10240412,9780199556717,Evolution and the Levels of Selection,"Okasha, Samir",Evolution and the Levels of Selection,"Okasha, Samir",1
+40,14022273,9780217263016,"New Guide of Rome and the Enirons According to Vasi and Nibby; Containing a Description of the Monuments, Galleries, Churches [Etc.] Carefully Revised","Piale, Luigi",New Guide of Rome and the Enirons According to Vasi and Nibby,"Piale, Luigi",1
+41,14022804,9780217519724,Novels and Novelists; From Elizabeth to Victoria,"Jeaffreson, John Cordy","Novels and Novelists, from Elizabeth to Victoria","Jeaffreson, John Cordy",1
+43,14028323,9780217618472,"The Wrack of the Storm Volume 1916, PT. 1","Maeterlinck, Maurice",Wrack of the Storm,"Maeterlinck, Maurice",1
+45,15283778,9780217880725,Outlines of Logic and Metaphysics,"Erdmann, Johann Eduard",Outlines of Logic and Metaphysics,"Erdmann, Johann Eduard",1
+46,15305465,9780217033985,Practical Chemistry; The Principles of Qualitative Analysis,"Tilden, William Augustus",Practical Chemistry,"Tilden, William A.",1
+47,15307220,9780217970747,Peggy Ware,"Howard, Milford Wriarson",Peggy Ware,"Howard, Milford Wriarson",0
+48,15328882,9780217020985,Memoirs of the Reign of King George the Third (Volume 3),"Walpole, Horace",Memoirs of the Reign of King George The,"Walpole, Horace",1
+50,15772172,9780061965548,How Shakespeare Changed Everything,"Marche, Stephen",How Shakespeare Changed Everything,"Marche, Stephen",0
+51,1581211,9780201738278,Broadband Internet Connections: A User's Guide to DSL and Cable,"Smith, Roderick W.",Broadband Internet Connections : A User's Guide to DSL and Cable,"Smith, Roderick W.",1
+52,15912308,9780077905972,Combo: Loose Leaf Version of Anatomy & Physiology: The Unity of Form and Function with Connect Plus 2 Semester Access Card (Includes Apr & Phils Onlin,"Saladin, Kenneth",Combo: Loose Leaf Version of Anatomy & Physiology: the Unity of Form and Function with Connect Plus/LearnSmart 2 Semester Access Card,"Saladin, Kenneth",0
+54,10722263,9780195386370,Stockholm: A Cultural History,"Griffiths, Tony",Stockholm : A Cultural History,"Griffiths, Tony",1
+55,10948704,9780131077744,Coll Acctg 1-26& Sg& Wp& Pchtr& Pch8.0& Tut& Ebiz,,Coll Acctg 1-26 and Sg and Wp and Pchtr and Pch8 0 and Tut and E,"Slater, Jeffrey",0
+56,13433980,9780205753413,Janson's Basic History of Western Art [With Access Code],"Davies, Penelope J. E.","Janson's Basic History of Western Art, Books a la Carte Plus MyArtKit","Jacobs, Joseph F. Roberts, Ann M. Davies Davies, Penelope J. E. Hofrichter, Frima Fox",1
+57,14022189,9780217341356,"A History of the County of Pictou, Nova Scotia","Patterson, George","History of the County of Pictou, Nova Scoti","Patterson, George",1
+58,15289952,9780217048255,Shores of the Mediterranean,"Schroeder, Francis",Shores of the Mediterranean,"Schroeder, Francis",1
+62,15350595,9780217872232,"Skin Diseases of Parasitic Origin; Their Nature and Treatment, Including the Description and Relations of the Fungi Found in Man","Fox, Tilbury",Skin Diseases of Parasitic Origin,"Fox, Tilbury",1
+63,15358361,9780217249775,Proceedings of 1st- Annual Convention,"Association, Idaho Bankers",Proceedings of 1st- Annual Convention,"Association, Idaho Bankers",0
+64,15359574,9780217298445,The War Guilt and Peace Crime of the Entente Allies,"Bruce, Stewart E.",War Guilt and Peace Crime of the Entente Allies,"Bruce, Stewart E.",1
+65,15373263,9780217300049,"The Theory and Practice of Cricket, from Its Origin to the Present Time","Box, Charles","Theory and Practice of Cricket, from Its Origin to the Present Time","Box, Charles",1
+67,16938827,9780230232372,Kazuo Ishiguro: New Critical Visions of the Novels,"Groes, Sebastian",Kazuo Ishiguro : New Critical Visions of the Novels,,0

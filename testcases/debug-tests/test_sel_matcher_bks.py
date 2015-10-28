@@ -25,7 +25,7 @@ feat_table = mg.get_features_for_matching(wal, bwk)
 
 f = feat_table.ix[[3,7,18,26, 53]]
 
-G = mg.extract_feat_vecs(L, feat_table=f, attrs_after='gold')
+G = mg.extract_feat_vecs(L, feature_table=f, attrs_after='gold')
 
 dt = mg.DTMatcher()
 svm = mg.SVMMatcher()

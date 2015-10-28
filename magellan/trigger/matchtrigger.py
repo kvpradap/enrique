@@ -152,17 +152,17 @@ class MatchTrigger(object):
                 # l_row = l_dict[row[l_key]]
                 # r_row = r_dict[row[r_key]]
                 res = self.apply_rules(l_row, r_row)
-                if test_idx == 0:
-                    print l_row
-                    print r_row
-                    print res
-                    print 'before : ' + str(table.iat[idx, label_idx])
+                # if test_idx == 0:
+                #     print l_row
+                #     print r_row
+                #     print res
+                #     print 'before : ' + str(table.iat[idx, label_idx])
                 if res == self.cond_status:
                     # switch labels.
                     table.iat[idx, label_idx] = self.value_to_set
-                if test_idx == 0:
-                    print 'after : ' + str(table.iat[idx, label_idx])
-                    test_idx = 1
+                # if test_idx == 0:
+                #     print 'after : ' + str(table.iat[idx, label_idx])
+                #     test_idx = 1
             idx += 1
         return table
 

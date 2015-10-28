@@ -8,7 +8,7 @@ from magellan.utils.helperfunctions import isJVMStarted
 
 logging.basicConfig(level=logging.INFO)
 
-def extract_feat_vecs(s, attrs_before=None, feat_table=None, attrs_after=None):
+def extract_feat_vecs(s, attrs_before=None, feature_table=None, attrs_after=None):
     """
     Extract feature vectors
 
@@ -25,7 +25,7 @@ def extract_feat_vecs(s, attrs_before=None, feat_table=None, attrs_after=None):
 
     Returns
     -------
-    feature_table : MTable,
+    feature_vectors : MTable,
         Containing features values (obtained by applying feature fns in feat_table) and attributes as
         mentioned in the input
     """
@@ -36,8 +36,8 @@ def extract_feat_vecs(s, attrs_before=None, feat_table=None, attrs_after=None):
     assert ltable is not None, 'Left table is not set'
     assert rtable is not None, 'Right table is not set'
 
-    if feat_table is None:
-        feat_table = mg.get_features_for_blocking(ltable, rtable)
+    if feature_table is None:
+        feature_table = mg.get_features_for_blocking(ltable, rtable)
 
     l_key, r_key = s.get_property('foreign_key_ltable'), s.get_property('foreign_key_rtable')
     start = time.time()
@@ -52,12 +52,12 @@ def extract_feat_vecs(s, attrs_before=None, feat_table=None, attrs_after=None):
     r_df.set_index(rtable.get_key(), inplace=True, drop=False)
 
     start = time.time()
-    feat_vals = [apply_feat_fns(l_df.ix[x[0]], r_df.ix[x[1]], feat_table) for x in id_list]
+    feat_vals = [apply_feat_fns(l_df.ix[x[0]], r_df.ix[x[1]], feature_table) for x in id_list]
     end = time.time()
     logging.getLogger(__name__).info('Applying feature functions took : %f secs' % (end - start))
     table = pd.DataFrame(feat_vals, index=s.index.values)
     # get the feature names and re-arrange columns in that order
-    feat_names = list(feat_table['feature_name'])
+    feat_names = list(feature_table['feature_name'])
     table = table[feat_names]
     # insert attrs_before
     if attrs_before:
@@ -79,13 +79,13 @@ def extract_feat_vecs(s, attrs_before=None, feat_table=None, attrs_after=None):
     # reset the table index
     table.reset_index(inplace=True, drop=True)
 
-    feature_table = MTable(table)
-    if s.get_key() not in feature_table.columns:
-        feature_table.add_key(s.get_key())
+    feature_vectors = MTable(table)
+    if s.get_key() not in feature_vectors.columns:
+        feature_vectors.add_key(s.get_key())
     # metadata
-    feature_table._metadata = s._metadata
-    feature_table.properties = s.properties
-    return feature_table
+    feature_vectors._metadata = s._metadata
+    feature_vectors.properties = s.properties
+    return feature_vectors
 
 
 

@@ -24,7 +24,7 @@ def test_rb_block_tables():
     B['dummy'] = 1
     ab = mg.AttrEquivalenceBlocker()
     D = ab.block_tables(A, B, 'dummy','dummy')
-    fv = mg.extract_feat_vecs(D,  feat_table=feature_table)
+    fv = mg.extract_feat_vecs(D,  feature_table=feature_table)
     expected_ids = fv.ix[((fv.name_name_mel >= 0.4) | (fv.birth_year_birth_year_lev >= 0.5)) &
       fv.zipcode_zipcode_exm == 1 ,
       ['ltable.ID', 'rtable.ID',
@@ -53,7 +53,7 @@ def test_rb_block_candset():
     assert_equal(C.get_property('foreign_key_ltable'), 'ltable.ID')
     assert_equal(C.get_property('foreign_key_rtable'), 'rtable.ID')
 
-    fv = mg.extract_feat_vecs(E,  feat_table=feature_table)
+    fv = mg.extract_feat_vecs(E,  feature_table=feature_table)
     expected_ids = fv.ix[((fv.name_name_mel >= 0.4) | (fv.birth_year_birth_year_lev >= 0.5)) &
       fv.zipcode_zipcode_exm == 1 ,
       ['ltable.ID', 'rtable.ID',

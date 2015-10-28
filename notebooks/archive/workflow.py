@@ -201,7 +201,7 @@ feat_table.ix[6, 'function'](A.ix[2], B.ix[3])
 
 # Extract feature vectors for labeled candidate set. Also, we mention 'ltable.name, rtable.name' must be included before
 # feature vectors and 'gold_label' after the feature vector
-s_prime = mg.extract_feat_vecs(L, attrs_before=['ltable.name', 'rtable.name'], feat_table=feat_table, attrs_after=['gold_label'])
+s_prime = mg.extract_feat_vecs(L, attrs_before=['ltable.name', 'rtable.name'], feature_table=feat_table, attrs_after=['gold_label'])
 
 
 # In[34]:
@@ -254,7 +254,7 @@ mc.fit(x=s_prime[list(feat_table['feature_name'])], y=s_prime['gold_label'])
 # we want to predict matches from combined candidate set for that we need to generate feature vectors
 # NOTE: This is just for illustration, ideally we should remove the rows that was sampled and labeled from combined 
 # candidate set F.
-c_prime = mg.extract_feat_vecs(F, attrs_before=['ltable.name', 'rtable.name'], feat_table=feat_table)
+c_prime = mg.extract_feat_vecs(F, attrs_before=['ltable.name', 'rtable.name'], feature_table=feat_table)
 
 
 # In[42]:

@@ -51,7 +51,7 @@ def vis_tuple_debug_dt_matcher(matcher, t, exclude_attrs):
     code = get_code_vis(clf, feature_names, ['False', 'True'])
     code = get_dbg_fn_vis(code)
     feat_vals = OrderedDict(t.ix[t.index.values[0], feature_names])
-    print feat_vals
+    # print feat_vals
     d = {}
     d.update(feat_vals)
     exec code in d
