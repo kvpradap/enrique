@@ -37,11 +37,16 @@ class BooleanRuleMatcher(RuleMatcher):
         r_tbl = rtable.set_index(rtable.get_key(), drop=False)
         # keep track of valid ids
         y = []
-        # iterate candidate set and process each row
-        for idx, row in table.iterrows():
+        column_names = list(table.columns)
+        lid_idx = column_names.index(l_key)
+        rid_idx = column_names.index(r_key)
+
+        for row in table.itertuples(index=False):
+        # # iterate candidate set and process each row
+        # for idx, row in table.iterrows():
             # get the value of block attribute from ltuple
-            l_row = l_tbl.ix[row[l_key]]
-            r_row = r_tbl.ix[row[r_key]]
+            l_row = l_tbl.ix[row[lid_idx]]
+            r_row = r_tbl.ix[row[rid_idx]]
             res = self.apply_rules(l_row, r_row)
             if res is True:
                 y.append(1)

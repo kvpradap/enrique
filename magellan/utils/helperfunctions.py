@@ -8,11 +8,14 @@ import jpype
 import cloud
 import pyximport;
 
+import pandas as pd
+from  sklearn.preprocessing import Imputer
 pyximport.install()
 
 from magellan.utils import installpath
 from magellan import read_csv
 from magellan.cython.test_functions import *
+from magellan.core.mtable import MTable
 # get installation path
 def get_install_path():
     plist = installpath.split(os.sep)
@@ -122,17 +125,48 @@ def load_object(file_path):
         result = pickle.load(f)
     return result
 
-def my_jaccard(s1, s2):
-    s1 = ngrams(s1, 3)
-    s2 = ngrams(s2, 3)
-    #print s1
-    #print s2
-    return compute_jaccard_index(set(s1), set(s2))
+def create_mtable(table, key=None, ltable=None, rtable=None, foreign_key_ltable=None, foreign_key_rtable=None):
+    """
+    Create mtable from dataframe
+    """
+    out_table = MTable(table, key=key)
+    truth_vals = [ltable is not None,  rtable is not None,  foreign_key_ltable is not None,
+                  foreign_key_rtable is not None]
+    if all(truth_vals) == True:
+        out_table.set_property('ltable', ltable)
+        out_table.set_property('rtable', rtable)
+        out_table.set_property('foreign_key_ltable', foreign_key_ltable)
+        out_table.set_property('foreign_key_rtable', foreign_key_rtable)
+    else:
+        if any(truth_vals) == True:
+            logging.getLogger(__name__).warning('Not all the properties for vtable are given; so not setting '
+                                                'any of them')
+
+    return out_table
 
 
 
 
+def impute_table(table, exclude_attrs=None, missing_val='NaN',
+           strategy='mean', axis=0, val_all_nans=0):
+    fv_columns = table.columns
+    if exclude_attrs is None:
+        feature_names = fv_columns
+    else:
+        cols = [c not in exclude_attrs for c in fv_columns]
+        feature_names = fv_columns[cols]
+    print feature_names
+    table = table.copy()
+    tbl = table[feature_names]
 
+    t = tbl.values
+
+    imp = Imputer(missing_values=missing_val, strategy=strategy, axis=axis)
+    imp.fit(t)
+    imp.statistics_[pd.np.isnan(imp.statistics_)] = val_all_nans
+    t = imp.transform(t)
+    table[feature_names] = t
+    return table
 
 
 

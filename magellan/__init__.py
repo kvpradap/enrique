@@ -7,7 +7,7 @@ from PyQt4 import QtGui
 from magellan.io.parsers import read_csv
 from magellan.sampler.sampler import sample_table, down_sample
 from magellan.utils.helperfunctions import get_install_path, init_jvm, diff, \
-    load_dataset, load_object, save_object
+    load_dataset, load_object, save_object, create_mtable, impute_table
 #from magellan.utils.ast_test import get_workflow, draw_workflow
 from magellan.feature.simfunctions import *
 from magellan.feature.tokenizers import *

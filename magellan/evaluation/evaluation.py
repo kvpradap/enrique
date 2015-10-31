@@ -155,8 +155,14 @@ def eval_matches(X, gold_label_attr, predicted_label_attr):
     prec_den = n_tp + n_fp
     rec_num = n_tp
     rec_den = n_tp + n_fn
-    precision = prec_num/prec_den
-    recall = rec_num/rec_den
+    if prec_den == 0.0:
+        precision = 0.0
+    else:
+        precision = prec_num/prec_den
+    if rec_den == 0.0:
+        recall = 0.0
+    else:
+        recall = rec_num/rec_den
 
     if precision == 0.0 and recall == 0.0:
         f1 = 0.0
