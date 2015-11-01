@@ -10,13 +10,34 @@ from sklearn import clone
 from collections import OrderedDict
 import pyprind
 
-def cv_matcher_and_trigger(matcher, trigger, table, exclude_attrs,
+def cv_matcher_and_trigger(matcher, triggers, table, exclude_attrs,
                            target_attr, k=5, metric='precision', random_state=None):
-    assert metric in ['precision', 'recall', 'f1'], "Metric should be one of precision, recall, f1"
+
+    """
+    Cross validate matcher and trigger.
+
+    Parameters
+    ----------
+    matcher : object, An ML-object in Magellan
+    triggers : List of MatchTrigger objects
+    table : MTable, on which match + trigger should be done
+    exclude_attrs : List of string, attribute names that should be excluded from training and evaluation
+    target_attr : String, attribute name containing labels in the 'table'
+    k : integer, specifies the number of folds for cross-validation. The default value is 5.
+    metric : List of strings. Currently, the following values are allowed: 'precision', 'recall', 'f1',
+        The list should form a subset of ['precision', 'recall', 'f1']. The default value is set to None.
+        If None, then all the three metrics are computed for each fold and returned back to the user.
+    random_state: int,Pseudo-random number generator state used for random sampling.
+        If None, use default numpy RNG for shuffling
+    :return:
+    """
+
+    metric = validate_and_get_metric_as_list(metric)
+
     folds = KFold(len(table), k, shuffle=True, random_state=random_state)
     table = table.copy()
-    if isinstance(trigger, list) == False:
-        trigger = [trigger]
+    if isinstance(triggers, list) == False:
+        triggers = [triggers]
     eval_ls = []
     ltable=table.get_property('ltable')
     rtable=table.get_property('rtable')
@@ -44,7 +65,7 @@ def cv_matcher_and_trigger(matcher, trigger, table, exclude_attrs,
             predicted = matcher.predict(table=test, exclude_attrs=exclude_attrs,
                                         append=True, target_attr=pred_col, inplace=False)
 
-        for t in trigger:
+        for t in triggers:
             t.execute(predicted, pred_col, inplace=True)
 
         eval_summary = eval_matches(predicted, target_attr, pred_col)
@@ -52,25 +73,44 @@ def cv_matcher_and_trigger(matcher, trigger, table, exclude_attrs,
         if mg._progbar:
             bar.update()
 
-    header = ['Name', 'Matcher', 'Metric', 'Num folds']
+    header = ['Metric', 'Num folds']
     fold_header = ['Fold ' + str(i+1) for i in range(k)]
     header.extend(fold_header)
     header.append('Mean score')
-    val_list = []
-    val_list.append(matcher.name)
-    val_list.append(matcher)
-    val_list.append(metric)
-    val_list.append(k)
-    scores = []
-    for e in eval_ls:
-        scores.append(e[metric])
-    val_list.extend(scores)
-    val_list.append(np.mean(scores))
-    d = OrderedDict(zip(header, val_list))
-    stats = pd.DataFrame([d])
+    dict_list = []
+
+    for m in metric:
+        d = get_metric_dict(eval_ls, k, m, header)
+        dict_list.append(d)
+    stats = pd.DataFrame(dict_list)
     stats = stats[header]
     res = OrderedDict()
     res['cv_stats'] = stats
     res['fold_stats'] = eval_ls
     return res
 
+def validate_and_get_metric_as_list(metric):
+    if metric is None:
+        metric = ['precision', 'recall', 'f1']
+    if isinstance(metric, list) == False:
+        metric = [metric]
+    validate_metric(metric)
+    return metric
+
+
+def validate_metric(metric):
+    assert set(metric).issubset(['precision', 'recall', 'f1']) is True, "Metric should be a part of ['precision', " \
+                                                                        "recall, 'f1'] "
+
+def get_metric_dict(eval_ls, k, metric, header):
+
+    val_list = [metric, k]
+    scores = []
+    for e in eval_ls:
+        val_list.append(e[metric])
+        scores.append(e[metric])
+    mean_score = np.mean(scores)
+    val_list.append(mean_score)
+
+    d = OrderedDict(zip(header, val_list))
+    return d

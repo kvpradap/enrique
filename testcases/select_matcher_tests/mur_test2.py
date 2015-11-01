@@ -36,7 +36,7 @@ neg_trigger.add_cond_status(False)
 neg_trigger.add_action(0)
 
 t = cv_matcher_and_trigger(m, [pos_trigger],  table=G, exclude_attrs=['_id', 'ltable.ID', 'rtable.ID', 'gold'],
-                           target_attr='gold', k=5, metric='precision', random_state=1)
+                           target_attr='gold', k=5, metric=['f1'], random_state=1)
 # Create rule-based matcher and add rules.
 # rm = mg.BooleanRuleMatcher()
 # rm.add_rule(['title_title_jac_qgm_3_qgm_3(ltuple, rtuple) > 0.6'

@@ -26,8 +26,10 @@ def select_matcher(matchers, x=None, y=None, table=None, exclude_attrs=None, tar
     target_attr : string,
             target attribute name containing labels
     k : integer,
-        number of folds to be used for crossvalidation
-    random_state : int,Pseudo-random number generator state used for random sampling.
+        number of folds to be used for crossvalidation. The default value is set to 5.
+    metric : String. Currently, the following values are allowed: 'precision', 'recall', 'f1'. The default value
+     is set to precision
+    random_state : int,Pseudo-random number generator state used for random sampling. The default value is set to None.
         If None, use default numpy RNG for shuffling
 
     Returns
