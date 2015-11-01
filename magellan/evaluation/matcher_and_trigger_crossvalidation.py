@@ -11,7 +11,7 @@ from collections import OrderedDict
 import pyprind
 
 def cv_matcher_and_trigger(matcher, trigger, table, exclude_attrs,
-                           target_attr, k=5, metric='precision', random_state=0):
+                           target_attr, k=5, metric='precision', random_state=None):
     assert metric in ['precision', 'recall', 'f1'], "Metric should be one of precision, recall, f1"
     folds = KFold(len(table), k, shuffle=True, random_state=random_state)
     table = table.copy()

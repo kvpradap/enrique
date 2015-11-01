@@ -21,6 +21,12 @@ abb = ['jac', 'lev', 'cos', 'mel', 'nmw', 'sw',
 _global_sim_fns = pd.DataFrame({'function_name':sim_fn_names, 'short_name':abb})
 
 # get similarity functions
+
+def get_sim_funs_for_blocking():
+    return get_sim_funs()
+def get_sim_funs_for_matching():
+    return get_sim_funs()
+
 def get_sim_funs():
     fns = [jaccard,  lev, cosine, monge_elkan, needleman_wunsch, smith_waterman, smith_waterman_gotoh,
            jaro, jaro_winkler, soundex,
