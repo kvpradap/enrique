@@ -16,6 +16,7 @@ from magellan.utils import installpath
 from magellan import read_csv
 from magellan.cython.test_functions import *
 from magellan.core.mtable import MTable
+from magellan.debugmatcher.debug_gui_utils import get_metric
 # get installation path
 def get_install_path():
     plist = installpath.split(os.sep)
@@ -149,13 +150,14 @@ def create_mtable(table, key=None, ltable=None, rtable=None, foreign_key_ltable=
 
 def impute_table(table, exclude_attrs=None, missing_val='NaN',
            strategy='mean', axis=0, val_all_nans=0):
+
     fv_columns = table.columns
     if exclude_attrs is None:
         feature_names = fv_columns
     else:
         cols = [c not in exclude_attrs for c in fv_columns]
         feature_names = fv_columns[cols]
-    print feature_names
+    # print feature_names
     table = table.copy()
     tbl = table[feature_names]
 
@@ -168,6 +170,10 @@ def impute_table(table, exclude_attrs=None, missing_val='NaN',
     table[feature_names] = t
     return table
 
+def print_eval_summary(eval_summary):
+    m = get_metric(eval_summary)
+    for key, value in m.iteritems():
+        print key + " : " + value
 
 
 

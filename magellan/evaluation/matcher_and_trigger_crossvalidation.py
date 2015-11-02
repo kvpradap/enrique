@@ -11,7 +11,7 @@ from collections import OrderedDict
 import pyprind
 
 def cv_matcher_and_trigger(matcher, triggers, table, exclude_attrs,
-                           target_attr, k=5, metric='precision', random_state=None):
+                           target_attr, k=5, metric=None, random_state=None):
 
     """
     Cross validate matcher and trigger.
