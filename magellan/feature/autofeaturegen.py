@@ -51,7 +51,11 @@ def get_features(ltable, rtable, l_attr_types, r_attr_types, attr_corres, tok, s
         l_attr_type = l_attr_types[attrs[0]]
         r_attr_type = r_attr_types[attrs[1]]
         if l_attr_type != r_attr_type:
-            logging.getLogger(__name__).warning('%s type and %s type are different' %attrs)
+            # logging.getLogger(__name__).warning('%s type  and %s type  are different' %attrs)
+            logging.getLogger(__name__).warning('Magellan types: %s type (%s) and %s type (%s) are different.'
+                                                'If you want to set them to be same and generate features, '
+                                                'update output from get_attr_types and use get_features command.\n'
+                                                %(attrs[0], l_attr_type, attrs[1], r_attr_type))
             continue
         feats = get_features_for_type(l_attr_type)
         # convert features to function objects

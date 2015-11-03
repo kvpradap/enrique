@@ -29,6 +29,9 @@ class MainWindowManager(QtGui.QWidget):
         self.current_combo_text = 'False Positives'
         self.current_dataframe = self.fp_dataframe
         self.setup_gui()
+        width = min((40 + 1)*105, mg._viewapp.desktop().screenGeometry().width() - 50)
+        height = min((50 + 1)*41, mg._viewapp.desktop().screenGeometry().width() - 100)
+        self.resize(width, height)
 
     def setup_gui(self):
         self.combo_box = QtGui.QComboBox()

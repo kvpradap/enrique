@@ -16,7 +16,7 @@ from magellan.utils import installpath
 from magellan import read_csv
 from magellan.cython.test_functions import *
 from magellan.core.mtable import MTable
-from magellan.debugmatcher.debug_gui_utils import get_metric
+from magellan.debugmatcher.debug_gui_utils import get_metric, get_dataframe
 # get installation path
 def get_install_path():
     plist = installpath.split(os.sep)
@@ -150,6 +150,22 @@ def create_mtable(table, key=None, ltable=None, rtable=None, foreign_key_ltable=
 
 def impute_table(table, exclude_attrs=None, missing_val='NaN',
            strategy='mean', axis=0, val_all_nans=0):
+    """
+    Impute table
+
+    Parameters
+    ----------
+    table : MTable, for which values should be imputed
+    exclude_attrs : list of attribute names to be excluded from imputing.
+    missing_val : String, specifies the missing value format.
+    strategy : String, on how to impute values. Valid strings: 'mean', 'median', 'most_frequent'
+    axis : int, 0/1. axis=1 along rows, and axis=0 along columns.
+    val_all_nans: float. Value fto fill in if all the other values are NaN.
+
+    Returns
+    -------
+    result : Imputed table.
+    """
 
     fv_columns = table.columns
     if exclude_attrs is None:
@@ -176,6 +192,36 @@ def print_eval_summary(eval_summary):
         print key + " : " + value
 
 
+def get_false_positives_as_df(table, eval_summary):
+    """
+    Get false positives as dataframe
+
+    Parameters
+    ----------
+    table : MTable, that was used for evaluation or cv
+    eval_summary : Dictionary, output from cv['fold_stats'] or eval_matches
+
+    Returns
+    -------
+    df : Dataframe with false positives
+    """
+    return get_dataframe(table, eval_summary['false_pos_ls'])
+
+
+def get_false_negatives_as_df(table, eval_summary):
+    """
+    Get false negatives as dataframe
+
+    Parameters
+    ----------
+    table : MTable, that was used for evaluation or cv
+    eval_summary : Dictionary, output from cv['fold_stats'] or eval_matches
+
+    Returns
+    -------
+    df : Dataframe with false negatives
+    """
+    return get_dataframe(table, eval_summary['false_neg_ls'])
 
 
 

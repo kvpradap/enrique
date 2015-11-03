@@ -81,8 +81,17 @@ class MatchTrigger(object):
             raise AssertionError('Currently magellan supports only values 0/1 as label value')
         self.value_to_set = value
         return True
-    # --------------------- currently working on --------------------------
+
     def execute(self, input_table, label_column, inplace=True):
+        """
+        Execute trigger
+
+        Parameters
+        ----------
+        input_table : MTable, on which trigger must be applied
+        label_column : String, label attribute name
+        inplace : boolean, whether the updation should be done inplace. Default value is set to True.
+        """
         ltable = input_table.get_property('ltable')
         rtable = input_table.get_property('rtable')
         assert ltable is not None, 'Left table is not set'

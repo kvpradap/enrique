@@ -13,7 +13,10 @@ def visualize_tree(dt, fv_columns, exclude_attrs):
     """Create tree png using graphviz.
 
     """
-    tree = dt.clf
+    if isinstance(dt, DTMatcher):
+        tree = dt.clf
+    else:
+        tree = dt
     if exclude_attrs is None:
         feature_names = fv_columns
     else:

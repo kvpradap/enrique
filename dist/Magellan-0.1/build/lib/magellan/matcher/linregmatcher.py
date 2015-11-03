@@ -8,6 +8,7 @@ from sklearn.base import TransformerMixin
 class LinRegClassifierSKLearn(BaseEstimator, ClassifierMixin, TransformerMixin):
     def __init__(self, *args, **kwargs):
         self.clf = LinearRegression(*args, **kwargs)
+        self.threshold = 0.0
     def fit(self, X, y):
         y = (2 * y) - 1
         self.clf.fit(X, y)
@@ -15,7 +16,7 @@ class LinRegClassifierSKLearn(BaseEstimator, ClassifierMixin, TransformerMixin):
 
     def predict(self, X):
         y = self.clf.predict(X)
-        y = (2 * (y > 0)) - 1
+        y = (2 * (y > self.threshold)) - 1
         y[y == -1] = 0
         return y
 

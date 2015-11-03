@@ -7,7 +7,8 @@ from PyQt4 import QtGui
 from magellan.io.parsers import read_csv
 from magellan.sampler.sampler import sample_table, down_sample
 from magellan.utils.helperfunctions import get_install_path, init_jvm, diff, \
-    load_dataset, load_object, save_object
+    load_dataset, load_object, save_object, create_mtable, impute_table, print_eval_summary, \
+    get_false_negatives_as_df, get_false_positives_as_df
 #from magellan.utils.ast_test import get_workflow, draw_workflow
 from magellan.feature.simfunctions import *
 from magellan.feature.tokenizers import *
@@ -40,6 +41,7 @@ from magellan.debugmatcher.debug_randomforest_matcher import debug_randomforest_
 from magellan.debugmatcher.debug_booleanrule_matcher import debug_booleanrule_matcher
 from magellan.trigger.matchtrigger import MatchTrigger
 from magellan.evaluation.evaluation import  eval_matches
+from magellan.evaluation.matcher_and_trigger_crossvalidation import cv_matcher_and_trigger
 from magellan.debugmatcher.debug_gui_decisiontree_matcher import vis_debug_dt, vis_tuple_debug_dt_matcher
 from magellan.debugmatcher.debug_gui_randomforest_matcher import vis_debug_rf, vis_tuple_debug_rf_matcher
 from magellan.debugmatcher.debug_gui_booleanrule_matcher import vis_debug_rm, vis_tuple_debug_rm_matcher

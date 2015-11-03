@@ -21,6 +21,12 @@ abb = ['jac', 'lev', 'cos', 'mel', 'nmw', 'sw',
 _global_sim_fns = pd.DataFrame({'function_name':sim_fn_names, 'short_name':abb})
 
 # get similarity functions
+
+def get_sim_funs_for_blocking():
+    return get_sim_funs()
+def get_sim_funs_for_matching():
+    return get_sim_funs()
+
 def get_sim_funs():
     fns = [jaccard,  lev, cosine, monge_elkan, needleman_wunsch, smith_waterman, smith_waterman_gotoh,
            jaro, jaro_winkler, soundex,
@@ -217,10 +223,13 @@ def rel_diff(d1, d2):
         return np.NaN
     d1 = float(d1)
     d2 = float(d2)
-    x =  abs(d1-d2)/(d1+d2)
-    if x <= 10e-5:
-        x = 0
-    return 1.0 - x
+    if d1 == 0.0 and d2 == 0.0:
+        return 0
+    else:
+        x = abs(d1-d2)/(d1+d2)
+        if x <= 10e-5:
+            x = 0
+        return 1.0 - x
 
 # compute absolute norm similarity
 def abs_norm(d1, d2):
@@ -230,7 +239,7 @@ def abs_norm(d1, d2):
         return np.NaN
     d1 = float(d1)
     d2 = float(d2)
-    if d1 is 0 and d2 is 0:
+    if d1 == 0.0 and d2 == 0.0:
         return 0
     else:
         x =  1 - (abs(d1-d2)/max(d1, d2))

@@ -70,6 +70,7 @@ magellan/debugmatcher/debug_gui_utils.py
 magellan/debugmatcher/debug_randomforest_matcher.py
 magellan/evaluation/__init__.py
 magellan/evaluation/evaluation.py
+magellan/evaluation/matcher_and_trigger_crossvalidation.py
 magellan/feature/__init__.py
 magellan/feature/addfeatures.py
 magellan/feature/attributeutils.py

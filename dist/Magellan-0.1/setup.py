@@ -45,6 +45,8 @@ setup(
                       'cloud >= 2.8.5',
                       'pyparsing >= 2.0.3',
                       'python-Levenshtein >= 0.12.0',
+                      'scipy >= 0.16.0',
+                      'Cython >= 0.23.0',
                       'PyPrind >= 2.9.3'
                       ],
     include_package_data=True,

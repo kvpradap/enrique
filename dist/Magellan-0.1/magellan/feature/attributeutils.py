@@ -1,5 +1,9 @@
+
 import pandas as pd
 import numpy as np
+
+import logging
+
 
 def get_attr_types(table):
     """
@@ -65,8 +69,19 @@ def get_type(col):
     col = col.dropna()
     # get type for each element and convert it into a set
     type_list = list(set(col.map(type).tolist()))
-    if len(type_list) is not 1:
-        raise TypeError('Column qualifies to be more than one type')
+
+    if len(type_list) == 0:
+        logging.getLogger(__name__).warning('Column %s does not seem to qualify as any atomic type. '
+                                            'It may contain all NaNs. Currently, setting its type to '
+                                            'be numeric.We recommend the users to manually update '
+                                            'the returned types or features later. \n' % col.name)
+        return 'numeric'
+
+    if len(type_list) > 1:
+        raise TypeError('Column %s qualifies to be more than one type (%s). \n'
+                        'Please explicitly set the column type like this:\n'
+                        'A["address"] = A["address"].astype(str) \n'
+                        'Similarly use int, float, boolean types.' %(col.name, ', '.join(type_list)))
     else:
         t = type_list[0]
         if t == bool:
