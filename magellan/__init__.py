@@ -24,7 +24,7 @@ from magellan.debugblocker.blocking_debugger import debug_blocker
 from magellan.blockercombiner.blockercombiner import combine_block_outputs_via_union
 from magellan.gui.mtable_gui import view, edit
 from magellan.labeler.labeler import label_table
-from magellan.feature.extractfeatures import extract_feat_vecs
+from magellan.feature.extractfeatures import extract_feature_vecs
 from magellan.matcher.nbmatcher import NBMatcher
 from magellan.matcher.dtmatcher import DTMatcher
 from magellan.matcher.rfmatcher import RFMatcher

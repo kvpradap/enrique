@@ -29,7 +29,7 @@ def test_bb_block_tables():
     B['dummy'] = 1
     ab = mg.AttrEquivalenceBlocker()
     D = ab.block_tables(A, B, 'dummy','dummy')
-    fv = mg.extract_feat_vecs(D,  feature_table=feature_table)
+    fv = mg.extract_feature_vecs(D,  feature_table=feature_table)
     expected_ids = fv.ix[(fv.name_name_mel >= 0.4) ,
       ['ltable.ID', 'rtable.ID']]
     actual_ids = C[['ltable.ID', 'rtable.ID']]
@@ -46,7 +46,7 @@ def test_bb_block_candset():
     bb.set_black_box_function(block_fn)
     C = bb.block_candset(E)
     feature_table = mg.get_features_for_blocking(A, B)
-    fv = mg.extract_feat_vecs(C, feature_table=feature_table)
+    fv = mg.extract_feature_vecs(C, feature_table=feature_table)
     expected_ids = fv.ix[(fv.name_name_mel >= 0.4) ,
       ['ltable.ID', 'rtable.ID']]
     actual_ids = C[['ltable.ID', 'rtable.ID']]

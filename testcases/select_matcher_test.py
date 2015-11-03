@@ -12,7 +12,7 @@ C = ab.block_tables(A, B, 'zipcode', 'zipcode', ['name'], ['name'])
 L = mg.label_table(C, 'gold')
 L.to_csv('mur_labels')
 F = mg.get_features_for_matching(A, B)
-G = mg.extract_feat_vecs(L, feature_table=F, attrs_after='gold')
+G = mg.extract_feature_vecs(L, feature_table=F, attrs_after='gold')
 
 dt = mg.DTMatcher()
 

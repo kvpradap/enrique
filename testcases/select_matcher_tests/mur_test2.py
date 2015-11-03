@@ -19,7 +19,7 @@ m = mg.DTMatcher()
 
 
 # feature_table = mg.get_features_for_matching(A, B)
-G = mg.extract_feat_vecs(L, feature_table=f, attrs_after='gold')
+G = mg.extract_feature_vecs(L, feature_table=f, attrs_after='gold')
 G = mg.impute_table(G, exclude_attrs=['_id', 'ltable.id', 'rtable.id', 'gold'], strategy='most_frequent')
 # m = mg.LinRegMatcher()
 # print G
