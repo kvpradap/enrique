@@ -8,7 +8,7 @@ from magellan.utils.helperfunctions import isJVMStarted
 
 logging.basicConfig(level=logging.INFO)
 
-def extract_feat_vecs(s, attrs_before=None, feature_table=None, attrs_after=None):
+def extract_feature_vecs(s, attrs_before=None, feature_table=None, attrs_after=None):
     """
     Extract feature vectors
 

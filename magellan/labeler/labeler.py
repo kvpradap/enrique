@@ -1,7 +1,7 @@
 import logging
 import magellan as mg
 from magellan.core.mtable import MTable
-def label_table(tbl, col_name):
+def label_table(tbl, col_name, replace=True):
     """
     Label training data
 
@@ -9,6 +9,8 @@ def label_table(tbl, col_name):
     ----------
     tbl : MTable, Table to be labeled
     col_name : String, Name of the label column
+    replace : Boolean, specifies whether the column with the given 'col_name' must be overwritten, if it already exists.
+    [This option is currently experimental].
 
     Returns
     -------
@@ -20,8 +22,12 @@ def label_table(tbl, col_name):
     """
     from magellan.gui.mtable_gui import edit
     table = tbl.copy()
+
     if col_name in table.columns:
-        logging.getLogger(__name__).warning('Input table already contains table with name %s' %col_name)
+        if replace == True:
+            logging.getLogger(__name__).warning('Input table already contains column %s. '
+                                                '' %col_name)
+            table[col_name] = 0
     else:
         table[col_name] = 0
     mg.edit(table)

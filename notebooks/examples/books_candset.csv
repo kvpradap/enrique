@@ -3,72 +3,72 @@
 #rtable=POINTER
 #foreign_key_ltable=ltable.id
 #foreign_key_rtable=rtable.id
-_id,ltable.id,rtable.id,ltable.title,ltable.author,rtable.title,rtable.author
-0,4086892,9780226156439,The Bedtrick: Tales of Sex and Masquerade,"Doniger, Wendy",Bedtrick : Tales of Sex and Masquerade,"Doniger, Wendy"
-1,535599,9780060655808,HarperCollins Study Bible-NRSV,"Meeks, Wayne A.",Harpercollins Study Bible Standard Version with the Apocryphal/Deuterocanonical Books,"Meeks, Wayne A."
-2,12537042,9780030402432,Se CD-R(set of 25)Allez Viens LV 2 2006,Damado,Allez Viens,d'Amado
-3,1386538,9780130901262,Adaptive Filter Theory,"Haykin, Simon S.",Adaptive Filter Theory,"Haykin, Simon"
-4,13945932,9780205700424,An Introduction to Theories of Learning [With Access Code],"Olson, Matthew",Introduction to the Theories of Learning- (Value Pack W/MySearchLab),"Olson, Matthew H. Hergenhahn, B. R."
-5,15280600,9780217455008,"Catalogue of Earthquakes on the Pacific Coast, 1897 to 1906 (49, Nos. 1-5)","McAdie, Alexander","Catalogue of Earthquakes on the Pacific Coast, 1897 To 1906","Mcadie, Alexander"
-6,15286798,9780217825382,"Cured by an Incurable, by Crowquill and Pencilpoint","Pseud, Crowquill","Cured by an Incurable, by Crowquill and Pencilpoint","Pseud, Crowquill"
-7,15295588,9780217940207,"The Daring Adventures of Kit Carson and Fremont; Among Buffaloes, Grizzlies and Indians Being a Spirited Diary of the Most Difficult and Wonderful Exp","Frmont, John Charles",Daring Adventures of Kit Carson and Fremont,"Fr�mont, John Charles"
-8,15334872,9780217270052,"Personal Efficiency, Applied Salesmanship, and Sales Administration","Allen, Irving Ross","Personal Efficiency, Applied Salesmanship, and Sales Administration","Allen, Irving Ross"
-9,15338150,9780217304399,The Universal Merchant; In Theory and Practice Improved and Enl,"Alldridge, W. J.",Universal Merchant,"Alldridge, W. J."
-10,1566948,9780070479081,The Elusive Eden: A New History of California,"Rice, Richard B.",Elusive Eden : A New History of California,"Rice, Richard Bullough, Bonnie Bullough, William Orsi, Richard J."
-11,4025755,9780072860948,Taking Off Beginning English Literacy Workbook,,Taking off Beginning English Literacy Workbook,"Hancock Fesler, Susan Newman, Christy"
-12,4564015,9780080446837,Vintage Papers from the Lancet,"Richardson, Ruth",Vintage Papers from the Lancet,
-13,5050626,9780030513374,Practical Mathematics: Skills and Concepts,"Fredrick, Marguerite M.",Practical Math : Skills and Concepts,Fredrick
-14,522144,9780135285718,Learning American Sign Language,"Humphries, Tom",Learning American Sign Language,"Humphries, Tom L. Padden, Carol A."
-15,5514791,9780114958367,Conserving Bogs: The Management Handbook,"Stoneman, Rob ",Conserving Bogs : The Management Handbook,TSO Staff
-16,5681971,9780073380339,Fundamentals of Digital Logic with Verilog Design [With CDROM],"Brown, Stephen",Fundamentals of Digital Logic with Verilog Design,"Vranesic, Zvonko Brown, Stephen"
-17,6000607,9780061374050,Not Quite What I Was Planning: Six-Word Memoirs by Writers Famous and Obscure,"Fershleiser, Rachel",Not Quite What I Was Planning : Six-Word Memoirs by Writers Famous and Obscure,"Smith, Larry Fershleiser, Rachel"
-18,7807428,9780077217181,The Art of Public Speaking [With Booklet],"Lucas, Stephen E.",Art of Public Speaking,"Lucas, Stephen"
-19,7809485,9780152062279,Love Among the Walnuts,"Ferris, Jean",Love among the Walnuts,"Ferris, Jean"
-20,4082544,9780071451574,Business Calculus Demystified,"Huettenmueller, Rhonda",Business Calculus Demystified,"Huettenmueller, Rhonda"
-21,4763339,9780205327270,Transition Assessment: Planning Transition and IEP Development for Youth with Mild to Moderate Disabilities,"Miller, Robert J.",Transition Assessment : Planning Transition and IEP Development for Youth with Mild to Moderate Disabilities,"Corbey, Stephanie A. Lombard, Richard C. Miller, Robert J."
-22,5087512,9780028348261,"Geometry: Concepts and Applications, Study Guide Workbook",McGraw-Hill,Geometry : Concepts and Applications,McGraw-Hill Staff
-23,515921,9780140447040,Sixteen Satires: Revised Edition,"Juvenal, Decimus Junius Juvenalis",Sixteen Satires,Juvenal
-24,17800413,9780061490057,Ascendant,"Peterfreund, Diana",Ascendant,"Peterfreund, Diana"
-25,19747771,9780217516556,The Bog of Stars; And Other Stories and Sketches of Elizabethan Ireland,"O'Grady, Standish",Bog of Stars; and Other Stories and Sketches of Elizabethan Ireland,"O'Grady, Standish"
-26,22922094,9780077864262,Economics Alternate Edition + Connect Plus,"McConnell, Campbell",Gen cmb alt ed econ; Cnct+ac,"Flynn, Sean Brue, Stanley McConnell, Campbell"
-27,2351244,9780226492360,Foundations of Biogeography: Classic Papers with Commentaries,"Lomolino, Mark V.",Foundations of Biogeography : Classic Papers with Commentaries,
-28,2524032,9780198280354,"Elitism, Populism, and European Politics","Hayward, Jack","Elitism, Populism, and European Politics",
-29,3618742,9780060837563,Native Son,"Wright, Richard",Native Son,"Wright, Richard"
-30,10082209,9780007183456,Antarctica: Exploring a Fragile Eden,"Scott, Jonathan",Antarctica : Exploring a Fragile Eden,"Scott, Angela Scott, Jonathan"
-31,10865895,9780153234514,Harcourt School Publishers Trophies: On-LVL: Seventh Gr Penny Drve G6 Seventh Gr Penny Drve,HSP,Seventh Grade Penny Drive On Level,Harcourt School Publishers Staff
-32,1300652,9780198201892,Richard II: The Art of Kingship,"Goodman, Anthony",Richard II : The Art of Kingship,
-33,13907045,9780195398113,Terrorism: Commentary on Security; Terrorist Financing and Money Laundering,,Terrorism: Commentary on Security DocumentsVolume 106: Terrorist Financing and Money Laundering,"Huq, Aziz Lovelace, Douglas C. Boon, Kristen E."
-34,1490720,9780029066850,"Measures for Clinical Practice: A Sourcebook : Couples, Families, and Children","Fischer, Joel","Measures for Clinical Practice Vol. 1 : Couples, Families, and Children","Fischer, Joel"
-35,15311731,9780217105972,The Road Toward Peace; A Contribution to the Study of the Causes of the European War and of the Means of Preventing War in the Future,"Eliot, Charles William",Road Toward Peace,"Eliot, Charles William"
-36,15348586,9780217521376,On the Broads,"Dodd, Anna Bowman",On the Broads,"Dodd, Anna Bowman"
-37,15368811,9780217110952,The True Story of Hamlet and Ophelia,"Gilchrist, Fredericka Raymond Beardsley",True Story of Hamlet and Opheli,"Gilchrist, Fredericka Raymond Beardsley"
-38,16284366,9780160879098,"Congressional Record (Bound Volumes): Volume 153, Part 20",U S Congress,"Congressional Record, V. 153, Pt. 20, October 17, 2007 to October 30 2007",
-39,10240412,9780199556717,Evolution and the Levels of Selection,"Okasha, Samir",Evolution and the Levels of Selection,"Okasha, Samir"
-40,14022273,9780217263016,"New Guide of Rome and the Enirons According to Vasi and Nibby; Containing a Description of the Monuments, Galleries, Churches [Etc.] Carefully Revised","Piale, Luigi",New Guide of Rome and the Enirons According to Vasi and Nibby,"Piale, Luigi"
-41,14022804,9780217519724,Novels and Novelists; From Elizabeth to Victoria,"Jeaffreson, John Cordy","Novels and Novelists, from Elizabeth to Victoria","Jeaffreson, John Cordy"
-42,14026160,9780217021159,Memoirs and Campaigns of Charles John Prince Royal of Sweden; Embellished with a Beautifully Engraved Portrait,"Philippart, John",Memoirs and Campaigns of Charles John Prince Royal of Sweden,"Philippart, John"
-43,14028323,9780217618472,"The Wrack of the Storm Volume 1916, PT. 1","Maeterlinck, Maurice",Wrack of the Storm,"Maeterlinck, Maurice"
-44,15282052,9780217761901,The Growth of Christianity; London Lectures,"Gardner, Percy",Growth of Christianity,"Gardner, Percy"
-45,15283778,9780217880725,Outlines of Logic and Metaphysics,"Erdmann, Johann Eduard",Outlines of Logic and Metaphysics,"Erdmann, Johann Eduard"
-46,15305465,9780217033985,Practical Chemistry; The Principles of Qualitative Analysis,"Tilden, William Augustus",Practical Chemistry,"Tilden, William A."
-47,15307220,9780217970747,Peggy Ware,"Howard, Milford Wriarson",Peggy Ware,"Howard, Milford Wriarson"
-48,15328882,9780217020985,Memoirs of the Reign of King George the Third (Volume 3),"Walpole, Horace",Memoirs of the Reign of King George The,"Walpole, Horace"
-49,15345679,9780217759441,"The Tripled Crown; A Book of English, Scotch and Irish Verse","Author, Unknown",Tripled Crown,
-50,15772172,9780061965548,How Shakespeare Changed Everything,"Marche, Stephen",How Shakespeare Changed Everything,"Marche, Stephen"
-51,1581211,9780201738278,Broadband Internet Connections: A User's Guide to DSL and Cable,"Smith, Roderick W.",Broadband Internet Connections : A User's Guide to DSL and Cable,"Smith, Roderick W."
-52,15912308,9780077905972,Combo: Loose Leaf Version of Anatomy & Physiology: The Unity of Form and Function with Connect Plus 2 Semester Access Card (Includes Apr & Phils Onlin,"Saladin, Kenneth",Combo: Loose Leaf Version of Anatomy & Physiology: the Unity of Form and Function with Connect Plus/LearnSmart 2 Semester Access Card,"Saladin, Kenneth"
-53,10083762,9780142412145,Let It Snow: Three Holiday Romances,"Green, John",Let It Snow : Three Holiday Romances,"Myracle, Lauren Green, John Johnson, Maureen"
-54,10722263,9780195386370,Stockholm: A Cultural History,"Griffiths, Tony",Stockholm : A Cultural History,"Griffiths, Tony"
-55,10948704,9780131077744,Coll Acctg 1-26& Sg& Wp& Pchtr& Pch8.0& Tut& Ebiz,,Coll Acctg 1-26 and Sg and Wp and Pchtr and Pch8 0 and Tut and E,"Slater, Jeffrey"
-56,13433980,9780205753413,Janson's Basic History of Western Art [With Access Code],"Davies, Penelope J. E.","Janson's Basic History of Western Art, Books a la Carte Plus MyArtKit","Jacobs, Joseph F. Roberts, Ann M. Davies Davies, Penelope J. E. Hofrichter, Frima Fox"
-57,14022189,9780217341356,"A History of the County of Pictou, Nova Scotia","Patterson, George","History of the County of Pictou, Nova Scoti","Patterson, George"
-58,15289952,9780217048255,Shores of the Mediterranean,"Schroeder, Francis",Shores of the Mediterranean,"Schroeder, Francis"
-59,15291838,9780217255035,Laurie's Graduated Series of Reading Lesson Books,"Laurie, James Stuart",Laurie's Graduated Series of Reading Lesson Books,"Laurie, James Stuart"
-60,15326268,9780217106894,The Spirit of the New Education,"Hopkins, Louisa Parsons Stone",Spirit of the New Education,"Hopkins, Louisa Parsons Stone"
-61,15341050,9780217227834,Jacob Vanderlint on Money Answers All Things. 1734,"Vanderlint, Jacob",Jacob VanDerlint on Money Answers All Things 1734,"VanDerlint, Jacob"
-62,15350595,9780217872232,"Skin Diseases of Parasitic Origin; Their Nature and Treatment, Including the Description and Relations of the Fungi Found in Man","Fox, Tilbury",Skin Diseases of Parasitic Origin,"Fox, Tilbury"
-63,15358361,9780217249775,Proceedings of 1st- Annual Convention,"Association, Idaho Bankers",Proceedings of 1st- Annual Convention,"Association, Idaho Bankers"
-64,15359574,9780217298445,The War Guilt and Peace Crime of the Entente Allies,"Bruce, Stewart E.",War Guilt and Peace Crime of the Entente Allies,"Bruce, Stewart E."
-65,15373263,9780217300049,"The Theory and Practice of Cricket, from Its Origin to the Present Time","Box, Charles","Theory and Practice of Cricket, from Its Origin to the Present Time","Box, Charles"
-66,15657084,9780195380002,Global Occupational Health,"Guidotti, Tee L.",Global Occupational Health,
-67,16938827,9780230232372,Kazuo Ishiguro: New Critical Visions of the Novels,"Groes, Sebastian",Kazuo Ishiguro : New Critical Visions of the Novels,
+_id,ltable.id,rtable.id,ltable.title,ltable.author,ltable.pubYear,ltable.publisher,rtable.title,rtable.author,rtable.pubYear,rtable.publisher
+0,9780007183456,10082209,Antarctica : Exploring a Fragile Eden,"Scott, Angela Scott, Jonathan",2008.0,HarperCollins Publishers Limited,Antarctica: Exploring a Fragile Eden,"Scott, Jonathan",2008.0,Trafalgar Square
+1,9780028348261,5087512,Geometry : Concepts and Applications,McGraw-Hill Staff,2000.0,McGraw-Hill Higher Education,"Geometry: Concepts and Applications, Study Guide Workbook",McGraw-Hill,2000.0,McGraw-Hill/Glencoe
+2,9780029066850,1490720,"Measures for Clinical Practice Vol. 1 : Couples, Families, and Children","Fischer, Joel",1994.0,Free Press,"Measures for Clinical Practice: A Sourcebook : Couples, Families, and Children","Fischer, Joel",1994.0,Simon & Schuster
+3,9780030402432,12537042,Allez Viens,d'Amado,2005.0,Holt McDougal,Se CD-R(set of 25)Allez Viens LV 2 2006,Damado,2006.0,Houghton Mifflin Harcourt (HMH)
+4,9780030513374,5050626,Practical Math : Skills and Concepts,Fredrick,1998.0,Holt McDougal,Practical Mathematics: Skills and Concepts,"Fredrick, Marguerite M.",1998.0,Holt McDougal
+5,9780060655808,535599,Harpercollins Study Bible Standard Version with the Apocryphal/Deuterocanonical Books,"Meeks, Wayne A.",1993.0,HarperCollins Publishers,HarperCollins Study Bible-NRSV,"Meeks, Wayne A.",1993.0,Harpercollins
+6,9780060837563,3618742,Native Son,"Wright, Richard",2005.0,HarperCollins Publishers,Native Son,"Wright, Richard",2005.0,Harpercollins
+7,9780061374050,6000607,Not Quite What I Was Planning : Six-Word Memoirs by Writers Famous and Obscure,"Smith, Larry Fershleiser, Rachel",2008.0,HarperCollins Publishers,Not Quite What I Was Planning: Six-Word Memoirs by Writers Famous and Obscure,"Fershleiser, Rachel",2008.0,Harpercollins
+8,9780061490057,17800413,Ascendant,"Peterfreund, Diana",2012.0,HarperCollins Publishers,Ascendant,"Peterfreund, Diana",2012.0,Harpercollins Childrens Books
+9,9780061965548,15772172,How Shakespeare Changed Everything,"Marche, Stephen",2012.0,HarperCollins Publishers,How Shakespeare Changed Everything,"Marche, Stephen",2012.0,Harpercollins
+10,9780070479081,1566948,Elusive Eden : A New History of California,"Rice, Richard Bullough, Bonnie Bullough, William Orsi, Richard J.",1996.0,McGraw-Hill Higher Education,The Elusive Eden: A New History of California,"Rice, Richard B.",1996.0,McGraw-Hill College
+11,9780071451574,4082544,Business Calculus Demystified,"Huettenmueller, Rhonda",2005.0,McGraw-Hill Professional Publishing,Business Calculus Demystified,"Huettenmueller, Rhonda",2005.0,McGraw-Hill
+12,9780072860948,4025755,Taking off Beginning English Literacy Workbook,"Hancock Fesler, Susan Newman, Christy",2004.0,McGraw-Hill Higher Education,Taking Off Beginning English Literacy Workbook,,2002.0,McGraw-Hill College
+13,9780073380339,5681971,Fundamentals of Digital Logic with Verilog Design,"Vranesic, Zvonko Brown, Stephen",2007.0,McGraw-Hill Higher Education,Fundamentals of Digital Logic with Verilog Design [With CDROM],"Brown, Stephen",2007.0,McGraw-Hill Science/Engineering/Math
+14,9780077217181,7807428,Art of Public Speaking,"Lucas, Stephen",2007.0,"McGraw-Hill Companies, The",The Art of Public Speaking [With Booklet],"Lucas, Stephen E.",2007.0,McGraw-Hill College
+15,9780077864262,22922094,Gen cmb alt ed econ; Cnct+ac,"Flynn, Sean Brue, Stanley McConnell, Campbell",,McGraw-Hill Higher Education,Economics Alternate Edition + Connect Plus,"McConnell, Campbell",2011.0,Irwin/McGraw-Hill
+16,9780077905972,15912308,Combo: Loose Leaf Version of Anatomy & Physiology: the Unity of Form and Function with Connect Plus/LearnSmart 2 Semester Access Card,"Saladin, Kenneth",,McGraw-Hill Higher Education,Combo: Loose Leaf Version of Anatomy & Physiology: The Unity of Form and Function with Connect Plus 2 Semester Access Card (Includes Apr & Phils Onlin,"Saladin, Kenneth",2010.0,McGraw-Hill Science/Engineering/Math
+17,9780080446837,4564015,Vintage Papers from the Lancet,,2006.0,Elsevier - Health Sciences Division,Vintage Papers from the Lancet,"Richardson, Ruth",2005.0,Elsevier Science Health Science div
+18,9780114958367,5514791,Conserving Bogs : The Management Handbook,TSO Staff,1997.0,"Stationery Office, The",Conserving Bogs: The Management Handbook,"Stoneman, Rob ",1996.0,Bernan Assoc
+19,9780130901262,1386538,Adaptive Filter Theory,"Haykin, Simon",2001.0,Prentice Hall PTR,Adaptive Filter Theory,"Haykin, Simon S.",2001.0,Prentice Hall
+20,9780131077744,10948704,Coll Acctg 1-26 and Sg and Wp and Pchtr and Pch8 0 and Tut and E,"Slater, Jeffrey",2003.0,Prentice Hall Higher Education,Coll Acctg 1-26& Sg& Wp& Pchtr& Pch8.0& Tut& Ebiz,,2003.0,Addison Wesley Longman
+21,9780135285718,522144,Learning American Sign Language,"Humphries, Tom L. Padden, Carol A.",1992.0,"Allyn & Bacon, Incorporated",Learning American Sign Language,"Humphries, Tom",1992.0,Prentice Hall
+22,9780140447040,515921,Sixteen Satires,Juvenal,1999.0,Penguin Group (USA) Incorporated,Sixteen Satires: Revised Edition,"Juvenal, Decimus Junius Juvenalis",1999.0,Penguin Group USA
+23,9780142412145,10083762,Let It Snow : Three Holiday Romances,"Myracle, Lauren Green, John Johnson, Maureen",2008.0,Penguin Group (USA) Incorporated,Let It Snow: Three Holiday Romances,"Green, John",2008.0,Penguin Group USA
+24,9780152062279,7809485,Love among the Walnuts,"Ferris, Jean",2008.0,Houghton Mifflin Harcourt Publishing Company,Love Among the Walnuts,"Ferris, Jean",2008.0,Houghton Mifflin Harcourt
+25,9780153234514,10865895,Seventh Grade Penny Drive On Level,Harcourt School Publishers Staff,2002.0,Harcourt School Publishers,Harcourt School Publishers Trophies: On-LVL: Seventh Gr Penny Drve G6 Seventh Gr Penny Drve,HSP,2002.0,Harcourt School Publishers
+26,9780160879098,16284366,"Congressional Record, V. 153, Pt. 20, October 17, 2007 to October 30 2007",,2011.0,United States Government Printing Office,"Congressional Record (Bound Volumes): Volume 153, Part 20",U S Congress,2011.0,Congress
+27,9780195380002,15657084,Global Occupational Health,,2011.0,"Oxford University Press, Incorporated",Global Occupational Health,"Guidotti, Tee L.",2011.0,Oxford Univ Pr
+28,9780195386370,10722263,Stockholm : A Cultural History,"Griffiths, Tony",2009.0,"Oxford University Press, Incorporated",Stockholm: A Cultural History,"Griffiths, Tony",2009.0,Oxford Univ Pr on Demand
+29,9780195398113,13907045,Terrorism: Commentary on Security DocumentsVolume 106: Terrorist Financing and Money Laundering,"Huq, Aziz Lovelace, Douglas C. Boon, Kristen E.",1979.0,Oceana Publications,Terrorism: Commentary on Security; Terrorist Financing and Money Laundering,,2010.0,Oxford Univ Pr
+30,9780198201892,1300652,Richard II : The Art of Kingship,,1999.0,"Oxford University Press, Incorporated",Richard II: The Art of Kingship,"Goodman, Anthony",1999.0,Oxford Univ Pr
+31,9780198280354,2524032,"Elitism, Populism, and European Politics",,1996.0,"Oxford University Press, Incorporated","Elitism, Populism, and European Politics","Hayward, Jack",1996.0,Oxford Univ Pr
+32,9780199556717,10240412,Evolution and the Levels of Selection,"Okasha, Samir",2009.0,"Oxford University Press, Incorporated",Evolution and the Levels of Selection,"Okasha, Samir",2009.0,Oxford Univ Pr
+33,9780201738278,1581211,Broadband Internet Connections : A User's Guide to DSL and Cable,"Smith, Roderick W.",2001.0,Addison Wesley Professional,Broadband Internet Connections: A User's Guide to DSL and Cable,"Smith, Roderick W.",2001.0,Addison-Wesley Professional
+34,9780205327270,4763339,Transition Assessment : Planning Transition and IEP Development for Youth with Mild to Moderate Disabilities,"Corbey, Stephanie A. Lombard, Richard C. Miller, Robert J.",2006.0,"Allyn & Bacon, Incorporated",Transition Assessment: Planning Transition and IEP Development for Youth with Mild to Moderate Disabilities,"Miller, Robert J.",2006.0,Prentice Hall
+35,9780205700424,13945932,Introduction to the Theories of Learning- (Value Pack W/MySearchLab),"Olson, Matthew H. Hergenhahn, B. R.",2009.0,Prentice Hall PTR,An Introduction to Theories of Learning [With Access Code],"Olson, Matthew",2009.0,Prentice Hall
+36,9780205753413,13433980,"Janson's Basic History of Western Art, Books a la Carte Plus MyArtKit","Jacobs, Joseph F. Roberts, Ann M. Davies Davies, Penelope J. E. Hofrichter, Frima Fox",2009.0,Prentice Hall PTR,Janson's Basic History of Western Art [With Access Code],"Davies, Penelope J. E.",2009.0,Prentice Hall
+37,9780217020985,15328882,Memoirs of the Reign of King George The,"Walpole, Horace",2009.0,General Books,Memoirs of the Reign of King George the Third (Volume 3),"Walpole, Horace",2012.0,General Books
+38,9780217021159,14026160,Memoirs and Campaigns of Charles John Prince Royal of Sweden,"Philippart, John",2009.0,General Books,Memoirs and Campaigns of Charles John Prince Royal of Sweden; Embellished with a Beautifully Engraved Portrait,"Philippart, John",2010.0,General Books
+39,9780217033985,15305465,Practical Chemistry,"Tilden, William A.",2009.0,General Books,Practical Chemistry; The Principles of Qualitative Analysis,"Tilden, William Augustus",2010.0,General Books
+40,9780217048255,15289952,Shores of the Mediterranean,"Schroeder, Francis",2009.0,General Books,Shores of the Mediterranean,"Schroeder, Francis",2009.0,General Books
+41,9780217105972,15311731,Road Toward Peace,"Eliot, Charles William",2009.0,General Books,The Road Toward Peace; A Contribution to the Study of the Causes of the European War and of the Means of Preventing War in the Future,"Eliot, Charles William",2010.0,General Books
+42,9780217106894,15326268,Spirit of the New Education,"Hopkins, Louisa Parsons Stone",2009.0,General Books,The Spirit of the New Education,"Hopkins, Louisa Parsons Stone",2010.0,General Books
+43,9780217110952,15368811,True Story of Hamlet and Opheli,"Gilchrist, Fredericka Raymond Beardsley",2009.0,General Books,The True Story of Hamlet and Ophelia,"Gilchrist, Fredericka Raymond Beardsley",2012.0,General Books
+44,9780217227834,15341050,Jacob VanDerlint on Money Answers All Things 1734,"VanDerlint, Jacob",2009.0,General Books,Jacob Vanderlint on Money Answers All Things. 1734,"Vanderlint, Jacob",2012.0,General Books
+45,9780217249775,15358361,Proceedings of 1st- Annual Convention,"Association, Idaho Bankers",2009.0,General Books,Proceedings of 1st- Annual Convention,"Association, Idaho Bankers",2010.0,General Books
+46,9780217255035,15291838,Laurie's Graduated Series of Reading Lesson Books,"Laurie, James Stuart",2009.0,General Books,Laurie's Graduated Series of Reading Lesson Books,"Laurie, James Stuart",2010.0,General Books
+47,9780217263016,14022273,New Guide of Rome and the Enirons According to Vasi and Nibby,"Piale, Luigi",2009.0,General Books,"New Guide of Rome and the Enirons According to Vasi and Nibby; Containing a Description of the Monuments, Galleries, Churches [Etc.] Carefully Revised","Piale, Luigi",2012.0,General Books
+48,9780217270052,15334872,"Personal Efficiency, Applied Salesmanship, and Sales Administration","Allen, Irving Ross",2009.0,General Books,"Personal Efficiency, Applied Salesmanship, and Sales Administration","Allen, Irving Ross",2010.0,General Books
+49,9780217298445,15359574,War Guilt and Peace Crime of the Entente Allies,"Bruce, Stewart E.",2009.0,General Books,The War Guilt and Peace Crime of the Entente Allies,"Bruce, Stewart E.",2010.0,General Books
+50,9780217300049,15373263,"Theory and Practice of Cricket, from Its Origin to the Present Time","Box, Charles",2009.0,General Books,"The Theory and Practice of Cricket, from Its Origin to the Present Time","Box, Charles",2012.0,General Books
+51,9780217304399,15338150,Universal Merchant,"Alldridge, W. J.",2009.0,General Books,The Universal Merchant; In Theory and Practice Improved and Enl,"Alldridge, W. J.",2012.0,General Books
+52,9780217341356,14022189,"History of the County of Pictou, Nova Scoti","Patterson, George",2009.0,General Books,"A History of the County of Pictou, Nova Scotia","Patterson, George",2012.0,General Books
+53,9780217455008,15280600,"Catalogue of Earthquakes on the Pacific Coast, 1897 To 1906","Mcadie, Alexander",2009.0,General Books,"Catalogue of Earthquakes on the Pacific Coast, 1897 to 1906 (49, Nos. 1-5)","McAdie, Alexander",2010.0,General Books
+54,9780217516556,19747771,Bog of Stars; and Other Stories and Sketches of Elizabethan Ireland,"O'Grady, Standish",2009.0,General Books,The Bog of Stars; And Other Stories and Sketches of Elizabethan Ireland,"O'Grady, Standish",2012.0,General Books
+55,9780217519724,14022804,"Novels and Novelists, from Elizabeth to Victoria","Jeaffreson, John Cordy",2009.0,General Books,Novels and Novelists; From Elizabeth to Victoria,"Jeaffreson, John Cordy",2010.0,General Books
+56,9780217521376,15348586,On the Broads,"Dodd, Anna Bowman",2009.0,General Books,On the Broads,"Dodd, Anna Bowman",2010.0,General Books
+57,9780217618472,14028323,Wrack of the Storm,"Maeterlinck, Maurice",2009.0,General Books,"The Wrack of the Storm Volume 1916, PT. 1","Maeterlinck, Maurice",2010.0,General Books
+58,9780217759441,15345679,Tripled Crown,,2009.0,General Books,"The Tripled Crown; A Book of English, Scotch and Irish Verse","Author, Unknown",2010.0,General Books
+59,9780217761901,15282052,Growth of Christianity,"Gardner, Percy",2009.0,General Books,The Growth of Christianity; London Lectures,"Gardner, Percy",2010.0,General Books
+60,9780217825382,15286798,"Cured by an Incurable, by Crowquill and Pencilpoint","Pseud, Crowquill",2009.0,General Books,"Cured by an Incurable, by Crowquill and Pencilpoint","Pseud, Crowquill",2012.0,General Books
+61,9780217872232,15350595,Skin Diseases of Parasitic Origin,"Fox, Tilbury",2009.0,General Books,"Skin Diseases of Parasitic Origin; Their Nature and Treatment, Including the Description and Relations of the Fungi Found in Man","Fox, Tilbury",2010.0,General Books
+62,9780217880725,15283778,Outlines of Logic and Metaphysics,"Erdmann, Johann Eduard",2009.0,General Books,Outlines of Logic and Metaphysics,"Erdmann, Johann Eduard",2010.0,General Books
+63,9780217940207,15295588,Daring Adventures of Kit Carson and Fremont,"Fr�mont, John Charles",2009.0,General Books,"The Daring Adventures of Kit Carson and Fremont; Among Buffaloes, Grizzlies and Indians Being a Spirited Diary of the Most Difficult and Wonderful Exp","Frmont, John Charles",2012.0,Rarebooksclub.com
+64,9780217970747,15307220,Peggy Ware,"Howard, Milford Wriarson",2009.0,General Books,Peggy Ware,"Howard, Milford Wriarson",2010.0,General Books
+65,9780226156439,4086892,Bedtrick : Tales of Sex and Masquerade,"Doniger, Wendy",2005.0,University of Chicago Press,The Bedtrick: Tales of Sex and Masquerade,"Doniger, Wendy",2005.0,Univ of Chicago Pr
+66,9780226492360,2351244,Foundations of Biogeography : Classic Papers with Commentaries,,2004.0,University of Chicago Press,Foundations of Biogeography: Classic Papers with Commentaries,"Lomolino, Mark V.",2004.0,Univ of Chicago Pr
+67,9780230232372,16938827,Kazuo Ishiguro : New Critical Visions of the Novels,,2011.0,Palgrave Macmillan,Kazuo Ishiguro: New Critical Visions of the Novels,"Groes, Sebastian",2011.0,Palgrave MacMillan
