@@ -21,7 +21,7 @@ from magellan.blocker.rule_based_blocker import RuleBasedBlocker
 from magellan.blocker.black_box_blocker import BlackBoxBlocker
 from magellan.blocker.overlap_blocker import OverlapBlocker
 from magellan.debugblocker.blocking_debugger import debug_blocker
-from magellan.blockercombiner.blockercombiner import combine_block_outputs_via_union
+from magellan.blockercombiner.blockercombiner import combine_block_outputs_via_union, _combine_block_outputs_via_union
 from magellan.gui.mtable_gui import view, edit
 from magellan.labeler.labeler import label_table
 from magellan.feature.extractfeatures import extract_feature_vecs
