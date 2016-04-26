@@ -120,14 +120,15 @@ def down_sample(ltable, rtable, size, y):
     s_table, b_table, is_swapped = _order_tables(ltable, rtable)
     s_inv_index = _inv_index(s_table)
     b_sample_size = min(math.floor(size/y), len(b_table))
-    b_tbl_indices = np.random.choice(len(b_table), b_sample_size, replace=False)
+    b_tbl_indices = list(np.random.choice(len(b_table), b_sample_size, replace=False))
     s_tbl_indices = _probe_index(b_table.ix[b_tbl_indices], y,
                                  len(s_table), s_inv_index)
+    s_tbl_indices = list(s_tbl_indices)
     if is_swapped:
         s_tbl_indices, b_tbl_indices = b_tbl_indices, s_tbl_indices
-    l_sampled = MTable(ltable.iloc[list(s_tbl_indices)], ltable.get_key())
+    l_sampled = MTable(ltable.iloc[list(s_tbl_indices)], key=ltable.get_key())
     l_sampled.properties = ltable.properties
-    r_sampled = MTable(rtable.iloc[list(b_tbl_indices)], rtable.get_key())
+    r_sampled = MTable(rtable.iloc[list(b_tbl_indices)], key=rtable.get_key())
     r_sampled.properties = rtable.properties
     return l_sampled, r_sampled
 
