@@ -1,6 +1,7 @@
 import math
 import numpy as np
 import sys
+from collections import Counter
 from magellan.core.mtable import MTable
 
 def _get_stop_words():
@@ -98,13 +99,17 @@ def _probe_index(b_table, y, s_tbl_sz, s_inv_index):
         s = set(' '.join(val).lower().split())
         s = s.difference(stop_words)
         m = set()
+        mc = Counter()
         for token in s:
             ids = s_inv_index.get(token, None)
             if ids is not None:
                 m.update(ids)
+                mc.update(ids)
         # pick y/2 elements from m
         k = min(y_pos, len(m))
         m = list(m)
+        ordered_m = [ordered_x for ordered_x,_ in mc.most_common(int(k))]
+        # at this point, you could use ordered_m instead of m
         smpl_pos = np.random.choice(m, k, replace=False)
         s_pos_set = set()
         s_pos_set.update(smpl_pos)
